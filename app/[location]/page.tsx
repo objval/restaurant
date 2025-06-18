@@ -1,5 +1,6 @@
 import { locations } from "@/lib/locations"
 import LocationPageClient from "./LocationPageClient"
+import { notFound } from "next/navigation"
 
 interface LocationPageProps {
   params: Promise<{ location: string }>
@@ -7,8 +8,13 @@ interface LocationPageProps {
 
 export default async function LocationPage({ params }: LocationPageProps) {
   const { location } = await params
+  const locationData = locations.find((loc) => loc.id === location)
 
-  return <LocationPageClient location={location} />
+  if (!locationData) {
+    notFound()
+  }
+
+  return <LocationPageClient locationData={locationData} />
 }
 
 // Generate static params for all locations
