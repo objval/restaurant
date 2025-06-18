@@ -38,7 +38,7 @@ export function MenuItemModal({ item, isOpen, onClose, locationTheme }: MenuItem
           <div className="relative h-64 md:h-80 overflow-hidden">
             {!imageLoaded && (
               <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
-                <span className="text-gray-400">Loading...</span>
+                <span className="text-gray-400">Cargando...</span>
               </div>
             )}
             <img

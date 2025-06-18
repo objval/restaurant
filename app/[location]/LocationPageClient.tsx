@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Calendar, Menu, Clock, MapPin, Mail, MessageCircle, Star } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { ReservationModal } from "@/components/reservation-modal"
 import { ContactModal } from "@/components/contact-modal"
 import type { LocationData } from "@/lib/locations"
@@ -16,11 +17,16 @@ interface LocationPageClientProps {
 export default function LocationPageClient({ locationData }: LocationPageClientProps) {
   const [isReservationOpen, setIsReservationOpen] = useState(false)
   const [isContactOpen, setIsContactOpen] = useState(false)
+  const router = useRouter()
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent(`Hola! Me gustaría hacer una consulta sobre ${locationData.name}`)
     const phone = locationData.contact.phone.replace(/[^0-9]/g, "")
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank")
+  }
+
+  const handleBackToLocations = () => {
+    router.push("/")
   }
 
   function getDarkerColor(color: string): string {
@@ -36,7 +42,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
   return (
     <div className="min-h-screen" style={{ backgroundColor: locationData.theme.background }}>
       {/* Hero Section - Enhanced with better text visibility */}
-      <section className="relative h-[85vh] overflow-hidden">
+      <section className="relative h-[85vh] overflow-hidden" style={{ pointerEvents: 'auto' }}>
         <img
           src={locationData.images.hero || "/placeholder.svg"}
           alt={locationData.name}
@@ -48,13 +54,14 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Navigation */}
-        <Link
-          href="/"
-          className="absolute top-6 left-6 bg-black/30 backdrop-blur-md text-white px-4 py-2 rounded-lg hover:bg-black/40 transition-all duration-300 flex items-center gap-2 z-10 border border-white/20"
+        <button
+          onClick={handleBackToLocations}
+          className="absolute top-6 left-6 bg-black/30 backdrop-blur-md text-white px-4 py-2 rounded-lg hover:bg-black/40 transition-all duration-300 flex items-center gap-2 z-20 border border-white/20 cursor-pointer"
+          style={{ pointerEvents: 'auto' }}
         >
           <ArrowLeft className="w-4 h-4" />
           Volver a Ubicaciones
-        </Link>
+        </button>
 
         {/* Hero Content - Enhanced text contrast */}
         <div className="absolute inset-0 flex items-center justify-center text-white text-center z-10">
@@ -396,6 +403,17 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
       />
 
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} location={locationData} />
+
+      {/* Bottom Navigation - Fixed Button */}
+      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+        <Link
+          href="/"
+          className="bg-gray-900/90 backdrop-blur-md text-white px-6 py-3 rounded-full hover:bg-gray-800/90 transition-all duration-300 flex items-center gap-2 shadow-2xl border border-white/20 hover:scale-105"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Volver a Ubicaciones
+        </Link>
+      </div>
     </div>
   )
 }

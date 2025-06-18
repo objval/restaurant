@@ -27,7 +27,7 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
       <div className="relative h-48 md:h-56 overflow-hidden">
         {!imageLoaded && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
-            <span className="text-gray-400 text-sm">Loading...</span>
+            <span className="text-gray-400 text-sm">Cargando...</span>
           </div>
         )}
         <img

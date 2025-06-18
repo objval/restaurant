@@ -33,7 +33,7 @@ export function LocationCardDetailed({
     <Card className="group cursor-pointer transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden bg-white">
       {isNearest && (
         <div className="absolute top-4 right-4 z-20 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-          📍 Nearest
+          📍 Más Cercano
         </div>
       )}
 
@@ -89,7 +89,7 @@ export function LocationCardDetailed({
           </div>
           <div className="flex items-center gap-2 text-gray-500">
             <MapPin className="w-4 h-4" />
-            <span>Downtown</span>
+            <span>Centro</span>
           </div>
         </div>
 
@@ -117,7 +117,7 @@ export function LocationCardDetailed({
             <div>
               <h4 className="font-semibold mb-2 flex items-center gap-2">
                 <Utensils className="w-4 h-4" />
-                Menu Highlights
+                Destacados del Menú
               </h4>
               <div className="space-y-2">
                 {location.menuHighlights.slice(0, 2).map((item) => (
@@ -137,7 +137,7 @@ export function LocationCardDetailed({
             <div>
               <h4 className="font-semibold mb-2 flex items-center gap-2">
                 <Users className="w-4 h-4" />
-                Atmosphere
+                Ambiente
               </h4>
               <div className="flex flex-wrap gap-1">
                 {location.atmosphere.map((mood) => (
@@ -151,7 +151,7 @@ export function LocationCardDetailed({
             <div>
               <h4 className="font-semibold mb-2 flex items-center gap-2">
                 <Wine className="w-4 h-4" />
-                Features
+                Características
               </h4>
               <div className="flex flex-wrap gap-1">
                 {location.features.map((feature) => (
@@ -167,7 +167,7 @@ export function LocationCardDetailed({
         {/* Actions */}
         <div className="space-y-3">
           <Button onClick={() => setShowDetails(!showDetails)} variant="outline" className="w-full">
-            {showDetails ? "Show Less" : "Show More Details"}
+            {showDetails ? "Ver Menos" : "Ver Más Detalles"}
           </Button>
 
           <Button
@@ -182,11 +182,11 @@ export function LocationCardDetailed({
             {isLoading ? (
               <div className="flex items-center gap-2">
                 <LoadingSpinner size="sm" color="white" />
-                <span>Loading...</span>
+                <span>Cargando...</span>
               </div>
             ) : (
               <>
-                <span>Visit {location.name}</span>
+                <span>Visitar {location.name}</span>
                 <div
                   className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-20 transition-opacity duration-300"
                   style={{
