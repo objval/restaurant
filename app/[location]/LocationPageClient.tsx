@@ -403,17 +403,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
       />
 
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} location={locationData} />
-
-      {/* Bottom Navigation - Fixed Button */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        <Link
-          href="/"
-          className="bg-gray-900/90 backdrop-blur-md text-white px-6 py-3 rounded-full hover:bg-gray-800/90 transition-all duration-300 flex items-center gap-2 shadow-2xl border border-white/20 hover:scale-105"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Volver a Ubicaciones
-        </Link>
-      </div>
     </div>
   )
 }
