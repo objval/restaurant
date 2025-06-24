@@ -175,7 +175,7 @@ export function LocationCardDetailed({
             disabled={isLoading}
             className="w-full h-12 text-lg font-medium relative overflow-hidden"
             style={{
-              backgroundColor: isLoading ? "#gray-400" : location.theme.primary,
+              backgroundColor: isLoading ? "#9ca3af" : location.theme.primary,
               borderColor: location.theme.primary,
             }}
           >
