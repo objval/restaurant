@@ -47,7 +47,7 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
           {item.chef_special && (
             <Badge className="bg-yellow-500 text-white shadow-lg text-xs">
               <ChefHat className="w-3 h-3 mr-1" />
-              Chef's Special
+              Especial del Chef
             </Badge>
           )}
           {item.popular && (

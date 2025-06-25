@@ -66,7 +66,7 @@ export function MenuItemModal({ item, isOpen, onClose, locationTheme }: MenuItem
               {item.chef_special && (
                 <Badge className="bg-yellow-500 text-white shadow-lg">
                   <ChefHat className="w-3 h-3 mr-1" />
-                  Chef's Special
+                  Especial del Chef
                 </Badge>
               )}
               {item.popular && (

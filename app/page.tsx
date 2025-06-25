@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 import { type LocationData, locations, findNearestLocation } from "@/lib/locations"
 import { getLocationPreference, shouldShowConfirmation, saveLocationPreference } from "@/lib/storage"
 import { ReturningCustomerFlow } from "@/components/returning-customer-flow"
-import { LocationCardDetailed } from "@/components/location-card-detailed"
-import { HeroSection } from "@/components/hero-section"
+import { IntegratedHeroPicker } from "@/components/integrated-hero-picker"
+import { LocationDetailsSection } from "@/components/location-details-section"
 
 export default function LocationSelector() {
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -152,64 +152,64 @@ export default function LocationSelector() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <HeroSection onGeolocation={handleGeolocation} isDetecting={isDetecting} nearestLocation={nearestLocation} />
+      {/* Integrated Hero with Location Picker */}
+      <IntegratedHeroPicker
+        onLocationSelect={handleLocationSelect}
+        onGeolocation={handleGeolocation}
+        isDetecting={isDetecting}
+        nearestLocation={nearestLocation}
+        loadingLocationId={loadingLocationId}
+      />
 
-      {/* Locations Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 px-4">
-              <span className="md:hidden">Nuestras 3 Ubicaciones</span>
-              <span className="hidden md:block">Tres Destinos Culinarios Únicos</span>
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
-              <span className="md:hidden">Cada restaurante ofrece una experiencia única. Elige el tuyo.</span>
-              <span className="hidden md:block">
-                Cada ubicación cuenta su propia historia a través de ambientes cuidadosamente diseñados, ingredientes de
-                origen local y platos únicos que celebran la esencia de su entorno.
-              </span>
-            </p>
-          </div>
+      {/* Location Details Section */}
+      <LocationDetailsSection
+        locations={locations}
+        onLocationSelect={handleLocationSelect}
+        loadingLocationId={loadingLocationId}
+      />
 
-          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {locations.map((location) => (
-              <LocationCardDetailed
-                key={location.id}
-                location={location}
-                onSelect={handleLocationSelect}
-                isNearest={nearestLocation?.id === location.id}
-                isLoading={loadingLocationId === location.id}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer CTA */}
-      <section className="py-12 md:py-16 bg-gray-900 text-white">
+      {/* Final CTA Section */}
+      <section className="py-16 bg-gradient-to-br from-gray-900 to-black text-white">
         <div className="container mx-auto px-4 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">
-            <span className="md:hidden">¿Indeciso?</span>
-            <span className="hidden md:block">¿No puedes decidir?</span>
-          </h3>
-          <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-            <span className="md:hidden">Te ayudamos a encontrar tu lugar perfecto.</span>
-            <span className="hidden md:block">
-              Cada ubicación ofrece un ambiente único y un menú cuidadosamente curado. Permítenos ayudarte a encontrar
-              tu experiencia gastronómica perfecta.
-            </span>
-          </p>
-          <button
-            onClick={handleGeolocation}
-            disabled={isDetecting}
-            className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl w-full max-w-sm md:max-w-none md:w-auto"
-          >
-            <span className="md:hidden">{isDetecting ? "Buscando..." : "Encuentra mi lugar"}</span>
-            <span className="hidden md:block">
-              {isDetecting ? "Encontrando tu ubicación..." : "Encuentra mi lugar perfecto"}
-            </span>
-          </button>
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-3xl md:text-4xl font-bold mb-6">
+              ¿Listo para vivir la experiencia?
+            </h3>
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              Cada ubicación ofrece un ambiente único y un menú cuidadosamente curado. 
+              Desde cenas familiares hasta noches casuales con amigos, tenemos el lugar perfecto para ti.
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              {locations.map((location) => (
+                <div 
+                  key={location.id}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
+                >
+                  <h4 
+                    className="font-bold text-lg mb-2"
+                    style={{ color: location.theme.accent }}
+                  >
+                    {location.name}
+                  </h4>
+                  <p className="text-gray-300 text-sm mb-3">
+                    {location.concept}
+                  </p>
+                  <div className="text-xs text-gray-400">
+                    {location.hours.weekdays}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={handleGeolocation}
+              disabled={isDetecting}
+              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl"
+            >
+              {isDetecting ? "Encontrando tu ubicación..." : "Encuentra tu lugar perfecto"}
+            </button>
+          </div>
         </div>
       </section>
     </div>
