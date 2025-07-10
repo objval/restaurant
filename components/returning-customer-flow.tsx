@@ -7,21 +7,21 @@ import { MapPin, Clock, ArrowRight, Heart } from "lucide-react"
 
 interface ReturningCustomerFlowProps {
   savedLocationId: string
-  onConfirm: () => void
-  onGeolocation: () => void
-  onShowAll: () => void
+  onConfirmAction: () => void
+  onGeolocationAction: () => void
+  onShowAllAction: () => void
 }
 
 export function ReturningCustomerFlow({
   savedLocationId,
-  onConfirm,
-  onGeolocation,
-  onShowAll,
+  onConfirmAction,
+  onGeolocationAction,
+  onShowAllAction,
 }: ReturningCustomerFlowProps) {
   const savedLocation = locations.find((loc) => loc.id === savedLocationId)
 
   if (!savedLocation) {
-    onShowAll()
+    onShowAllAction()
     return null
   }
 
@@ -94,7 +94,7 @@ export function ReturningCustomerFlow({
 
             <div className="space-y-4">
               <Button
-                onClick={onConfirm}
+                onClick={onConfirmAction}
                 className="w-full h-14 text-lg font-semibold rounded-xl"
                 style={{
                   backgroundColor: savedLocation.theme.primary,
@@ -105,12 +105,12 @@ export function ReturningCustomerFlow({
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
 
-              <Button onClick={onGeolocation} variant="outline" className="w-full h-12 rounded-xl border-2">
+              <Button onClick={onGeolocationAction} variant="outline" className="w-full h-12 rounded-xl border-2">
                 <MapPin className="w-5 h-5 mr-2" />
                 Find my nearest location now
               </Button>
 
-              <Button onClick={onShowAll} variant="ghost" className="w-full h-10">
+              <Button onClick={onShowAllAction} variant="ghost" className="w-full h-10">
                 Explore all locations instead
               </Button>
             </div>

@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
+import { MapPin, CheckCircle, XCircle, AlertCircle, Navigation } from "lucide-react"
 import { type LocationData, locations, findNearestLocation } from "@/lib/locations"
 import { getLocationPreference, shouldShowConfirmation, saveLocationPreference } from "@/lib/storage"
 import { ReturningCustomerFlow } from "@/components/returning-customer-flow"
-import { IntegratedHeroPicker } from "@/components/integrated-hero-picker"
-import { LocationDetailsSection } from "@/components/location-details-section"
+import { ProfessionalLocationPicker } from "@/components/professional-location-picker"
+import { useToast } from "@/hooks/use-toast"
+import { ToastAction } from "@/components/ui/toast"
 
 export default function LocationSelector() {
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -16,6 +18,7 @@ export default function LocationSelector() {
   const [nearestLocation, setNearestLocation] = useState<LocationData | null>(null)
   const [loadingLocationId, setLoadingLocationId] = useState<string | null>(null)
   const router = useRouter()
+  const { toast } = useToast()
 
   useEffect(() => {
     const saved = getLocationPreference()
@@ -26,9 +29,29 @@ export default function LocationSelector() {
     setIsLoading(false)
   }, [])
 
+  const showToast = (title: string, description: string, variant: "default" | "destructive" = "default", icon?: React.ReactNode) => {
+    toast({
+      title,
+      description: (
+        <div className="flex items-center gap-2">
+          {icon}
+          {description}
+        </div>
+      ),
+      variant,
+    })
+  }
+
   const handleLocationSelect = (location: LocationData) => {
     setLoadingLocationId(location.id)
     saveLocationPreference(location.id)
+
+    showToast(
+      "¡Excelente elección!",
+      `Preparando tu experiencia en ${location.name}...`,
+      "default",
+      <CheckCircle className="w-4 h-4 text-green-500" />
+    )
 
     // Simulate loading time for better UX
     setTimeout(() => {
@@ -47,85 +70,187 @@ export default function LocationSelector() {
 
   const handleGeolocation = () => {
     if (!("geolocation" in navigator)) {
-      alert("La geolocalización no es compatible con tu navegador.")
+      showToast(
+        "Geolocalización no disponible",
+        "Tu navegador no soporta geolocalización. Por favor selecciona tu ubicación manualmente.",
+        "destructive",
+        <XCircle className="w-4 h-4 text-red-500" />
+      )
       return
     }
 
-    setIsDetecting(true)
+    try {
+      setIsDetecting(true)
+      showToast(
+        "Detectando ubicación...",
+        "Buscando el restaurante más cercano a ti",
+        "default",
+        <Navigation className="w-4 h-4 text-blue-500 animate-pulse" />
+      )
 
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords
-        const nearest = findNearestLocation(latitude, longitude)
-        setNearestLocation(nearest)
-        setIsDetecting(false)
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          try {
+            const { latitude, longitude } = position.coords
+            const nearest = findNearestLocation(latitude, longitude)
+            setNearestLocation(nearest)
+            setIsDetecting(false)
 
-        setTimeout(() => {
-          handleLocationSelect(nearest)
-        }, 2500)
-      },
-      (error) => {
-        console.error("Error de geolocalización:", error)
-        setIsDetecting(false)
+            showToast(
+              "¡Ubicación detectada!",
+              `${nearest.name} está más cerca de ti. Redirigiendo...`,
+              "default",
+              <MapPin className="w-4 h-4 text-green-500" />
+            )
 
-        let errorMessage = "No se pudo detectar tu ubicación. Por favor selecciona manualmente."
-        switch (error.code) {
-          case error.PERMISSION_DENIED:
-            errorMessage =
-              "Acceso a ubicación denegado. Por favor habilita los servicios de ubicación e intenta de nuevo, o selecciona manualmente."
-            break
-          case error.POSITION_UNAVAILABLE:
-            errorMessage = "Información de ubicación no disponible. Por favor selecciona manualmente."
-            break
-          case error.TIMEOUT:
-            errorMessage = "Tiempo de espera agotado para obtener ubicación. Por favor selecciona manualmente."
-            break
-        }
-        alert(errorMessage)
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 15000,
-        maximumAge: 600000,
-      },
-    )
+            setTimeout(() => {
+              handleLocationSelect(nearest)
+            }, 2500)
+          } catch (processingError) {
+            setIsDetecting(false)
+            showToast(
+              "Error procesando ubicación",
+              "Hubo un problema al procesar tu ubicación. Por favor selecciona manualmente.",
+              "destructive",
+              <AlertCircle className="w-4 h-4 text-red-500" />
+            )
+          }
+        },
+        (error) => {
+          setIsDetecting(false)
+
+          let errorTitle = "Error de ubicación"
+          let errorDescription = "No se pudo detectar tu ubicación. Por favor selecciona manualmente."
+          
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              errorTitle = "Permisos denegados"
+              errorDescription = "Has denegado el acceso a tu ubicación. Puedes habilitarlo en la configuración de tu navegador o seleccionar manualmente."
+              break
+            case error.POSITION_UNAVAILABLE:
+              errorTitle = "Ubicación no disponible"
+              errorDescription = "No se pudo obtener tu ubicación actual. Verifica que tienes GPS habilitado o selecciona manualmente."
+              break
+            case error.TIMEOUT:
+              errorTitle = "Tiempo agotado"
+              errorDescription = "La detección de ubicación está tardando demasiado. Por favor intenta de nuevo o selecciona manualmente."
+              break
+          }
+          
+          showToast(
+            errorTitle,
+            errorDescription,
+            "destructive",
+            <AlertCircle className="w-4 h-4 text-red-500" />
+          )
+        },
+        {
+          enableHighAccuracy: false,
+          timeout: 15000,
+          maximumAge: 600000,
+        },
+      )
+    } catch (generalError) {
+      setIsDetecting(false)
+      showToast(
+        "Error inesperado",
+        "Ocurrió un error inesperado al intentar obtener tu ubicación. Por favor selecciona manualmente.",
+        "destructive",
+        <XCircle className="w-4 h-4 text-red-500" />
+      )
+    }
   }
 
   const handleSmartGeolocation = () => {
     if (!("geolocation" in navigator)) {
-      alert("Geolocalización no compatible.")
+      showToast(
+        "Geolocalización no disponible",
+        "Tu navegador no soporta geolocalización.",
+        "destructive",
+        <XCircle className="w-4 h-4 text-red-500" />
+      )
       setShowConfirmation(false)
       return
     }
 
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords
-        const nearestLocation = findNearestLocation(latitude, longitude)
+    try {
+      showToast(
+        "Verificando ubicación...",
+        "Comparando con tu ubicación guardada",
+        "default",
+        <Navigation className="w-4 h-4 text-blue-500 animate-pulse" />
+      )
 
-        if (nearestLocation.id !== savedLocationId) {
-          const confirmUpdate = confirm(
-            `Encontramos que ${nearestLocation.name} está más cerca de ti ahora. ¿Actualizar tu ubicación preferida?`,
-          )
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          try {
+            const { latitude, longitude } = position.coords
+            const nearestLocation = findNearestLocation(latitude, longitude)
 
-          if (confirmUpdate) {
-            saveLocationPreference(nearestLocation.id)
+            if (nearestLocation.id !== savedLocationId) {
+              toast({
+                title: "Nueva ubicación detectada",
+                description: (
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-orange-500" />
+                    {`${nearestLocation.name} está más cerca de ti ahora.`}
+                  </div>
+                ),
+                action: (
+                  <ToastAction
+                    altText="Actualizar ubicación preferida"
+                    onClick={() => {
+                      saveLocationPreference(nearestLocation.id)
+                      showToast(
+                        "¡Actualizado!",
+                        `${nearestLocation.name} es ahora tu ubicación preferida`,
+                        "default",
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                      )
+                    }}
+                  >
+                    Actualizar
+                  </ToastAction>
+                ),
+              })
+            }
+
+            handleLocationSelect(nearestLocation)
+          } catch (processingError) {
+            setShowConfirmation(false)
+            showToast(
+              "Error procesando ubicación",
+              "Hubo un problema al procesar tu ubicación. Usando tu preferencia guardada.",
+              "destructive",
+              <AlertCircle className="w-4 h-4 text-red-500" />
+            )
           }
-        }
-
-        handleLocationSelect(nearestLocation)
-      },
-      (error) => {
-        console.error("Error de geolocalización:", error)
-        setShowConfirmation(false)
-        alert("No se pudo detectar tu ubicación. Por favor selecciona manualmente.")
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 15000,
-        maximumAge: 600000,
-      },
-    )
+        },
+        (error) => {
+          setShowConfirmation(false)
+          
+          showToast(
+            "Error de ubicación",
+            "No se pudo detectar tu ubicación. Usando tu preferencia guardada.",
+            "destructive",
+            <AlertCircle className="w-4 h-4 text-red-500" />
+          )
+        },
+        {
+          enableHighAccuracy: false,
+          timeout: 15000,
+          maximumAge: 600000,
+        },
+      )
+    } catch (generalError) {
+      setShowConfirmation(false)
+      showToast(
+        "Error inesperado",
+        "Ocurrió un error inesperado. Usando tu preferencia guardada.",
+        "destructive",
+        <XCircle className="w-4 h-4 text-red-500" />
+      )
+    }
   }
 
   if (isLoading) {
@@ -143,75 +268,23 @@ export default function LocationSelector() {
     return (
       <ReturningCustomerFlow
         savedLocationId={savedLocationId}
-        onConfirm={handleConfirmSavedLocation}
-        onGeolocation={handleSmartGeolocation}
-        onShowAll={() => setShowConfirmation(false)}
+        onConfirmAction={handleConfirmSavedLocation}
+        onGeolocationAction={handleSmartGeolocation}
+        onShowAllAction={() => setShowConfirmation(false)}
       />
     )
   }
 
   return (
     <div className="min-h-screen">
-      {/* Integrated Hero with Location Picker */}
-      <IntegratedHeroPicker
-        onLocationSelect={handleLocationSelect}
-        onGeolocation={handleGeolocation}
+      {/* Professional Location Picker */}
+      <ProfessionalLocationPicker
+        onLocationSelectAction={handleLocationSelect}
+        onGeolocationAction={handleGeolocation}
         isDetecting={isDetecting}
         nearestLocation={nearestLocation}
         loadingLocationId={loadingLocationId}
       />
-
-      {/* Location Details Section */}
-      <LocationDetailsSection
-        locations={locations}
-        onLocationSelect={handleLocationSelect}
-        loadingLocationId={loadingLocationId}
-      />
-
-      {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-gray-900 to-black text-white">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">
-              ¿Listo para vivir la experiencia?
-            </h3>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Cada ubicación ofrece un ambiente único y un menú cuidadosamente curado. 
-              Desde cenas familiares hasta noches casuales con amigos, tenemos el lugar perfecto para ti.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              {locations.map((location) => (
-                <div 
-                  key={location.id}
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
-                >
-                  <h4 
-                    className="font-bold text-lg mb-2"
-                    style={{ color: location.theme.accent }}
-                  >
-                    {location.name}
-                  </h4>
-                  <p className="text-gray-300 text-sm mb-3">
-                    {location.concept}
-                  </p>
-                  <div className="text-xs text-gray-400">
-                    {location.hours.weekdays}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <button
-              onClick={handleGeolocation}
-              disabled={isDetecting}
-              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl"
-            >
-              {isDetecting ? "Encontrando tu ubicación..." : "Encuentra tu lugar perfecto"}
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
