@@ -92,7 +92,7 @@ export const locations: LocationData[] = [
     },
     description: "El lugar perfecto para reuniones familiares y celebraciones especiales con elegancia y calidez.",
     longDescription:
-      "El Árbol es el destino ideal para crear memorias familiares inolvidables. Con espacios amplios, menús para todas las edades y un ambiente cálido y acogedor, cada cena se convierte en una celebración especial.",
+      "En El Árbol Café Restaurante somos un espacio familiar y acogedor, creado con amor para que te sientas como en casa. Aquí, cada detalle ha sido pensado para brindar una experiencia cálida, cercana y llena de sabor.\n\nNos encanta ser el punto de encuentro para quienes buscan compartir un buen café, disfrutar de una rica comida o celebrar momentos especiales rodeados de cariño. Nuestro compromiso es entregarte atención personalizada, un ambiente tranquilo y esa sensación de hogar que tanto valoramos.",
     hours: {
       weekdays: "Lun-Vie: 7:00 - 23:00",
       weekends: "Sáb-Dom: 8:00 - 24:00",
@@ -195,7 +195,7 @@ export const locations: LocationData[] = [
     },
     description: "El lugar perfecto para una noche relajada con amigos, cervezas artesanales y ambiente de bar.",
     longDescription:
-      "1898 es el spot perfecto para desenrollarse después del trabajo o disfrutar una noche con amigos. Con una selección de cervezas artesanales, cócteles creativos y picoteos deliciosos, es el lugar ideal para socializar.",
+      "Somos un bar familiar con alma local y espíritu relajado. En Beer Bar 1898 creemos que no hay nada mejor que compartir una buena cerveza, buena comida y buenas conversaciones en un ambiente cálido y cercano.\n\nAbrimos nuestras puertas para ofrecerte un espacio cómodo, con atención amable, cervezas bien tiradas y una carta pensada para disfrutar entre amigos, en pareja o en familia. Aquí no hay prisa: solo ganas de pasarlo bien, reír, relajarse y volver.",
     hours: {
       weekdays: "Lun-Vie: 16:00 - 02:00",
       weekends: "Sáb-Dom: 14:00 - 03:00",
@@ -261,6 +261,12 @@ export const locations: LocationData[] = [
         subtitle: "DJ sets en vivo",
         schedule: "Viernes y Sábados | 22:00 a 02:00hrs",
         color: "#DEB887",
+      },
+      {
+        title: "CERVEZA ARTESANAL",
+        subtitle: "Descuento especial",
+        schedule: "Miércoles | 18:00 a 22:00hrs",
+        color: "#654321",
       },
     ],
   },
