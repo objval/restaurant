@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { menuCategories } from "@/lib/menu-data"
+import { type MenuCategory } from "@/lib/menu-data"
 import { Search, Filter, X, Sparkles } from "lucide-react"
 
 interface MenuFiltersProps {
@@ -18,9 +18,14 @@ interface MenuFiltersProps {
     secondary: string
     accent: string
   }
+  availableCategories: MenuCategory[]
 }
 
-const dietaryOptions = ["Vegetarian", "Vegan", "Gluten-free"]
+const dietaryOptions = [
+  { value: "vegetarian", label: "Vegetariano" },
+  { value: "vegan", label: "Vegano" },
+  { value: "gluten-free", label: "Sin Gluten" }
+]
 
 export function MenuFilters({
   selectedCategory,
@@ -30,6 +35,7 @@ export function MenuFilters({
   dietaryFilters,
   onDietaryFilterToggle,
   locationTheme,
+  availableCategories,
 }: MenuFiltersProps) {
   const clearAllFilters = () => {
     onCategoryChange("all")
@@ -95,7 +101,7 @@ export function MenuFilters({
               <div className="text-xs opacity-75 truncate">Ver menú completo</div>
             </div>
           </Button>
-          {menuCategories.map((category) => (
+          {availableCategories.map((category) => (
             <Button
               key={category.id}
               variant={selectedCategory === category.id ? "default" : "outline"}
@@ -126,12 +132,12 @@ export function MenuFilters({
         <div className="space-y-2">
           {dietaryOptions.map((option) => (
             <Badge
-              key={option}
-              variant={dietaryFilters.includes(option) ? "default" : "outline"}
+              key={option.value}
+              variant={dietaryFilters.includes(option.value) ? "default" : "outline"}
               className="cursor-pointer px-3 py-2 text-sm w-full justify-center hover:shadow-md transition-shadow"
-              onClick={() => onDietaryFilterToggle(option)}
+              onClick={() => onDietaryFilterToggle(option.value)}
               style={
-                dietaryFilters.includes(option)
+                dietaryFilters.includes(option.value)
                   ? {
                       backgroundColor: locationTheme.accent,
                       borderColor: locationTheme.accent,
@@ -139,7 +145,7 @@ export function MenuFilters({
                   : {}
               }
             >
-              {option}
+              {option.label}
             </Badge>
           ))}
         </div>

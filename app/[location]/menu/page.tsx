@@ -1,5 +1,5 @@
 import { locations } from "@/lib/locations"
-import { menuData } from "@/lib/menu-data"
+import { menuData, getCategoriesWithItems } from "@/lib/menu-data"
 import { MenuPageClient } from "@/components/menu-page-client"
 import { ArrowLeft, Utensils } from "lucide-react"
 import Link from "next/link"
@@ -50,7 +50,7 @@ export default async function MenuPage({ params }: MenuPageProps) {
       </div>
 
       {/* Client Component for Interactive Menu */}
-      <MenuPageClient locationData={locationData} menuItems={menuItems} />
+      <MenuPageClient locationData={locationData} menuItems={menuItems} availableCategories={getCategoriesWithItems(location)} />
     </div>
   )
 }

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import type { LocationData } from "@/lib/locations"
-import { menuCategories, type MenuItem } from "@/lib/menu-data"
+import { type MenuItem, type MenuCategory, menuCategories } from "@/lib/menu-data"
 import { MenuItemCard } from "@/components/menu-item-card"
 import { MenuItemModal } from "@/components/menu-item-modal"
 import { MenuFilters } from "@/components/menu-filters"
@@ -12,9 +12,10 @@ import { Button } from "@/components/ui/button"
 interface MenuPageClientProps {
   locationData: LocationData
   menuItems: MenuItem[]
+  availableCategories: MenuCategory[]
 }
 
-export function MenuPageClient({ locationData, menuItems }: MenuPageClientProps) {
+export function MenuPageClient({ locationData, menuItems, availableCategories }: MenuPageClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
   const [dietaryFilters, setDietaryFilters] = useState<string[]>([])
@@ -96,6 +97,7 @@ export function MenuPageClient({ locationData, menuItems }: MenuPageClientProps)
               dietaryFilters={dietaryFilters}
               onDietaryFilterToggle={handleDietaryFilterToggle}
               locationTheme={locationData.theme}
+              availableCategories={availableCategories}
             />
           </div>
         </div>
