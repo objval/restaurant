@@ -312,7 +312,7 @@ export const menuLocation1: MenuItem[] = [
   },
   {
     id: "nutella-coffee",
-    name: "Nutella Coffee",
+    name: "Nutella Coffe",
     description: "Café con deliciosa crema de Nutella y leche espumosa",
     price: 3900,
     category: "coffee",
@@ -1029,7 +1029,7 @@ export const menuLocation1: MenuItem[] = [
   },
   {
     id: "selladito-barros-jarpa",
-    name: "Selladito barros jarpa",
+    name: "Selladito barro jarpa",
     description: "Sándwich sellado de jamón y queso",
     price: 4500,
     category: "breakfast",
@@ -2487,7 +2487,7 @@ export const menuLocation1: MenuItem[] = [
   },
   {
     id: "mojito-ramazzotti",
-    name: "Mojito ramazzotti",
+    name: "Mojito ramazzoti",
     description: "Mojito con un toque de Ramazzotti",
     price: 5900,
     category: "cocktails",

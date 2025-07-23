@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { type MenuCategory } from "@/lib/menu-data"
-import { Search, Filter, X, Sparkles } from "lucide-react"
+import { Search, Filter, X, Sparkles, Loader2, DollarSign } from "lucide-react"
+import { useEffect, useState } from "react"
+import { PriceRangeSlider } from "@/components/ui/price-range-slider"
 
 interface MenuFiltersProps {
   selectedCategory: string
@@ -13,6 +15,9 @@ interface MenuFiltersProps {
   onSearchChange: (query: string) => void
   dietaryFilters: string[]
   onDietaryFilterToggle: (filter: string) => void
+  priceRange?: [number, number]
+  onPriceRangeChange?: (range: [number, number]) => void
+  maxPrice?: number
   locationTheme: {
     primary: string
     secondary: string
@@ -34,19 +39,27 @@ export function MenuFilters({
   onSearchChange,
   dietaryFilters,
   onDietaryFilterToggle,
+  priceRange,
+  onPriceRangeChange,
+  maxPrice,
   locationTheme,
   availableCategories,
 }: MenuFiltersProps) {
+  
   const clearAllFilters = () => {
     onCategoryChange("all")
     onSearchChange("")
     dietaryFilters.forEach((filter) => onDietaryFilterToggle(filter))
+    if (onPriceRangeChange && maxPrice) {
+      onPriceRangeChange([0, maxPrice])
+    }
   }
 
-  const hasActiveFilters = selectedCategory !== "all" || searchQuery || dietaryFilters.length > 0
+  const hasActiveFilters = selectedCategory !== "all" || searchQuery || dietaryFilters.length > 0 || 
+    (priceRange && maxPrice && (priceRange[0] > 0 || priceRange[1] < maxPrice))
 
   return (
-    <div className="space-y-6 bg-white rounded-lg p-4 md:p-6 shadow-lg border">
+    <div className="space-y-6 bg-white rounded-lg p-4 md:p-6 shadow-lg border scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
       {/* Header */}
       <div className="flex items-center gap-2 pb-4 border-b">
         <Filter className="w-5 h-5" style={{ color: locationTheme.primary }} />
@@ -65,7 +78,7 @@ export function MenuFilters({
           placeholder="Buscar platos..."
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="pl-10 h-11 text-base border-2 focus:border-opacity-50"
+          className="pl-10 pr-10 h-11 text-base border-2 focus:border-opacity-50"
           style={
             {
               borderColor: searchQuery ? locationTheme.primary : undefined,
@@ -73,6 +86,15 @@ export function MenuFilters({
             } as any
           }
         />
+        {searchQuery && (
+          <button
+            onClick={() => onSearchChange("")}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+            aria-label="Limpiar búsqueda"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
       </div>
 
       {/* Categories */}
@@ -81,7 +103,7 @@ export function MenuFilters({
           <Sparkles className="w-4 h-4" style={{ color: locationTheme.accent }} />
           Categorías
         </h4>
-        <div className="space-y-2">
+        <div className="space-y-2 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
           <Button
             variant={selectedCategory === "all" ? "default" : "outline"}
             onClick={() => onCategoryChange("all")}
@@ -150,6 +172,23 @@ export function MenuFilters({
           ))}
         </div>
       </div>
+
+      {/* Price Range Filter */}
+      {onPriceRangeChange && priceRange && maxPrice && (
+        <div>
+          <h4 className="font-semibold text-base mb-3 flex items-center gap-2">
+            <DollarSign className="w-4 h-4" style={{ color: locationTheme.accent }} />
+            Rango de Precio
+          </h4>
+          <PriceRangeSlider
+            min={0}
+            max={maxPrice}
+            value={priceRange}
+            onValueChange={onPriceRangeChange}
+            className="px-2"
+          />
+        </div>
+      )}
 
       {/* Clear Filters */}
       {hasActiveFilters && (

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import type { MenuItem } from "@/lib/menu-data"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -16,28 +16,109 @@ interface MenuItemCardProps {
   }
 }
 
+// Generate a blur data URL for placeholder
+function generateBlurDataURL(width: number = 10, height: number = 10): string {
+  const canvas = document.createElement('canvas')
+  canvas.width = width
+  canvas.height = height
+  const ctx = canvas.getContext('2d')
+  if (ctx) {
+    // Create a gradient that roughly matches typical food images
+    const gradient = ctx.createLinearGradient(0, 0, width, height)
+    gradient.addColorStop(0, '#f3f4f6')
+    gradient.addColorStop(0.5, '#e5e7eb')
+    gradient.addColorStop(1, '#d1d5db')
+    ctx.fillStyle = gradient
+    ctx.fillRect(0, 0, width, height)
+  }
+  return canvas.toDataURL()
+}
+
 export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [isInView, setIsInView] = useState(false)
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [blurDataUrl, setBlurDataUrl] = useState<string>('')
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsInView(true)
+            observer.disconnect()
+          }
+        })
+      },
+      {
+        rootMargin: '50px',
+        threshold: 0.01
+      }
+    )
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  // Generate blur placeholder
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setBlurDataUrl(generateBlurDataURL())
+    }
+  }, [])
 
   return (
     <Card
+      ref={cardRef}
       className="group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 overflow-hidden bg-white"
       onClick={onClick}
     >
-      <div className="relative h-48 md:h-56 overflow-hidden">
+      <div className="relative h-48 md:h-56 overflow-hidden bg-gray-100">
+        {/* Blur placeholder */}
+        {!imageLoaded && blurDataUrl && (
+          <div 
+            className="absolute inset-0 animate-pulse"
+            style={{
+              backgroundImage: `url(${blurDataUrl})`,
+              backgroundSize: 'cover',
+              filter: 'blur(20px)',
+              transform: 'scale(1.1)'
+            }}
+          />
+        )}
+        
+        {/* Loading skeleton */}
         {!imageLoaded && (
-          <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
-            <span className="text-gray-400 text-sm">Cargando...</span>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex space-x-1">
+              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            </div>
           </div>
         )}
-        <img
-          src={item.image || "/placeholder.svg"}
-          alt={item.name}
-          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
-            imageLoaded ? "opacity-100" : "opacity-0"
-          }`}
-          onLoad={() => setImageLoaded(true)}
-        />
+        
+        {/* Main image with lazy loading */}
+        {isInView && (
+          <img
+            src={item.image || "/placeholder.svg"}
+            alt={item.name}
+            loading="lazy"
+            className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${
+              imageLoaded ? "opacity-100" : "opacity-0"
+            }`}
+            onLoad={() => setImageLoaded(true)}
+            onError={(e) => {
+              const target = e.target as HTMLImageElement
+              target.src = "/placeholder.svg"
+              setImageLoaded(true)
+            }}
+          />
+        )}
 
         {/* Overlay with gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -113,12 +194,12 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
           <div className="flex flex-wrap gap-1">
             {item.dietary.slice(0, 2).map((diet) => (
               <Badge key={diet} variant="secondary" className="text-xs bg-green-100 text-green-700 border-green-200">
-                {diet}
+                {diet === "vegetarian" ? "Vegetariano" : diet === "vegan" ? "Vegano" : diet === "gluten-free" ? "Sin Gluten" : diet}
               </Badge>
             ))}
             {item.dietary.length > 2 && (
               <Badge variant="secondary" className="text-xs">
-                +{item.dietary.length - 2} more
+                +{item.dietary.length - 2} más
               </Badge>
             )}
           </div>

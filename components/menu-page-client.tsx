@@ -3,9 +3,12 @@
 import { useState, useMemo } from "react"
 import type { LocationData } from "@/lib/locations"
 import { type MenuItem, type MenuCategory, menuCategories } from "@/lib/menu-data"
+import { useDebounce } from "@/lib/hooks/use-debounce"
+import { useFuzzySearch } from "@/lib/hooks/use-fuzzy-search"
 import { MenuItemCard } from "@/components/menu-item-card"
 import { MenuItemModal } from "@/components/menu-item-modal"
 import { MenuFilters } from "@/components/menu-filters"
+import { BackToTop } from "@/components/ui/back-to-top"
 import { Utensils, Grid, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -22,6 +25,19 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+  
+  // Calculate max price from menu items
+  const maxPrice = useMemo(() => {
+    return Math.max(...menuItems.map(item => item.price))
+  }, [menuItems])
+  
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, maxPrice])
+  
+  // Debounce search query for better performance
+  const debouncedSearchQuery = useDebounce(searchQuery, 300)
+  
+  // Apply fuzzy search to menu items only when debounced query changes
+  const fuzzySearchResults = useFuzzySearch(menuItems, debouncedSearchQuery)
 
   const handleItemClick = (item: MenuItem) => {
     setSelectedItem(item)
@@ -38,19 +54,12 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
   }
 
   const filteredItems = useMemo(() => {
-    return menuItems.filter((item) => {
+    // Start with fuzzy search results if searching, otherwise all items
+    const searchResults = debouncedSearchQuery ? fuzzySearchResults : menuItems
+    
+    return searchResults.filter((item) => {
       // Category filter
       if (selectedCategory !== "all" && item.category !== selectedCategory) {
-        return false
-      }
-
-      // Search filter
-      if (
-        searchQuery &&
-        !item.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        !item.description.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        !item.ingredients.some((ingredient) => ingredient.toLowerCase().includes(searchQuery.toLowerCase()))
-      ) {
         return false
       }
 
@@ -61,10 +70,15 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
           return false
         }
       }
+      
+      // Price range filter
+      if (item.price < priceRange[0] || item.price > priceRange[1]) {
+        return false
+      }
 
       return true
     })
-  }, [menuItems, selectedCategory, searchQuery, dietaryFilters])
+  }, [fuzzySearchResults, menuItems, selectedCategory, debouncedSearchQuery, dietaryFilters, priceRange])
 
   const groupedItems = useMemo(() => {
     if (selectedCategory === "all") {
@@ -88,7 +102,7 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
       <div className="grid lg:grid-cols-4 gap-6 md:gap-8">
         {/* Filters Sidebar */}
         <div className="lg:col-span-1">
-          <div className="sticky top-8">
+          <div className="lg:sticky lg:top-8 lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto">
             <MenuFilters
               selectedCategory={selectedCategory}
               onCategoryChange={setSelectedCategory}
@@ -96,6 +110,9 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
               onSearchChange={setSearchQuery}
               dietaryFilters={dietaryFilters}
               onDietaryFilterToggle={handleDietaryFilterToggle}
+              priceRange={priceRange}
+              onPriceRangeChange={setPriceRange}
+              maxPrice={maxPrice}
               locationTheme={locationData.theme}
               availableCategories={availableCategories}
             />
@@ -205,6 +222,9 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
         onClose={handleModalClose}
         locationTheme={locationData.theme}
       />
+      
+      {/* Back to Top Button */}
+      <BackToTop locationTheme={locationData.theme} />
     </div>
   )
 }
