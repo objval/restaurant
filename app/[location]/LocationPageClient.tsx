@@ -294,7 +294,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   WebkitTextStroke: `2px ${locationData.theme.secondary}`,
                   animationDelay: '0.2s',
                   // Special styling for different locations
-                  ...(locationData.id === 'location2' && {
+                  ...(locationData.id === '1898' && {
                     fontSize: '8rem',
                     fontWeight: '900',
                     letterSpacing: '0.05em',
@@ -347,9 +347,9 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                     backgroundColor: locationData.theme.accent,
                     color: locationData.theme.text,
                     border: `2px solid ${locationData.theme.accent}`,
-                    textShadow: locationData.id === 'location1' ? '0 2px 4px rgba(0,0,0,0.3)' : 'none',
-                    fontWeight: locationData.id === 'location2' ? 'bold' : 'semibold',
-                    letterSpacing: locationData.id === 'location2' ? '0.5px' : 'normal',
+                    textShadow: locationData.id === 'arbol' ? '0 2px 4px rgba(0,0,0,0.3)' : 'none',
+                    fontWeight: locationData.id === '1898' ? 'bold' : 'semibold',
+                    letterSpacing: locationData.id === '1898' ? '0.5px' : 'normal',
                   }}
                 >
                   <Menu className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />

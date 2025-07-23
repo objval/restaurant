@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -91,9 +91,9 @@ export function ReservationModal({ isOpen, onClose, location }: ReservationModal
 
             <DialogHeader>
               <DialogTitle className="text-2xl md:text-3xl font-bold text-white mb-2">Hacer una Reserva</DialogTitle>
-              <p className="text-white/90 text-lg">
+              <DialogDescription className="text-white/90 text-lg">
                 {location.name} - {location.concept}
-              </p>
+              </DialogDescription>
             </DialogHeader>
 
             <div className="flex items-center gap-4 mt-4 text-white/80">

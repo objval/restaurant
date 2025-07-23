@@ -64,9 +64,9 @@ export function ProfessionalLocationPicker({
     // Get theme class based on location
     const getThemeClass = (locationId: string) => {
       switch (locationId) {
-        case 'location1': return 'theme-forest'
-        case 'location2': return 'theme-brown'
-        case 'location3': return 'theme-teal'
+        case 'arbol': return 'theme-forest'
+        case '1898': return 'theme-brown'
+        case 'capriccio': return 'theme-teal'
         default: return 'theme-forest'
       }
     }

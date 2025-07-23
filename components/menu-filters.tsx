@@ -59,7 +59,7 @@ export function MenuFilters({
     (priceRange && maxPrice && (priceRange[0] > 0 || priceRange[1] < maxPrice))
 
   return (
-    <div className="space-y-6 bg-white rounded-lg p-4 md:p-6 shadow-lg border scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+    <div className="space-y-6 bg-white dark:bg-gray-800 rounded-lg p-4 md:p-6 shadow-lg border">
       {/* Header */}
       <div className="flex items-center gap-2 pb-4 border-b">
         <Filter className="w-5 h-5" style={{ color: locationTheme.primary }} />

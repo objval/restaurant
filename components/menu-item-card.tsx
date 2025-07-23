@@ -53,7 +53,7 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
       className="group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 overflow-hidden bg-white dark:bg-gray-800"
       onClick={onClick}
     >
-      <div className="relative h-48 md:h-56 overflow-hidden bg-gray-100 dark:bg-gray-700">
+      <div className="relative h-48 md:h-56 overflow-hidden bg-gray-100 dark:bg-gray-700 w-full">
         {/* Optimized image with lazy loading */}
         {isInView && (
           <OptimizedImage
@@ -82,31 +82,31 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
+        <div className="absolute top-3 left-3 flex flex-col gap-2 max-w-[60%]">
           {item.chef_special && (
-            <Badge className="bg-yellow-500 text-white shadow-lg text-xs">
-              <ChefHat className="w-3 h-3 mr-1" />
-              Especial del Chef
+            <Badge className="bg-yellow-500 text-white shadow-lg text-xs whitespace-nowrap overflow-hidden text-ellipsis">
+              <ChefHat className="w-3 h-3 mr-1 flex-shrink-0" />
+              <span className="truncate">Especial del Chef</span>
             </Badge>
           )}
           {item.popular && (
-            <Badge className="bg-green-500 text-white shadow-lg text-xs">
-              <Star className="w-3 h-3 mr-1" />
-              Popular
+            <Badge className="bg-green-500 text-white shadow-lg text-xs whitespace-nowrap overflow-hidden text-ellipsis">
+              <Star className="w-3 h-3 mr-1 flex-shrink-0" />
+              <span className="truncate">Popular</span>
             </Badge>
           )}
           {item.seasonal && (
-            <Badge className="bg-orange-500 text-white shadow-lg text-xs">
-              <Leaf className="w-3 h-3 mr-1" />
-              Seasonal
+            <Badge className="bg-orange-500 text-white shadow-lg text-xs whitespace-nowrap overflow-hidden text-ellipsis">
+              <Leaf className="w-3 h-3 mr-1 flex-shrink-0" />
+              <span className="truncate">Seasonal</span>
             </Badge>
           )}
         </div>
 
         {/* Price */}
-        <div className="absolute bottom-3 right-3">
+        <div className="absolute bottom-3 right-3 max-w-[40%]">
           <div
-            className="bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full font-bold text-lg shadow-lg transition-transform group-hover:scale-105"
+            className="bg-white/95 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full font-bold text-base sm:text-lg shadow-lg transition-transform group-hover:scale-105"
             style={{ color: locationTheme.primary }}
           >
             ${(item.price / 1000).toFixed(0)}.{(item.price % 1000).toString().padStart(3, "0")}

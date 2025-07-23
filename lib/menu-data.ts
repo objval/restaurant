@@ -47,15 +47,15 @@ export const menuCategories: MenuCategory[] = [
 ]
 
 // Import menu data from individual location files
-import { menuLocation1 } from "./menu-location1"
-import { menuLocation2 } from "./menu-location2"
-import { menuLocation3 } from "./menu-location3"
+import { menuarbol } from "./menu-arbol"
+import { menu1898 } from "./menu-1898"
+import { menucapriccio } from "./menu-capriccio"
 
 // Combine all menu data
 export const menuData = {
-  location1: menuLocation1,
-  location2: menuLocation2,
-  location3: menuLocation3,
+  arbol: menuarbol,
+  1898: menu1898,
+  capriccio: menucapriccio,
 }
 
 // Helper function to find menu item by ID across all locations

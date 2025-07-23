@@ -125,7 +125,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es-CL">
+    <html lang="es-CL" suppressHydrationWarning>
       <head>
         {/* Additional meta tags for better SEO */}
         <meta name="geo.region" content="CL" />
@@ -165,12 +165,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="restaurant-theme"
         >
           {children}
           <ThemeToggle />

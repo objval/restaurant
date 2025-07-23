@@ -20,9 +20,9 @@ export default async function MenuPage({ params }: MenuPageProps) {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: locationData.theme.background }}>
-      {/* Header */}
+      {/* Desktop Header - Hidden on mobile */}
       <div
-        className="relative py-16 px-4"
+        className="hidden md:block relative py-16 px-4"
         style={{
           background: `linear-gradient(135deg, ${locationData.theme.primary}, ${locationData.theme.accent})`,
         }}

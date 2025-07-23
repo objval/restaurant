@@ -12,9 +12,9 @@ Disallow: /admin/
 Disallow: /api/internal/
 
 # Allow all restaurant content
-Allow: /location1/
-Allow: /location2/
-Allow: /location3/
+Allow: /arbol/
+Allow: /1898/
+Allow: /capriccio/
 Allow: /menu/
 Allow: /reservations/
 Allow: /contact/

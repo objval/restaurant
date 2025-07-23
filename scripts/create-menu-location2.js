@@ -261,10 +261,10 @@ function getPrepTime(category) {
 const tsContent = `import { MenuItem } from "./menu-data"
 
 // Menu for Location 2: 1898
-export const menuLocation2: MenuItem[] = ${JSON.stringify(menuItems, null, 2)}`;
+export const menu1898: MenuItem[] = ${JSON.stringify(menuItems, null, 2)}`;
 
 // Write the file
-fs.writeFileSync(path.join(__dirname, '..', 'lib', 'menu-location2.ts'), tsContent);
+fs.writeFileSync(path.join(__dirname, '..', 'lib', 'menu-1898.ts'), tsContent);
 
-console.log(`Created menu-location2.ts with ${menuItems.length} items`);
+console.log(`Created menu-1898.ts with ${menuItems.length} items`);
 console.log(`Categories: ${[...new Set(menuItems.map(item => item.category))].join(', ')}`);

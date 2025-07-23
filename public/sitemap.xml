@@ -11,7 +11,7 @@
 
   <!-- Location 1 - Lumière -->
   <url>
-    <loc>https://v0-restaurant-bice.vercel.app/location1</loc>
+    <loc>https://v0-restaurant-bice.vercel.app/arbol</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -19,7 +19,7 @@
 
   <!-- Location 1 Menu -->
   <url>
-    <loc>https://v0-restaurant-bice.vercel.app/location1/menu</loc>
+    <loc>https://v0-restaurant-bice.vercel.app/arbol/menu</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -27,7 +27,7 @@
 
   <!-- Location 2 - Giardino -->
   <url>
-    <loc>https://v0-restaurant-bice.vercel.app/location2</loc>
+    <loc>https://v0-restaurant-bice.vercel.app/1898</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -35,7 +35,7 @@
 
   <!-- Location 2 Menu -->
   <url>
-    <loc>https://v0-restaurant-bice.vercel.app/location2/menu</loc>
+    <loc>https://v0-restaurant-bice.vercel.app/1898/menu</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -43,7 +43,7 @@
 
   <!-- Location 3 - Marina -->
   <url>
-    <loc>https://v0-restaurant-bice.vercel.app/location3</loc>
+    <loc>https://v0-restaurant-bice.vercel.app/capriccio</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -51,7 +51,7 @@
 
   <!-- Location 3 Menu -->
   <url>
-    <loc>https://v0-restaurant-bice.vercel.app/location3/menu</loc>
+    <loc>https://v0-restaurant-bice.vercel.app/capriccio/menu</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

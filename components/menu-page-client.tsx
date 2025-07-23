@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import type { LocationData } from "@/lib/locations"
 import { type MenuItem, type MenuCategory, menuCategories } from "@/lib/menu-data"
 import { useDebounce } from "@/lib/hooks/use-debounce"
@@ -10,6 +10,7 @@ import { MenuItemModal } from "@/components/menu-item-modal"
 import { MenuFilters } from "@/components/menu-filters"
 import { BackToTop } from "@/components/ui/back-to-top"
 import { SkeletonMenuGrid } from "@/components/ui/skeleton"
+import { MenuPageMobile } from "@/components/menu-page-mobile"
 import { Utensils, Grid, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -27,6 +28,19 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   const [isLoading, setIsLoading] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   
   // Calculate max price from menu items
   const maxPrice = useMemo(() => {
@@ -99,6 +113,18 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
     }
   }, [filteredItems, selectedCategory])
 
+  // Render mobile version for small screens
+  if (isMobile) {
+    return (
+      <MenuPageMobile
+        locationData={locationData}
+        menuItems={menuItems}
+        availableCategories={availableCategories}
+      />
+    )
+  }
+
+  // Desktop version
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <div className="grid lg:grid-cols-4 gap-6 md:gap-8">
@@ -140,7 +166,7 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
             </div>
 
             {/* View Mode Toggle */}
-            <div className="flex bg-gray-100 rounded-lg p-1">
+            <div className="flex bg-gray-100 rounded-lg p-1 flex-shrink-0">
               <Button
                 variant={viewMode === "grid" ? "default" : "ghost"}
                 size="sm"

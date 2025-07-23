@@ -65,10 +65,10 @@ export interface LocationData {
 
 export const locations: LocationData[] = [
   {
-    id: "location1",
+    id: "arbol",
     name: "El Árbol",
     concept: "Comida Familiar",
-    path: "/location1",
+    path: "/arbol",
     coordinates: { lat: -38.985779, lng: -72.639160 },
     theme: {
       primary: "#2D5016", // Deep forest green
@@ -168,10 +168,10 @@ export const locations: LocationData[] = [
     ],
   },
   {
-    id: "location2",
+    id: "1898",
     name: "1898",
     concept: "Beer Bar",
-    path: "/location2",
+    path: "/1898",
     coordinates: { lat: -39.0089, lng: -72.6412 },
     theme: {
       primary: "#8B4513", // Saddle brown
@@ -271,10 +271,10 @@ export const locations: LocationData[] = [
     ],
   },
   {
-    id: "location3",
+    id: "capriccio",
     name: "Capriccio",
     concept: "Bistro Bar",
-    path: "/location3",
+    path: "/capriccio",
     coordinates: { lat: -39.0098, lng: -72.6398 },
     theme: {
       primary: "#1B4B5A", // Dark teal

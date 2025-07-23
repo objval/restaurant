@@ -1,7 +1,7 @@
 import { MenuItem } from "./menu-data"
 
 // Menu for Location 1: El Árbol
-export const menuLocation1: MenuItem[] = [
+export const menuarbol: MenuItem[] = [
   // RECOMENDADO PARA HOY
   {
     id: "tomahawk-lomo-vetado",

@@ -1,7 +1,7 @@
 import { MenuItem } from "./menu-data"
 
 // Menu for Location 3: Capriccio - Coastal/Seafood theme
-export const menuLocation3: MenuItem[] = [
+export const menucapriccio: MenuItem[] = [
   // Entradas
   {
     id: "tabla-mariscos",

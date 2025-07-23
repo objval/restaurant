@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import type { MenuItem } from "@/lib/menu-data"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { X, Clock, Flame, Star, ChefHat, Leaf } from "lucide-react"
@@ -98,7 +98,9 @@ export function MenuItemModal({ item, isOpen, onClose, locationTheme }: MenuItem
           <div className="p-6 md:p-8 space-y-6">
             <DialogHeader>
               <DialogTitle className="text-2xl md:text-3xl font-bold mb-2">{item.name}</DialogTitle>
-              <p className="text-lg text-gray-600 leading-relaxed">{item.description}</p>
+              <DialogDescription className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                {item.description}
+              </DialogDescription>
             </DialogHeader>
 
             {/* Quick Info Grid */}

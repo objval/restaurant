@@ -1,7 +1,7 @@
 import { MenuItem } from "./menu-data"
 
 // Menu for Location 2: 1898
-export const menuLocation2: MenuItem[] = [
+export const menu1898: MenuItem[] = [
   {
     "id": "guinness-extra-stout-473-ml",
     "name": "Guinness extra stout 473 ML",

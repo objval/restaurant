@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -79,7 +79,9 @@ export function ContactModal({ isOpen, onClose, location }: ContactModalProps) {
 
             <DialogHeader>
               <DialogTitle className="text-2xl md:text-3xl font-bold text-white mb-2">Contáctanos</DialogTitle>
-              <p className="text-white/90 text-lg">{location.name} - Estamos aquí para ayudarte</p>
+              <DialogDescription className="text-white/90 text-lg">
+                {location.name} - Estamos aquí para ayudarte
+              </DialogDescription>
             </DialogHeader>
           </div>
 

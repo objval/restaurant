@@ -5,8 +5,8 @@ const path = require('path');
 const scrapedData = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'documents_1(3).json'), 'utf8'));
 
 // Read the generated menu
-const menuContent = fs.readFileSync(path.join(__dirname, '..', 'lib', 'menu-location2.ts'), 'utf8');
-const menuMatch = menuContent.match(/export const menuLocation2: MenuItem\[\] = (\[[\s\S]*\])/);
+const menuContent = fs.readFileSync(path.join(__dirname, '..', 'lib', 'menu-1898.ts'), 'utf8');
+const menuMatch = menuContent.match(/export const menu1898: MenuItem\[\] = (\[[\s\S]*\])/);
 const menuData = JSON.parse(menuMatch[1]);
 
 // Helper function to normalize names for comparison
