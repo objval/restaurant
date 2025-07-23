@@ -9,6 +9,7 @@ import { MenuItemCard } from "@/components/menu-item-card"
 import { MenuItemModal } from "@/components/menu-item-modal"
 import { MenuFilters } from "@/components/menu-filters"
 import { BackToTop } from "@/components/ui/back-to-top"
+import { SkeletonMenuGrid } from "@/components/ui/skeleton"
 import { Utensils, Grid, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -25,6 +26,7 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+  const [isLoading, setIsLoading] = useState(false)
   
   // Calculate max price from menu items
   const maxPrice = useMemo(() => {
@@ -158,7 +160,9 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
             </div>
           </div>
 
-          {filteredItems.length === 0 ? (
+          {isLoading ? (
+            <SkeletonMenuGrid />
+          ) : filteredItems.length === 0 ? (
             <div className="text-center py-16 md:py-20">
               <Utensils className="w-16 h-16 md:w-20 md:h-20 text-gray-300 mx-auto mb-4" />
               <h3 className="text-xl md:text-2xl font-semibold text-gray-600 mb-2">No se encontraron platos</h3>

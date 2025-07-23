@@ -5,6 +5,7 @@ import type { MenuItem } from "@/lib/menu-data"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Star, ChefHat, Flame, Leaf } from "lucide-react"
+import { OptimizedImage } from "@/components/ui/optimized-image"
 
 interface MenuItemCardProps {
   item: MenuItem
@@ -16,29 +17,11 @@ interface MenuItemCardProps {
   }
 }
 
-// Generate a blur data URL for placeholder
-function generateBlurDataURL(width: number = 10, height: number = 10): string {
-  const canvas = document.createElement('canvas')
-  canvas.width = width
-  canvas.height = height
-  const ctx = canvas.getContext('2d')
-  if (ctx) {
-    // Create a gradient that roughly matches typical food images
-    const gradient = ctx.createLinearGradient(0, 0, width, height)
-    gradient.addColorStop(0, '#f3f4f6')
-    gradient.addColorStop(0.5, '#e5e7eb')
-    gradient.addColorStop(1, '#d1d5db')
-    ctx.fillStyle = gradient
-    ctx.fillRect(0, 0, width, height)
-  }
-  return canvas.toDataURL()
-}
 
 export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [isInView, setIsInView] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
-  const [blurDataUrl, setBlurDataUrl] = useState<string>('')
 
   // Intersection Observer for lazy loading
   useEffect(() => {
@@ -64,60 +47,35 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
     return () => observer.disconnect()
   }, [])
 
-  // Generate blur placeholder
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setBlurDataUrl(generateBlurDataURL())
-    }
-  }, [])
-
   return (
     <Card
       ref={cardRef}
-      className="group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 overflow-hidden bg-white"
+      className="group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 overflow-hidden bg-white dark:bg-gray-800"
       onClick={onClick}
     >
-      <div className="relative h-48 md:h-56 overflow-hidden bg-gray-100">
-        {/* Blur placeholder */}
-        {!imageLoaded && blurDataUrl && (
-          <div 
-            className="absolute inset-0 animate-pulse"
-            style={{
-              backgroundImage: `url(${blurDataUrl})`,
-              backgroundSize: 'cover',
-              filter: 'blur(20px)',
-              transform: 'scale(1.1)'
-            }}
+      <div className="relative h-48 md:h-56 overflow-hidden bg-gray-100 dark:bg-gray-700">
+        {/* Optimized image with lazy loading */}
+        {isInView && (
+          <OptimizedImage
+            src={item.image || "/placeholder.svg"}
+            alt={item.name}
+            width={500}
+            height={400}
+            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+            onLoad={() => setImageLoaded(true)}
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           />
         )}
         
         {/* Loading skeleton */}
-        {!imageLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center">
+        {!imageLoaded && !isInView && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-700 animate-pulse">
             <div className="flex space-x-1">
               <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
               <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
               <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
             </div>
           </div>
-        )}
-        
-        {/* Main image with lazy loading */}
-        {isInView && (
-          <img
-            src={item.image || "/placeholder.svg"}
-            alt={item.name}
-            loading="lazy"
-            className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${
-              imageLoaded ? "opacity-100" : "opacity-0"
-            }`}
-            onLoad={() => setImageLoaded(true)}
-            onError={(e) => {
-              const target = e.target as HTMLImageElement
-              target.src = "/placeholder.svg"
-              setImageLoaded(true)
-            }}
-          />
         )}
 
         {/* Overlay with gradient */}
@@ -166,7 +124,7 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
 
         {/* Hover overlay with "View Details" */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full font-semibold text-gray-800 shadow-lg">
+          <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm px-4 py-2 rounded-full font-semibold text-gray-800 dark:text-gray-200 shadow-lg">
             Ver Detalles
           </div>
         </div>
@@ -174,14 +132,14 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
 
       <CardContent className="p-4 md:p-5">
         <div className="mb-3">
-          <h3 className="font-bold text-lg md:text-xl mb-2 line-clamp-1 group-hover:text-opacity-80 transition-colors">
+          <h3 className="font-bold text-lg md:text-xl mb-2 line-clamp-1 group-hover:text-opacity-80 transition-colors text-gray-900 dark:text-gray-100">
             {item.name}
           </h3>
-          <p className="text-gray-600 text-sm md:text-base line-clamp-2 leading-relaxed">{item.description}</p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base line-clamp-2 leading-relaxed">{item.description}</p>
         </div>
 
         {/* Quick info */}
-        <div className="flex items-center justify-between text-xs md:text-sm text-gray-500 mb-3">
+        <div className="flex items-center justify-between text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-3">
           <div className="flex items-center gap-1">
             <Clock className="w-3 h-3 md:w-4 md:h-4" />
             <span>{item.prepTime}</span>
