@@ -161,16 +161,16 @@ export function MenuPageMobile({ locationData, menuItems, availableCategories }:
                           )}
                         </Button>
                       </SheetTrigger>
-                  <SheetContent side="left" className="w-[85%] max-w-sm p-0">
-                    <SheetHeader className="p-6 border-b">
+                  <SheetContent side="left" className="w-[85%] max-w-sm p-0 flex flex-col h-full max-h-screen">
+                    <SheetHeader className="p-6 border-b flex-shrink-0">
                       <SheetTitle className="text-xl">Categorías</SheetTitle>
                       <SheetDescription>
                         Selecciona una categoría para filtrar el menú
                       </SheetDescription>
                     </SheetHeader>
-                    <div className="h-full flex flex-col">
-                      <div className="flex-1 overflow-y-auto">
-                        <div className="p-4 space-y-1">
+                    <div className="flex-1 overflow-hidden flex flex-col min-h-0">
+                      <div className="flex-1 overflow-y-auto overscroll-contain -webkit-overflow-scrolling-touch">
+                        <div className="p-4 space-y-1 pb-20">
                           <button
                             onClick={() => handleCategoryChange("all")}
                             className={cn(
