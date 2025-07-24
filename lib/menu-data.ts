@@ -28,7 +28,7 @@ export const menuCategories: MenuCategory[] = [
   { id: "recommended", name: "Recomendado para Hoy", description: "Sugerencias especiales de nuestro chef", icon: "⭐" },
   { id: "mains", name: "Platos de Autor", description: "Nuestros platos estrella", icon: "🍽️" },
   { id: "pizzas", name: "Pizzas", description: "Pizzas a la piedra con ingredientes frescos", icon: "🍕" },
-  { id: "sandwiches", name: "Sándwiches y Fajitas", description: "Opciones contundentes y sabrosas", icon: "🥪" },
+  { id: "sandwiches", name: "Sándwiches", description: "Opciones contundentes y sabrosas", icon: "🥪" },
   { id: "sharing", name: "Tablas para Compartir", description: "Ideales para disfrutar en grupo", icon: "🍱" },
   { id: "appetizers", name: "Entradas", description: "Perfectas para comenzar tu comida", icon: "🥗" },
   { id: "salads", name: "Ensaladas", description: "Creaciones frescas y saludables", icon: "🥬" },

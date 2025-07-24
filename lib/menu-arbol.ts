@@ -1489,48 +1489,6 @@ export const menuarbol: MenuItem[] = [
     prepTime: "12-15 min",
   },
 
-  // FAJITAS EL ÁRBOL
-  {
-    id: "fajita-vegetariana",
-    name: "Fajita vegetariana",
-    description: "Tortilla mexicana grande, porotos negro, mix de hojas verdes, champiñones, maíz, tomate, palta hass acompañado de papas a las finas hierbas con dos salsas de la casa.",
-    price: 8900,
-    category: "sandwiches",
-    image: "https://images.unsplash.com/photo-1564767655658-4e6b365884ff?w=500&h=400&fit=crop",
-    ingredients: ["Tortilla", "Porotos negros", "Mix hojas verdes", "Champiñones", "Maíz", "Tomate", "Palta", "Papas"],
-    allergens: ["Gluten"],
-    dietary: ["vegetarian"],
-    calories: 480,
-    prepTime: "12-15 min",
-  },
-  {
-    id: "fajita-pollo-crispy",
-    name: "Fajita Pollo crispy",
-    description: "Tortilla mexicana grande, pollo crispy, mix hojas verdes, maiz, palta hass, tomate, cebolla morada acompañado de papas a las finas hierbas con dos salsas de la casa.",
-    price: 9500,
-    category: "sandwiches",
-    image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=500&h=400&fit=crop",
-    ingredients: ["Tortilla", "Pollo crispy", "Mix hojas verdes", "Maíz", "Palta", "Tomate", "Cebolla morada", "Papas"],
-    allergens: ["Gluten"],
-    dietary: [],
-    calories: 580,
-    prepTime: "12-15 min",
-    popular: true,
-  },
-  {
-    id: "fajita-salmon-ahumado",
-    name: "Fajita Salmón Ahumado",
-    description: "Tortilla mexicana grande, salmón ahumado, mix hojas verdes, tomate, alcaparra, palta hass, cebolla morada acompañado de papas a las finas hierbas con dos salsas de la casa.",
-    price: 10200,
-    category: "sandwiches",
-    image: "https://images.unsplash.com/photo-1564767655658-4e6b365884ff?w=500&h=400&fit=crop",
-    ingredients: ["Tortilla", "Salmón ahumado", "Mix hojas verdes", "Tomate", "Alcaparras", "Palta", "Cebolla morada", "Papas"],
-    allergens: ["Gluten", "Pescado"],
-    dietary: [],
-    calories: 520,
-    prepTime: "12-15 min",
-  },
-
   // SÁNDWICH
   {
     id: "hamburguesa-golosa",

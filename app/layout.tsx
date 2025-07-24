@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -77,16 +77,6 @@ export const metadata: Metadata = {
   category: "restaurant",
   classification: "business",
   referrer: "origin-when-cross-origin",
-  colorScheme: "light dark",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#2D5016" },
-    { media: "(prefers-color-scheme: dark)", color: "#F4E04D" },
-  ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -117,6 +107,17 @@ export const metadata: Metadata = {
     "msapplication-TileColor": "#2D5016",
     "msapplication-config": "/browserconfig.xml",
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  colorScheme: 'light dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#2D5016' },
+    { media: '(prefers-color-scheme: dark)', color: '#F4E04D' },
+  ],
 }
 
 export default function RootLayout({

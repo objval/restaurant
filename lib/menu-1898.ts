@@ -2866,24 +2866,6 @@ export const menu1898: MenuItem[] = [
     "prepTime": "20-25 min"
   },
   {
-    "id": "menu-postre",
-    "name": "menú postre",
-    "description": "lunes a jueves hasta las 16:00 (entrada, ensalada, plato de fondo, postre o café)",
-    "price": 10500,
-    "category": "mains",
-    "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 566,
-    "prepTime": "20-25 min"
-  },
-  {
     "id": "sopa-del-dia",
     "name": "SOPA DEL DÍA",
     "description": "Hasta las 16:00 hrs",

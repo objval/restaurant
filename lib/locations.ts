@@ -27,6 +27,13 @@ export interface LocationData {
   hours: {
     weekdays: string
     weekends: string
+    monday?: string
+    tuesday?: string
+    wednesday?: string
+    thursday?: string
+    friday?: string
+    saturday?: string
+    sunday?: string
   }
   specialties: string[]
   atmosphere: string[]
@@ -197,10 +204,17 @@ export const locations: LocationData[] = [
     longDescription:
       "Somos un bar familiar con alma local y espíritu relajado. En Beer Bar 1898 creemos que no hay nada mejor que compartir una buena cerveza, buena comida y buenas conversaciones en un ambiente cálido y cercano.\n\nAbrimos nuestras puertas para ofrecerte un espacio cómodo, con atención amable, cervezas bien tiradas y una carta pensada para disfrutar entre amigos, en pareja o en familia. Aquí no hay prisa: solo ganas de pasarlo bien, reír, relajarse y volver.",
     hours: {
-      weekdays: "Lun-Vie: 16:00 - 02:00",
-      weekends: "Sáb-Dom: 14:00 - 03:00",
+      weekdays: "Mar-Mié: 11:00 - 00:30 | Jue: 11:00 - 02:00 | Vie: 11:00 - 03:00",
+      weekends: "Sáb: 11:00 - 02:00 | Dom: 11:00 - 22:00",
+      monday: "CERRADO",
+      tuesday: "11:00 - 00:30",
+      wednesday: "11:00 - 00:30",
+      thursday: "11:00 - 02:00",
+      friday: "11:00 - 03:00",
+      saturday: "11:00 - 02:00",
+      sunday: "11:00 - 22:00",
     },
-    specialties: ["Cervezas Artesanales", "Cócteles de Autor", "Tapas", "Música en Vivo"],
+    specialties: ["Cervezas Artesanales", "Cócteles de Autor", "Música en Vivo"],
     atmosphere: ["Bar", "Nocturno", "Social", "Relajado"],
     priceRange: "$$-$$$",
     contact: {

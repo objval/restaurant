@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -27,11 +27,19 @@ export function ProfessionalLocationPicker({
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
-  const heroImages = [
-    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=1920&h=1080&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1544148103-0773bf10d330?w=1920&h=1080&fit=crop&q=80",
-  ]
+  const heroImages = useMemo(() => 
+    isMobile 
+      ? [
+          "/background/arbol.jpg",
+          "/background/1898.jpg",
+          "/background/capriccio.jpg",
+        ]
+      : [
+          "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=1920&h=1080&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1544148103-0773bf10d330?w=1920&h=1080&fit=crop&q=80",
+        ]
+  , [isMobile])
 
   useEffect(() => {
     const checkMobile = () => {
@@ -47,7 +55,7 @@ export function ProfessionalLocationPicker({
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)
     }, 20000) // Changed from 12000 to 20000 (20 seconds) for even slower transition
     return () => clearInterval(interval)
-  }, [])
+  }, [heroImages.length])
 
   const getLocationIcon = (concept: string) => {
     if (concept.includes("Familiar")) return Users
@@ -60,6 +68,109 @@ export function ProfessionalLocationPicker({
     const Icon = getLocationIcon(location.concept)
     const isHovered = hoveredLocation === location.id
     const isLoading = loadingLocationId === location.id
+
+    // Get current Chilean time and check if open
+    const getChileanTimeAndStatus = () => {
+      try {
+        // Get Chilean time (UTC-3 in summer, UTC-4 in winter)
+        const now = new Date()
+        const chileanTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Santiago"}))
+        const hours = chileanTime.getHours()
+        const minutes = chileanTime.getMinutes()
+        const currentTimeInMinutes = hours * 60 + minutes
+        const dayOfWeek = chileanTime.getDay()
+      
+      // Only log once per location on initial render
+      if (typeof window !== 'undefined') {
+        const w = window as any
+        if (!w.loggedLocations) {
+          w.loggedLocations = new Set()
+        }
+        if (!w.loggedLocations.has(location.id)) {
+          w.loggedLocations.add(location.id)
+          console.log(`Chilean time for ${location.name}:`, chileanTime.toLocaleString('es-CL', {
+            timeZone: 'America/Santiago',
+            hour12: false
+          }))
+        }
+      }
+      
+      const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+      const todayName = days[dayOfWeek] as keyof typeof location.hours
+      
+      // Get hours for the specific location
+      let openTime = 0
+      let closeTime = 0
+      let isOpen = false
+      let todayHours = ''
+      
+      if (location.id === '1898') {
+        todayHours = location.hours[todayName] || ''
+        
+        if (todayName === 'monday' || todayHours === 'CERRADO') {
+          return { isOpen: false, displayText: 'CERRADO HOY', todayHours: 'CERRADO' }
+        }
+        
+        // Parse opening hours for 1898
+        const hoursParts = todayHours.split(' - ')
+        if (hoursParts.length === 2) {
+          const [openHour, openMin] = hoursParts[0].split(':').map(Number)
+          const [closeHour, closeMin] = hoursParts[1].split(':').map(Number)
+          openTime = openHour * 60 + openMin
+          closeTime = closeHour * 60 + closeMin
+          
+          // Handle times after midnight
+          if (closeTime < openTime) {
+            closeTime += 24 * 60
+          }
+          
+          // Check if currently open
+          let adjustedCurrentTime = currentTimeInMinutes
+          if (hours < 4) { // After midnight
+            adjustedCurrentTime += 24 * 60
+          }
+          
+          isOpen = adjustedCurrentTime >= openTime && adjustedCurrentTime <= closeTime
+        }
+      } else {
+        // For other restaurants, use simplified hours
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Weekdays
+          openTime = 7 * 60 // 7:00
+          closeTime = 23 * 60 // 23:00
+        } else { // Weekends
+          openTime = 8 * 60 // 8:00
+          closeTime = 24 * 60 // 24:00
+        }
+        isOpen = currentTimeInMinutes >= openTime && currentTimeInMinutes <= closeTime
+        todayHours = location.hours.weekdays
+      }
+      
+      if (isOpen) {
+        const closeHour = Math.floor(closeTime / 60) % 24
+        const closeMin = closeTime % 60
+        return {
+          isOpen: true,
+          displayText: `Abierto hasta ${closeHour}:${closeMin.toString().padStart(2, '0')}`,
+          todayHours
+        }
+      } else {
+        return {
+          isOpen: false,
+          displayText: 'CERRADO AHORA',
+          todayHours
+        }
+      }
+      } catch (error) {
+        console.error(`Error getting time status for ${location.name}:`, error)
+        return {
+          isOpen: false,
+          displayText: 'HORARIO NO DISPONIBLE',
+          todayHours: ''
+        }
+      }
+    }
+    
+    const { isOpen, displayText, todayHours } = getChileanTimeAndStatus()
 
     // Get theme class based on location
     const getThemeClass = (locationId: string) => {
@@ -100,7 +211,7 @@ export function ProfessionalLocationPicker({
         {/* Background Image with smooth overlay */}
         <div className="absolute inset-0 overflow-hidden rounded-lg">
           <img
-            src={location.images.hero}
+            src={`/locations/${location.id}.jpg`}
             alt={location.name}
             className={`w-full h-full object-cover transition-all duration-700 ease-out ${
               isHovered ? 'scale-105' : 'scale-100'
@@ -169,9 +280,20 @@ export function ProfessionalLocationPicker({
                 <MapPin className="w-4 h-4" />
                 <span>{location.contact.address}</span>
               </div>
-              <div className="flex items-center gap-2 text-white/80 text-sm bg-black/20 backdrop-blur-sm rounded-lg p-2">
-                <Clock className="w-4 h-4" />
-                <span>{location.hours.weekdays}</span>
+              <div className={`flex items-center gap-2 text-sm rounded-lg p-2 transition-all duration-300 ${
+                isOpen 
+                  ? 'bg-green-500/20 backdrop-blur-sm text-green-300' 
+                  : 'bg-red-500/20 backdrop-blur-sm text-red-300'
+              }`}>
+                <Clock className={`w-4 h-4 ${isOpen ? 'animate-pulse' : ''}`} />
+                <span className="font-medium">
+                  {displayText}
+                </span>
+                {!isOpen && todayHours !== 'CERRADO' && (
+                  <span className="text-xs opacity-80">
+                    • {todayHours}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -204,18 +326,22 @@ export function ProfessionalLocationPicker({
             <Button
               size="sm"
               className={`transition-all duration-300 backdrop-blur-sm border-2 shadow-lg ${
-                isLoading ? 'opacity-75' : isHovered ? 'scale-105 shadow-xl' : 'scale-100'
-              }`}
+                isLoading ? 'opacity-75' : isHovered && isOpen ? 'scale-105 shadow-xl' : 'scale-100'
+              } ${!isOpen ? 'opacity-60' : ''}`}
               style={{ 
-                backgroundColor: `${location.theme.accent}`,
-                borderColor: `${location.theme.accent}`,
-                boxShadow: `0 4px 20px ${location.theme.accent}40, 0 0 10px ${location.theme.accent}20`,
+                backgroundColor: isOpen ? `${location.theme.accent}` : '#666',
+                borderColor: isOpen ? `${location.theme.accent}` : '#666',
+                boxShadow: isOpen ? `0 4px 20px ${location.theme.accent}40, 0 0 10px ${location.theme.accent}20` : 'none',
                 color: 'white'
               }}
-              disabled={isLoading}
+              disabled={isLoading || !isOpen}
             >
               {isLoading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
+              ) : !isOpen ? (
+                <>
+                  Cerrado
+                </>
               ) : (
                 <>
                   Seleccionar
