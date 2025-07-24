@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Calendar, Menu, Clock, MapPin, Mail, MessageCircle, Star, Heart, Share2, Camera, Award, Users, ChefHat, Utensils, Phone, Instagram, Facebook, Twitter, Navigation, Wifi, Music, Sparkles, Zap, Globe, Palette, Coffee, Wine, PartyPopper, Headphones, Volume2, X } from "lucide-react"
+import { ArrowLeft, Calendar, Menu, Clock, MapPin, Mail, MessageCircle, Star, Heart, Camera, Award, Users, Phone, Instagram, Facebook, Twitter, Navigation, Wifi, Music, Sparkles, Zap, Globe, Palette, Coffee, Wine, PartyPopper, Headphones, Volume2, X } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { ReservationModal } from "@/components/reservation-modal"
@@ -255,30 +255,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
             <ArrowLeft className="w-4 h-4" />
             Volver a Ubicaciones
           </button>
-          
-          {/* Interactive action buttons */}
-          <div className="flex gap-3">
-            <button
-              onClick={handleLike}
-              className={`p-3 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-110 ${
-                isLiked ? 'bg-red-500/80 text-white' : 'bg-black/30 text-white hover:bg-black/40'
-              }`}
-            >
-              <Heart className={`w-5 h-5 ${isLiked ? 'fill-current' : ''}`} />
-            </button>
-            <button
-              onClick={handleShare}
-              className="p-3 rounded-full bg-black/30 backdrop-blur-md text-white hover:bg-black/40 transition-all duration-300 border border-white/20 hover:scale-110"
-            >
-              <Share2 className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => setShowGallery(true)}
-              className="p-3 rounded-full bg-black/30 backdrop-blur-md text-white hover:bg-black/40 transition-all duration-300 border border-white/20 hover:scale-110"
-            >
-              <Camera className="w-5 h-5" />
-            </button>
-          </div>
         </div>
 
         {/* Hero Content with enhanced animations */}
@@ -379,53 +355,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
               }`}
             />
           ))}
-        </div>
-      </section>
-
-      {/* Statistics Section - New addition */}
-      <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: `${locationData.theme.primary}20` }}>
-                <Award className="w-8 h-8" style={{ color: locationData.theme.primary }} />
-              </div>
-              <div className="text-3xl font-bold mb-2" style={{ color: locationData.theme.primary }}>
-                {locationData.stats.yearsOpen}+
-              </div>
-              <div className="text-gray-600 font-medium">Años de experiencia</div>
-            </div>
-            
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: `${locationData.theme.primary}20` }}>
-                <Utensils className="w-8 h-8" style={{ color: locationData.theme.primary }} />
-              </div>
-              <div className="text-3xl font-bold mb-2" style={{ color: locationData.theme.primary }}>
-                {locationData.stats.dishes}+
-              </div>
-              <div className="text-gray-600 font-medium">Platos únicos</div>
-            </div>
-            
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: `${locationData.theme.primary}20` }}>
-                <ChefHat className="w-8 h-8" style={{ color: locationData.theme.primary }} />
-              </div>
-              <div className="text-3xl font-bold mb-2" style={{ color: locationData.theme.primary }}>
-                {locationData.stats.chefs}
-              </div>
-              <div className="text-gray-600 font-medium">Chefs expertos</div>
-            </div>
-            
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: `${locationData.theme.primary}20` }}>
-                <Users className="w-8 h-8" style={{ color: locationData.theme.primary }} />
-              </div>
-              <div className="text-3xl font-bold mb-2" style={{ color: locationData.theme.primary }}>
-                {locationData.socialProof.reviews.toLocaleString()}+
-              </div>
-              <div className="text-gray-600 font-medium">Clientes felices</div>
-            </div>
-          </div>
         </div>
       </section>
 
