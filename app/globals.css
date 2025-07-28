@@ -54,6 +54,22 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Image optimization for better quality */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+  
+  /* High quality image scaling */
+  .high-quality-image {
+    image-rendering: high-quality;
+    image-rendering: -webkit-optimize-contrast;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
 }
 
 

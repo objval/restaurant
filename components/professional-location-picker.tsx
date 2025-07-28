@@ -27,19 +27,16 @@ export function ProfessionalLocationPicker({
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
-  const heroImages = useMemo(() => 
-    isMobile 
-      ? [
-          "/background/arbol.jpg",
-          "/background/1898.jpg",
-          "/background/capriccio.jpg",
-        ]
-      : [
-          "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=1920&h=1080&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1544148103-0773bf10d330?w=1920&h=1080&fit=crop&q=80",
-        ]
-  , [isMobile])
+  const heroImages = useMemo(() => [
+    "/background/arbol.jpg",
+    "/background/arbol_2.jpg",
+    "/background/arbol_3.jpg",
+    "/background/arbol_4.jpg",
+    "/background/1898.jpg",
+    "/background/capriccio.jpg",
+    "/background/capriccio_2.jpg",
+    "/background/capriccio_3.jpg",
+  ], [])
 
   useEffect(() => {
     const checkMobile = () => {
@@ -212,6 +209,14 @@ export function ProfessionalLocationPicker({
             className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-out ${
               isHovered ? 'scale-105' : 'scale-100'
             }`}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            style={{
+              imageRendering: '-webkit-optimize-contrast',
+              WebkitBackfaceVisibility: 'hidden',
+              transform: 'translateZ(0)'
+            }}
           />
           <div 
             className={`absolute inset-0 transition-opacity duration-300 ease-out ${
@@ -384,6 +389,13 @@ export function ProfessionalLocationPicker({
               alt={`Hero ${index + 1}`}
               className="absolute inset-0 w-full h-full object-cover"
               loading={index === 0 ? "eager" : "lazy"}
+              fetchPriority={index === 0 ? "high" : "auto"}
+              decoding="async"
+              style={{
+                imageRendering: '-webkit-optimize-contrast',
+                WebkitBackfaceVisibility: 'hidden',
+                transform: 'translateZ(0)'
+              }}
             />
           </div>
         ))}
