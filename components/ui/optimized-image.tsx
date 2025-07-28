@@ -69,31 +69,19 @@ export function OptimizedImage({
     return <FoodPlaceholder className={className} />
   }
 
-  // Handle external images with Next.js Image component
+  // Fallback for external images
   if (src.startsWith('http')) {
     return (
-      <div className="relative overflow-hidden">
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          quality={quality}
-          priority={priority}
-          sizes={sizes}
-          placeholder="blur"
-          blurDataURL={dataUrl(width, height)}
-          className={cn(
-            "duration-700 ease-in-out",
-            isLoading
-              ? "scale-105 blur-lg grayscale"
-              : "scale-100 blur-0 grayscale-0",
-            className
-          )}
-          onLoad={handleLoad}
-          onError={handleError}
-        />
-      </div>
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        loading={priority ? "eager" : "lazy"}
+        onLoad={handleLoad}
+        onError={() => {
+          setHasError(true)
+        }}
+      />
     )
   }
 

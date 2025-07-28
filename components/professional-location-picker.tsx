@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -207,15 +206,12 @@ export function ProfessionalLocationPicker({
         
         {/* Background Image with smooth overlay */}
         <div className="absolute inset-0 overflow-hidden rounded-lg">
-          <Image
+          <img
             src={`/locations/${location.id}.jpg`}
             alt={location.name}
-            fill
-            className={`object-cover transition-transform duration-300 ease-out ${
+            className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-out ${
               isHovered ? 'scale-105' : 'scale-100'
             }`}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            quality={85}
           />
           <div 
             className={`absolute inset-0 transition-opacity duration-300 ease-out ${
@@ -383,13 +379,11 @@ export function ProfessionalLocationPicker({
               index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
             }`}
           >
-            <Image
+            <img
               src={image}
               alt={`Hero ${index + 1}`}
-              fill
-              className="object-cover"
-              priority={index === 0}
-              sizes="100vw"
+              className="absolute inset-0 w-full h-full object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
             />
           </div>
         ))}
