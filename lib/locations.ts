@@ -211,7 +211,8 @@ export const locations: LocationData[] = [
       ambiance: "/locations/1898.jpg",
       gallery: [
         "/1898/1.jpg",
-        "/1898/2.jpg"
+        "/1898/2.jpg",
+        "/1898/3.jpg",
       ],
     },
     description: "El lugar perfecto para una noche relajada con amigos, cervezas artesanales y ambiente de bar.",
@@ -322,8 +323,9 @@ export const locations: LocationData[] = [
       signature: "https://images.unsplash.com/photo-1587223962930-cb7f31384c19?w=500&h=400&fit=crop",
       ambiance: "/locations/capriccio.jpg",
       gallery: [
-        "/locations/capriccio.jpg",
-        "/locations/capriccio2.jpg",
+        "/capriccio/1.jpg",
+        "/capriccio/2.jpg",
+        "/capriccio/3.jpg"
       ],
     },
     description: "Ambiente elegante y sofisticado, perfecto para cenas especiales y experiencias gastronómicas únicas.",
