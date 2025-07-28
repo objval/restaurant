@@ -105,7 +105,7 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
                       Chef
                     </Badge>
                   )}
-                  {item.vegetarian && (
+                  {item.dietary?.includes('vegetarian') && (
                     <Badge className="bg-green-600 text-white text-xs px-2 py-0.5">
                       <Leaf className="w-3 h-3 mr-1" />
                       Veg

@@ -20,9 +20,7 @@ export function useFuzzySearch(
     includeScore: true,
     shouldSort: true,
     ignoreLocation: true,
-    minMatchCharLength: 2,
-    // Limit results for better performance
-    limit: 100
+    minMatchCharLength: 2
   }
 ) {
   const fuse = useMemo(

@@ -46,7 +46,7 @@ export function LocationCard({ location, onSelect, isNearest = false }: Location
         <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
-            <span>{location.hours}</span>
+            <span>{location.hours.weekdays}</span>
           </div>
         </div>
 
