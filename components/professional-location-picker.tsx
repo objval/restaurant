@@ -184,7 +184,7 @@ export function ProfessionalLocationPicker({
           isHovered ? 'transform scale-[1.02] shadow-2xl' : 'shadow-xl hover:shadow-2xl'
         } ${isLoading ? 'opacity-75' : ''}`}
         style={{ 
-          background: `rgba(0,0,0,0.05)`,
+          background: `rgba(0,0,0,0.3)`,
           borderWidth: '2px',
           borderStyle: 'solid',
           borderColor: isHovered ? `${location.theme.accent}` : `${location.theme.primary}40`,
@@ -207,7 +207,7 @@ export function ProfessionalLocationPicker({
         {/* Background Image with smooth overlay */}
         <div className="absolute inset-0 overflow-hidden rounded-lg">
           <img
-            src={`/locations/${location.id}.jpg`}
+            src={location.images.hero}
             alt={location.name}
             className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-out ${
               isHovered ? 'scale-105' : 'scale-100'
@@ -216,8 +216,8 @@ export function ProfessionalLocationPicker({
           <div 
             className={`absolute inset-0 transition-opacity duration-300 ease-out ${
               isHovered 
-                ? 'bg-gradient-to-t from-black/75 via-black/45 to-black/35' 
-                : 'bg-gradient-to-t from-black/70 via-black/40 to-black/30'
+                ? 'bg-gradient-to-t from-black/90 via-black/70 to-black/50' 
+                : 'bg-gradient-to-t from-black/85 via-black/65 to-black/45'
             }`}
           />
           {/* Enhanced themed mica effect on cards */}
@@ -239,7 +239,7 @@ export function ProfessionalLocationPicker({
                   isHovered ? 'scale-105 shadow-lg' : 'scale-100'
                 }`}
                 style={{ 
-                  backgroundColor: `${location.theme.accent}25`,
+                  backgroundColor: `${location.theme.accent}40`,
                   borderColor: `${location.theme.accent}80`,
                   boxShadow: `0 8px 32px ${location.theme.accent}30, 0 0 20px ${location.theme.accent}20`
                 }}
@@ -248,7 +248,7 @@ export function ProfessionalLocationPicker({
               </div>
               <Badge 
                 variant="secondary" 
-                className="bg-white/30 text-white border-white/40 shadow-lg"
+                className="bg-black/60 text-white border-white/40 shadow-lg font-medium"
               >
                 {location.concept}
               </Badge>
@@ -257,25 +257,25 @@ export function ProfessionalLocationPicker({
 
           {/* Location Info */}
           <div className="flex-1">
-            <h3 className={`text-2xl font-bold text-white mb-2 drop-shadow-lg transition-all duration-500 ${
-              isHovered ? 'text-white' : 'text-white/95'
-            }`}>
+            <h3 className={`text-2xl font-bold text-white mb-2 drop-shadow-2xl transition-all duration-500 ${
+              isHovered ? 'text-white' : 'text-white'
+            }`} style={{ textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
               {location.name}
             </h3>
-            <p className="text-white/90 text-sm mb-3 line-clamp-2 drop-shadow-sm">
+            <p className="text-white text-sm mb-3 line-clamp-2 font-medium" style={{ textShadow: '0 1px 5px rgba(0,0,0,0.8)' }}>
               {location.description}
             </p>
             
             {/* Location Details */}
             <div className="space-y-2 mb-4">
-              <div className="flex items-center gap-2 text-white/80 text-sm bg-black/20 rounded-lg p-2">
+              <div className="flex items-center gap-2 text-white text-sm bg-black/50 rounded-lg p-2 font-medium">
                 <MapPin className="w-4 h-4" />
                 <span>{location.contact.address}</span>
               </div>
               <div className={`flex items-center gap-2 text-sm rounded-lg p-2 transition-all duration-300 ${
                 isOpen 
-                  ? 'bg-green-500/20 text-green-300' 
-                  : 'bg-red-500/20 text-red-300'
+                  ? 'bg-green-500/40 text-green-100' 
+                  : 'bg-red-500/40 text-red-100'
               }`}>
                 <Clock className={`w-4 h-4 ${isOpen ? 'animate-pulse' : ''}`} />
                 <span className="font-medium">
@@ -294,7 +294,7 @@ export function ProfessionalLocationPicker({
               {location.specialties.slice(0, 3).map((specialty, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white border border-white/30 shadow-sm"
+                  className="px-3 py-1 rounded-full text-xs font-medium bg-black/50 text-white border border-white/40 shadow-lg"
                 >
                   {specialty}
                 </span>
@@ -306,7 +306,7 @@ export function ProfessionalLocationPicker({
           <div 
             className="flex items-center justify-between pt-4 rounded-lg p-3 -mx-3 border-t-2 transition-all duration-300"
             style={{
-              background: `linear-gradient(135deg, ${location.theme.primary}15, ${location.theme.accent}10)`,
+              background: `linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.5))`,
               borderTopColor: `${location.theme.accent}50`,
               boxShadow: `0 -2px 10px ${location.theme.accent}10`
             }}

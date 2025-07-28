@@ -9,7 +9,7 @@ export const menuarbol: MenuItem[] = [
     description: "Jugoso Tomahawk de lomo vetado de 700 grs, acompañado de tomates cherry glaseados, vegetales de estación asados, papas a las finas hierbas y nuestras salsas de merkén y chimichurri.",
     price: 24500,
     category: "recommended",
-    image: "https://images.unsplash.com/photo-1594041680698-74376e0e5260?w=500&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=400&fit=crop",
     ingredients: ["Lomo vetado Tomahawk", "Tomates cherry", "Romero", "Ajo", "Vegetales de estación", "Papas", "Merkén", "Chimichurri"],
     allergens: [],
     dietary: [],

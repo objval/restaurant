@@ -439,7 +439,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                 ¿Te gustó lo que viste?
               </h3>
               <p className="text-gray-600 mb-6">
-                Descubre nuestro menú completo con más de {locationData.stats.dishes} platos únicos preparados por nuestros {locationData.stats.chefs} chefs expertos
+                Descubre nuestro menú completo con platos únicos preparados por nuestros chefs expertos
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={`/${locationData.id}/menu`}>

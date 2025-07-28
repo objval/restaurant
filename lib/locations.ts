@@ -131,7 +131,7 @@ export const locations: LocationData[] = [
         name: "Tomahawk de lomo vetado",
         description: "Tomahawk vetado de 700 grs, con tomates cherrys glaseados, papas a las finas hierbas, salsa de merkén y chimichurri",
         price: "$24.500",
-        image: "https://images.unsplash.com/photo-1594041680698-74376e0e5260?w=500&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=400&fit=crop", // Corrected: Tomahawk steak image
       },
       {
         id: "anticuchos-parrilleros",
@@ -145,7 +145,7 @@ export const locations: LocationData[] = [
         name: "Pastel de Jaiba 500 grs",
         description: "Delicioso pastel de jaiba gratinado con queso mantecoso, preparado con la mejor jaiba fresca",
         price: "$12.500",
-        image: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=500&h=400&fit=crop",
+        image: "https://www.cocina-chilena.com/base/stock/Recipe/pastel-de-jaiba-chileno/pastel-de-jaiba-chileno_web.jpg.webp",
       },
     ],
     stats: {
@@ -165,9 +165,9 @@ export const locations: LocationData[] = [
     },
     promotions: [
       {
-        title: "DOMINGO FAMILIAR",
-        subtitle: "15% descuento familias",
-        schedule: "Domingos | 12:00 a 18:00hrs",
+        title: "2X EN TRAGOS SELECCIONADOS",
+        subtitle: "Descuento en tragos seleccionados",
+        schedule: "Todos los días",
         color: "#2D5016",
       },
       {
