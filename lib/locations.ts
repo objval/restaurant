@@ -120,7 +120,7 @@ export const locations: LocationData[] = [
     atmosphere: ["Familiar", "Cálido", "Acogedor", "Celebraciones"],
     priceRange: "$$-$$$",
     contact: {
-      phone: "+56 2 2345 6789",
+      phone: "+56942262266",
       address: "Manuel Rodríguez 792, Pitrufquén, Araucanía",
       email: "contacto@elarbol.cl",
     },
