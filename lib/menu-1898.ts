@@ -3962,5 +3962,35 @@ export const menu1898: MenuItem[] = [
     "calories": 108,
     "prepTime": "1 min",
     "popular": true
+  },
+  {
+    "id": "promo-karaoke-night",
+    "name": "Noche de Karaoke",
+    "description": "Viernes y sábado desde 20:30 hasta la hora de cierre. Shot de tequila gratis por participar",
+    "price": 0,
+    "category": "specials",
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&h=400&fit=crop",
+    "ingredients": ["Shot de tequila gratis"],
+    "allergens": [],
+    "dietary": [],
+    "calories": 0,
+    "prepTime": "N/A",
+    "popular": true,
+    "chef_special": true
+  },
+  {
+    "id": "promo-dj-raw",
+    "name": "DJs en vivo - DJ RAW",
+    "description": "Viernes y sábado. Música en vivo para animar tu noche",
+    "price": 0,
+    "category": "specials",
+    "image": "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?w=500&h=400&fit=crop",
+    "ingredients": ["Entretenimiento"],
+    "allergens": [],
+    "dietary": [],
+    "calories": 0,
+    "prepTime": "N/A",
+    "popular": true,
+    "chef_special": true
   }
 ]
