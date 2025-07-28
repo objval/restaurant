@@ -12,50 +12,62 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Capriccio Restaurants | Experiencias Gastronómicas Premium en Chile",
-    template: "%s | Capriccio Restaurants",
+    default: "El Árbol • 1898 • Capriccio | Experiencias Gastronómicas en Pitrufquén",
+    template: "%s | Restaurantes Pitrufquén",
   },
   description:
-    "Descubre tres experiencias gastronómicas únicas en Chile. Desde la elegancia urbana de Lumière hasta la cocina costera de Marina. Reserva tu mesa y vive momentos inolvidables.",
+    "Tres restaurantes únicos en Pitrufquén, Araucanía. El Árbol: comida familiar cálida. 1898 Beer Bar: ambiente nocturno y cervezas artesanales. Capriccio Bistro: elegancia y sofisticación. Reservas disponibles.",
   keywords: [
-    "restaurante Chile",
-    "gastronomía premium",
+    "restaurante Pitrufquén",
+    "restaurantes Araucanía",
+    "El Árbol restaurante familiar",
+    "1898 Beer Bar",
+    "Capriccio Bistro",
+    "comida familiar Pitrufquén",
+    "bar Pitrufquén",
+    "cervezas artesanales",
+    "gastronomía Araucanía",
     "reservas restaurante",
-    "cocina mediterránea",
-    "mariscos frescos",
-    "bistró Santiago",
-    "experiencia culinaria",
-    "cena romántica",
     "eventos privados",
-    "menú degustación",
+    "karaoke Pitrufquén",
   ],
-  authors: [{ name: "Capriccio Restaurants" }],
-  creator: "Capriccio Restaurants",
-  publisher: "Capriccio Restaurants",
+  authors: [{ name: "Grupo Gastronómico Pitrufquén" }],
+  creator: "Grupo Gastronómico Pitrufquén",
+  publisher: "Grupo Gastronómico Pitrufquén",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://v0-restaurant-bice.vercel.app"),
+  metadataBase: new URL("https://grupomdlf.vercel.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "es_CL",
-    url: "https://v0-restaurant-bice.vercel.app",
-    siteName: "Capriccio Restaurants",
-    title: "Capriccio Restaurants | Experiencias Gastronómicas Premium",
+    url: "https://grupomdlf.vercel.app",
+    siteName: "Restaurantes Pitrufquén",
+    title: "El Árbol • 1898 • Capriccio | Restaurantes en Pitrufquén",
     description:
-      "Tres restaurantes únicos en Chile que celebran la excelencia culinaria. Desde la sofisticación urbana hasta el encanto costero, descubre tu experiencia gastronómica perfecta.",
+      "Tres experiencias gastronómicas únicas en Pitrufquén. El Árbol para reuniones familiares, 1898 Beer Bar para noches animadas, y Capriccio Bistro para ocasiones especiales. Reservas disponibles.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Restaurantes Pitrufquén - El Árbol, 1898, Capriccio",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
-    site: "@CapriccioChile",
-    creator: "@CapriccioChile",
-    title: "Capriccio Restaurants | Experiencias Gastronómicas Premium",
-    description: "Tres restaurantes únicos en Chile. Descubre tu experiencia gastronómica perfecta.",
+    card: "summary_large_image",
+    site: "@RestaurantesPitrufquen",
+    creator: "@RestaurantesPitrufquen",
+    title: "El Árbol • 1898 • Capriccio | Restaurantes en Pitrufquén",
+    description: "Tres experiencias gastronómicas únicas en Pitrufquén, Araucanía. Desde comida familiar hasta bistro elegante.",
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -68,24 +80,22 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-  },
   category: "restaurant",
   classification: "business",
   referrer: "origin-when-cross-origin",
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.png", sizes: "16x16", type: "image/png" },
+      { url: "/logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.png", sizes: "192x192", type: "image/png" },
+      { url: "/logo.png", sizes: "512x512", type: "image/png" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: "/logo.png", sizes: "180x180", type: "image/png" }],
     other: [
       {
         rel: "mask-icon",
-        url: "/safari-pinned-tab.svg",
+        url: "/logo.png",
         color: "#2D5016",
       },
     ],
@@ -93,11 +103,11 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Capriccio",
+    title: "Restaurantes Pitrufquén",
   },
-  applicationName: "Capriccio Restaurants",
+  applicationName: "Restaurantes Pitrufquén",
   generator: "Next.js",
-  abstract: "Experiencias gastronómicas premium en tres ubicaciones únicas de Chile",
+  abstract: "Tres restaurantes únicos en Pitrufquén: El Árbol (familiar), 1898 Beer Bar (nocturno), y Capriccio Bistro (elegante)",
   archives: [],
   assets: [],
   bookmarks: [],
@@ -124,40 +134,80 @@ export default function RootLayout({
     <html lang="es-CL" suppressHydrationWarning>
       <head>
         {/* Additional meta tags for better SEO */}
-        <meta name="geo.region" content="CL" />
-        <meta name="geo.placename" content="Chile" />
-        <meta name="geo.position" content="-33.4489;-70.6693" />
-        <meta name="ICBM" content="-33.4489, -70.6693" />
+        <meta name="geo.region" content="CL-AR" />
+        <meta name="geo.placename" content="Pitrufquén, Araucanía" />
+        <meta name="geo.position" content="-38.985779;-72.639160" />
+        <meta name="ICBM" content="-38.985779, -72.639160" />
 
         {/* Business Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Restaurant",
-              name: "Capriccio Restaurants",
-              description: "Experiencias gastronómicas premium en Chile",
-              url: "https://v0-restaurant-bice.vercel.app",
-              telephone: "+56 2 2345 6789",
-              email: "info@capriccio.cl",
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "CL",
-                addressRegion: "Santiago",
-                addressLocality: "Santiago",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Restaurant",
+                name: "El Árbol Café Restaurante",
+                description: "Restaurante familiar con ambiente cálido y acogedor en Pitrufquén",
+                url: "https://grupomdlf.vercel.app/arbol",
+                telephone: "+56942262266",
+                email: "contacto@elarbol.cl",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "Manuel Rodríguez 792",
+                  addressCountry: "CL",
+                  addressRegion: "Araucanía",
+                  addressLocality: "Pitrufquén",
+                },
+                servesCuisine: ["Chilean", "Family", "Traditional"],
+                priceRange: "$$-$$$",
+                acceptsReservations: true,
+                openingHours: ["Tu-We 11:00-22:30", "Th-Fr 11:00-23:30", "Sa 11:30-23:30"],
+                image: "/logo.png",
               },
-              servesCuisine: ["Mediterranean", "Seafood", "Contemporary"],
-              priceRange: "$$$",
-              acceptsReservations: true,
-              hasMenu: "https://v0-restaurant-bice.vercel.app/menu",
-              openingHours: ["Mo-Fr 07:00-23:00", "Sa-Su 08:00-24:00"],
-              sameAs: [
-                "https://www.instagram.com/capriccio_chile",
-                "https://www.facebook.com/capriccio.chile",
-                "https://twitter.com/CapriccioChile",
-              ],
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "BarOrPub",
+                name: "1898 Beer Bar",
+                description: "Beer bar con ambiente relajado, cervezas artesanales y música en vivo",
+                url: "https://grupomdlf.vercel.app/1898",
+                telephone: "+56997180227",
+                email: "contacto@1898.cl",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "Francisco Bilbao 539",
+                  addressCountry: "CL",
+                  addressRegion: "Araucanía",
+                  addressLocality: "Pitrufquén",
+                },
+                servesCuisine: ["Bar Food", "Chilean", "Pub"],
+                priceRange: "$$-$$$",
+                acceptsReservations: true,
+                openingHours: ["Tu-We 11:00-00:30", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
+                image: "/logo.png",
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Restaurant",
+                name: "Capriccio Bistro Bar",
+                description: "Bistro elegante con cocina de autor y ambiente sofisticado",
+                url: "https://grupomdlf.vercel.app/capriccio",
+                telephone: "+56930527291",
+                email: "reservas@capricciobistro.cl",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "Av. Balmaceda 377",
+                  addressCountry: "CL",
+                  addressRegion: "Araucanía",
+                  addressLocality: "Pitrufquén",
+                },
+                servesCuisine: ["Contemporary", "Bistro", "International"],
+                priceRange: "$$$-$$$$",
+                acceptsReservations: true,
+                openingHours: ["Tu-We 11:00-00:30", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
+                image: "/logo.png",
+              }
+            ]),
           }}
         />
       </head>

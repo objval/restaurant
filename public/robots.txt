@@ -1,33 +1,50 @@
+# Robots.txt for Restaurantes Pitrufquén
+# https://grupomdlf.vercel.app
+
+# Allow all bots
 User-agent: *
 Allow: /
-
-# Sitemaps
-Sitemap: https://v0-restaurant-bice.vercel.app/sitemap.xml
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
-# Block access to admin areas (if any)
+Disallow: /api/
+Disallow: /_next/
 Disallow: /admin/
-Disallow: /api/internal/
 
-# Allow all restaurant content
-Allow: /arbol/
-Allow: /1898/
-Allow: /capriccio/
-Allow: /menu/
-Allow: /reservations/
-Allow: /contact/
-
-# SEO optimizations
+# Specific bot rules
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
-User-agent: facebookexternalhit
-Allow: /
+# Sitemap location
+Sitemap: https://grupomdlf.vercel.app/sitemap.xml
 
-User-agent: Twitterbot
-Allow: /
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Block AI crawlers if you don't want your content used for training
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /

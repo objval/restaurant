@@ -159,8 +159,8 @@ export const locations: LocationData[] = [
       googleRating: 4.7,
     },
     socialMedia: {
-      instagram: "https://instagram.com/elarbolfamiliar",
-      facebook: "https://facebook.com/elarbolfamiliar",
+      instagram: "https://www.instagram.com/elarbol_cafe_restaurante",
+      facebook: "https://www.facebook.com/p/Caf%C3%A9-Restaurante-El-%C3%81rbol-100057454611429/",
       whatsapp: "+56942262266",
     },
     promotions: [
@@ -272,9 +272,9 @@ export const locations: LocationData[] = [
       googleRating: 4.8,
     },
     socialMedia: {
-      instagram: "https://instagram.com/1898beerbar",
-      facebook: "https://facebook.com/1898beerbar",
-      whatsapp: "+56234567890",
+      instagram: "https://www.instagram.com/beerbar1898",
+      facebook: "https://www.facebook.com/1898beerbar",
+      whatsapp: "+56997180227",
     },
     promotions: [
       {
@@ -385,9 +385,9 @@ export const locations: LocationData[] = [
       googleRating: 4.8,
     },
     socialMedia: {
-      instagram: "https://instagram.com/capricciobistro",
-      facebook: "https://facebook.com/capricciobistro",
-      whatsapp: "+56245678901",
+      instagram: "https://www.instagram.com/capriccio.pitrufquen/",
+      facebook: "https://www.facebook.com/capricciobistro",
+      whatsapp: "+56930527291",
     },
     promotions: [
       {

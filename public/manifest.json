@@ -1,88 +1,44 @@
 {
-  "name": "Capriccio Restaurants",
-  "short_name": "Capriccio",
-  "description": "Experiencias gastronómicas premium en Chile",
+  "name": "El Árbol • 1898 • Capriccio - Restaurantes Pitrufquén",
+  "short_name": "Restaurantes Pitrufquén",
+  "description": "Tres experiencias gastronómicas únicas en Pitrufquén. El Árbol para reuniones familiares, 1898 Beer Bar para noches animadas, y Capriccio Bistro para ocasiones especiales.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FEFDF8",
   "theme_color": "#2D5016",
   "orientation": "portrait-primary",
-  "scope": "/",
-  "lang": "es-CL",
-  "categories": ["food", "lifestyle", "business"],
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "/logo.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/logo.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
+      "purpose": "any maskable"
     }
   ],
   "screenshots": [
     {
-      "src": "/screenshot-wide.png",
-      "sizes": "1280x720",
+      "src": "/screenshot-1.png",
       "type": "image/png",
-      "form_factor": "wide",
-      "label": "Capriccio Restaurants - Vista principal"
+      "sizes": "540x720",
+      "label": "Página principal"
     },
     {
-      "src": "/screenshot-narrow.png",
-      "sizes": "750x1334",
+      "src": "/screenshot-2.png",
       "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Capriccio Restaurants - Vista móvil"
+      "sizes": "540x720",
+      "label": "Menú del restaurante"
     }
   ],
-  "shortcuts": [
-    {
-      "name": "Hacer Reserva",
-      "short_name": "Reservar",
-      "description": "Reserva tu mesa directamente",
-      "url": "/?action=reserve",
-      "icons": [
-        {
-          "src": "/calendar-icon.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Ver Menú",
-      "short_name": "Menú",
-      "description": "Explora nuestros menús",
-      "url": "/menu",
-      "icons": [
-        {
-          "src": "/menu-icon.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Contacto",
-      "short_name": "Contacto",
-      "description": "Contáctanos directamente",
-      "url": "/?action=contact",
-      "icons": [
-        {
-          "src": "/contact-icon.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ],
+  "categories": ["food", "restaurant", "lifestyle"],
+  "lang": "es-CL",
+  "dir": "ltr",
+  "scope": "/",
   "related_applications": [],
   "prefer_related_applications": false
 }
