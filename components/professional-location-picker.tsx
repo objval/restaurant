@@ -211,16 +211,14 @@ export function ProfessionalLocationPicker({
             src={`/locations/${location.id}.jpg`}
             alt={location.name}
             fill
-            className={`object-cover transition-all duration-700 ease-out ${
+            className={`object-cover transition-transform duration-300 ease-out ${
               isHovered ? 'scale-105' : 'scale-100'
             }`}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             quality={85}
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
           <div 
-            className={`absolute inset-0 transition-all duration-700 ease-out ${
+            className={`absolute inset-0 transition-opacity duration-300 ease-out ${
               isHovered 
                 ? 'bg-gradient-to-t from-black/75 via-black/45 to-black/35' 
                 : 'bg-gradient-to-t from-black/70 via-black/40 to-black/30'
@@ -274,14 +272,14 @@ export function ProfessionalLocationPicker({
             
             {/* Location Details */}
             <div className="space-y-2 mb-4">
-              <div className="flex items-center gap-2 text-white/80 text-sm bg-black/20 backdrop-blur-sm rounded-lg p-2">
+              <div className="flex items-center gap-2 text-white/80 text-sm bg-black/20 rounded-lg p-2">
                 <MapPin className="w-4 h-4" />
                 <span>{location.contact.address}</span>
               </div>
               <div className={`flex items-center gap-2 text-sm rounded-lg p-2 transition-all duration-300 ${
                 isOpen 
-                  ? 'bg-green-500/20 backdrop-blur-sm text-green-300' 
-                  : 'bg-red-500/20 backdrop-blur-sm text-red-300'
+                  ? 'bg-green-500/20 text-green-300' 
+                  : 'bg-red-500/20 text-red-300'
               }`}>
                 <Clock className={`w-4 h-4 ${isOpen ? 'animate-pulse' : ''}`} />
                 <span className="font-medium">
@@ -300,7 +298,7 @@ export function ProfessionalLocationPicker({
               {location.specialties.slice(0, 3).map((specialty, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-white/20 text-white border border-white/30 shadow-sm"
+                  className="px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white border border-white/30 shadow-sm"
                 >
                   {specialty}
                 </span>
@@ -310,7 +308,7 @@ export function ProfessionalLocationPicker({
 
           {/* Call to Action */}
           <div 
-            className="flex items-center justify-between pt-4 backdrop-blur-sm rounded-lg p-3 -mx-3 border-t-2 transition-all duration-500"
+            className="flex items-center justify-between pt-4 rounded-lg p-3 -mx-3 border-t-2 transition-all duration-300"
             style={{
               background: `linear-gradient(135deg, ${location.theme.primary}15, ${location.theme.accent}10)`,
               borderTopColor: `${location.theme.accent}50`,
@@ -323,7 +321,7 @@ export function ProfessionalLocationPicker({
             </div>
             <Button
               size="sm"
-              className={`transition-all duration-300 backdrop-blur-sm border-2 shadow-lg ${
+              className={`transition-all duration-300 border-2 shadow-lg ${
                 isLoading ? 'opacity-75' : isHovered && isOpen ? 'scale-105 shadow-xl' : 'scale-100'
               } ${!isOpen ? 'opacity-60' : ''}`}
               style={{ 
@@ -434,7 +432,7 @@ export function ProfessionalLocationPicker({
               Premium
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed drop-shadow-lg backdrop-blur-sm bg-black/20 rounded-lg p-4">
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed drop-shadow-lg bg-black/20 rounded-lg p-4">
             Descubre tres experiencias culinarias únicas, cada una con su propio carácter y ambiente especial.
             Desde cenas familiares hasta encuentros casuales, encuentra tu lugar perfecto.
           </p>
@@ -445,7 +443,7 @@ export function ProfessionalLocationPicker({
               onClick={onGeolocationAction}
               disabled={isDetecting}
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-2xl disabled:opacity-75 backdrop-blur-sm border border-white/20"
+              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-2xl disabled:opacity-75 border border-white/20"
             >
               {isDetecting ? (
                 <>
@@ -460,7 +458,7 @@ export function ProfessionalLocationPicker({
               )}
             </Button>
             {nearestLocation && (
-              <p className="text-white/80 text-sm bg-black/30 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+              <p className="text-white/80 text-sm bg-black/30 rounded-full px-4 py-2 border border-white/20">
                 Más cercano: <span className="font-semibold">{nearestLocation.name}</span>
               </p>
             )}
@@ -477,18 +475,18 @@ export function ProfessionalLocationPicker({
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-12 lg:mt-16 bg-black/20 backdrop-blur-md rounded-2xl p-8 border border-white/20">
+        <div className="text-center mt-12 lg:mt-16 bg-black/20 rounded-2xl p-8 border border-white/20">
           <p className="text-white/80 text-sm mb-4 drop-shadow-sm">
             ¿Necesitas ayuda para decidir? Todos nuestros restaurantes ofrecen experiencias excepcionales
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Badge variant="outline" className="text-white border-white/40 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+            <Badge variant="outline" className="text-white border-white/40 bg-white/10 hover:bg-white/20 transition-all duration-300">
               Reservas disponibles
             </Badge>
-            <Badge variant="outline" className="text-white border-white/40 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+            <Badge variant="outline" className="text-white border-white/40 bg-white/10 hover:bg-white/20 transition-all duration-300">
               Eventos privados
             </Badge>
-            <Badge variant="outline" className="text-white border-white/40 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+            <Badge variant="outline" className="text-white border-white/40 bg-white/10 hover:bg-white/20 transition-all duration-300">
               Menús especiales
             </Badge>
           </div>
