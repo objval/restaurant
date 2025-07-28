@@ -22,19 +22,23 @@ export function LocationCard({ location, onSelect, isNearest = false }: Location
       )}
 
       <div className="relative h-48 overflow-hidden">
-        <Image
-          src={`/placeholder.svg?height=200&width=400`}
-          alt={location.name}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+        <div className="absolute inset-0">
+          <Image
+            src={location.images.hero}
+            alt={location.name}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority
+          />
+        </div>
         <div
-          className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"
           style={{
             background: `linear-gradient(to top, ${location.theme.primary}CC, transparent)`,
           }}
         />
-        <div className="absolute bottom-4 left-4 text-white">
+        <div className="absolute bottom-4 left-4 text-white z-20">
           <h3 className="text-xl font-bold">{location.name}</h3>
           <p className="text-sm opacity-90">{location.concept}</p>
         </div>

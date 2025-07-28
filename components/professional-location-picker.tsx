@@ -54,7 +54,7 @@ export function ProfessionalLocationPicker({
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)
-    }, 20000) // Changed from 12000 to 20000 (20 seconds) for even slower transition
+    }, 20000)
     return () => clearInterval(interval)
   }, [heroImages.length])
 
@@ -389,8 +389,8 @@ export function ProfessionalLocationPicker({
         {heroImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-6s ease-in-out ${
-              index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-102'
+            className={`absolute inset-0 transition-all duration-[3000ms] ease-in-out ${
+              index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
             }`}
           >
             <Image
@@ -399,6 +399,7 @@ export function ProfessionalLocationPicker({
               fill
               className="object-cover"
               priority={index === 0}
+              sizes="100vw"
             />
           </div>
         ))}
