@@ -185,7 +185,7 @@ export function ProfessionalLocationPicker({
           isHovered ? 'transform scale-[1.02] shadow-2xl' : 'shadow-xl hover:shadow-2xl'
         } ${isLoading ? 'opacity-75' : ''}`}
         style={{ 
-          background: `rgba(255,255,255,0.9)`,
+          background: `rgba(0,0,0,0.05)`,
           borderWidth: '2px',
           borderStyle: 'solid',
           borderColor: isHovered ? `${location.theme.accent}` : `${location.theme.primary}40`,
@@ -348,34 +348,14 @@ export function ProfessionalLocationPicker({
           </div>
         </CardContent>
 
-        {/* Enhanced Hover Effect Overlay with stronger theme color */}
+        {/* Combined Hover Effect Overlay */}
         <div 
-          className={`absolute inset-0 pointer-events-none transition-all duration-500 ease-out ${
+          className={`absolute inset-0 pointer-events-none transition-all duration-300 ease-out rounded-lg ${
             isHovered ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
-            background: `linear-gradient(135deg, ${location.theme.accent}08, transparent, ${location.theme.primary}05)`
-          }}
-        />
-        
-        {/* Enhanced border glow effect on hover */}
-        <div 
-          className={`absolute inset-0 pointer-events-none transition-all duration-500 ease-out rounded-lg ${
-            isHovered ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{
-            boxShadow: `inset 0 0 0 2px ${location.theme.accent}60, 0 0 30px ${location.theme.accent}30, 0 0 60px ${location.theme.accent}15`
-          }}
-        />
-        
-        {/* Additional theme-specific glow ring */}
-        <div 
-          className={`absolute inset-[-3px] pointer-events-none transition-all duration-500 ease-out rounded-lg ${
-            isHovered ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{
-            background: `linear-gradient(45deg, ${location.theme.accent}20, transparent, ${location.theme.accent}20)`,
-            filter: 'blur(3px)'
+            background: `linear-gradient(135deg, ${location.theme.accent}08, transparent, ${location.theme.primary}05)`,
+            boxShadow: isHovered ? `inset 0 0 0 2px ${location.theme.accent}60, 0 0 30px ${location.theme.accent}20` : 'none'
           }}
         />
       </Card>
