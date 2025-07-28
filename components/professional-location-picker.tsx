@@ -58,6 +58,14 @@ export function ProfessionalLocationPicker({
     return () => clearInterval(interval)
   }, [heroImages.length])
 
+  // Preload location images for better performance
+  useEffect(() => {
+    locations.forEach((location) => {
+      const img = new window.Image()
+      img.src = `/locations/${location.id}.jpg`
+    })
+  }, [])
+
   const getLocationIcon = (concept: string) => {
     if (concept.includes("Familiar")) return Users
     if (concept.includes("Casual")) return Utensils
@@ -206,6 +214,10 @@ export function ProfessionalLocationPicker({
             className={`object-cover transition-all duration-700 ease-out ${
               isHovered ? 'scale-105' : 'scale-100'
             }`}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={85}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
           <div 
             className={`absolute inset-0 transition-all duration-700 ease-out ${
