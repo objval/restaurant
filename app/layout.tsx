@@ -1,8 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import { ThemeToggle } from "@/components/theme-toggle"
 import "./globals.css"
 
 const inter = Inter({ 
@@ -113,11 +111,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#2D5016' },
-    { media: '(prefers-color-scheme: dark)', color: '#F4E04D' },
-  ],
+  colorScheme: 'light',
+  themeColor: '#2D5016',
 }
 
 export default function RootLayout({
@@ -167,16 +162,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className} suppressHydrationWarning>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-          storageKey="restaurant-theme"
-        >
-          {children}
-          <ThemeToggle />
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   )

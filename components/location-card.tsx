@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import type { LocationData } from "@/lib/locations"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -21,10 +22,11 @@ export function LocationCard({ location, onSelect, isNearest = false }: Location
       )}
 
       <div className="relative h-48 overflow-hidden">
-        <img
+        <Image
           src={`/placeholder.svg?height=200&width=400`}
           alt={location.name}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div
           className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"

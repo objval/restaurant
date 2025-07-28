@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import type { MenuItem } from "@/lib/menu-data"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -19,8 +18,6 @@ interface MenuItemModalProps {
 }
 
 export function MenuItemModal({ item, isOpen, onClose, locationTheme }: MenuItemModalProps) {
-  const [imageLoaded, setImageLoaded] = useState(false)
-
   if (!item) return null
 
   const spiceIcons = Array.from({ length: 5 }, (_, i) => (
@@ -32,75 +29,59 @@ export function MenuItemModal({ item, isOpen, onClose, locationTheme }: MenuItem
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0">
+      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
         <div className="relative">
-          {/* Hero Image */}
-          <div className="relative h-64 md:h-80 overflow-hidden">
-            {!imageLoaded && (
-              <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
-                <span className="text-gray-400">Cargando...</span>
-              </div>
-            )}
-            <img
-              src={item.image || "/placeholder.svg"}
-              alt={item.name}
-              className={`w-full h-full object-cover transition-opacity duration-300 ${
-                imageLoaded ? "opacity-100" : "opacity-0"
-              }`}
-              onLoad={() => setImageLoaded(true)}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-            {/* Close Button */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onClose}
-              className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white hover:bg-white/30"
-            >
-              <X className="w-4 h-4" />
-            </Button>
-
-            {/* Badges on Image */}
-            <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-              {item.chef_special && (
-                <Badge className="bg-yellow-500 text-white shadow-lg">
-                  <ChefHat className="w-3 h-3 mr-1" />
-                  Especial del Chef
-                </Badge>
-              )}
-              {item.popular && (
-                <Badge className="bg-green-500 text-white shadow-lg">
-                  <Star className="w-3 h-3 mr-1" />
-                  Popular
-                </Badge>
-              )}
-              {item.seasonal && (
-                <Badge className="bg-orange-500 text-white shadow-lg">
-                  <Leaf className="w-3 h-3 mr-1" />
-                  Seasonal
-                </Badge>
-              )}
-            </div>
-
-            {/* Price */}
-            <div className="absolute bottom-4 right-4">
-              <div
-                className="text-3xl font-bold text-white drop-shadow-lg"
-                style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}
-              >
-                ${(item.price / 1000).toFixed(0)}.{(item.price % 1000).toString().padStart(3, "0")}
-              </div>
-            </div>
-          </div>
+          {/* Close Button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onClose}
+            className="absolute top-2 right-2 z-10"
+          >
+            <X className="w-4 h-4" />
+          </Button>
 
           {/* Content */}
           <div className="p-6 md:p-8 space-y-6">
             <DialogHeader>
-              <DialogTitle className="text-2xl md:text-3xl font-bold mb-2">{item.name}</DialogTitle>
-              <DialogDescription className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                {item.description}
-              </DialogDescription>
+              <div className="flex items-start justify-between pr-8">
+                <div className="flex-1">
+                  <DialogTitle className="text-2xl md:text-3xl font-bold mb-2">{item.name}</DialogTitle>
+                  <DialogDescription className="text-lg text-gray-600 leading-relaxed">
+                    {item.description}
+                  </DialogDescription>
+                </div>
+                <div className="text-right">
+                  <div
+                    className="text-2xl md:text-3xl font-bold"
+                    style={{ color: locationTheme.primary }}
+                  >
+                    ${(item.price / 1000).toFixed(0)}.{(item.price % 1000).toString().padStart(3, "0")}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2 mt-4">
+                {item.chef_special && (
+                  <Badge className="bg-yellow-500 text-white">
+                    <ChefHat className="w-3 h-3 mr-1" />
+                    Especial del Chef
+                  </Badge>
+                )}
+                {item.popular && (
+                  <Badge className="bg-green-500 text-white">
+                    <Star className="w-3 h-3 mr-1" />
+                    Popular
+                  </Badge>
+                )}
+                {item.seasonal && (
+                  <Badge className="bg-orange-500 text-white">
+                    <Leaf className="w-3 h-3 mr-1" />
+                    Seasonal
+                  </Badge>
+                )}
+              </div>
             </DialogHeader>
 
             {/* Quick Info Grid */}

@@ -7,7 +7,7 @@ interface MenuLayoutProps {
   params: Promise<{ location: string }>
 }
 
-export default async function MenuLayout({ children, params }: MenuLayoutProps) {
+export default async function MenuLayout({ children }: MenuLayoutProps) {
   return <>{children}</>
 }
 

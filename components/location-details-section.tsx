@@ -1,7 +1,8 @@
 "use client"
 
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Clock, MapPin, Star, Phone, Award } from "lucide-react"
+import { Clock, MapPin, Phone, Award, Share2, Navigation } from "lucide-react"
 import { type LocationData } from "@/lib/locations"
 
 interface LocationDetailsSectionProps {
@@ -37,24 +38,20 @@ export function LocationDetailsSection({
             >
               {/* Image */}
               <div className="lg:w-1/2">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl h-64 md:h-80">
+                  <Image
                     src={location.images.interior || "/placeholder.svg"}
                     alt={`Interior de ${location.name}`}
-                    className="w-full h-64 md:h-80 object-cover"
+                    fill
+                    className="object-cover"
                   />
                   <div 
                     className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
                   />
                   <div className="absolute bottom-4 left-4 text-white">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Star className="w-4 h-4 text-yellow-400" />
-                      <span className="font-semibold">{location.socialProof.rating}</span>
-                      <span className="text-gray-300">({location.socialProof.reviews} reseñas)</span>
-                    </div>
                     <div className="flex items-center gap-2">
                       <Award className="w-4 h-4 text-yellow-400" />
-                      <span className="text-sm">{location.stats.awards} premios</span>
+                      <span className="text-sm font-semibold">{location.stats.awards} premios</span>
                     </div>
                   </div>
                 </div>
@@ -147,11 +144,14 @@ export function LocationDetailsSection({
                   <div className="grid gap-3">
                     {location.menuHighlights.slice(0, 2).map((dish, idx) => (
                       <div key={idx} className="flex items-center gap-3">
-                        <img
-                          src={dish.image || "/placeholder.svg"}
-                          alt={dish.name}
-                          className="w-12 h-12 rounded-lg object-cover"
-                        />
+                        <div className="relative w-12 h-12 rounded-lg overflow-hidden">
+                          <Image
+                            src={dish.image || "/placeholder.svg"}
+                            alt={dish.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
                         <div className="flex-1">
                           <div className="font-medium text-gray-900">{dish.name}</div>
                           <div className="text-sm text-gray-600">{dish.description}</div>
@@ -167,22 +167,62 @@ export function LocationDetailsSection({
                   </div>
                 </div>
 
-                {/* Action Button */}
-                <Button
-                  onClick={() => onLocationSelect(location)}
-                  disabled={loadingLocationId === location.id}
-                  className="w-full md:w-auto text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 hover:scale-105"
-                  style={{ 
-                    backgroundColor: location.theme.primary,
-                    boxShadow: `0 10px 25px ${location.theme.primary}25`
-                  }}
-                >
-                  {loadingLocationId === location.id ? (
-                    "Preparando experiencia..."
-                  ) : (
-                    `Visitar ${location.name}`
-                  )}
-                </Button>
+                {/* Quick Action Buttons */}
+                <div className="flex flex-wrap gap-3">
+                  <Button
+                    onClick={() => onLocationSelect(location)}
+                    disabled={loadingLocationId === location.id}
+                    className="text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105"
+                    style={{ 
+                      backgroundColor: location.theme.primary,
+                      boxShadow: `0 10px 25px ${location.theme.primary}25`
+                    }}
+                  >
+                    {loadingLocationId === location.id ? (
+                      "Preparando experiencia..."
+                    ) : (
+                      `Visitar ${location.name}`
+                    )}
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => {
+                      if (navigator.share) {
+                        navigator.share({
+                          title: location.name,
+                          text: `Visita ${location.name} - ${location.concept}`,
+                          url: `${window.location.origin}${location.path}`,
+                        })
+                      }
+                    }}
+                    className="rounded-xl"
+                  >
+                    <Share2 className="w-4 h-4" />
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => {
+                      const address = encodeURIComponent(location.contact.address)
+                      window.open(`https://maps.google.com/?q=${address}`, '_blank')
+                    }}
+                    className="rounded-xl"
+                  >
+                    <Navigation className="w-4 h-4" />
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => window.open(`tel:${location.contact.phone}`, '_self')}
+                    className="rounded-xl"
+                  >
+                    <Phone className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
             </div>
           ))}

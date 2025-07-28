@@ -1,13 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { MapPin, Loader2, Sparkles } from "lucide-react"
 
 interface HeroSectionProps {
   onGeolocation: () => void
   isDetecting: boolean
-  nearestLocation: any
+  nearestLocation: { name: string } | null
 }
 
 export function HeroSection({ onGeolocation, isDetecting, nearestLocation }: HeroSectionProps) {
@@ -24,7 +25,7 @@ export function HeroSection({ onGeolocation, isDetecting, nearestLocation }: Her
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)
     }, 5000)
     return () => clearInterval(interval)
-  }, [])
+  }, [heroImages.length])
 
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -36,10 +37,12 @@ export function HeroSection({ onGeolocation, isDetecting, nearestLocation }: Her
             index === currentImageIndex ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img
+          <Image
             src={image || "/placeholder.svg"}
             alt="Ambiente del restaurante"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority={index === 0}
           />
           {/* Enhanced dark overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85" />

@@ -6,7 +6,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "tomahawk-lomo-vetado",
     name: "Tomahawk de lomo vetado",
-    description: "Tomahawk vetado de 700 grs, con suaves y jugosos tomates cherrys glaseados en toques de romero y ajo, vegetal asado de la estación, acompañado de papas a las finas hierbas, salsa de merkén y chimichurri que aporta mayor sabor ahumado a la carne. El Maridaje perfecto para este corte de carne es de la Viña la Quirigua, Vino Pajo premier cru, del Valle de Cachapoal zona de Curicó, Cabernet Sauvignon.",
+    description: "Jugoso Tomahawk de lomo vetado de 700 grs, acompañado de tomates cherry glaseados, vegetales de estación asados, papas a las finas hierbas y nuestras salsas de merkén y chimichurri.",
     price: 24500,
     category: "recommended",
     image: "https://images.unsplash.com/photo-1594041680698-74376e0e5260?w=500&h=400&fit=crop",
@@ -21,7 +21,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "anticuchos-parrilleros",
     name: "Anticuchos Parrilleros",
-    description: "Anticuchos grillados de res, cerdo y longaniza Llanquihue de 1000 grs, suaves y jugosos tomates cherrys glaseados en toques de romero y ajo, acompañado de papas a las finas hierbas, salsa de ajo con cilantro, tostadas de la casa y chimichurri que aporta mayor sabor ahumado a las carnes.",
+    description: "Anticuchos grillados de res, cerdo y longaniza Llanquihue de 1000 grs, acompañados de tomates cherry glaseados, papas a las finas hierbas, salsa de ajo con cilantro, tostadas y chimichurri.",
     price: 26500,
     category: "recommended",
     image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=400&fit=crop",
@@ -36,7 +36,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "pastel-jaiba-500",
     name: "Pastel de Jaiba 500 grs",
-    description: "Delicioso pastel de jaiba gratinado con queso mantecoso, preparado con la mejor jaiba fresca y nuestra receta tradicional",
+    description: "Delicioso pastel de jaiba gratinado con queso mantecoso, preparado con jaiba fresca y nuestra receta tradicional.",
     price: 12500,
     category: "recommended",
     image: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=500&h=400&fit=crop",
@@ -50,7 +50,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "ravioles-salmon",
     name: "Ravioles relleno Salmón",
-    description: "Ravioles rellenos de salmón en suave salsa de camarones y tomate cherry",
+    description: "Ravioles rellenos de salmón en suave salsa de camarones y tomate cherry.",
     price: 14900,
     category: "recommended",
     image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=500&h=400&fit=crop",
@@ -63,7 +63,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "crudo",
     name: "Crudo",
-    description: "Suave corte de res, Cebolla morada, Pepinillo y Ají verde en bronoise, cilantro, gajos de Limón, tostadas y salsa de sour cream de la casa.",
+    description: "Suave corte de res, cebolla morada, pepinillo y ají verde en brunoise, cilantro, gajos de limón, tostadas y salsa de sour cream de la casa.",
     price: 11900,
     category: "recommended",
     image: "https://images.unsplash.com/photo-1626790291085-babaee0abef8?w=500&h=400&fit=crop",
@@ -76,7 +76,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "ramazzotti-violeta",
     name: "Ramazzotti violeta",
-    description: "Refrescante cóctel con Ramazzotti, notas florales de violeta y un toque cítrico",
+    description: "Refrescante cóctel con Ramazzotti, notas florales de violeta y un toque cítrico.",
     price: 6500,
     category: "recommended",
     image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&h=400&fit=crop",
@@ -89,7 +89,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "caipirina",
     name: "Caipiriña",
-    description: "El clásico cóctel brasileño con cachaça, limón fresco y azúcar",
+    description: "El clásico cóctel brasileño con cachaça, limón fresco y azúcar.",
     price: 4500,
     category: "recommended",
     image: "https://images.unsplash.com/photo-1607446045875-de57c995726b?w=500&h=400&fit=crop",
@@ -104,7 +104,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "tetera-compartir",
     name: "Tetera para compartir",
-    description: "Tetera 750 ml, consultar variedades disponibles.",
+    description: "Tetera de 750 ml, consultar variedades disponibles.",
     price: 4500,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=500&h=400&fit=crop",
@@ -117,7 +117,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "tetera-pequena",
     name: "Tetera pequeña",
-    description: "Tetera 500 ML, consultar variedades disponibles.",
+    description: "Tetera de 500 ml, consultar variedades disponibles.",
     price: 2500,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=500&h=400&fit=crop",
@@ -130,7 +130,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "te",
     name: "Té",
-    description: "Selección de tés premium servidos en taza individual",
+    description: "Selección de tés premium servidos en taza individual.",
     price: 1800,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&h=400&fit=crop",
@@ -143,7 +143,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "cafe-tradicional",
     name: "Café tradicional",
-    description: "Café de grano arábica 100% preparado al momento",
+    description: "Café de grano arábica 100% preparado al momento.",
     price: 1800,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&h=400&fit=crop",
@@ -156,7 +156,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "expresso",
     name: "Expresso",
-    description: "Shot de café expresso con crema dorada perfecta",
+    description: "Shot de café expresso con crema dorada perfecta.",
     price: 2400,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=500&h=400&fit=crop",
@@ -169,7 +169,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "expresso-doble",
     name: "Expresso doble",
-    description: "Doble shot de café expresso para los amantes del café intenso",
+    description: "Doble shot de café expresso para los amantes del café intenso.",
     price: 3500,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&h=400&fit=crop",
@@ -182,7 +182,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "americano",
     name: "Americano",
-    description: "Café expresso diluido con agua caliente, suave y aromático",
+    description: "Café expresso diluido con agua caliente, suave y aromático.",
     price: 2800,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1521127474489-d524412fd439?w=500&h=400&fit=crop",
@@ -195,7 +195,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "ristretto",
     name: "Ristretto",
-    description: "Shot de café concentrado, más intenso que el expresso tradicional",
+    description: "Shot de café concentrado, más intenso que el expresso tradicional.",
     price: 2200,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=500&h=400&fit=crop",
@@ -208,7 +208,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "mocaccino",
     name: "Mocaccino",
-    description: "Deliciosa mezcla de café expresso, chocolate y leche espumosa",
+    description: "Deliciosa mezcla de café expresso, chocolate y leche espumosa.",
     price: 3200,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=500&h=400&fit=crop",
@@ -221,7 +221,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "cafe-irlandes",
     name: "Café Irlandés",
-    description: "Café con whisky irlandés, azúcar morena y crema flotante",
+    description: "Café con whisky irlandés, azúcar morena y crema flotante.",
     price: 4000,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1551030173-122aabc4489c?w=500&h=400&fit=crop",
@@ -234,7 +234,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "capuccino",
     name: "Capuccino",
-    description: "Café expresso con leche vaporizada y espuma de leche cremosa",
+    description: "Café expresso con leche vaporizada y espuma de leche cremosa.",
     price: 3200,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1534778101976-62847782c213?w=500&h=400&fit=crop",
@@ -248,7 +248,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "cortado",
     name: "Cortado",
-    description: "Café expresso cortado con un toque de leche caliente",
+    description: "Café expresso cortado con un toque de leche caliente.",
     price: 3200,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=500&h=400&fit=crop",
@@ -261,7 +261,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "chocolate-caliente",
     name: "Chocolate caliente",
-    description: "Cremoso chocolate caliente preparado con cacao premium",
+    description: "Cremoso chocolate caliente preparado con cacao premium.",
     price: 2800,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1542990253-a781e04c0082?w=500&h=400&fit=crop",
@@ -274,7 +274,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "chocolate-nevado",
     name: "Chocolate nevado",
-    description: "Chocolate frío con helado de vainilla y crema batida",
+    description: "Chocolate frío con helado de vainilla y crema batida.",
     price: 3500,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&h=400&fit=crop",
@@ -287,7 +287,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "cafe-helado",
     name: "Café helado",
-    description: "Café expresso servido con hielo y un toque de crema",
+    description: "Café expresso servido con hielo y un toque de crema.",
     price: 4000,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&h=400&fit=crop",
@@ -300,7 +300,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "milkshake",
     name: "Milkshake",
-    description: "Cremoso batido de helado con sabores a elección",
+    description: "Cremoso batido de helado con sabores a elección.",
     price: 4500,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&h=400&fit=crop",
@@ -313,7 +313,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "nutella-coffee",
     name: "Nutella Coffe",
-    description: "Café con deliciosa crema de Nutella y leche espumosa",
+    description: "Café con deliciosa crema de Nutella y leche espumosa.",
     price: 3900,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1585494156145-1c60a4fe952b?w=500&h=400&fit=crop",
@@ -326,7 +326,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "infusion-menta-jengibre",
     name: "Infusión menta jengibre",
-    description: "Reconfortante infusión natural de menta fresca y jengibre",
+    description: "Reconfortante infusión natural de menta fresca y jengibre.",
     price: 1800,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1595434091143-b375ced5fe5c?w=500&h=400&fit=crop",
@@ -339,7 +339,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "cafe-late",
     name: "Café Late",
-    description: "Café expresso con abundante leche vaporizada",
+    description: "Café expresso con abundante leche vaporizada.",
     price: 3200,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=500&h=400&fit=crop",
@@ -352,7 +352,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "afogato",
     name: "Afogato",
-    description: "Porción helado de vainilla, con una carga de café de grano.",
+    description: "Porción de helado de vainilla con una carga de café de grano.",
     price: 3200,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=500&h=400&fit=crop",
@@ -365,7 +365,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "caja-te-infusiones",
     name: "Caja Té Infusiones Variedad",
-    description: "Selección premium de tés e infusiones para compartir",
+    description: "Selección premium de tés e infusiones para compartir.",
     price: 8000,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=500&h=400&fit=crop",
@@ -378,7 +378,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "lavazza-sachet",
     name: "Lavazza Sachet",
-    description: "Café Lavazza premium en presentación individual",
+    description: "Café Lavazza premium en presentación individual.",
     price: 2300,
     category: "coffee",
     image: "https://images.unsplash.com/photo-1521302080334-4bebac2763a6?w=500&h=400&fit=crop",
@@ -393,7 +393,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "jugo-frambuesa",
     name: "Jugo Frambuesa",
-    description: "Refrescante jugo natural de frambuesas frescas",
+    description: "Refrescante jugo natural de frambuesas frescas.",
     price: 3600,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=500&h=400&fit=crop",
@@ -406,7 +406,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "limonada",
     name: "Limonada",
-    description: "Clásica limonada casera con limones frescos",
+    description: "Clásica limonada casera con limones frescos.",
     price: 3900,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1523677011781-c91d1bbe2f9e?w=500&h=400&fit=crop",
@@ -420,7 +420,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "limonada-menta-jengibre",
     name: "Limonada menta jengibre",
-    description: "Limonada especial con toques de menta fresca y jengibre",
+    description: "Limonada especial con toques de menta fresca y jengibre.",
     price: 4200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&h=400&fit=crop",
@@ -433,7 +433,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "agua-mineral-gas",
     name: "Agua mineral c/gas",
-    description: "Agua mineral con gas, refrescante y natural",
+    description: "Agua mineral con gas, refrescante y natural.",
     price: 2200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=500&h=400&fit=crop",
@@ -446,7 +446,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "red-bull",
     name: "Red Bull",
-    description: "Bebida energética Red Bull",
+    description: "Bebida energética Red Bull.",
     price: 3500,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1570831739435-6601aa3fa4fb?w=500&h=400&fit=crop",
@@ -459,7 +459,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "crush",
     name: "Crush",
-    description: "Bebida gaseosa Crush sabor naranja",
+    description: "Bebida gaseosa Crush sabor naranja.",
     price: 2200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1603394630850-69b3ca8121ca?w=500&h=400&fit=crop",
@@ -472,7 +472,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "sprite",
     name: "Sprite",
-    description: "Bebida gaseosa Sprite lima-limón",
+    description: "Bebida gaseosa Sprite lima-limón.",
     price: 2200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500&h=400&fit=crop",
@@ -485,7 +485,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "ginger-ale",
     name: "Ginger Ale",
-    description: "Bebida gaseosa de jengibre, refrescante y suave",
+    description: "Bebida gaseosa de jengibre, refrescante y suave.",
     price: 2200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=500&h=400&fit=crop",
@@ -498,7 +498,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "jugo-mango",
     name: "Jugo Mango",
-    description: "Delicioso jugo natural de mango maduro",
+    description: "Delicioso jugo natural de mango maduro.",
     price: 3200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1546173159-315724a31696?w=500&h=400&fit=crop",
@@ -511,7 +511,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "jugo-pina",
     name: "Jugo Piña",
-    description: "Refrescante jugo natural de piña tropical",
+    description: "Refrescante jugo natural de piña tropical.",
     price: 3200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1540713434306-58505cf1b6fc?w=500&h=400&fit=crop",
@@ -524,7 +524,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "coca-cola",
     name: "Coca Cola",
-    description: "Clásica Coca-Cola bien fría",
+    description: "Clásica Coca-Cola bien fría.",
     price: 2200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=500&h=400&fit=crop",
@@ -537,7 +537,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "coca-zero",
     name: "Coca Zero",
-    description: "Coca-Cola Zero sin azúcar",
+    description: "Coca-Cola Zero sin azúcar.",
     price: 2200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1567103472667-6898f3a79cf2?w=500&h=400&fit=crop",
@@ -550,7 +550,7 @@ export const menuarbol: MenuItem[] = [
   {
     id: "agua-tonica",
     name: "Agua tónica",
-    description: "Agua tónica premium para cócteles o sola",
+    description: "Agua tónica premium para cócteles o sola.",
     price: 2200,
     category: "beverages",
     image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&h=400&fit=crop",
@@ -753,7 +753,7 @@ export const menuarbol: MenuItem[] = [
     price: 4400,
     category: "desserts",
     image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop",
-    ingredients: ["Variable según disponibilidad"],
+    ingredients: ["Harina", "Azúcar", "Huevos", "Mantequilla", "Leche", "Sabor del día"],
     allergens: ["Lácteos", "Gluten", "Huevos"],
     dietary: [],
     calories: 450,
@@ -968,7 +968,7 @@ export const menuarbol: MenuItem[] = [
     price: 4000,
     category: "breakfast",
     image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&h=400&fit=crop",
-    ingredients: ["Pan", "Jamón", "Queso", "Café/Té"],
+    ingredients: ["Pan de molde", "Jamón", "Queso", "Café/Té"],
     allergens: ["Lácteos", "Gluten"],
     dietary: [],
     calories: 450,
@@ -1008,7 +1008,7 @@ export const menuarbol: MenuItem[] = [
     price: 6500,
     category: "breakfast",
     image: "https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=500&h=400&fit=crop",
-    ingredients: ["Huevos", "Tocino", "Mantequilla", "Pan"],
+    ingredients: ["Huevos", "Tocino", "Mantequilla", "Pan tostado"],
     allergens: ["Huevos", "Lácteos", "Gluten"],
     dietary: [],
     calories: 520,
@@ -1021,7 +1021,7 @@ export const menuarbol: MenuItem[] = [
     price: 3500,
     category: "breakfast",
     image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&h=400&fit=crop",
-    ingredients: ["Pan", "Queso (doble porción)"],
+    ingredients: ["Pan de molde", "Queso (doble porción)"],
     allergens: ["Lácteos", "Gluten"],
     dietary: ["vegetarian"],
     calories: 380,
@@ -1034,7 +1034,7 @@ export const menuarbol: MenuItem[] = [
     price: 4500,
     category: "breakfast",
     image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&h=400&fit=crop",
-    ingredients: ["Pan", "Jamón", "Queso"],
+    ingredients: ["Pan de molde", "Jamón", "Queso"],
     allergens: ["Lácteos", "Gluten"],
     dietary: [],
     calories: 420,
@@ -1060,7 +1060,7 @@ export const menuarbol: MenuItem[] = [
     price: 5500,
     category: "breakfast",
     image: "https://images.unsplash.com/photo-1510693206972-df098062cb71?w=500&h=400&fit=crop",
-    ingredients: ["Huevos", "Queso", "Jamón", "Pan"],
+    ingredients: ["Huevos", "Queso", "Jamón", "Pan tostado"],
     allergens: ["Huevos", "Lácteos", "Gluten"],
     dietary: [],
     calories: 480,
@@ -1075,7 +1075,7 @@ export const menuarbol: MenuItem[] = [
     price: 4400,
     category: "appetizers",
     image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&h=400&fit=crop",
-    ingredients: ["Variable según el día"],
+    ingredients: ["Vegetales de estación", "Caldo de verduras", "Crema", "Especias"],
     allergens: ["Variable"],
     dietary: [],
     calories: 250,
@@ -1525,7 +1525,7 @@ export const menuarbol: MenuItem[] = [
     price: 7200,
     category: "sandwiches",
     image: "https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=500&h=400&fit=crop",
-    ingredients: ["Pan", "Churrasco", "Queso"],
+    ingredients: ["Pan marraqueta", "Churrasco", "Queso"],
     allergens: ["Gluten", "Lácteos"],
     dietary: [],
     calories: 580,
@@ -1538,7 +1538,7 @@ export const menuarbol: MenuItem[] = [
     price: 8500,
     category: "sandwiches",
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=400&fit=crop",
-    ingredients: ["Pan", "Hamburguesa", "Tomate", "Palta", "Mayonesa"],
+    ingredients: ["Pan brioche", "Hamburguesa", "Tomate", "Palta", "Mayonesa"],
     allergens: ["Gluten", "Huevos"],
     dietary: [],
     calories: 650,
@@ -1551,7 +1551,7 @@ export const menuarbol: MenuItem[] = [
     price: 7900,
     category: "sandwiches",
     image: "https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=500&h=400&fit=crop",
-    ingredients: ["Pan", "Churrasco", "Tomate", "Palta", "Mayonesa"],
+    ingredients: ["Pan amasado", "Churrasco", "Tomate", "Palta", "Mayonesa"],
     allergens: ["Gluten", "Huevos"],
     dietary: [],
     calories: 620,

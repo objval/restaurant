@@ -27,7 +27,7 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading] = useState(false) // setIsLoading - unimplemented loading state feature
   const [isMobile, setIsMobile] = useState(false)
 
   // Detect mobile viewport

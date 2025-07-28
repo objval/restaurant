@@ -117,7 +117,7 @@ export function FirstTimeSelector({ onLocationSelect }: FirstTimeSelectorProps) 
 
         <div className="text-center mt-12">
           <p className="text-gray-500 text-sm">
-            Can't decide? Each location offers a unique atmosphere and carefully curated menu.
+            Can&apos;t decide? Each location offers a unique atmosphere and carefully curated menu.
           </p>
         </div>
       </div>

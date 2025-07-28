@@ -6,15 +6,15 @@ This project is a restaurant showcase built with **Next.js** and **React**. It l
 
 1. Install dependencies:
    ```sh
-   pnpm install
+   bun install
    ```
 2. Start the development server:
    ```sh
-   pnpm dev
+   bun dev
    ```
 3. Create an optimized production build:
    ```sh
-   pnpm build
+   bun build
    ```
 
 Enjoy exploring the restaurant features and customizing the code for your needs.

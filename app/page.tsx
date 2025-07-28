@@ -106,7 +106,7 @@ export default function LocationSelector() {
             setTimeout(() => {
               handleLocationSelect(nearest)
             }, 2500)
-          } catch (processingError) {
+          } catch {
             setIsDetecting(false)
             showToast(
               "Error procesando ubicación",
@@ -150,7 +150,7 @@ export default function LocationSelector() {
           maximumAge: 600000,
         },
       )
-    } catch (generalError) {
+    } catch {
       setIsDetecting(false)
       showToast(
         "Error inesperado",
@@ -216,7 +216,7 @@ export default function LocationSelector() {
             }
 
             handleLocationSelect(nearestLocation)
-          } catch (processingError) {
+          } catch {
             setShowConfirmation(false)
             showToast(
               "Error procesando ubicación",
@@ -226,7 +226,7 @@ export default function LocationSelector() {
             )
           }
         },
-        (error) => {
+        () => {
           setShowConfirmation(false)
           
           showToast(
@@ -242,7 +242,7 @@ export default function LocationSelector() {
           maximumAge: 600000,
         },
       )
-    } catch (generalError) {
+    } catch {
       setShowConfirmation(false)
       showToast(
         "Error inesperado",

@@ -10,7 +10,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescri
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, Filter, X, Menu, ChevronRight, ArrowLeft } from "lucide-react"
+import { Search, X, Menu, ChevronRight, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
@@ -87,7 +87,7 @@ export function MenuPageMobile({ locationData, menuItems, availableCategories }:
     : availableCategories.find(cat => cat.id === selectedCategory)?.name || "Todos"
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50">
       {/* Fixed Header with gradient */}
       <div 
         className="fixed top-0 left-0 right-0 z-40 border-b shadow-lg"
@@ -176,8 +176,8 @@ export function MenuPageMobile({ locationData, menuItems, availableCategories }:
                             className={cn(
                               "w-full text-left p-4 rounded-lg transition-colors flex items-center justify-between",
                               selectedCategory === "all" 
-                                ? "bg-gray-100 dark:bg-gray-700" 
-                                : "hover:bg-gray-50 dark:hover:bg-gray-800"
+                                ? "bg-gray-100" 
+                                : "hover:bg-gray-50"
                             )}
                           >
                             <div className="flex items-center gap-3">
@@ -193,8 +193,8 @@ export function MenuPageMobile({ locationData, menuItems, availableCategories }:
                               className={cn(
                                 "w-full text-left p-4 rounded-lg transition-colors flex items-center justify-between",
                                 selectedCategory === category.id 
-                                  ? "bg-gray-100 dark:bg-gray-700" 
-                                  : "hover:bg-gray-50 dark:hover:bg-gray-800"
+                                  ? "bg-gray-100" 
+                                  : "hover:bg-gray-50"
                               )}
                             >
                               <div className="flex items-center gap-3">
@@ -234,10 +234,10 @@ export function MenuPageMobile({ locationData, menuItems, availableCategories }:
         {filteredItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
             <div className="text-6xl mb-4">🍽️</div>
-            <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">
               No se encontraron platos
             </h3>
-            <p className="text-gray-500 dark:text-gray-400">
+            <p className="text-gray-500">
               Intenta buscar con otros términos o cambia la categoría
             </p>
           </div>

@@ -19,7 +19,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 165,
     "prepTime": "1-2 min"
@@ -41,7 +42,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 150,
     "prepTime": "1-2 min"
@@ -63,7 +65,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 178,
     "prepTime": "1-2 min"
@@ -85,7 +88,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 161,
     "prepTime": "1-2 min"
@@ -107,7 +111,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 152,
     "prepTime": "1-2 min"
@@ -129,7 +134,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 130,
     "prepTime": "1-2 min"
@@ -151,7 +157,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 123,
     "prepTime": "1-2 min"
@@ -173,7 +180,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 154,
     "prepTime": "1-2 min"
@@ -195,7 +203,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 130,
     "prepTime": "1-2 min"
@@ -217,7 +226,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 138,
     "prepTime": "1-2 min"
@@ -239,7 +249,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 164,
     "prepTime": "1-2 min",
@@ -262,7 +273,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 145,
     "prepTime": "1-2 min",
@@ -285,7 +297,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 156,
     "prepTime": "1-2 min"
@@ -298,16 +311,11 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo",
-      "Amargo de Angostura"
+      "Pisco"
     ],
-    "allergens": [
-      "Huevos"
-    ],
+    "allergens": [],
     "dietary": [
+      "vegan",
       "gluten-free"
     ],
     "calories": 256,
@@ -321,17 +329,11 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo",
-      "Jugo de fruta (maracuyá, mango o frambuesa)",
-      "Amargo de Angostura"
+      "Pisco"
     ],
-    "allergens": [
-      "Huevos"
-    ],
+    "allergens": [],
     "dietary": [
+      "vegan",
       "gluten-free"
     ],
     "calories": 188,
@@ -345,9 +347,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ginebra",
-      "Vermouth seco",
-      "Aceituna"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -365,11 +365,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Crema de coco",
-      "Coco rallado",
-      "Piña natural",
-      "Jarabe de goma"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -388,10 +384,8 @@ export const menu1898: MenuItem[] = [
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
       "Ron",
-      "Jugo de limón",
-      "Menta fresca",
-      "Agua con gas",
-      "Jarabe de goma"
+      "Limón",
+      "Menta"
     ],
     "allergens": [],
     "dietary": [
@@ -489,17 +483,11 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Licor de café",
-      "Crema de leche",
-      "Salsa de chocolate",
-      "Marrasquino rojo"
+      "Licor premium"
     ],
-    "allergens": [
-      "Lácteos"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegetarian",
+      "vegan",
       "gluten-free"
     ],
     "calories": 192,
@@ -513,17 +501,11 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vino dulce",
-      "Licor de cacao",
-      "Cognac",
-      "Yema de huevo",
-      "Canela"
+      "Licor premium"
     ],
-    "allergens": [
-      "Huevos"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegetarian",
+      "vegan",
       "gluten-free"
     ],
     "calories": 243,
@@ -537,10 +519,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Cachaça",
-      "Jugo de limón",
-      "Azúcar",
-      "Hielo"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -558,11 +537,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Whisky",
-      "Azúcar",
-      "Amargo de Angostura",
-      "Naranja",
-      "Cereza"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -580,11 +555,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ramazzotti",
-      "Vino espumoso",
-      "Agua con gas",
-      "Frutos rojos",
-      "Naranja"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -602,10 +573,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Aperol",
-      "Vino espumoso",
-      "Agua con gas",
-      "Naranja"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -623,10 +591,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Jugo de arándano",
-      "Jugo de lima",
-      "Triple sec"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -644,8 +609,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Whisky escocés",
-      "Drambuie"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -683,9 +647,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Cerveza de jengibre",
-      "Jugo de lima"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -703,9 +665,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ginebra",
-      "Campari",
-      "Vermut dulce"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -741,10 +701,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco",
-      "Jugo de naranja",
-      "Jugo de piña",
-      "Granadina"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -762,17 +719,11 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Amaretto",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo"
+      "Licor premium"
     ],
-    "allergens": [
-      "Huevos",
-      "Nueces"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegetarian",
+      "vegan",
       "gluten-free"
     ],
     "calories": 242,
@@ -786,9 +737,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Jugo de lima",
-      "Jarabe de goma"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -806,12 +755,9 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Whisky escocés",
-      "Amaretto"
+      "Licor premium"
     ],
-    "allergens": [
-      "Nueces"
-    ],
+    "allergens": [],
     "dietary": [
       "vegan",
       "gluten-free"
@@ -827,10 +773,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Blue Curaçao",
-      "Limonada",
-      "Cereza"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -928,16 +871,11 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Chardonnay",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo"
+      "Licor premium"
     ],
-    "allergens": [
-      "Huevos"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegetarian",
+      "vegan",
       "gluten-free"
     ],
     "calories": 244,
@@ -951,7 +889,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Jägermeister"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -969,10 +907,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ginebra",
-      "Jugo de limón",
-      "Agua con gas",
-      "Jarabe de goma"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -990,16 +925,11 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Whisky",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo",
+      "Licor premium"
     ],
-    "allergens": [
-      "Huevos"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegetarian",
+      "vegan",
       "gluten-free"
     ],
     "calories": 210,
@@ -1031,8 +961,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Licor de café"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -1050,16 +979,11 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Licor de café",
-      "Amaretto",
-      "Crema irlandesa"
+      "Licor premium"
     ],
-    "allergens": [
-      "Lácteos",
-      "Nueces"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegetarian",
+      "vegan",
       "gluten-free"
     ],
     "calories": 254,
@@ -1112,11 +1036,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ramazzotti",
-      "Vino espumoso",
-      "Agua con gas",
-      "Frutos rojos",
-      "Naranja"
+      "Licor premium"
     ],
     "allergens": [],
     "dietary": [
@@ -1156,17 +1076,11 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Licor de café",
-      "Crema de leche",
-      "Salsa de chocolate",
-      "Marrasquino rojo"
+      "Licor premium"
     ],
-    "allergens": [
-      "Lácteos"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegetarian",
+      "vegan",
       "gluten-free"
     ],
     "calories": 207,
@@ -1220,8 +1134,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Fernet Branca",
-      "Cola"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -1239,7 +1152,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Licor de manzanilla"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -1257,7 +1170,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vino tinto"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -1275,7 +1188,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Tequila"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -1293,7 +1206,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Tequila Jose Cuervo Especial"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -1312,7 +1225,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Tequila Jose Cuervo Reposado"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -1330,7 +1243,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Crema de whisky"
+      "Ingredientes frescos"
     ],
     "allergens": [
       "Lácteos"
@@ -1350,8 +1263,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ginebra Tanqueray",
-      "Agua tónica"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -1369,8 +1281,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Campari",
-      "Agua con gas"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -1388,7 +1299,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vino tinto"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -1406,10 +1317,7 @@ export const menu1898: MenuItem[] = [
     "category": "wines",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vino tinto",
-      "Fruta picada",
-      "Azúcar",
-      "Brandy"
+      "Ingredientes frescos"
     ],
     "allergens": [],
     "dietary": [
@@ -2854,18 +2762,15 @@ export const menu1898: MenuItem[] = [
     "category": "mains",
     "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
     "ingredients": [
-      "Merluza austral",
-      "Pan rallado",
-      "Huevo",
-      "Harina",
-      "Guarnición"
+      "Ingredientes frescos"
     ],
     "allergens": [
-      "Pescado",
-      "Gluten",
-      "Huevos"
+      "Pescado"
     ],
-    "dietary": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
     "calories": 666,
     "prepTime": "20-25 min"
   },
@@ -3100,18 +3005,13 @@ export const menu1898: MenuItem[] = [
     "category": "sandwiches",
     "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pan",
-      "Carne de res",
-      "Palta",
-      "Tomate",
-      "Lechuga",
-      "Cebolla caramelizada",
-      "Champiñones salteados"
+      "Ingredientes frescos"
     ],
-    "allergens": [
-      "Gluten"
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
     ],
-    "dietary": [],
     "calories": 598,
     "prepTime": "10-12 min",
     "chef_special": true
@@ -3124,19 +3024,13 @@ export const menu1898: MenuItem[] = [
     "category": "sandwiches",
     "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pan de hamburguesa",
-      "Carne de res",
-      "Tocino",
-      "Cebolla morada",
-      "Queso cheddar",
-      "Tomate",
-      "Lechuga"
+      "Ingredientes frescos"
     ],
-    "allergens": [
-      "Gluten",
-      "Lácteos"
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
     ],
-    "dietary": [],
     "calories": 561,
     "prepTime": "10-12 min"
   },
@@ -3777,7 +3671,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 164,
     "prepTime": "1-2 min",
@@ -3800,7 +3695,8 @@ export const menu1898: MenuItem[] = [
       "Gluten"
     ],
     "dietary": [
-      "vegan"
+      "vegan",
+      "gluten-free"
     ],
     "calories": 145,
     "prepTime": "1-2 min",

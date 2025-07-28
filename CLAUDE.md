@@ -5,23 +5,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ```bash
-# Install dependencies (using pnpm)
-pnpm install
+# Install dependencies
+bun install
 
 # Start development server
-pnpm dev
+bun dev
 
 # Build for production
-pnpm build
+bun build
 
 # Start production server
-pnpm start
+bun start
 
 # Run linting
-pnpm lint
+bun lint
 ```
 
-Note: This project uses pnpm as the package manager. A bun.lock file is also present but pnpm is the primary package manager.
+Note: This project uses bun as the package manager.
 
 ## Architecture Overview
 
@@ -53,7 +53,7 @@ Each restaurant location contains:
 - Menu highlights
 - Social proof stats
 
-### Menu Data (`menu_scraped.json`)
+### Menu Data (`lib/data/menu_scraped.json`)
 - Category-based organization
 - Item details: name, price, description
 - Shared across all locations (currently)
@@ -86,5 +86,5 @@ No test framework is currently configured. The project has no test files outside
 ## Build Configuration
 
 - **TypeScript**: Strict mode with path alias `@/*`
-- **ESLint**: Configured but errors ignored during build
-- **Next.js**: Build errors for TypeScript/ESLint are suppressed
+- **ESLint**: Configured and enforced during build
+- **Next.js**: Build errors for TypeScript/ESLint are properly reported

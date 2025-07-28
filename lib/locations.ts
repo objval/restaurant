@@ -58,9 +58,14 @@ export interface LocationData {
     awards: number
   }
   socialProof: {
-    rating: number
     reviews: number
     googleRating: number
+  }
+  socialMedia?: {
+    instagram?: string
+    facebook?: string
+    twitter?: string
+    whatsapp?: string
   }
   promotions: {
     title: string
@@ -101,8 +106,15 @@ export const locations: LocationData[] = [
     longDescription:
       "En El Árbol Café Restaurante somos un espacio familiar y acogedor, creado con amor para que te sientas como en casa. Aquí, cada detalle ha sido pensado para brindar una experiencia cálida, cercana y llena de sabor.\n\nNos encanta ser el punto de encuentro para quienes buscan compartir un buen café, disfrutar de una rica comida o celebrar momentos especiales rodeados de cariño. Nuestro compromiso es entregarte atención personalizada, un ambiente tranquilo y esa sensación de hogar que tanto valoramos.",
     hours: {
-      weekdays: "Lun-Vie: 7:00 - 23:00",
-      weekends: "Sáb-Dom: 8:00 - 24:00",
+      weekdays: "Lun-Mié: 11:00 - 22:30 | Jue-Vie: 11:00 - 23:30",
+      weekends: "Sáb: 11:30 - 23:30 | Dom: CERRADO",
+      monday: "11:00 - 22:30",
+      tuesday: "11:00 - 22:30",
+      wednesday: "11:00 - 22:30",
+      thursday: "11:00 - 23:30",
+      friday: "11:00 - 23:30",
+      saturday: "11:30 - 23:30",
+      sunday: "CERRADO",
     },
     specialties: ["Menús Familiares", "Mesas Grandes", "Menú Infantil", "Celebraciones"],
     atmosphere: ["Familiar", "Cálido", "Acogedor", "Celebraciones"],
@@ -115,25 +127,25 @@ export const locations: LocationData[] = [
     features: ["Sillas para Niños", "Área de Juegos", "Menú Familiar", "Eventos Privados"],
     menuHighlights: [
       {
+        id: "tomahawk-lomo-vetado",
+        name: "Tomahawk de lomo vetado",
+        description: "Tomahawk vetado de 700 grs, con tomates cherrys glaseados, papas a las finas hierbas, salsa de merkén y chimichurri",
+        price: "$24.500",
+        image: "https://images.unsplash.com/photo-1594041680698-74376e0e5260?w=500&h=400&fit=crop",
+      },
+      {
         id: "anticuchos-parrilleros",
         name: "Anticuchos Parrilleros",
-        description: "Anticuchos grillados de res, cerdo y longaniza Llanquihue de 1000 grs, con tomates cherry glaseados, papas a las finas hierbas y chimichurri",
+        description: "Anticuchos grillados de res, cerdo y longaniza Llanquihue de 1000 grs, con tomates cherry glaseados y chimichurri",
         price: "$26.500",
-        image: "/arbol/anticucho.jpg",
+        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=400&fit=crop",
       },
       {
-        id: "plateada-braseada",
-        name: "Plateada braseada con pastelera de choclo",
-        description: "Plateada de la zona, en cocción lenta con cerveza artesanal ámbar",
-        price: "$16.500",
-        image: "/arbol/plateada.jpg",
-      },
-      {
-        id: "risotto-di-mare",
-        name: "Risotto Di Mare",
-        description: "Arroz arbóreo con camarones, champiñones y tomate cherry",
+        id: "pastel-jaiba-500",
+        name: "Pastel de Jaiba 500 grs",
+        description: "Delicioso pastel de jaiba gratinado con queso mantecoso, preparado con la mejor jaiba fresca",
         price: "$12.500",
-        image: "/arbol/risotto.jpg",
+        image: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=500&h=400&fit=crop",
       },
     ],
     stats: {
@@ -143,9 +155,13 @@ export const locations: LocationData[] = [
       awards: 3,
     },
     socialProof: {
-      rating: 4.8,
       reviews: 1247,
       googleRating: 4.7,
+    },
+    socialMedia: {
+      instagram: "https://instagram.com/elarbolfamiliar",
+      facebook: "https://facebook.com/elarbolfamiliar",
+      whatsapp: "+56942262266",
     },
     promotions: [
       {
@@ -189,15 +205,13 @@ export const locations: LocationData[] = [
       overlay: "rgba(139, 69, 19, 0.8)",
     },
     images: {
-      hero: "/1898/1.jpg",
-      interior: "/1898/2.jpg",
-      signature: "/1898/1.jpg",
-      ambiance: "/1898/2.jpg",
+      hero: "/locations/1898.jpg",
+      interior: "/locations/1898.jpg",
+      signature: "/locations/1898.jpg",
+      ambiance: "/locations/1898.jpg",
       gallery: [
         "/1898/1.jpg",
-        "/1898/2.jpg",
-        "/1898/1.jpg",
-        "/1898/2.jpg",
+        "/1898/2.jpg"
       ],
     },
     description: "El lugar perfecto para una noche relajada con amigos, cervezas artesanales y ambiente de bar.",
@@ -218,32 +232,32 @@ export const locations: LocationData[] = [
     atmosphere: ["Bar", "Nocturno", "Social", "Relajado"],
     priceRange: "$$-$$$",
     contact: {
-      phone: "+56 2 3456 7890",
-      address: "Calle Arturo Prat 456, Pitrufquén, Araucanía",
+      phone: "+56997180227",
+      address: "Francisco Bilbao 539, Pitrufquén, Araucanía",
       email: "contacto@1898.cl",
     },
     features: ["Barra de Cervezas", "Música en Vivo", "Terraza", "Karaoke"],
     menuHighlights: [
       {
-        id: "tabla-pichanga",
-        name: "Tabla grande Pichanga",
-        description: "Salteado de res, pollo y longaniza ahumada, con palta, tomate, cebolla perla, pepinillos, aceitunas, queso mantecoso con cama de papas fritas",
-        price: "$24.500",
-        image: "/1898/1.jpg",
+        id: "chorrillana-1898",
+        name: "Chorrillana 1898",
+        description: "Crujientes papas fritas con cubos de carne de res, pollo y longaniza, queso, huevos fritos y cebolla caramelizada",
+        price: "$23.500",
+        image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
       },
       {
-        id: "hamburguesa-golosa",
-        name: "Hamburguesa Golosa",
-        description: "Lechuga, tomate, pepinillo, hamburguesa, tocino, queso cheddar, cebolla caramelizada y huevo",
-        price: "$8.900",
-        image: "/1898/2.jpg",
+        id: "pizza-1898",
+        name: "Pizza 1898",
+        description: "Vacuno, pollo, tocino, salame, chorizo y tomate - Especialidad de la casa",
+        price: "$17.900",
+        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
       },
       {
-        id: "papas-bravas",
-        name: "Papas Bravas c/ salsa picante",
-        description: "Papas salteadas con base de salsa bechamel, pasta de ají ahumado, merquén, parmesano y tocino bacon",
-        price: "$9.900",
-        image: "/1898/1.jpg",
+        id: "churrasco-1898",
+        name: "Churrasco 1898",
+        description: "Carne de res, palta, tomate, lechuga, cebolla caramelizada y champiñones salteados",
+        price: "$10.900",
+        image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
       },
     ],
     stats: {
@@ -253,9 +267,13 @@ export const locations: LocationData[] = [
       awards: 2,
     },
     socialProof: {
-      rating: 4.9,
       reviews: 892,
       googleRating: 4.8,
+    },
+    socialMedia: {
+      instagram: "https://instagram.com/1898beerbar",
+      facebook: "https://facebook.com/1898beerbar",
+      whatsapp: "+56234567890",
     },
     promotions: [
       {
@@ -299,54 +317,59 @@ export const locations: LocationData[] = [
       overlay: "rgba(27, 75, 90, 0.85)",
     },
     images: {
-      hero: "https://images.unsplash.com/photo-1544148103-0773bf10d330?w=1200&h=800&fit=crop",
-      interior: "https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=600&h=400&fit=crop",
-      signature: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&h=300&fit=crop",
-      ambiance: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=500&h=400&fit=crop",
+      hero: "/locations/capriccio.jpg",
+      interior: "/locations/capriccio.jpg",
+      signature: "https://images.unsplash.com/photo-1587223962930-cb7f31384c19?w=500&h=400&fit=crop",
+      ambiance: "/locations/capriccio.jpg",
       gallery: [
-        "https://images.unsplash.com/photo-1544148103-0773bf10d330?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1559847844-5315695dadae?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&h=600&fit=crop",
+        "/locations/capriccio.jpg",
+        "/locations/capriccio2.jpg",
       ],
     },
     description: "Ambiente elegante y sofisticado, perfecto para cenas especiales y experiencias gastronómicas únicas.",
     longDescription:
       "Capriccio combina la elegancia de un bistro europeo con la sofisticación de un bar moderno. Ideal para cenas románticas, reuniones de negocios o cualquier ocasión especial que requiera un toque de distinción.",
     hours: {
-      weekdays: "Lun-Vie: 12:00 - 01:00",
-      weekends: "Sáb-Dom: 11:00 - 02:00",
+      weekdays: "Mar-Mié: 11:00 - 00:30 | Jue: 11:00 - 02:00 | Vie: 11:00 - 03:00",
+      weekends: "Sáb: 11:00 - 02:00 | Dom: 11:00 - 22:00",
+      monday: "CERRADO",
+      tuesday: "11:00 - 00:30",
+      wednesday: "11:00 - 00:30",
+      thursday: "11:00 - 02:00",
+      friday: "11:00 - 03:00",
+      saturday: "11:00 - 02:00",
+      sunday: "11:00 - 22:00",
     },
     specialties: ["Cocina de Autor", "Cócteles Premium", "Vinos Seleccionados", "Ambiente Ejecutivo"],
     atmosphere: ["Elegante", "Sofisticado", "Romántico", "Ejecutivo"],
     priceRange: "$$$-$$$$",
     contact: {
-      phone: "+56 2 4567 8901",
-      address: "Av. Alemania 789, Pitrufquén, Araucanía",
+      phone: "+56930527291",
+      address: "Av. Balmaceda 377, Pitrufquén, Araucanía",
       email: "reservas@capricciobistro.cl",
     },
     features: ["Carta de Vinos Premium", "Música Ambient", "Terraza VIP", "Servicio Valet"],
     menuHighlights: [
       {
-        id: "beef-wellington",
-        name: "Beef Wellington",
-        description: "Filete de res envuelto en masa hojaldre con foie gras",
-        price: "$42.990",
-        image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=500&h=400&fit=crop",
-      },
-      {
-        id: "salmon-glaciado",
-        name: "Salmón Glaciado",
-        description: "Salmón lacado en miel y soja con vegetales asiáticos",
-        price: "$34.990",
-        image: "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?w=500&h=400&fit=crop",
-      },
-      {
-        id: "risotto-mariscos",
-        name: "Risotto de Mariscos",
-        description: "Arroz cremoso con mariscos frescos y azafrán",
+        id: "tabla-fuego-brasa",
+        name: "Tabla de Fuego y Brasa",
+        description: "Costillar, pollo al rostro y cerdo sobre papas rústicas con chimichurri casero - Ideal para 4 personas",
         price: "$28.990",
-        image: "https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=500&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=400&fit=crop",
+      },
+      {
+        id: "ceviche-pacifico",
+        name: "Ceviche del Pacífico",
+        description: "Cubos de atún fresco marinados al estilo leche de tigre con cítricos y chips de plátano verde",
+        price: "$16.990",
+        image: "https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=500&h=400&fit=crop",
+      },
+      {
+        id: "bruschetta-picante-golfo",
+        name: "Bruschetta Picante del Golfo",
+        description: "Camarones ecuatorianos salteados con ají sobre patacón de plátano verde",
+        price: "$9.990",
+        image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=500&h=400&fit=crop",
       },
     ],
     stats: {
@@ -356,28 +379,20 @@ export const locations: LocationData[] = [
       awards: 5,
     },
     socialProof: {
-      rating: 4.9,
       reviews: 2156,
       googleRating: 4.8,
     },
+    socialMedia: {
+      instagram: "https://instagram.com/capricciobistro",
+      facebook: "https://facebook.com/capricciobistro",
+      whatsapp: "+56245678901",
+    },
     promotions: [
       {
-        title: "AFTER OFFICE",
-        subtitle: "Cócteles premium",
-        schedule: "Lunes a Viernes | 18:00 a 20:00hrs",
-        color: "#1B4B5A",
-      },
-      {
-        title: "CENA ROMÁNTICA",
-        subtitle: "Mesa VIP con vista",
-        schedule: "Viernes y Sábados | 20:00 a 23:00hrs",
+        title: "JUEVES DE CHICAS",
+        subtitle: "Promociones especiales",
+        schedule: "Jueves | Desde apertura hasta cierre",
         color: "#FF7F50",
-      },
-      {
-        title: "WINE TASTING",
-        subtitle: "Degustación de vinos",
-        schedule: "Jueves | 19:00 a 21:00hrs",
-        color: "#4A90A4",
       },
     ],
   },

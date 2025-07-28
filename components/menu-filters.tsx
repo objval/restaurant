@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { type MenuCategory } from "@/lib/menu-data"
-import { Search, Filter, X, Sparkles, Loader2, DollarSign } from "lucide-react"
-import { useEffect, useState } from "react"
+import { Search, Filter, X, Sparkles, DollarSign } from "lucide-react"
 import { PriceRangeSlider } from "@/components/ui/price-range-slider"
 
 interface MenuFiltersProps {
@@ -59,7 +58,7 @@ export function MenuFilters({
     (priceRange && maxPrice && (priceRange[0] > 0 || priceRange[1] < maxPrice))
 
   return (
-    <div className="space-y-6 bg-white dark:bg-gray-800 rounded-lg p-4 md:p-6 shadow-lg border">
+    <div className="space-y-6 bg-white rounded-lg p-4 md:p-6 shadow-lg border">
       {/* Header */}
       <div className="flex items-center gap-2 pb-4 border-b">
         <Filter className="w-5 h-5" style={{ color: locationTheme.primary }} />
@@ -83,7 +82,7 @@ export function MenuFilters({
             {
               borderColor: searchQuery ? locationTheme.primary : undefined,
               "--tw-ring-color": locationTheme.primary,
-            } as any
+            } as React.CSSProperties
           }
         />
         {searchQuery && (

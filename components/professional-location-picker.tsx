@@ -1,11 +1,13 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { MapPin, Navigation, Phone, Clock, Star, Users, Utensils, Wine, ChevronRight, Loader2 } from "lucide-react"
+import { MapPin, Navigation, Phone, Clock, Users, Utensils, Wine, ChevronRight, Loader2 } from "lucide-react"
 import { type LocationData, locations } from "@/lib/locations"
+import { MobileLocationPicker } from "@/components/mobile-location-picker"
 
 interface ProfessionalLocationPickerProps {
   onLocationSelectAction: (location: LocationData) => void
@@ -23,7 +25,6 @@ export function ProfessionalLocationPicker({
   loadingLocationId 
 }: ProfessionalLocationPickerProps) {
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null)
-  const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -82,7 +83,7 @@ export function ProfessionalLocationPicker({
       
       // Only log once per location on initial render
       if (typeof window !== 'undefined') {
-        const w = window as any
+        const w = window as Window & { loggedLocations?: Set<string> }
         if (!w.loggedLocations) {
           w.loggedLocations = new Set()
         }
@@ -104,53 +105,41 @@ export function ProfessionalLocationPicker({
       let isOpen = false
       let todayHours = ''
       
-      if (location.id === '1898') {
-        todayHours = location.hours[todayName] || ''
+      // Get hours from the location data
+      todayHours = location.hours[todayName] || ''
+      
+      if (todayName === 'monday' || todayHours === 'CERRADO') {
+        return { isOpen: false, displayText: 'CERRADO HOY', todayHours: 'CERRADO' }
+      }
+      
+      // Parse opening hours for all restaurants
+      const hoursParts = todayHours.split(' - ')
+      if (hoursParts.length === 2) {
+        const [openHour, openMin] = hoursParts[0].split(':').map(Number)
+        const [closeHour, closeMin] = hoursParts[1].split(':').map(Number)
+        openTime = openHour * 60 + openMin
+        closeTime = closeHour * 60 + closeMin
         
-        if (todayName === 'monday' || todayHours === 'CERRADO') {
-          return { isOpen: false, displayText: 'CERRADO HOY', todayHours: 'CERRADO' }
+        // Handle times after midnight
+        if (closeTime < openTime) {
+          closeTime += 24 * 60
         }
         
-        // Parse opening hours for 1898
-        const hoursParts = todayHours.split(' - ')
-        if (hoursParts.length === 2) {
-          const [openHour, openMin] = hoursParts[0].split(':').map(Number)
-          const [closeHour, closeMin] = hoursParts[1].split(':').map(Number)
-          openTime = openHour * 60 + openMin
-          closeTime = closeHour * 60 + closeMin
-          
-          // Handle times after midnight
-          if (closeTime < openTime) {
-            closeTime += 24 * 60
-          }
-          
-          // Check if currently open
-          let adjustedCurrentTime = currentTimeInMinutes
-          if (hours < 4) { // After midnight
-            adjustedCurrentTime += 24 * 60
-          }
-          
-          isOpen = adjustedCurrentTime >= openTime && adjustedCurrentTime <= closeTime
+        // Check if currently open
+        let adjustedCurrentTime = currentTimeInMinutes
+        if (hours < 4) { // After midnight
+          adjustedCurrentTime += 24 * 60
         }
-      } else {
-        // For other restaurants, use simplified hours
-        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Weekdays
-          openTime = 7 * 60 // 7:00
-          closeTime = 23 * 60 // 23:00
-        } else { // Weekends
-          openTime = 8 * 60 // 8:00
-          closeTime = 24 * 60 // 24:00
-        }
-        isOpen = currentTimeInMinutes >= openTime && currentTimeInMinutes <= closeTime
-        todayHours = location.hours.weekdays
+        
+        isOpen = adjustedCurrentTime >= openTime && adjustedCurrentTime <= closeTime
       }
       
       if (isOpen) {
-        const closeHour = Math.floor(closeTime / 60) % 24
-        const closeMin = closeTime % 60
+        // Extract the closing time directly from todayHours string
+        const closeTimeString = todayHours.split(' - ')[1]
         return {
           isOpen: true,
-          displayText: `Abierto hasta ${closeHour}:${closeMin.toString().padStart(2, '0')}`,
+          displayText: `Abierto hasta ${closeTimeString}`,
           todayHours
         }
       } else {
@@ -210,10 +199,11 @@ export function ProfessionalLocationPicker({
         
         {/* Background Image with smooth overlay */}
         <div className="absolute inset-0 overflow-hidden rounded-lg">
-          <img
+          <Image
             src={`/locations/${location.id}.jpg`}
             alt={location.name}
-            className={`w-full h-full object-cover transition-all duration-700 ease-out ${
+            fill
+            className={`object-cover transition-all duration-700 ease-out ${
               isHovered ? 'scale-105' : 'scale-100'
             }`}
           />
@@ -256,10 +246,6 @@ export function ProfessionalLocationPicker({
               >
                 {location.concept}
               </Badge>
-            </div>
-            <div className="flex items-center gap-1 text-white bg-black/30 backdrop-blur-sm px-2 py-1 rounded-full">
-              <Star className="w-4 h-4 fill-current text-amber-400" />
-              <span className="text-sm font-medium">4.8</span>
             </div>
           </div>
 
@@ -386,6 +372,16 @@ export function ProfessionalLocationPicker({
     )
   }
 
+  // Show mobile-optimized component on mobile devices
+  if (isMobile) {
+    return (
+      <MobileLocationPicker
+        onSelectLocationAction={onLocationSelectAction}
+        onUseGeolocationAction={onGeolocationAction}
+      />
+    )
+  }
+
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* Hero Background with Mica Effect */}
@@ -393,14 +389,16 @@ export function ProfessionalLocationPicker({
         {heroImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-[6000ms] ease-in-out ${
+            className={`absolute inset-0 transition-all duration-6s ease-in-out ${
               index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-102'
             }`}
           >
-            <img
+            <Image
               src={image}
               alt={`Hero ${index + 1}`}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority={index === 0}
             />
           </div>
         ))}

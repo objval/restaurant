@@ -1,11 +1,12 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import type { LocationData } from "@/lib/locations"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Clock, MapPin, Star, Users, Utensils, Wine } from "lucide-react"
+import { Clock, MapPin, Users, Utensils, Wine } from "lucide-react"
 import { LoadingSpinner } from "./loading-spinner"
 
 interface LocationCardDetailedProps {
@@ -44,10 +45,11 @@ export function LocationCardDetailed({
             <LoadingSpinner color={location.theme.primary} />
           </div>
         )}
-        <img
+        <Image
           src={location.images.hero || "/placeholder.svg"}
           alt={location.name}
-          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${
+          fill
+          className={`object-cover transition-all duration-700 group-hover:scale-110 ${
             imageLoaded ? "opacity-100" : "opacity-0"
           }`}
           onLoad={() => setImageLoaded(true)}
@@ -65,11 +67,6 @@ export function LocationCardDetailed({
             <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
               {location.priceRange}
             </Badge>
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-              ))}
-            </div>
           </div>
         </div>
       </div>

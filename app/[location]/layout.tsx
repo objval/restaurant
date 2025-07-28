@@ -9,9 +9,7 @@ interface LocationLayoutProps {
 }
 
 export default async function LocationLayout({ children, params }: LocationLayoutProps) {
-  const { location } = await params
-
-  return <LocationClient params={await params} children={children} />
+  return <LocationClient params={await params}>{children}</LocationClient>
 }
 
 // Generate metadata for each location

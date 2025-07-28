@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Read the scraped data
-const scrapedData = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'documents_1(3).json'), 'utf8'));
+const scrapedData = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'lib', 'data', 'documents_1(3).json'), 'utf8'));
 
 // Read the generated menu
 const menuContent = fs.readFileSync(path.join(__dirname, '..', 'lib', 'menu-1898.ts'), 'utf8');

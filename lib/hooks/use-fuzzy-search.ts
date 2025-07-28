@@ -27,7 +27,7 @@ export function useFuzzySearch(
 ) {
   const fuse = useMemo(
     () => new Fuse(items, options),
-    [items, JSON.stringify(options)] // Stringify options to prevent recreation
+    [items, options] // Dependencies for Fuse instance
   )
 
   const results = useMemo(() => {

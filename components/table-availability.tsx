@@ -61,7 +61,7 @@ function getRandomAvailability(): AvailabilityData {
   }
 }
 
-export function TableAvailability({ locationId, locationName, className }: TableAvailabilityProps) {
+export function TableAvailability({ locationName, className }: TableAvailabilityProps) {
   const [availability, setAvailability] = useState<AvailabilityData>(getRandomAvailability())
   const [isUpdating, setIsUpdating] = useState(false)
 
@@ -80,34 +80,34 @@ export function TableAvailability({ locationId, locationName, className }: Table
 
   const statusConfig = {
     available: {
-      color: "text-green-600 dark:text-green-400",
-      bgColor: "bg-green-50 dark:bg-green-900/20",
-      borderColor: "border-green-200 dark:border-green-800",
-      badge: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+      color: "text-green-600",
+      bgColor: "bg-green-50",
+      borderColor: "border-green-200",
+      badge: "bg-green-100 text-green-800",
       icon: CheckCircle,
       text: "Mesas disponibles"
     },
     limited: {
-      color: "text-yellow-600 dark:text-yellow-400",
-      bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
-      borderColor: "border-yellow-200 dark:border-yellow-800",
-      badge: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
+      color: "text-yellow-600",
+      bgColor: "bg-yellow-50",
+      borderColor: "border-yellow-200",
+      badge: "bg-yellow-100 text-yellow-800",
       icon: AlertCircle,
       text: "Disponibilidad limitada"
     },
     busy: {
-      color: "text-orange-600 dark:text-orange-400",
-      bgColor: "bg-orange-50 dark:bg-orange-900/20",
-      borderColor: "border-orange-200 dark:border-orange-800",
-      badge: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+      color: "text-orange-600",
+      bgColor: "bg-orange-50",
+      borderColor: "border-orange-200",
+      badge: "bg-orange-100 text-orange-800",
       icon: Clock,
       text: "Ocupado"
     },
     full: {
-      color: "text-red-600 dark:text-red-400",
-      bgColor: "bg-red-50 dark:bg-red-900/20",
-      borderColor: "border-red-200 dark:border-red-800",
-      badge: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+      color: "text-red-600",
+      bgColor: "bg-red-50",
+      borderColor: "border-red-200",
+      badge: "bg-red-100 text-red-800",
       icon: Users,
       text: "Completo"
     }
@@ -127,10 +127,10 @@ export function TableAvailability({ locationId, locationName, className }: Table
     )}>
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
+          <h3 className="font-semibold text-lg text-gray-900">
             Disponibilidad en Tiempo Real
           </h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">{locationName}</p>
+          <p className="text-sm text-gray-600">{locationName}</p>
         </div>
         <Badge className={cn("text-xs", config.badge)}>
           <Icon className="w-3 h-3 mr-1" />
@@ -140,7 +140,7 @@ export function TableAvailability({ locationId, locationName, className }: Table
       
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-600 dark:text-gray-400">Mesas disponibles</span>
+          <span className="text-sm text-gray-600">Mesas disponibles</span>
           <span className={cn("font-bold text-lg", config.color)}>
             {availability.availableTables} / {availability.totalTables}
           </span>
@@ -148,22 +148,22 @@ export function TableAvailability({ locationId, locationName, className }: Table
         
         {availability.waitTime > 0 && (
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600 dark:text-gray-400">Tiempo de espera</span>
+            <span className="text-sm text-gray-600">Tiempo de espera</span>
             <span className="font-medium">~{availability.waitTime} min</span>
           </div>
         )}
         
         {availability.status !== "available" && (
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600 dark:text-gray-400">Próxima disponible</span>
+            <span className="text-sm text-gray-600">Próxima disponible</span>
             <span className="font-medium">{availability.nextAvailable}</span>
           </div>
         )}
       </div>
       
-      <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+      <div className="mt-4 pt-4 border-t border-gray-200">
         <div className="flex items-center justify-between">
-          <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
+          <div className="flex items-center text-xs text-gray-500">
             <Clock className="w-3 h-3 mr-1" />
             Actualizado hace menos de 1 min
           </div>

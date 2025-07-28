@@ -4,8 +4,9 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Calendar, Menu, Clock, MapPin, Mail, MessageCircle, Star, Heart, Camera, Award, Users, Phone, Instagram, Facebook, Twitter, Navigation, Wifi, Music, Sparkles, Zap, Globe, Palette, Coffee, Wine, PartyPopper, Headphones, Volume2, X } from "lucide-react"
+import { ArrowLeft, Calendar, Menu, Clock, MapPin, Mail, MessageCircle, Heart, Award, Phone, Instagram, Facebook, Twitter, Navigation, Star } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { ReservationModal } from "@/components/reservation-modal"
 import { ContactModal } from "@/components/contact-modal"
@@ -19,83 +20,10 @@ interface LocationPageClientProps {
 export default function LocationPageClient({ locationData }: LocationPageClientProps) {
   const [isReservationOpen, setIsReservationOpen] = useState(false)
   const [isContactOpen, setIsContactOpen] = useState(false)
-  const [isLiked, setIsLiked] = useState(false)
-  const [likeCount, setLikeCount] = useState(1247)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [showGallery, setShowGallery] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(0.5)
-  const [currentSongIndex, setCurrentSongIndex] = useState(0)
-  const [showAmbientControls, setShowAmbientControls] = useState(false)
-  const [showVirtualTour, setShowVirtualTour] = useState(false)
-  const [showAIRecommendations, setShowAIRecommendations] = useState(false)
-  const [userPreferences, setUserPreferences] = useState({
-    spiceLevel: 'medio',
-    dietaryRestrictions: [],
-    budget: '$$',
-    occasion: 'casual'
-  })
-  const [showMoodLighting, setShowMoodLighting] = useState(false)
-  const [currentMood, setCurrentMood] = useState('cozy')
-  const [showInteractiveMenu, setShowInteractiveMenu] = useState(false)
-  const [showSocialFeed, setShowSocialFeed] = useState(false)
-  const [showOrderTracking, setShowOrderTracking] = useState(false)
-  const [orderStatus, setOrderStatus] = useState('idle')
-  const [showLiveStats, setShowLiveStats] = useState(false)
-  const [realTimeData, setRealTimeData] = useState({
-    currentDiners: 38,
-    waitTime: 12,
-    popularDish: 'Asado Familiar',
-    chefRecommendation: 'Risotto de Trufa'
-  })
   const router = useRouter()
   const { toast } = useToast()
 
-  // Mock playlist for ambient music
-  const playlist = [
-    { name: 'Ambient Jazz', duration: '3:24' },
-    { name: 'Cozy Cafe', duration: '4:12' },
-    { name: 'Evening Lounge', duration: '3:58' },
-    { name: 'Dinner Romance', duration: '4:45' }
-  ]
-
-  // Mock AI recommendations
-  const aiRecommendations = [
-    {
-      dish: 'Asado Familiar',
-      reason: 'Perfecto para tu grupo de 4 personas',
-      confidence: 95,
-      price: '$45.990',
-      image: 'https://images.unsplash.com/photo-1608039755401-742074f0548d?w=300&h=200&fit=crop'
-    },
-    {
-      dish: 'Risotto de Trufa',
-      reason: 'Basado en tus preferencias gourmet',
-      confidence: 88,
-      price: '$26.990',
-      image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=300&h=200&fit=crop'
-    }
-  ]
-
-  // Mock social feed
-  const socialFeed = [
-    {
-      user: 'María José',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=50&h=50&fit=crop&auto=format',
-      content: '¡Increíble experiencia! El asado familiar es espectacular 🔥',
-      time: '2 min',
-      likes: 24,
-      image: 'https://images.unsplash.com/photo-1608039755401-742074f0548d?w=150&h=150&fit=crop'
-    },
-    {
-      user: 'Carlos M.',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&auto=format',
-      content: 'El ambiente es perfecto para una cena familiar 👨‍👩‍👧‍👦',
-      time: '5 min',
-      likes: 18,
-      image: null
-    }
-  ]
 
   // Auto-cycling gallery images
   useEffect(() => {
@@ -105,74 +33,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
     return () => clearInterval(interval)
   }, [locationData.images.gallery.length])
 
-  // Real-time data updates
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRealTimeData(prev => ({
-        ...prev,
-        currentDiners: Math.floor(Math.random() * 20) + 30,
-        waitTime: Math.floor(Math.random() * 15) + 5,
-      }))
-    }, 10000)
-    return () => clearInterval(interval)
-  }, [])
-
-  // Music player controls
-  useEffect(() => {
-    if (isPlaying) {
-      const interval = setInterval(() => {
-        setCurrentSongIndex((prev) => (prev + 1) % playlist.length)
-      }, 4000) // Change song every 4 seconds for demo
-      return () => clearInterval(interval)
-    }
-  }, [isPlaying])
-
-  const handleMusicToggle = () => {
-    setIsPlaying(!isPlaying)
-    toast({
-      title: isPlaying ? "🎵 Música pausada" : "🎵 Reproduciendo ambiente",
-      description: isPlaying ? "Música de ambiente pausada" : `Reproduciendo: ${playlist[currentSongIndex].name}`,
-    })
-  }
-
-  const handleVolumeChange = (newVolume: number) => {
-    setVolume(newVolume)
-    toast({
-      title: "🔊 Volumen ajustado",
-      description: `Volumen: ${Math.round(newVolume * 100)}%`,
-    })
-  }
-
-  const handleMoodLightingChange = (mood: string) => {
-    setCurrentMood(mood)
-    toast({
-      title: "✨ Iluminación cambiada",
-      description: `Ambiente: ${mood}`,
-    })
-  }
-
-  const handleAIRecommendation = (dish: any) => {
-    toast({
-      title: "🤖 Recomendación de IA",
-      description: `${dish.dish} - ${dish.reason}`,
-    })
-  }
-
-  const handleOrderTracking = () => {
-    setOrderStatus('preparing')
-    toast({
-      title: "📋 Pedido registrado",
-      description: "Tu pedido está siendo preparado. Tiempo estimado: 25 min",
-    })
-  }
-
-  const handleVirtualTour = () => {
-    setShowVirtualTour(true)
-    toast({
-      title: "🚀 Tour virtual iniciado",
-      description: "Explora nuestro restaurante en 360°",
-    })
-  }
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent(`Hola! Me gustaría hacer una consulta sobre ${locationData.name}`)
@@ -180,38 +40,40 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank")
   }
 
-  const handleShare = async () => {
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: `${locationData.name} - ${locationData.concept}`,
-          text: locationData.description,
-          url: window.location.href,
-        })
-      } else {
-        await navigator.clipboard.writeText(window.location.href)
-        toast({
-          title: "¡Enlace copiado!",
-          description: "El enlace se ha copiado al portapapeles",
-        })
-      }
-    } catch (error) {
-      console.log('Error sharing:', error)
-    }
-  }
 
-  const handleLike = () => {
-    setIsLiked(!isLiked)
-    setLikeCount(prev => isLiked ? prev - 1 : prev + 1)
-    toast({
-      title: isLiked ? "💔 Quitado de favoritos" : "❤️ ¡Añadido a favoritos!",
-      description: isLiked ? "Has quitado este restaurante de tus favoritos" : "¡Gracias por añadir este restaurante a tus favoritos!",
-    })
-  }
 
   const handleBackToLocations = () => {
     router.push("/")
   }
+
+  const isOpen = (hours: LocationData['hours']) => {
+    const now = new Date()
+    const day = now.getDay()
+    const currentTime = now.getHours() * 100 + now.getMinutes()
+    
+    const dayMap: { [key: number]: keyof LocationData['hours'] } = {
+      0: 'sunday',
+      1: 'monday',
+      2: 'tuesday',
+      3: 'wednesday',
+      4: 'thursday',
+      5: 'friday',
+      6: 'saturday'
+    }
+    
+    const todaySchedule = hours[dayMap[day] as keyof LocationData['hours']]
+    if (!todaySchedule || todaySchedule === 'CERRADO') return false
+    
+    // Parse time ranges like "11:00 - 22:30"
+    const timeMatch = todaySchedule.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/)
+    if (!timeMatch) return false
+    
+    const openTime = parseInt(timeMatch[1]) * 100 + parseInt(timeMatch[2])
+    const closeTime = parseInt(timeMatch[3]) * 100 + parseInt(timeMatch[4])
+    
+    return currentTime >= openTime && currentTime <= closeTime
+  }
+
 
   function getDarkerColor(color: string): string {
     const colorMap: { [key: string]: string } = {
@@ -230,13 +92,15 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
         {/* Dynamic Background Gallery */}
         <div className="absolute inset-0">
           {locationData.images.gallery.map((image, index) => (
-            <img
+            <Image
               key={index}
               src={image || "/placeholder.svg"}
               alt={`${locationData.name} ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              fill
+              className={`object-cover transition-opacity duration-1000 ${
                 index === currentImageIndex ? 'opacity-100' : 'opacity-0'
               }`}
+              priority={index === 0}
             />
           ))}
         </div>
@@ -291,18 +155,13 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
               </p>
             </div>
 
-            {/* Social proof and ratings */}
+            {/* Live status indicator */}
             <div className="flex justify-center items-center gap-6 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <div className="flex items-center gap-2 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                <span className="font-bold text-lg">{locationData.socialProof.rating}</span>
-                <span className="text-sm opacity-80">({locationData.socialProof.reviews} reseñas)</span>
-              </div>
-              <div className="flex items-center gap-2 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <Heart className={`w-5 h-5 ${isLiked ? 'fill-red-500 text-red-500' : 'text-white'}`} />
-                <span className="font-bold text-lg">{likeCount.toLocaleString()}</span>
-                <span className="text-sm opacity-80">likes</span>
-              </div>
+              <Badge className={`px-4 py-2 text-lg font-semibold ${
+                isOpen(locationData.hours) ? 'bg-green-500' : 'bg-red-500'
+              } text-white`}>
+                {isOpen(locationData.hours) ? '🟢 Abierto Ahora' : '🔴 Cerrado'}
+              </Badge>
             </div>
 
             {/* Enhanced CTA Buttons with better animations */}
@@ -375,8 +234,16 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {locationData.promotions.map((promo: any, index: number) => (
+          <div className={`grid gap-6 ${
+            locationData.promotions.length === 1 
+              ? 'grid-cols-1 max-w-md mx-auto' 
+              : locationData.promotions.length === 2
+              ? 'grid-cols-1 md:grid-cols-2 max-w-2xl mx-auto'
+              : locationData.promotions.length === 3
+              ? 'grid-cols-1 md:grid-cols-3 max-w-4xl mx-auto'
+              : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+          }`}>
+            {locationData.promotions.map((promo, index) => (
               <div
                 key={promo.title}
                 className="relative overflow-hidden rounded-2xl group cursor-pointer hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 animate-fade-in"
@@ -464,22 +331,17 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {locationData.menuHighlights.map((item: any, index: number) => (
+            {locationData.menuHighlights.map((item, index) => (
               <Link key={item.id} href={`/${locationData.id}/menu`}>
                 <Card className="overflow-hidden hover:shadow-2xl transition-all duration-700 group hover:-translate-y-2 cursor-pointer animate-fade-in h-[500px] flex flex-col" style={{ animationDelay: `${index * 0.1}s` }}>
                   <div className="relative h-64 overflow-hidden flex-shrink-0">
-                    <img
+                    <Image
                       src={item.image || "/placeholder.svg"}
                       alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
 
-                    {/* Enhanced rating badge */}
-                    <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-2 flex items-center gap-1 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="font-bold text-sm">4.{8 + index}</span>
-                      <span className="text-xs text-gray-500">★★★★★</span>
-                    </div>
 
                     {/* Enhanced price badge */}
                     <div className="absolute bottom-4 right-4">
@@ -523,7 +385,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                       {/* Chef's choice badge */}
                       {index === 1 && (
                         <Badge variant="outline" className="text-xs font-semibold" style={{ borderColor: locationData.theme.accent, color: locationData.theme.accent, backgroundColor: `${locationData.theme.accent}10` }}>
-                          Chef's Choice
+                          Chef&apos;s Choice
                         </Badge>
                       )}
                     </div>
@@ -625,21 +487,23 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative group">
               {/* Main image with hover effects */}
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl group-hover:shadow-3xl transition-shadow duration-700">
-                <img
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl group-hover:shadow-3xl transition-shadow duration-700 h-96">
+                <Image
                   src={locationData.images.interior || "/placeholder.svg"}
                   alt="Interior del restaurante"
-                  className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               
               {/* Floating signature dish */}
               <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl border-4 border-white shadow-xl overflow-hidden group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                <img
+                <Image
                   src={locationData.images.signature || "/placeholder.svg"}
                   alt="Plato signature"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-1 left-1 right-1 text-center">
@@ -743,36 +607,46 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   <Mail className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                   Conócenos Más
                 </Button>
-                <Button
-                  onClick={() => setShowGallery(true)}
-                  variant="outline"
-                  size="lg"
-                  className="rounded-full px-8 py-4 group"
-                  style={{
-                    borderColor: locationData.theme.primary,
-                    color: locationData.theme.primary,
-                  }}
-                >
-                  <Camera className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                  Ver Galería
-                </Button>
               </div>
 
               {/* Social media links */}
-              <div className="pt-6 border-t border-gray-100">
-                <p className="text-sm text-gray-600 mb-3">Síguenos en redes sociales:</p>
-                <div className="flex gap-3">
-                  <Button variant="ghost" size="sm" className="p-2 hover:scale-110 transition-transform duration-200">
-                    <Instagram className="w-5 h-5" style={{ color: locationData.theme.primary }} />
-                  </Button>
-                  <Button variant="ghost" size="sm" className="p-2 hover:scale-110 transition-transform duration-200">
-                    <Facebook className="w-5 h-5" style={{ color: locationData.theme.primary }} />
-                  </Button>
-                  <Button variant="ghost" size="sm" className="p-2 hover:scale-110 transition-transform duration-200">
-                    <Twitter className="w-5 h-5" style={{ color: locationData.theme.primary }} />
-                  </Button>
+              {locationData.socialMedia && (
+                <div className="pt-6 border-t border-gray-100">
+                  <p className="text-sm text-gray-600 mb-3">Síguenos en redes sociales:</p>
+                  <div className="flex gap-3">
+                    {locationData.socialMedia.instagram && (
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="p-2 hover:scale-110 transition-transform duration-200"
+                        onClick={() => window.open(locationData.socialMedia?.instagram, '_blank')}
+                      >
+                        <Instagram className="w-5 h-5" style={{ color: locationData.theme.primary }} />
+                      </Button>
+                    )}
+                    {locationData.socialMedia.facebook && (
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="p-2 hover:scale-110 transition-transform duration-200"
+                        onClick={() => window.open(locationData.socialMedia?.facebook, '_blank')}
+                      >
+                        <Facebook className="w-5 h-5" style={{ color: locationData.theme.primary }} />
+                      </Button>
+                    )}
+                    {locationData.socialMedia.twitter && (
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="p-2 hover:scale-110 transition-transform duration-200"
+                        onClick={() => window.open(locationData.socialMedia?.twitter, '_blank')}
+                      >
+                        <Twitter className="w-5 h-5" style={{ color: locationData.theme.primary }} />
+                      </Button>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -872,6 +746,15 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
       />
 
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} location={locationData} />
+
+      {/* WhatsApp Floating Button */}
+      <button
+        onClick={handleWhatsApp}
+        className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all z-50 hover:scale-110"
+        aria-label="Chat por WhatsApp"
+      >
+        <MessageCircle className="w-6 h-6" />
+      </button>
     </div>
   )
 }

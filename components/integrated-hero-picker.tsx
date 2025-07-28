@@ -1,8 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { MapPin, Loader2, Sparkles, Users, Coffee, Beer, Clock, Star, ChevronDown } from "lucide-react"
+import { MapPin, Loader2, Sparkles, Users, Coffee, Beer, Clock, ChevronDown } from "lucide-react"
 import { type LocationData, locations } from "@/lib/locations"
 
 interface IntegratedHeroPickerProps {
@@ -34,7 +35,7 @@ export function IntegratedHeroPicker({
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)
     }, 5000)
     return () => clearInterval(interval)
-  }, [])
+  }, [heroImages.length])
 
   const getLocationIcon = (concept: string) => {
     switch (concept) {
@@ -69,10 +70,12 @@ export function IntegratedHeroPicker({
     <div className="relative h-screen flex flex-col justify-center overflow-hidden">
       {/* Dynamic Background */}
       <div className="absolute inset-0 transition-all duration-700 ease-in-out">
-        <img
+        <Image
           src={backgroundImage || "/placeholder.svg"}
           alt="Ambiente del restaurante"
-          className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+          fill
+          className="object-cover transition-all duration-700 ease-in-out"
+          priority
         />
         <div 
           className="absolute inset-0 transition-all duration-700 ease-in-out"
@@ -179,8 +182,7 @@ export function IntegratedHeroPicker({
                       <span>{location.hours.weekdays.split(': ')[1]}</span>
                     </div>
                     <div className="flex items-center justify-center gap-1">
-                      <Star className="w-3 h-3 text-yellow-400" />
-                      <span>{location.socialProof.rating} ({location.socialProof.reviews})</span>
+                      <span>{location.socialProof.reviews} visitantes</span>
                     </div>
                   </div>
 

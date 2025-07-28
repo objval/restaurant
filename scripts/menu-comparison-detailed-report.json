@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2025-07-28T03:18:33.573Z",
+  "comparisons": {
+    "arbol": {
+      "source1": "menu-arbol.ts",
+      "source2": "menu_scraped.json",
+      "priceChanges": [],
+      "missingInSource1": [
+        {
+          "name": "Fajita vegetariana",
+          "price": 8900,
+          "category": "FAJITAS EL ÁRBOL"
+        },
+        {
+          "name": "Fajita Pollo crispy",
+          "price": 9500,
+          "category": "FAJITAS EL ÁRBOL"
+        },
+        {
+          "name": "Fajita Salmón Ahumado",
+          "price": 10200,
+          "category": "FAJITAS EL ÁRBOL"
+        }
+      ],
+      "missingInSource2": [],
+      "summary": {
+        "totalItemsIn1": 233,
+        "totalItemsIn2": 236,
+        "itemsWithPriceChanges": 0,
+        "itemsMissingIn1": 3,
+        "itemsMissingIn2": 0,
+        "averagePriceChange": 0
+      }
+    },
+    "capriccio": {
+      "source1": "menu-capriccio.ts",
+      "source2": "results(1).json",
+      "priceChanges": [],
+      "missingInSource1": [
+        {
+          "name": "Expresso Martini",
+          "price": 5000,
+          "category": "Cocteleria"
+        },
+        {
+          "name": "Negronni",
+          "price": 5000,
+          "category": "Cocteleria"
+        },
+        {
+          "name": "Gin Hendrick’s",
+          "price": 7990,
+          "category": "Destilados"
+        },
+        {
+          "name": "Viu Manent Noble Semillon Chardoney",
+          "price": 9990,
+          "category": "Vinos y Espumantes"
+        }
+      ],
+      "missingInSource2": [
+        {
+          "name": "Espresso Martini",
+          "price": 5000,
+          "category": "drinks"
+        },
+        {
+          "name": "Negroni",
+          "price": 5000,
+          "category": "drinks"
+        },
+        {
+          "name": "Gin Hendrik's",
+          "price": 7990,
+          "category": "spirits"
+        },
+        {
+          "name": "Viu Manent Noble Semillon Chardonnay",
+          "price": 9990,
+          "category": "wines"
+        }
+      ],
+      "summary": {
+        "totalItemsIn1": 38,
+        "totalItemsIn2": 38,
+        "itemsWithPriceChanges": 0,
+        "itemsMissingIn1": 4,
+        "itemsMissingIn2": 4,
+        "averagePriceChange": 0
+      }
+    }
+  }
+}

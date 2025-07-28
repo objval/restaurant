@@ -1,0 +1,54 @@
+{
+  "summary": {
+    "scrapedItemsCount": 236,
+    "typeScriptItemsCount": 233,
+    "priceDifferencesCount": 0,
+    "missingInTypeScriptCount": 3,
+    "missingInScrapedCount": 0,
+    "descriptionDifferencesCount": 3
+  },
+  "discrepancies": {
+    "priceDifferences": [],
+    "missingInTypeScript": [
+      {
+        "name": "Fajita Pollo crispy",
+        "category": "FAJITAS EL ÁRBOL",
+        "price": "$9.500",
+        "description": "Tortilla mexicana grande, pollo crispy, mix hojas verdes, maiz, palta hass, tomate, cebolla morada acompañado de papas a las finas hierbas con dos salsas de la casa."
+      },
+      {
+        "name": "Fajita Salmón Ahumado",
+        "category": "FAJITAS EL ÁRBOL",
+        "price": "$10.200",
+        "description": "Tortilla mexicana grande, salmón ahumado, mix hojas verdes, tomate, alcaparra, palta hass, cebolla morada acompañado de papas a las finas hierbas con dos salsas de la casa."
+      },
+      {
+        "name": "Fajita vegetariana",
+        "category": "FAJITAS EL ÁRBOL",
+        "price": "$8.900",
+        "description": "Tortilla mexicana grande, porotos negro, mix de hojas verdes, champiñones, maíz, tomate, palta hass acompañado de papas a las finas hierbas con dos salsas de la casa."
+      }
+    ],
+    "missingInScraped": [],
+    "descriptionDifferences": [
+      {
+        "name": "Guinness extra stout 473 ML",
+        "category": "CERVEZAS Y SHOP",
+        "scrapedDescription": "Cerveza premuim Irlanda lata 473ML extra stout\nGuinness",
+        "tsDescription": "Cerveza premuim Irlanda lata 473ML extra stout\\nGuinness"
+      },
+      {
+        "name": "Pastel de Jaiba 500 grs",
+        "category": "RECOMENDADO PARA HOY",
+        "scrapedDescription": "Pastel de jaiba grande",
+        "tsDescription": "Delicioso pastel de jaiba gratinado con queso mantecoso, preparado con la mejor jaiba fresca y nuestra receta tradicional"
+      },
+      {
+        "name": "Tomahawk de lomo vetado",
+        "category": "RECOMENDADO PARA HOY",
+        "scrapedDescription": "Tomahawk vetado de 700 grs, con suaves y jugosos tomates cherrys glaseados en toques de romero y ajo, vegetal asado de la estación, acompañado de papas a las finas hierbas, salsa de merkén y chimichurri que aporta mayor sabor ahumado a la carne.\nEl Maridaje perfecto para este corte de carne es de la Viña la Quirigua, Vino Pajo premier cru, del Valle de Cachapoal zona de Curicó, Cabernet Sauvignon.",
+        "tsDescription": "Tomahawk vetado de 700 grs, con suaves y jugosos tomates cherrys glaseados en toques de romero y ajo, vegetal asado de la estación, acompañado de papas a las finas hierbas, salsa de merkén y chimichurri que aporta mayor sabor ahumado a la carne. El Maridaje perfecto para este corte de carne es de la Viña la Quirigua, Vino Pajo premier cru, del Valle de Cachapoal zona de Curicó, Cabernet Sauvignon."
+      }
+    ]
+  }
+}
