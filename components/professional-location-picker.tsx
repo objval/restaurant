@@ -181,17 +181,17 @@ export function ProfessionalLocationPicker({
 
     return (
       <Card 
-        className={`location-card-glow ${getThemeClass(location.id)} group relative overflow-hidden transition-all duration-500 cursor-pointer ${
+        className={`location-card-glow ${getThemeClass(location.id)} group relative overflow-hidden transition-all duration-300 cursor-pointer ${
           isHovered ? 'transform scale-[1.02] shadow-2xl' : 'shadow-xl hover:shadow-2xl'
         } ${isLoading ? 'opacity-75' : ''}`}
         style={{ 
-          background: `linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))`,
-          borderWidth: '3px',
+          background: `rgba(255,255,255,0.9)`,
+          borderWidth: '2px',
           borderStyle: 'solid',
-          borderColor: isHovered ? `${location.theme.accent}` : `${location.theme.primary}60`,
+          borderColor: isHovered ? `${location.theme.accent}` : `${location.theme.primary}40`,
           boxShadow: isHovered 
-            ? `0 20px 40px ${location.theme.accent}30, 0 0 0 1px ${location.theme.accent}40, inset 0 0 0 1px ${location.theme.accent}20`
-            : `0 10px 30px ${location.theme.primary}20, 0 0 0 1px ${location.theme.primary}30`
+            ? `0 20px 40px ${location.theme.accent}20, 0 0 0 1px ${location.theme.accent}30`
+            : `0 10px 30px ${location.theme.primary}15, 0 0 0 1px ${location.theme.primary}20`
         }}
         onMouseEnter={() => setHoveredLocation(location.id)}
         onMouseLeave={() => setHoveredLocation(null)}
@@ -199,9 +199,9 @@ export function ProfessionalLocationPicker({
       >
         {/* Glass morphism background with stronger theme tint */}
         <div 
-          className="absolute inset-0 backdrop-blur-xl border-0"
+          className="absolute inset-0 border-0 pointer-events-none"
           style={{
-            background: `linear-gradient(135deg, ${location.theme.primary}12, ${location.theme.accent}08)`,
+            background: `linear-gradient(135deg, ${location.theme.primary}05, ${location.theme.accent}03)`,
           }}
         />
         
@@ -241,7 +241,7 @@ export function ProfessionalLocationPicker({
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
               <div 
-                className={`p-3 rounded-full backdrop-blur-sm border-2 transition-all duration-500 ${
+                className={`p-3 rounded-full border-2 transition-all duration-300 ${
                   isHovered ? 'scale-105 shadow-lg' : 'scale-100'
                 }`}
                 style={{ 
@@ -254,7 +254,7 @@ export function ProfessionalLocationPicker({
               </div>
               <Badge 
                 variant="secondary" 
-                className="backdrop-blur-md bg-white/30 text-white border-white/40 shadow-lg"
+                className="bg-white/30 text-white border-white/40 shadow-lg"
               >
                 {location.concept}
               </Badge>
@@ -416,7 +416,7 @@ export function ProfessionalLocationPicker({
           </div>
         ))}
         {/* Enhanced Mica Effect Overlay - More opaque */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
       </div>
