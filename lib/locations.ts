@@ -165,28 +165,22 @@ export const locations: LocationData[] = [
     },
     promotions: [
       {
-        title: "2X EN TRAGOS SELECCIONADOS",
-        subtitle: "Descuento en tragos seleccionados",
-        schedule: "Todos los días",
+        title: "30% DESCUENTO",
+        subtitle: "En pastas frescas",
+        schedule: "Todos los sábados",
         color: "#2D5016",
       },
       {
-        title: "MENÚ INFANTIL",
-        subtitle: "Gratis con adulto",
-        schedule: "Todos los días",
+        title: "2X EN CÓCTELES",
+        subtitle: "Promoción especial",
+        schedule: "Lunes a Viernes | 16:00 a 20:00hrs",
         color: "#D4AF37",
       },
       {
-        title: "CUMPLEAÑOS",
-        subtitle: "Torta gratis",
-        schedule: "Reservas especiales",
+        title: "MENÚ TRES TIEMPOS",
+        subtitle: "Entrada, plato principal y postre",
+        schedule: "Todos los días",
         color: "#F4E04D",
-      },
-      {
-        title: "ALMUERZO FAMILIAR",
-        subtitle: "Menú especial de mediodía",
-        schedule: "Lunes a Viernes | 12:00 a 16:00hrs",
-        color: "#8B4513",
       },
     ],
   },
@@ -310,12 +304,12 @@ export const locations: LocationData[] = [
     path: "/capriccio",
     coordinates: { lat: -39.0098, lng: -72.6398 },
     theme: {
-      primary: "#1B4B5A", // Dark teal
-      secondary: "#4A90A4", // Steel blue
-      accent: "#FF7F50", // Coral
-      background: "#F8FDFF", // Alice blue
-      text: "#0F2027", // Very dark blue
-      overlay: "rgba(27, 75, 90, 0.85)",
+      primary: "#B8860B", // Dark golden rod
+      secondary: "#FFD700", // Gold
+      accent: "#FFA500", // Orange gold
+      background: "#FFFAF0", // Floral white with warm tint
+      text: "#3D2914", // Dark brown
+      overlay: "rgba(184, 134, 11, 0.85)",
     },
     images: {
       hero: "/locations/capriccio.jpg",
@@ -357,14 +351,14 @@ export const locations: LocationData[] = [
         name: "Tabla de Fuego y Brasa",
         description: "Costillar, pollo al rostro y cerdo sobre papas rústicas con chimichurri casero - Ideal para 4 personas",
         price: "$28.990",
-        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=400&fit=crop",
+        image: "/capriccio/fuego.jpg",
       },
       {
         id: "ceviche-pacifico",
         name: "Ceviche del Pacífico",
         description: "Cubos de atún fresco marinados al estilo leche de tigre con cítricos y chips de plátano verde",
         price: "$16.990",
-        image: "https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=500&h=400&fit=crop",
+        image: "/capriccio/ceviche.jpg",
       },
       {
         id: "bruschetta-picante-golfo",
