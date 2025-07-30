@@ -127,18 +127,18 @@ export const locations: LocationData[] = [
     features: ["Sillas para Niños", "Área de Juegos", "Menú Familiar", "Eventos Privados"],
     menuHighlights: [
       {
-        id: "tomahawk-lomo-vetado",
-        name: "Tomahawk de lomo vetado",
-        description: "Tomahawk vetado de 700 grs, con tomates cherrys glaseados, papas a las finas hierbas, salsa de merkén y chimichurri",
-        price: "$24.500",
-        image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=400&fit=crop", // Corrected: Tomahawk steak image
+        id: "crudo",
+        name: "Crudo",
+        description: "Suave corte de res, cebolla morada, pepinillo y ají verde en brunoise, cilantro, gajos de limón, tostadas y salsa de sour cream de la casa.",
+        price: "$11.900",
+        image: "/arbol/crudo.jpg",
       },
       {
-        id: "anticuchos-parrilleros",
-        name: "Anticuchos Parrilleros",
-        description: "Anticuchos grillados de res, cerdo y longaniza Llanquihue de 1000 grs, con tomates cherry glaseados y chimichurri",
-        price: "$26.500",
-        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=400&fit=crop",
+        id: "ceviche-salmon",
+        name: "Ceviche de Salmón",
+        description: "Salmón, cebolla morada, manzanas verdes, paltas, pimentón, semilla de sésamo, cilantro, jengibre, sal, limón merquén, leche de tigre",
+        price: "$6.900",
+        image: "/arbol/ceviche.jpg",
       },
       {
         id: "pastel-jaiba-500",

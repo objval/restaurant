@@ -3704,10 +3704,10 @@ export const menu1898: MenuItem[] = [
     "prepTime": "10-12 min"
   },
   {
-    "id": "promo-completo-schop-heineken-o-jugo",
-    "name": "Promo completo+schop heineken o jugo",
-    "description": "Disponible de Lunes a Jueves hasta las 21:00 hrs",
-    "price": 6900,
+    "id": "promo-completo-schop-heineken",
+    "name": "Promo completo + schop heineken",
+    "description": "Completo + schop heineken por $6.990",
+    "price": 6990,
     "category": "sandwiches",
     "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
     "ingredients": [

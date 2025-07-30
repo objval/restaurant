@@ -142,7 +142,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   }),
                 }}
               >
-                {locationData.name.includes(" ") ? locationData.name.split(" ")[1] || locationData.name : locationData.name}
+                {locationData.name}
               </h1>
               <p
                 className="text-2xl md:text-3xl text-white font-light tracking-wide animate-fade-in"
