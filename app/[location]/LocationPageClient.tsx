@@ -333,7 +333,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {locationData.menuHighlights.map((item, index) => (
               <Link key={item.id} href={`/${locationData.id}/menu`}>
-                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-700 group hover:-translate-y-2 cursor-pointer animate-fade-in h-[500px] flex flex-col" style={{ animationDelay: `${index * 0.1}s` }}>
+                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-700 group hover:-translate-y-2 cursor-pointer animate-fade-in min-h-[500px] flex flex-col" style={{ animationDelay: `${index * 0.1}s` }}>
                   <div className="relative h-64 overflow-hidden flex-shrink-0">
                     <Image
                       src={item.image || "/placeholder.svg"}
@@ -378,19 +378,19 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   </div>
 
                   <CardContent className="p-6 flex-1 flex flex-col">
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="font-bold text-xl mb-2 group-hover:text-opacity-80 transition-colors line-clamp-1">
+                    <div className="flex items-start justify-between gap-2 mb-3">
+                      <h3 className="font-bold text-xl mb-2 group-hover:text-opacity-80 transition-colors line-clamp-1 flex-1">
                         {item.name}
                       </h3>
                       {/* Chef's choice badge */}
                       {index === 1 && (
-                        <Badge variant="outline" className="text-xs font-semibold" style={{ borderColor: locationData.theme.accent, color: locationData.theme.accent, backgroundColor: `${locationData.theme.accent}10` }}>
+                        <Badge variant="outline" className="text-xs font-semibold flex-shrink-0 whitespace-nowrap" style={{ borderColor: locationData.theme.accent, color: locationData.theme.accent, backgroundColor: `${locationData.theme.accent}10` }}>
                           Chef&apos;s Choice
                         </Badge>
                       )}
                     </div>
                     
-                    <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3 flex-1">{item.description}</p>
+                    <p className="text-gray-600 leading-relaxed mb-4 line-clamp-2 flex-1">{item.description}</p>
 
                     <div className="flex items-center justify-between mt-auto">
                       <div className="text-2xl font-bold" style={{ color: locationData.theme.primary }}>
@@ -419,7 +419,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                         {['Fresco', 'Orgánico', 'Local'].map((tag, tagIndex) => (
                           <span 
                             key={tagIndex}
-                            className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors duration-200"
+                            className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors duration-200 flex-shrink-0"
                           >
                             {tag}
                           </span>
