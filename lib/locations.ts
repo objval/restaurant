@@ -365,7 +365,7 @@ export const locations: LocationData[] = [
         name: "Bruschetta Picante del Golfo",
         description: "Camarones ecuatorianos salteados con ají sobre patacón de plátano verde",
         price: "$9.990",
-        image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=500&h=400&fit=crop",
+        image: "/capriccio/bruschetta.jpg",
       },
     ],
     stats: {
