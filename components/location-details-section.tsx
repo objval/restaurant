@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Clock, MapPin, Phone, Award, Share2, Navigation } from "lucide-react"
+import { Clock, MapPin, Phone, Share2, Navigation } from "lucide-react"
 import { type LocationData } from "@/lib/locations"
 
 interface LocationDetailsSectionProps {
