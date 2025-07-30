@@ -380,7 +380,7 @@ export function ProfessionalLocationPicker({
         {heroImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-[3000ms] ease-in-out ${
+            className={`absolute inset-0 transition-all duration-[3s] ease-in-out ${
               index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
             }`}
           >

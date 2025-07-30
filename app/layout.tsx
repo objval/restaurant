@@ -139,9 +139,27 @@ export default function RootLayout({
         <meta name="geo.position" content="-38.985779;-72.639160" />
         <meta name="ICBM" content="-38.985779, -72.639160" />
 
+        {/* Error handler for JSON-LD parsing issues */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                window.addEventListener('error', function(e) {
+                  if (e.message && e.message.includes('@context') && e.message.includes('toLowerCase')) {
+                    e.preventDefault();
+                    console.warn('JSON-LD parsing error caught and prevented');
+                    return true;
+                  }
+                });
+              }
+            `,
+          }}
+        />
+        
         {/* Business Schema */}
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([
               {

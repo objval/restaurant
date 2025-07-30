@@ -93,7 +93,7 @@ export const locations: LocationData[] = [
     images: {
       hero: "/arbol/1.jpg",
       interior: "/arbol/2.jpg",
-      signature: "/arbol/3.jpg",
+      signature: "/arbol/ceviche.jpg",
       ambiance: "/arbol/4.jpg",
       gallery: [
         "/arbol/1.jpg",
@@ -201,7 +201,7 @@ export const locations: LocationData[] = [
     images: {
       hero: "/locations/1898.jpg",
       interior: "/locations/1898.jpg",
-      signature: "/locations/1898.jpg",
+      signature: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
       ambiance: "/locations/1898.jpg",
       gallery: [
         "/1898/1.jpg",
@@ -272,8 +272,8 @@ export const locations: LocationData[] = [
     },
     promotions: [
       {
-        title: "PROMOCIONES 2X",
-        subtitle: "2 tragos con 20% descuento",
+        title: "COMBO HEINEKEN",
+        subtitle: "Heineken + Completo italiano por $6.990",
         schedule: "Martes a Viernes | 16:00 a 21:00hrs",
         color: "#8B4513",
       },
@@ -282,12 +282,6 @@ export const locations: LocationData[] = [
         subtitle: "Shot de tequila gratis por participar",
         schedule: "Viernes y Sábados | Desde 20:30hrs",
         color: "#FF6B35",
-      },
-      {
-        title: "HAPPY HOUR HEINEKEN",
-        subtitle: "2x1 en shop Heineken",
-        schedule: "Martes a Viernes | 16:00 a 21:00hrs",
-        color: "#00A652",
       },
       {
         title: "TRAGOS ESPECIALES 2X",

@@ -48,12 +48,7 @@ export function LocationDetailsSection({
                   <div 
                     className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
                   />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <div className="flex items-center gap-2">
-                      <Award className="w-4 h-4 text-yellow-400" />
-                      <span className="text-sm font-semibold">{location.stats.awards} premios</span>
-                    </div>
-                  </div>
+                
                 </div>
               </div>
 
