@@ -512,12 +512,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
               </div>
 
               {/* Floating awards badge */}
-              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-2 shadow-lg flex items-center gap-2 group-hover:scale-110 transition-transform duration-300">
-                <Award className="w-4 h-4" style={{ color: locationData.theme.accent }} />
-                <span className="text-sm font-bold" style={{ color: locationData.theme.primary }}>
-                  {locationData.stats.awards} Premios
-                </span>
-              </div>
+            
             </div>
 
             <div className="space-y-6">
@@ -529,10 +524,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   UN POCO DE NOSOTROS
                 </h2>
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">{locationData.longDescription}</p>
-                <p className="text-gray-600 leading-relaxed">
-                  Con más de {locationData.stats.yearsOpen} años de experiencia, nos hemos convertido en el lugar preferido de 
-                  {locationData.socialProof.reviews.toLocaleString()} familias que confían en nosotros para sus momentos especiales.
-                </p>
               </div>
 
               {/* Enhanced info cards */}

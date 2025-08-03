@@ -28,6 +28,78 @@ export function MobileLocationPicker({ onSelectLocationAction, onUseGeolocationA
     return Icon ? <Icon className="w-3 h-3" /> : null
   }
 
+  // Get current Chilean time and check if open
+  const getChileanTimeAndStatus = (location: LocationData) => {
+    try {
+      // Get Chilean time (UTC-3 in summer, UTC-4 in winter)
+      const now = new Date()
+      const chileanTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Santiago"}))
+      const hours = chileanTime.getHours()
+      const minutes = chileanTime.getMinutes()
+      const currentTimeInMinutes = hours * 60 + minutes
+      const dayOfWeek = chileanTime.getDay()
+      
+      const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+      const todayName = days[dayOfWeek] as keyof typeof location.hours
+      
+      // Get hours for the specific location
+      let openTime = 0
+      let closeTime = 0
+      let isOpen = false
+      let todayHours = ''
+      
+      // Get hours from the location data
+      todayHours = location.hours[todayName] || ''
+      
+      if (todayName === 'monday' || todayHours === 'CERRADO') {
+        return { isOpen: false, displayText: 'CERRADO', todayHours: 'CERRADO' }
+      }
+      
+      // Parse opening hours for all restaurants
+      const hoursParts = todayHours.split(' - ')
+      if (hoursParts.length === 2) {
+        const [openHour, openMin] = hoursParts[0].split(':').map(Number)
+        const [closeHour, closeMin] = hoursParts[1].split(':').map(Number)
+        openTime = openHour * 60 + openMin
+        closeTime = closeHour * 60 + closeMin
+        
+        // Handle times after midnight
+        if (closeTime < openTime) {
+          closeTime += 24 * 60
+        }
+        
+        // Check if currently open
+        let adjustedCurrentTime = currentTimeInMinutes
+        if (hours < 4) { // After midnight
+          adjustedCurrentTime += 24 * 60
+        }
+        
+        isOpen = adjustedCurrentTime >= openTime && adjustedCurrentTime <= closeTime
+      }
+      
+      if (isOpen) {
+        return {
+          isOpen: true,
+          displayText: 'Abierto',
+          todayHours
+        }
+      } else {
+        return {
+          isOpen: false,
+          displayText: 'Cerrado',
+          todayHours
+        }
+      }
+    } catch (error) {
+      console.error(`Error getting time status for ${location.name}:`, error)
+      return {
+        isOpen: false,
+        displayText: 'Cerrado',
+        todayHours: ''
+      }
+    }
+  }
+
   return (
     <div className="h-screen flex flex-col relative overflow-hidden bg-gradient-to-br from-stone-50 via-orange-50 to-amber-50">
       {/* Animated Background */}
@@ -136,10 +208,21 @@ export function MobileLocationPicker({ onSelectLocationAction, onUseGeolocationA
                           {atm}
                         </span>
                       ))}
-                      <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-green-500/25 backdrop-blur-sm">
-                        <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                        <span className="text-[10px] font-semibold text-green-300">Abierto</span>
-                      </div>
+                      {(() => {
+                        const { isOpen, displayText } = getChileanTimeAndStatus(location)
+                        return (
+                          <div className={`flex items-center gap-1 px-2 py-1 rounded-lg backdrop-blur-sm ${
+                            isOpen ? 'bg-green-500/25' : 'bg-red-500/25'
+                          }`}>
+                            <div className={`w-1.5 h-1.5 rounded-full ${
+                              isOpen ? 'bg-green-400 animate-pulse' : 'bg-red-400'
+                            }`} />
+                            <span className={`text-[10px] font-semibold ${
+                              isOpen ? 'text-green-300' : 'text-red-300'
+                            }`}>{displayText}</span>
+                          </div>
+                        )
+                      })()}
                     </div>
                     
                     {/* Dishes and Specialties - combined row */}
