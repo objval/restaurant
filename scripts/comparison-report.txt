@@ -1,0 +1,519 @@
+MENU COMPARISON REPORT
+Generated: 2025-08-03T19:58:21.341Z
+======================================
+
+📍 LOCATION: 1898
+========================================
+Local items: 206
+Database items: 5
+
+⚠️  ISSUES FOUND:
+
+❌ Missing in database (201):
+   - shop-heineken: Shop Heineken
+   - shop-kunstman-torobayo: Shop Kunstman Torobayo
+   - chelada: Chelada
+   - michelada: michelada
+   - shop-ruta-s70-ambar: Shop ruta S70 Ambar
+   - cuello-negro-ambar: Cuello negro Ambar
+   - 2x-shop-heineken: 2X Shop heineken
+   - 2x-shop-ruta-s70: 2X shop ruta s70
+   - austral-calafate: Austral Calafate
+   - pisco-sour-frutales: Pisco sour frutales
+   - martini-dry: Martini dry
+   - pina-colada: Piña colada
+   - mojito-clasico: Mojito clásico
+   - mojito-frutal: Mojito frutal
+   - mojito-cerveza: Mojito cerveza
+   - tequila-margarita: Tequila margarita
+   - tequila-margarita-frutal: Tequila margarita frutal
+   - ruso-blanco: Ruso blanco
+   - vaina: Vaina
+   - caipirina: Caipiriña
+   - old-fashion: old fashion
+   - ramazzotti: ramazzotti
+   - aperol: aperol
+   - cosmopolitan: cosmopolitan
+   - clavo-oxidado: clavo oxidado
+   - mojito-ramazzotti: Mojito ramazzotti
+   - moscow-mule: Moscow mule
+   - negroni: Negroni
+   - pisco-sour-ramazzotti: Pisco sour Ramazzotti
+   - primavera: Primavera
+   - amareto-sour: Amareto sour
+   - daiquiri: Daiquiri
+   - god-father: god father
+   - laguna-azul: Laguna azul
+   - mega-mojito: Mega mojito
+   - mega-mojito-frutal: Mega Mojito Frutal
+   - mojito-blue: Mojito blue
+   - mojito-jagger: Mojito Jagger
+   - chardonay-sour: Chardonay sour
+   - jaggermeister: jaggermeister
+   - tom-collins: Tom Collins
+   - whiskey-sour: Whiskey sour
+   - pisco-sour-catedral: Pisco sour Catedral
+   - ruso-negro: Ruso negro
+   - orgasmo: Orgasmo
+   - 2x-pisco-sour: 2x pisco sour
+   - 2x-caipirinha: 2x caipirinha
+   - 2x-ramazzotti: 2x Ramazzotti
+   - 2x-mojito-frutal: 2x Mojito frutal
+   - 2x-ruso-blanco: 2X Ruso blanco
+   - pisco-sour-peruano: Pisco sour peruano
+   - 2x-tequila-margarita: 2X Tequila margarita
+   - fernet-branca: Fernet Branca
+   - shot-manzanilla: Shot manzanilla
+   - copa-de-vino-castillo-molina: copa de vino Castillo Molina
+   - shot-tequila: Shot Tequila
+   - shot-jose-cuervo-especial: Shot Jose cuervo especial
+   - shot-jose-cuervo-reposado: Shot Jose Cuervo Reposado
+   - crema-de-whisky: Crema de whisky
+   - tanqueray: Tanqueray
+   - campari: Campari
+   - botella-vino-alto: Botella vino alto
+   - sangria: Sangría
+   - promo-tequila: Promo tequila
+   - propeller: Propeller
+   - boolton: Boolton
+   - beefeater: Beefeater
+   - gin-hendricks: Gin Hendricks
+   - tanqueray-berries: Tanqueray berries
+   - mistral-35: mistral 35º
+   - gobernador: Gobernador
+   - mistral-nobel-barrica-40: Mistral nobel barrica 40º
+   - alto-del-carmen: Alto del carmen
+   - horcon-quemado: Horcón quemado
+   - pisco-bauza: pisco bauza
+   - el-gobernador: El Gobernador
+   - mistral-nobel: Mistral nobel
+   - 2x-pisco-mistral-35: 2X pisco mistral 35
+   - 2x-pisco-alto-del-carmen: 2X Pisco alto del carmen
+   - ron-habana-reserva-7-anos: Ron habana reserva 7 años
+   - havana-reserva: Havana Reserva
+   - havana-club: Havana Club
+   - absolut: Absolut
+   - eristoff: Eristoff
+   - stolichnaya: Stolichnaya
+   - ballantine-s: Ballantine's
+   - johnny-red-label: Johnny red label
+   - johnny-black-label: Johnny Black label
+   - jack-daniels-n-7: Jack Daniels Nº7
+   - chivas-regal-12-anos: Chivas Regal 12 años
+   - fireball: Fireball
+   - johnnie-walker-game-of-thrones: Johnnie walker game of thrones
+   - johnnie-blonde: Johnnie Blonde
+   - coca-cola: coca cola
+   - coca-cola-zero: coca cola zero
+   - fanta: fanta
+   - sprite: sprite
+   - schweppes-ginger-ale: schweppes ginger ale
+   - schweppes-tonica: schweppes tonica
+   - limonada-tradicional: Limonada tradicional
+   - limonada-menta-jengibre: Limonada menta jengibre
+   - jugo-natural-frambuesa: jugo natural frambuesa
+   - jugo-natural-de-pina: jugo natural de piña
+   - jugo-natural-mango: jugo natural mango
+   - jugo-natural-maracuya: jugo natural maracuya
+   - agua-mineral-con-gas: agua mineral con gas
+   - agua-mineral-sin-gas: agua mineral sin gas
+   - red-bull: Red Bull
+   - milkshake: Milkshake
+   - mini-coca-220-cc: mini coca 220 cc
+   - crush: Crush
+   - pap: Pap
+   - naranja-platano: Naranja Platano
+   - red-bull-yellow: Red Bull Yellow
+   - mini-sprite: mini sprite
+   - mini-ginger-ale: mini ginger ale
+   - mini-tonica: mini tonica
+   - mini-pepsi: mini pepsi
+   - mini-coca-zero: mini coca zero
+   - mini-sprite-zero: mini sprite zero
+   - mini-tonica-zero: mini tonica zero
+   - pepsi: Pepsi
+   - limonsoda: Limonsoda
+   - cafe-americano: Café americano
+   - cafe-espresso: Café espresso
+   - cafe-espresso-doble: Café espresso doble
+   - cafe-helado: Café helado
+   - cafe-irlandes: Café irlandes
+   - cafe-nescafe: Café nescafé
+   - capuccino: Capuccino
+   - capuccino-doble: Capuccino doble
+   - chocolate-caliente: Chocolate caliente
+   - chocolate-nevado: chocolate nevado
+   - mokaccino: mokaccino
+   - te-variedades: Té variedades
+   - te: Te
+   - capuccino-vainilla: Capuccino vainilla
+   - capuccino-vainilla-doble: capuccino vainilla doble
+   - cortado: Cortado
+   - cafe-americano-doble: Café americano doble
+   - costillar-de-cerdo-a-la-chilena: Costillar de cerdo a la chilena
+   - pollo-grillado-al-limon-salsa-citrica: Pollo grillado al limón (salsa cítrica)
+   - merluza-crocante: Merluza crocante
+   - salmon-grillado-300-grs-c-guarnicion-a-eleccion: Salmón grillado (300 grs) c/ guarnición a elección.
+   - lomo-3-pimientas: Lomo 3 pimientas
+   - lomo-a-lo-pobre: Lomo a lo pobre
+   - lomo-grillado: Lomo grillado
+   - carne-braseada-coccion-lenta: Carne braseada (cocción lenta)
+   - sopa-del-dia: SOPA DEL DÍA
+   - pizza: Pizza
+   - pizza-individual-1898: Pizza individual 1898
+   - pizza-1898: Pizza 1898
+   - extra-queso-pizza: Extra queso pizza
+   - agregado-bbq: Agregado BBQ
+   - agregado-tocino-pizza: Agregado tocino pizza
+   - churrasco-1898: Churrasco 1898
+   - burguer-chada: Burguer chada
+   - el-puraquina: El puraquina
+   - churrasco-italiano: Churrasco italiano
+   - churrasco-chacarero: Churrasco chacarero
+   - barros-luco: Barros Luco
+   - hamburguesa-americana: Hamburguesa americana
+   - cheese-burger: Cheese burger
+   - promo-sandwich-mas-shop-ruta-s70: Promo sandwich más shop ruta s70
+   - champinones-agregado: Champiñones agregado
+   - agregado-tomate-cebolla-lechuga: Agregado, Tomate, cebolla, lechuga.
+   - agregado-palta: Agregado palta
+   - cheese-bacon: Cheese & Bacon
+   - porcion-de-papas-fritas: Porcion de papas fritas
+   - salchipapas: Salchipapas
+   - fish-chips: Fish & Chips
+   - tabla-beer-bar: TABLA BEER BAR
+   - chorrillana-1898: Chorrillana 1898
+   - papas-bravas-para-2: Papas bravas para 2
+   - papas-bravas-para-4: papas bravas para 4
+   - ceviche-1898-para-2: Ceviche 1898 para 2
+   - tabla-tradicional: Tabla tradicional
+   - tabla-tradicional-o-chorrillana-para-2: Tabla tradicional o chorrillana para 2
+   - empanada: Empanada
+   - empanada-de-mechada: Empanada de mechada
+   - cesar-pollo: Cesar pollo
+   - cesar-camaron: Cesar camarón
+   - ensalada: Ensalada
+   - helado-copa: helado copa
+   - helado-copa-triple: Helado copa Triple
+   - brownie-con-helado: Brownie con helado
+   - completo-italiano: completo italiano
+   - completo-americano: completo americano
+   - promo-completo-schop-heineken: Promo completo + schop heineken
+   - crepes-relleno-con-manjar-nueces: Crepes relleno con manjar, nueces
+   - postre: Postre
+   - promo-2x-shop-heineken: 2X Shop heineken
+   - promo-2x-shop-ruta-s70: 2X shop ruta s70
+   - promo-2x-pisco-sour: 2x pisco sour
+   - promo-2x-caipirinha: 2x caipirinha
+   - promo-2x-ramazzotti: 2x Ramazzotti
+   - promo-2x-mojito-frutal: 2x Mojito frutal
+   - promo-2x-ruso-blanco: 2X Ruso blanco
+   - promo-2x-tequila-margarita: 2X Tequila margarita
+   - promo-2x-pisco-mistral-35: 2X pisco mistral 35
+   - promo-2x-pisco-alto-del-carmen: 2X Pisco alto del carmen
+
+📍 LOCATION: ARBOL
+========================================
+Local items: 239
+Database items: 2
+
+⚠️  ISSUES FOUND:
+
+❌ Missing in database (239):
+   - tomahawk-lomo-vetado: Tomahawk de lomo vetado
+   - anticuchos-parrilleros: Anticuchos Parrilleros
+   - pastel-jaiba-500: Pastel de Jaiba 500 grs
+   - ravioles-salmon: Ravioles relleno Salmón
+   - crudo: Crudo
+   - ramazzotti-violeta: Ramazzotti violeta
+   - caipirina: Caipiriña
+   - tetera-compartir: Tetera para compartir
+   - tetera-pequena: Tetera pequeña
+   - te: Té
+   - cafe-tradicional: Café tradicional
+   - expresso: Expresso
+   - expresso-doble: Expresso doble
+   - americano: Americano
+   - ristretto: Ristretto
+   - mocaccino: Mocaccino
+   - cafe-irlandes: Café Irlandés
+   - capuccino: Capuccino
+   - cortado: Cortado
+   - chocolate-caliente: Chocolate caliente
+   - chocolate-nevado: Chocolate nevado
+   - cafe-helado: Café helado
+   - milkshake: Milkshake
+   - nutella-coffee: Nutella Coffe
+   - infusion-menta-jengibre: Infusión menta jengibre
+   - cafe-late: Café Late
+   - afogato: Afogato
+   - caja-te-infusiones: Caja Té Infusiones Variedad
+   - lavazza-sachet: Lavazza Sachet
+   - jugo-frambuesa: Jugo Frambuesa
+   - limonada: Limonada
+   - limonada-menta-jengibre: Limonada menta jengibre
+   - agua-mineral-gas: Agua mineral c/gas
+   - red-bull: Red Bull
+   - crush: Crush
+   - sprite: Sprite
+   - ginger-ale: Ginger Ale
+   - jugo-mango: Jugo Mango
+   - jugo-pina: Jugo Piña
+   - coca-cola: Coca Cola
+   - coca-zero: Coca Zero
+   - agua-tonica: Agua tónica
+   - agua-mineral-sin-gas: Agua mineral s/gas
+   - coca-cola-220: Coca-cola 220 cc
+   - coca-zero-220: Coca zero 220 cc
+   - sprite-220: Sprite 220 cc
+   - pepsi-220: Pepsi 220 cc
+   - limonada-frambuesa: Limonada Frambuesa
+   - jugo-frutilla: Jugo de frutilla
+   - jugo-berries: Jugo de Berries
+   - sprite-cero: Sprite Cero
+   - manantial: Manantial
+   - cordillerano: Cordillerano
+   - ginger-ale-220: Ginger Ale 220cc
+   - tonica-220: Tonica 220cc
+   - jardin-el-arbol: Jardín el Árbol
+   - pastel: Pastel
+   - tiramisu: Tiramisú
+   - copa-helado-infantil: Copa de Helado Infantil
+   - crepes-suzette: Crêpes suzette
+   - panqueques-celestinos: Panqueques Celestinos
+   - copa-helado-3-sabores: Copa de Helado 3 sabores
+   - leche-asada: Leche asada
+   - volcan-chocolate: Volcán de chocolate
+   - macarons-unidad: Macarons Unidad
+   - macarons-variedad: Macarons Variedad
+   - galletas-brownie-100: Galletas de Brownie 100 grms
+   - galletas-brownie-200: Galletas de Brownie 200 grms
+   - cheesecake-oreo: Cheesecake Oreo
+   - brownie-helado: Brownie con Helado
+   - oferta-capuccino-torta: OFERTA en horario de 16:00 a 19:00 hrs
+   - desayuno-continental: Desayuno continental
+   - barros-jarpa-combo: Barros jarpa + té o café lavazza
+   - tostadas-palta-combo: Tostadas con palta + te o cafe
+   - huevos-revueltos-queso: Huevos revueltos con queso
+   - huevos-revueltos-tocino: Huevos revueltos con tocino
+   - selladito-doble-queso: Selladito doble queso
+   - selladito-barros-jarpa: Selladito barro jarpa
+   - tostadas-palta: Tostadas con palta
+   - omelette-tradicional: Omelette tradicional
+   - crema-sopa-dia: Crema o Sopa del día
+   - camarones-ajillo-pil-pil: Camarones al Ajillo o al Pil Pil
+   - pastel-jaiba-250: Pastel de Jaiba 250 grs
+   - empanaditas-queso: 6 empanaditas fritas Queso cóctel
+   - empanaditas-camaron-queso: 6 empanaditas fritas Camarón-Queso cóctel
+   - ceviche-salmon: Ceviche de Salmón
+   - ceviche-compartir-salmon: Ceviche para Compartir Salmón
+   - ceviche-compartir-camaron-salmon: Ceviche para Compartir Camarón Salmón
+   - ceviche-champinon-individual: Ceviche champiñon individual
+   - plateada-braseada: Plateada braseada con pastelera de choclo
+   - ravioles-pollo: Ravioles relleno Pollo
+   - salmon-gratinado: Salmón gratinado
+   - risotto-di-mare: Risotto Di Mare
+   - osobuco-braseado: Osobuco Braseado
+   - lasagna-bolonesa: Lasagna a la Boloñesa
+   - fetuccinis: Fetuccinis
+   - lomo-premium-res: Lomo premium de Res
+   - suprema-ave-peruana: Suprema de ave con salsa peruana
+   - salmon-plancha: Salmón
+   - chuleta-kassler: Chuleta Kassler ahumada
+   - lomo-res-pobre: Lomo premium de Res a lo pobre
+   - no-lo-se: No lo sé
+   - me-da-igual: Me da igual
+   - hamburguesa-infantil: Hamburguesa Infantil
+   - plato-rio-tolten: Plato Río Toltén
+   - ensalada-cesar: Ensalada César
+   - plato-vegetariano: Plato Vegetariano
+   - ensalada-casa: Ensalada de la Casa
+   - sorrentinos-pesto: Sorrentinos salsa pesto o champiñones
+   - ceviche-champinon-compartir: Ceviche Champiñon compartir
+   - ensalada-cesar-camaron: Ensalada Cesar Camarón
+   - hamburguesa-golosa: Hamburguesa Golosa
+   - hamburguesa-arbol: Hamburguesa El Árbol
+   - barros-luco: Barros Luco
+   - hamburguesa-italiana: Hamburguesa Italiana
+   - sandwich-italiano: Sándwich Italiano tradicional
+   - trio-carnes-quesos: Trio de carnes con quesos
+   - tabla-grande-pichanga: Tabla grande Pichanga
+   - tabla-pequena-pichanga: Tabla pequeña Pichanga
+   - papas-bravas: Papas Bravas c salsa picante
+   - porcion-papas-fritas: Porción papas fritas
+   - tabla-mar-tierra: Tabla mar y tierra
+   - pizza-camaron: Pizza de Camarón
+   - pizza-todas-carnes: Pizza Todas las carnes
+   - pizza-salame: Pizza Salame
+   - pizza-vegetales: Pizza de Vegetales
+   - pizza-pollo-bacon: Pizza de Pollo y Bacon
+   - gran-torobayo: Gran Torobayo 500cc
+   - kunstmann-torobayo: Kunstmann Torobayo individual
+   - kunstmann-sin-filtrar: kunstmann sin filtrar
+   - guinness-extra-stout: Guinness extra stout 473 ML
+   - corona-individual: Corona individual
+   - heineken-individual: Heineken individual
+   - michelada: Michelada
+   - chelada: Chelada
+   - papas-bravas-shop: Papas bravas + 2 shop ruta S-70
+   - shop-heineken: Shop Heineken 500cc
+   - cuello-negro-ambar: Cuello Negro Ambar 473cc
+   - cerveza-sin-alcohol: Cerveza sin alcohol
+   - royal-sin-alcohol: Royal sin alcohol
+   - royal-individual: Royal Individual.
+   - cuello-negro-ipa: Cuello Negro IPA 473cc
+   - cuello-negro-stout: Cuello Negro Stout 473cc
+   - pisco-sour-catedral: Pisco sour catedral
+   - pisco-sour-clasico: Pisco Sour clásico
+   - pisco-sour-frutal: Pisco Sour Frutal
+   - amaretto-sour: Amaretto sour
+   - whisky-sour: Whisky sour
+   - jerez-sour: Jerez sour
+   - mojito-clasico: Mojito clásico
+   - mojito-frutal: Mojito frutal
+   - mojito-cerveza: Mojito cerveza
+   - mojito-jagger: Mojito jagger
+   - moscow-mule: Moscow mule
+   - tequila-margarita: Tequila margarita
+   - tequila-margarita-frutal: Tequila margarita frutal
+   - tequila-blue: Tequila blue
+   - tequila-sunrise: Tequila sunrise
+   - laguna-azul: Laguna azúl
+   - daiquiri: Daiquirí
+   - caipiroska: Caipiroska
+   - cosmopolitan: Cosmopolitan
+   - pina-colada: Piña colada
+   - ruso-blanco: Ruso blanco
+   - ruso-negro: Ruso negro
+   - ramazzotti: Ramazzotti
+   - aperol: Aperol
+   - vaina: Vaina
+   - vaina-baileys: Vaina baileys
+   - martini-dry: Martini dry
+   - tom-collins: Tom collins
+   - manhattan: Manhattan
+   - alexander: Alexander
+   - negroni: Negroni
+   - bitter-batido: Bitter batido
+   - 2x-pisco-sour: 2x pisco sour
+   - 2x-tequila-margarita: 2x Tequila margarita
+   - 2x-moscow-mule: 2x Moscow mule
+   - 2x-mojito: 2x Mojito
+   - 2x-caipirinha: 2x Caipirinha o caipiroska
+   - sangria-borgona: Sangría o Borgoña (según stock)
+   - whisky-sour-premium: Whisky sour premium
+   - corto-jagger: Corto jagger
+   - mojito-ramazzotti: Mojito ramazzoti
+   - tropical-gin: Tropical Gin
+   - beefeater: Beefeater
+   - baileys: Baileys
+   - jaggermeister: Jaggermeister
+   - fernet-branca: Fernet branca
+   - tanqueray: Tanqueray
+   - beefeater-pink: Beefeater Pink
+   - mistral-35: Mistral 35
+   - mistral-40: Mistral 40
+   - mistral-nobel: Mistral Nobel
+   - horcon-quemado: Horcón Quemado 35
+   - mistral-nobel-barrica: Mistral Nobel Barrica Tostada
+   - havana-club: Havana Club
+   - havana-anejo-reserva: Havana añejo reserva
+   - havana-7-anos: Ron havana reserva 7 años
+   - ron-barcelo-imperial: Ron barcelo imperial
+   - stolichnaya: Stolichnaya
+   - absolut-peppar: Absolut Peppar
+   - absolut-pear: Absolut Pear
+   - jack-daniels: Jack Daniels
+   - ballantines: Ballantines
+   - johnnie-black: Johnnie Black
+   - johnnie-red: Johnnie Red
+   - chivas-12: Chivas 12 años
+   - chivas-18: Chivas 18 años
+   - koyle-cabernet: Koyle Cabernet Souvinong 750cc
+   - copa-casa: Copa de la Casa
+   - castillo-molina-red: Castillo Molina Red Blend
+   - castillo-molina-merlot: Castillo Molina Merlot
+   - casillero-sauvignon-blanc: Casillero Diablo reserva sauvignon blanc 750 cc
+   - late-harvest: Late harvest 750cc Casillero del Diablo
+   - casillero-privada-cabernet: Casillero del DIablo, Reserva Privada Cabernet Souvinong
+   - late-sauvignon-blanc: Late sauvignon blanc
+   - calcu-syrah: Calcu Gran Reserva Syrah
+   - calcu-carmenere: Calcu Carmenere
+   - calcu-cabernet-franc: Calcu Cabernet Franc
+   - montes-ensamblaje: Montes Ensamblaje Cabernet Sauvignon - Carmenere
+   - montes-carmenere: Montes Carmenere
+   - viu-manent-malbec: Viu Manent Malbec
+   - viu-manent-cabernet: Viu Manent Cabernet Souvignon
+   - viu-manent-carmenere: Viu Manent Carmenere
+   - agregado-1: AGREGADO I
+   - agregado-2: AGREGADO II
+   - agregado-3: AGREGADO III
+   - torta-1: Torta I
+   - torta-2: Torta II
+   - torta-3: Torta III
+   - agregado-4: AGREGADO IV
+   - agregado-5: AGREGADO V
+   - promo-capuccino-torta: OFERTA en horario de 16:00 a 19:00 hrs
+   - promo-2x-pisco-sour: 2x pisco sour
+   - promo-2x-tequila-margarita: 2x Tequila margarita
+   - promo-2x-moscow-mule: 2x Moscow mule
+   - promo-2x-mojito: 2x Mojito
+   - promo-2x-caipirinha: 2x Caipirinha o caipiroska
+
+➕ Extra in database (2):
+   - pizza-margherita: Pizza Margherita
+   - ensalada-caesar: Ensalada Caesar
+
+📍 LOCATION: CAPRICCIO
+========================================
+Local items: 38
+Database items: 1
+
+⚠️  ISSUES FOUND:
+
+❌ Missing in database (38):
+   - auguri: Auguri
+   - capriccio-cocktail: Capriccio
+   - sour: Sour
+   - piccione: Piccione
+   - espresso-martini: Espresso Martini
+   - limoncello-spritz: Limoncello Spritz
+   - old-fashioned: Old Fashioned
+   - ramazzoti-spritz: Ramazzoti Spritz
+   - martini-sporco: Martini Sporco
+   - negroni: Negroni
+   - gin-tonic: Gin Tonic
+   - ceviche-pacifico: Ceviche del Pacífico
+   - bruschetta-picante-golfo: Bruschetta Picante del Golfo
+   - tabla-fuego-brasa: Tabla de Fuego y Brasa
+   - tabla-mediterranea-fria: Tabla Mediterránea Fría
+   - papas-bufalo: Papas Búfalo
+   - gin-tanqueray-london: Gin Tanqueray London Dry
+   - whiskey-ballentines: Whiskey Ballentines Bourbon 7 años
+   - whiskey-johnnie-double-black: Whiskey Johnnie Walker Double Black
+   - gin-tanqueray-sevilla: Gin Tanqueray Sevilla
+   - gin-tanqueray-royal: Gin Tanqueray Royal
+   - tequila-don-julio: Tequila Don Julio
+   - chivas-regal-12: Chivas Regal 12 Años
+   - whiskey-johnnie-black: Whiskey Johnnie Walker Black
+   - whiskey-jack-daniel-apple: Whiskey Jack Daniel Apple
+   - gin-beefeater: Gin Beefeater
+   - jagermeister: Jägermeister
+   - drambuie: Drambuie
+   - ron-havana-7: Ron Havana Añejo 7 Años
+   - ron-havana-especial: Ron Havana Añejo Especial
+   - pisco-gobernador: Pisco El Gobernador
+   - whisky-johnnie-red: Whisky Johnnie Walker Red
+   - pisco-alto-carmen: Pisco Alto del Carmen
+   - pisco-mistral-nobel: Pisco Mistral Nobel
+   - gin-hendricks: Gin Hendrik's
+   - chardon-rose-187: Chardon Rose 187 cc
+   - chardon-brut-750: Chardon brut 750 cc
+   - viu-manent-noble: Viu Manent Noble Semillon Chardonnay
+
+➕ Extra in database (1):
+   - lomo-saltado: Lomo Saltado
+
+
+============================================================
+❌ MIGRATION NEEDS ATTENTION

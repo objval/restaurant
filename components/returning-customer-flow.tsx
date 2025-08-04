@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { locations } from "@/lib/locations"
+import { type LocationData } from "@/lib/locations"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { MapPin, Clock, ArrowRight, Heart, Sparkles, ChefHat } from "lucide-react"
@@ -9,6 +9,7 @@ import { MapPin, Clock, ArrowRight, Heart, Sparkles, ChefHat } from "lucide-reac
 
 interface ReturningCustomerFlowProps {
   savedLocationId: string
+  locations: LocationData[]
   onConfirmAction: () => void
   onGeolocationAction: () => void
   onShowAllAction: () => void
@@ -16,6 +17,7 @@ interface ReturningCustomerFlowProps {
 
 export function ReturningCustomerFlow({
   savedLocationId,
+  locations,
   onConfirmAction,
   onGeolocationAction,
   onShowAllAction,

@@ -2,13 +2,13 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { locations } from "@/lib/locations"
 import type { LocationData } from "@/lib/locations"
 import { MapPin, Wifi, Car, Trees, Music2, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface MobileLocationPickerProps {
+  locations: LocationData[]
   onSelectLocationAction: (location: LocationData) => void
   onUseGeolocationAction: () => void
 }
@@ -20,7 +20,7 @@ const featureIcons: Record<string, React.ComponentType<{ className?: string }>> 
   "Música en Vivo": Music2,
 }
 
-export function MobileLocationPicker({ onSelectLocationAction, onUseGeolocationAction }: MobileLocationPickerProps) {
+export function MobileLocationPicker({ locations, onSelectLocationAction, onUseGeolocationAction }: MobileLocationPickerProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null)
 
   const getFeatureIcon = (feature: string) => {

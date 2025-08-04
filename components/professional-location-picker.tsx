@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, Navigation, Phone, Clock, Users, Utensils, Wine, ChevronRight, Loader2 } from "lucide-react"
-import { type LocationData, locations } from "@/lib/locations"
+import { type LocationData } from "@/lib/locations"
 import { MobileLocationPicker } from "@/components/mobile-location-picker"
 
 interface ProfessionalLocationPickerProps {
+  locations: LocationData[]
   onLocationSelectAction: (location: LocationData) => void
   onGeolocationAction: () => void
   isDetecting: boolean
@@ -17,6 +18,7 @@ interface ProfessionalLocationPickerProps {
 }
 
 export function ProfessionalLocationPicker({ 
+  locations,
   onLocationSelectAction, 
   onGeolocationAction, 
   isDetecting, 
@@ -367,6 +369,7 @@ export function ProfessionalLocationPicker({
   if (isMobile) {
     return (
       <MobileLocationPicker
+        locations={locations}
         onSelectLocationAction={onLocationSelectAction}
         onUseGeolocationAction={onGeolocationAction}
       />
