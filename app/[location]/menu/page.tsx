@@ -1,4 +1,5 @@
-import { getLocationById, getLocationMenu, getCategoriesWithItems } from "@/lib/db"
+import { locations } from "@/lib/locations"
+import { menuData, getCategoriesWithItems } from "@/lib/menu-data"
 import { MenuPageClient } from "@/components/menu-page-client"
 import { ArrowLeft, Utensils } from "lucide-react"
 import Link from "next/link"
@@ -10,40 +11,12 @@ interface MenuPageProps {
 
 export default async function MenuPage({ params }: MenuPageProps) {
   const { location } = await params
-  
-  // Fetch location data from database
-  const locationData = await getLocationById(location)
+  const locationData = locations.find((loc) => loc.id === location)
+  const menuItems = menuData[location as keyof typeof menuData] || []
+
   if (!locationData) {
     notFound()
   }
-
-  // Transform database location to match LocationData interface
-  const transformedLocation = {
-    id: locationData.id,
-    name: locationData.name,
-    concept: locationData.concept,
-    path: locationData.path,
-    coordinates: locationData.coordinates as { lat: number; lng: number },
-    theme: locationData.theme as any,
-    images: locationData.images as any,
-    description: locationData.description,
-    longDescription: locationData.long_description,
-    hours: locationData.hours as any,
-    specialties: locationData.specialties,
-    atmosphere: locationData.atmosphere,
-    priceRange: locationData.price_range,
-    contact: locationData.contact as any,
-    features: locationData.features,
-    menuHighlights: [], // Will be fetched separately if needed
-    stats: locationData.stats as any,
-    socialProof: locationData.social_proof as any,
-    socialMedia: locationData.social_media as any,
-    promotions: locationData.promotions as any[],
-  }
-
-  // Fetch menu items and categories from database
-  const menuItems = await getLocationMenu(location)
-  const availableCategories = await getCategoriesWithItems(location)
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: locationData.theme.background }}>
@@ -77,10 +50,14 @@ export default async function MenuPage({ params }: MenuPageProps) {
       </div>
 
       {/* Client Component for Interactive Menu */}
-      <MenuPageClient locationData={transformedLocation} menuItems={menuItems} availableCategories={availableCategories} />
+      <MenuPageClient locationData={locationData} menuItems={menuItems} availableCategories={getCategoriesWithItems(location)} />
     </div>
   )
 }
 
-// Dynamic rendering for database-driven content
-export const dynamic = 'force-dynamic'
+// Generate static params for all location menus
+export async function generateStaticParams() {
+  return locations.map((location) => ({
+    location: location.id,
+  }))
+}

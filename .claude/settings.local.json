@@ -2,12 +2,25 @@
   "permissions": {
     "allow": [
       "Bash(git add:*)",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "mcp__Neon__list_projects",
+      "mcp__Neon__run_sql",
+      "mcp__Neon__get_database_tables",
+      "mcp__Neon__describe_table_schema",
+      "Bash(grep:*)",
+      "mcp__Neon__run_sql_transaction",
+      "Bash(node:*)",
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(git checkout:*)",
+      "Bash(rm:*)",
+      "Bash(bun build:*)",
+      "Bash(bun run:*)"
     ],
     "deny": []
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "Neon"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }
