@@ -131,7 +131,7 @@ export function ProductEditor({ isOpen, onClose, product, location, onSave, isCr
 
   const handleSave = async () => {
     setLoading(true)
-    const table = `menu_${location}` as const
+    const table = `menu_${location}` as 'menu_arbol' | 'menu_1898' | 'menu_capriccio'
 
     try {
       if (isCreating) {

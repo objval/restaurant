@@ -24,7 +24,7 @@ export function QuickStats({ location }: QuickStatsProps) {
       if (!mounted) return
       
       setLoading(true)
-      const table = `menu_${location}` as const
+      const table = `menu_${location}` as 'menu_arbol' | 'menu_1898' | 'menu_capriccio'
       
       try {
         // Get total and active products

@@ -27,12 +27,10 @@ export function LocationSwitcherClient({ initialLocation }: { initialLocation: '
 
 export function CategoryFilterClient({ 
   selectedCategory, 
-  location, 
-  categories 
+  location
 }: { 
   selectedCategory: string
   location: 'arbol' | '1898' | 'capriccio'
-  categories: any[]
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -59,11 +57,9 @@ export function CategoryFilterClient({
 }
 
 export function QuickStatsClient({ 
-  location, 
-  initialStats 
+  location
 }: { 
   location: 'arbol' | '1898' | 'capriccio'
-  initialStats: any
 }) {
   return <QuickStats location={location} />
 }

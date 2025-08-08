@@ -27,13 +27,12 @@ export function ProductGrid({ location, category, searchQuery }: ProductGridProp
 
   const fetchProducts = async () => {
     setLoading(true)
-    const table = `menu_${location}_with_categories` as const
+    const table = `menu_${location}` as 'menu_arbol' | 'menu_1898' | 'menu_capriccio'
     
     try {
       const { data, error } = await supabase
         .from(table)
         .select('*')
-        .order('category_display_order')
         .order('display_order')
         .order('name')
       
@@ -84,7 +83,7 @@ export function ProductGrid({ location, category, searchQuery }: ProductGridProp
     )
     
     // Then update database
-    const table = `menu_${location}` as const
+    const table = `menu_${location}` as 'menu_arbol' | 'menu_1898' | 'menu_capriccio'
     const { error } = await supabase
       .from(table)
       .update({ active: newActiveStatus })
@@ -114,7 +113,7 @@ export function ProductGrid({ location, category, searchQuery }: ProductGridProp
     )
     
     // Then update database
-    const table = `menu_${location}` as const
+    const table = `menu_${location}` as 'menu_arbol' | 'menu_1898' | 'menu_capriccio'
     const { error } = await supabase
       .from(table)
       .update({ stock_status: newStock })

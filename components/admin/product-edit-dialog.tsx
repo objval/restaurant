@@ -55,7 +55,7 @@ export function ProductEditDialog({
     if (!product) return
     
     setLoading(true)
-    const table = `menu_${location}`
+    const table = `menu_${location}` as 'menu_arbol' | 'menu_1898' | 'menu_capriccio'
     
     try {
       const { error } = await supabase

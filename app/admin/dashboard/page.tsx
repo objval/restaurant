@@ -435,7 +435,7 @@ export default function AdminDashboard() {
   const handleDelete = useCallback(async (productId: string) => {
     if (!confirm('¿Estás seguro de eliminar este producto?')) return
     
-    const table = `menu_${currentLocation}`
+    const table = `menu_${currentLocation}` as 'menu_arbol' | 'menu_1898' | 'menu_capriccio'
     
     try {
       const { error } = await supabase

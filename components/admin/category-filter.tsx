@@ -13,8 +13,8 @@ interface CategoryFilterProps {
   location: 'arbol' | '1898' | 'capriccio'
 }
 
-export function CategoryFilter({ selectedCategory, onCategoryChange, location }: CategoryFilterProps) {
-  const [categories, setCategories] = useState<Array<{ id: string; name: string; slug: string; icon: string }>>([])
+export function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryFilterProps) {
+  const [categories, setCategories] = useState<Array<{ id: string; name: string; slug: string; icon: string | null }>>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

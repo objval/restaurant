@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Edit, Trash, Plus, Layers, GripVertical, Save } from "lucide-react"
+import { Edit, Plus, Layers, GripVertical, Save } from "lucide-react"
 import type { User } from "@supabase/supabase-js"
 import type { Tables } from "@/lib/database.types"
 
@@ -182,7 +182,7 @@ export default function CategoriesPage() {
           
           <CardContent className="p-0">
             <div className="divide-y">
-              {categories.map((category, index) => (
+              {categories.map((category) => (
                 <div key={category.id} className="p-4 hover:bg-gray-50 transition-colors">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
