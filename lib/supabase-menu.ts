@@ -28,7 +28,7 @@ export type MenuItemDB = MenuArbol | Menu1898 | MenuCapriccio
  * Fetch all categories
  */
 export async function getCategories() {
-  if (!supabase) return []
+  if (!supabase) throw new Error('Supabase client not initialized')
   
   const { data, error } = await supabase
     .from('categories')
@@ -48,7 +48,7 @@ export async function getCategories() {
  * Fetch menu items for El Árbol location
  */
 export async function getMenuArbol() {
-  if (!supabase) return []
+  if (!supabase) throw new Error('Supabase client not initialized')
   const { data, error } = await supabase
     .from('menu_arbol_with_categories')
     .select('*')
@@ -68,7 +68,7 @@ export async function getMenuArbol() {
  * Fetch menu items for 1898 location
  */
 export async function getMenu1898() {
-  if (!supabase) return []
+  if (!supabase) throw new Error('Supabase client not initialized')
   const { data, error } = await supabase
     .from('menu_1898_with_categories')
     .select('*')
@@ -88,7 +88,7 @@ export async function getMenu1898() {
  * Fetch menu items for Capriccio location
  */
 export async function getMenuCapriccio() {
-  if (!supabase) return []
+  if (!supabase) throw new Error('Supabase client not initialized')
   const { data, error } = await supabase
     .from('menu_capriccio_with_categories')
     .select('*')
