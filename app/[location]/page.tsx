@@ -2,6 +2,10 @@ import { locations } from "@/lib/locations"
 import LocationPageClient from "./LocationPageClient"
 import { notFound } from "next/navigation"
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 interface LocationPageProps {
   params: Promise<{ location: string }>
 }
@@ -17,9 +21,4 @@ export default async function LocationPage({ params }: LocationPageProps) {
   return <LocationPageClient locationData={locationData} />
 }
 
-// Generate static params for all locations
-export async function generateStaticParams() {
-  return locations.map((location) => ({
-    location: location.id,
-  }))
-}
+// Removed generateStaticParams to enable dynamic rendering

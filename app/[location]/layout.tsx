@@ -3,6 +3,10 @@ import type { Metadata } from "next"
 import { locations } from "@/lib/locations"
 import LocationClient from "./LocationClient"
 
+// Force dynamic rendering for location pages to ensure fresh menu data
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 interface LocationLayoutProps {
   children: React.ReactNode
   params: Promise<{ location: string }>
@@ -60,9 +64,4 @@ export async function generateMetadata({ params }: { params: Promise<{ location:
   }
 }
 
-// Generate static params for all locations
-export async function generateStaticParams() {
-  return locations.map((location) => ({
-    location: location.id,
-  }))
-}
+// Removed generateStaticParams to enable dynamic rendering
