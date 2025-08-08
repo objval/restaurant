@@ -6,6 +6,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
 // Only create client if env vars are present
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const supabase = supabaseUrl && supabaseAnonKey 
   ? createClient<Database>(supabaseUrl, supabaseAnonKey)
   : null as any

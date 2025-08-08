@@ -34,7 +34,7 @@ export default async function MenuPage({ params }: MenuPageProps) {
     availableCategories = menuCategories.filter(cat => 
       menuItems.some(item => item.category === cat.id)
     )
-  } catch (error) {
+  } catch {
     // Fall back to local data if Supabase is not configured
     console.log('Using local menu data')
     const { menuData, getCategoriesWithItems } = await import('@/lib/menu-data')
