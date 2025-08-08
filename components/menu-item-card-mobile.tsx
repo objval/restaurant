@@ -119,7 +119,7 @@ export function MenuItemCardMobile({ item, onClick, locationTheme }: MenuItemCar
               className={`font-bold text-lg ${isOutOfStock ? 'line-through opacity-50' : ''}`}
               style={{ color: isOutOfStock ? '#9CA3AF' : locationTheme.primary }}
             >
-              ${(item.price / 1000).toFixed(0)}.{(item.price % 1000).toString().padStart(3, "0")}
+              ${Math.floor(item.price / 1000)}.{(item.price % 1000).toString().padStart(3, "0")}
             </div>
           </div>
         </div>

@@ -56,7 +56,7 @@ export function MenuItemModal({ item, isOpen, onClose, locationTheme }: MenuItem
                     className="text-2xl md:text-3xl font-bold"
                     style={{ color: locationTheme.primary }}
                   >
-                    ${(item.price / 1000).toFixed(0)}.{(item.price % 1000).toString().padStart(3, "0")}
+                    ${Math.floor(item.price / 1000)}.{(item.price % 1000).toString().padStart(3, "0")}
                   </div>
                 </div>
               </div>
