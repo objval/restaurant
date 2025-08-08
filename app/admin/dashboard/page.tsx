@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useMemo, memo } from "react"
 import { useRouter } from "next/navigation"
 import { supabase } from "@/lib/supabase-menu"
+import { toggleProductStock, toggleProductActive } from "../actions"
 import { AdminHeader } from "@/components/admin/admin-header"
 import { LocationSwitcher } from "@/components/admin/location-switcher"
 import { Button } from "@/components/ui/button"
@@ -360,7 +361,6 @@ export default function AdminDashboard() {
 
   // Optimized handlers with batch updates
   const handleToggleStock = useCallback(async (productId: string, currentStock: string) => {
-    const table = `menu_${currentLocation}` as const
     const newStock = currentStock === 'in_stock' ? 'out_of_stock' : 'in_stock'
     
     // Optimistic update
@@ -369,12 +369,10 @@ export default function AdminDashboard() {
     ))
     
     try {
-      const { error } = await supabase
-        .from(table)
-        .update({ stock_status: newStock })
-        .eq('id', productId)
+      // Use server action instead of direct Supabase call
+      const result = await toggleProductStock(currentLocation, productId, currentStock)
       
-      if (error) throw error
+      if (!result.success) throw new Error('Failed to update stock')
       
       toast.success(newStock === 'in_stock' ? 'Producto en stock' : 'Producto agotado')
       
@@ -403,12 +401,10 @@ export default function AdminDashboard() {
     ))
     
     try {
-      const { error } = await supabase
-        .from(table)
-        .update({ active: newActive })
-        .eq('id', productId)
+      // Use server action instead of direct Supabase call
+      const result = await toggleProductActive(currentLocation, productId, currentActive)
       
-      if (error) throw error
+      if (!result.success) throw new Error('Failed to update active status')
       
       toast.success(newActive ? 'Producto activado' : 'Producto desactivado')
       
