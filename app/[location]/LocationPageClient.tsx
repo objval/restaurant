@@ -37,6 +37,11 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
       const currentMinute = chileTime.getMinutes()
       const currentTime = currentHour * 60 + currentMinute
 
+      console.log(`[${locationData.name}] Checking if open:`)
+      console.log(`  - Chile time: ${chileTime.toLocaleString('es-CL')}`)
+      console.log(`  - Current day index: ${currentDay}`)
+      console.log(`  - Current time (minutes): ${currentTime} (${Math.floor(currentTime/60)}:${String(currentTime%60).padStart(2,'0')})`)
+
       const dayMap: { [key: number]: keyof typeof locationData.hours } = {
         0: 'sunday',
         1: 'monday',
@@ -50,7 +55,10 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
       const todayKey = dayMap[currentDay]
       const todayHours = locationData.hours[todayKey]
 
+      console.log(`  - Today (${todayKey}): ${todayHours || 'CERRADO'}`)
+
       if (!todayHours || todayHours === 'CERRADO') {
+        console.log(`  - Result: CLOSED (no hours or CERRADO)`)
         setIsCurrentlyOpen(false)
         return
       }
@@ -61,21 +69,37 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
         return hours * 60 + minutes
       })
 
-      // Handle cases where closing time is after midnight
+      console.log(`  - Open time: ${Math.floor(openTime/60)}:${String(openTime%60).padStart(2,'0')} (${openTime} min)`)
+      console.log(`  - Close time: ${Math.floor(closeTime/60)}:${String(closeTime%60).padStart(2,'0')} (${closeTime} min)`)
+
+      let isOpen = false
+      let adjustedCloseTime = closeTime
+      let adjustedCurrentTime = currentTime
+      
+      // Handle times after midnight (e.g., closes at 03:00)
       if (closeTime < openTime) {
-        // Restaurant closes after midnight
-        setIsCurrentlyOpen(currentTime >= openTime || currentTime < closeTime)
-      } else {
-        // Normal hours
-        setIsCurrentlyOpen(currentTime >= openTime && currentTime < closeTime)
+        adjustedCloseTime = closeTime + 24 * 60
+        console.log(`  - Crosses midnight: adjusted close time to ${adjustedCloseTime} min`)
       }
+      
+      // Adjust current time if we're in the early morning hours
+      if (currentHour < 4) { // After midnight
+        adjustedCurrentTime = currentTime + 24 * 60
+        console.log(`  - After midnight: adjusted current time to ${adjustedCurrentTime} min`)
+      }
+      
+      isOpen = adjustedCurrentTime >= openTime && adjustedCurrentTime <= adjustedCloseTime
+      console.log(`  - Checking if ${adjustedCurrentTime} >= ${openTime} AND ${adjustedCurrentTime} <= ${adjustedCloseTime}`)
+
+      console.log(`  - Result: ${isOpen ? 'OPEN' : 'CLOSED'}`)
+      setIsCurrentlyOpen(isOpen)
     }
 
     checkIfOpen()
     // Check every minute
     const interval = setInterval(checkIfOpen, 60000)
     return () => clearInterval(interval)
-  }, [locationData.hours])
+  }, [locationData.hours, locationData.name])
 
   // Auto-cycling gallery images
   useEffect(() => {
@@ -99,9 +123,13 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
   }
 
   const isOpen = (hours: LocationData['hours']) => {
+    // Get Chilean time
     const now = new Date()
-    const day = now.getDay()
-    const currentTime = now.getHours() * 100 + now.getMinutes()
+    const chileTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Santiago" }))
+    const day = chileTime.getDay()
+    const currentHours = chileTime.getHours()
+    const currentMinutes = chileTime.getMinutes()
+    const currentTimeInMinutes = currentHours * 60 + currentMinutes
     
     const dayMap: { [key: number]: keyof LocationData['hours'] } = {
       0: 'sunday',
@@ -116,14 +144,30 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
     const todaySchedule = hours[dayMap[day] as keyof LocationData['hours']]
     if (!todaySchedule || todaySchedule === 'CERRADO') return false
     
-    // Parse time ranges like "11:00 - 22:30"
+    // Parse time ranges like "11:00 - 22:30" or "11:00 - 03:00"
     const timeMatch = todaySchedule.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/)
     if (!timeMatch) return false
     
-    const openTime = parseInt(timeMatch[1]) * 100 + parseInt(timeMatch[2])
-    const closeTime = parseInt(timeMatch[3]) * 100 + parseInt(timeMatch[4])
+    const openHour = parseInt(timeMatch[1])
+    const openMin = parseInt(timeMatch[2])
+    const closeHour = parseInt(timeMatch[3])
+    const closeMin = parseInt(timeMatch[4])
     
-    return currentTime >= openTime && currentTime <= closeTime
+    let openTime = openHour * 60 + openMin
+    let closeTime = closeHour * 60 + closeMin
+    
+    // Handle times after midnight (e.g., closes at 03:00)
+    if (closeTime < openTime) {
+      closeTime += 24 * 60
+    }
+    
+    // Adjust current time if we're in the early morning hours
+    let adjustedCurrentTime = currentTimeInMinutes
+    if (currentHours < 4) { // After midnight
+      adjustedCurrentTime += 24 * 60
+    }
+    
+    return adjustedCurrentTime >= openTime && adjustedCurrentTime <= closeTime
   }
 
 

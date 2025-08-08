@@ -153,6 +153,7 @@ export const locations: LocationData[] = [
       dishes: 45,
       chefs: 6,
       awards: 3,
+      
     },
     socialProof: {
       reviews: 1247,
@@ -320,15 +321,15 @@ export const locations: LocationData[] = [
     longDescription:
       "Capriccio combina la elegancia de un bistro europeo con la sofisticación de un bar moderno. Ideal para cenas románticas, reuniones de negocios o cualquier ocasión especial que requiera un toque de distinción.",
     hours: {
-      weekdays: "Mar-Mié: 11:00 - 00:30 | Jue: 11:00 - 02:00 | Vie: 11:00 - 03:00",
-      weekends: "Sáb: 11:00 - 02:00 | Dom: 11:00 - 22:00",
+      weekdays: "Mar-Mié: 17:00 - 00:30 | Jue: 17:00 - 01:30 | Vie: 17:00 - 03:30",
+      weekends: "Sáb: 17:00 - 03:30 | Dom: CERRADO",
       monday: "CERRADO",
-      tuesday: "11:00 - 00:30",
-      wednesday: "11:00 - 00:30",
-      thursday: "11:00 - 02:00",
-      friday: "11:00 - 03:00",
-      saturday: "11:00 - 02:00",
-      sunday: "11:00 - 22:00",
+      tuesday: "17:00 - 00:30",
+      wednesday: "17:00 - 00:30",
+      thursday: "17:00 - 01:30",
+      friday: "17:00 - 03:30",
+      saturday: "17:00 - 03:30",
+      sunday: "CERRADO",
     },
     specialties: ["Cocina de Autor", "Cócteles Premium", "Vinos Seleccionados", "Ambiente Ejecutivo"],
     atmosphere: ["Elegante", "Sofisticado", "Romántico", "Ejecutivo"],
