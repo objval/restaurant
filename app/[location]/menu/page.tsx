@@ -18,17 +18,29 @@ export default async function MenuPage({ params }: MenuPageProps) {
     notFound()
   }
 
-  // Fetch menu items from Supabase
-  const dbMenuItems = await getMenuByLocation(location as 'arbol' | '1898' | 'capriccio')
-  const dbCategories = await getCategories()
+  // Try to fetch from Supabase, fall back to local data if not available
+  let menuItems = []
+  let availableCategories = menuCategories
   
-  // Convert database items to the format expected by components
-  const menuItems = dbMenuItems.map(item => convertDBMenuItemToLocal(item, dbCategories))
-  
-  // Get categories that have items
-  const availableCategories = menuCategories.filter(cat => 
-    menuItems.some(item => item.category === cat.id)
-  )
+  try {
+    // Fetch menu items from Supabase
+    const dbMenuItems = await getMenuByLocation(location as 'arbol' | '1898' | 'capriccio')
+    const dbCategories = await getCategories()
+    
+    // Convert database items to the format expected by components
+    menuItems = dbMenuItems.map(item => convertDBMenuItemToLocal(item, dbCategories))
+    
+    // Get categories that have items
+    availableCategories = menuCategories.filter(cat => 
+      menuItems.some(item => item.category === cat.id)
+    )
+  } catch (error) {
+    // Fall back to local data if Supabase is not configured
+    console.log('Using local menu data')
+    const { menuData, getCategoriesWithItems } = await import('@/lib/menu-data')
+    menuItems = menuData[location as keyof typeof menuData] || []
+    availableCategories = getCategoriesWithItems(location)
+  }
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: locationData.theme.background }}>

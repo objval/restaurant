@@ -2,10 +2,13 @@ import { createClient } from '@supabase/supabase-js'
 import type { Database, Tables, TablesInsert } from './database.types'
 
 // Initialize Supabase client
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
+// Only create client if env vars are present
+export const supabase = supabaseUrl && supabaseAnonKey 
+  ? createClient<Database>(supabaseUrl, supabaseAnonKey)
+  : null as any
 
 // Type aliases for menu tables
 export type MenuArbol = Tables<'menu_arbol'>
@@ -25,6 +28,8 @@ export type MenuItemDB = MenuArbol | Menu1898 | MenuCapriccio
  * Fetch all categories
  */
 export async function getCategories() {
+  if (!supabase) return []
+  
   const { data, error } = await supabase
     .from('categories')
     .select('*')
@@ -43,6 +48,7 @@ export async function getCategories() {
  * Fetch menu items for El Árbol location
  */
 export async function getMenuArbol() {
+  if (!supabase) return []
   const { data, error } = await supabase
     .from('menu_arbol_with_categories')
     .select('*')
@@ -62,6 +68,7 @@ export async function getMenuArbol() {
  * Fetch menu items for 1898 location
  */
 export async function getMenu1898() {
+  if (!supabase) return []
   const { data, error } = await supabase
     .from('menu_1898_with_categories')
     .select('*')
@@ -81,6 +88,7 @@ export async function getMenu1898() {
  * Fetch menu items for Capriccio location
  */
 export async function getMenuCapriccio() {
+  if (!supabase) return []
   const { data, error } = await supabase
     .from('menu_capriccio_with_categories')
     .select('*')
