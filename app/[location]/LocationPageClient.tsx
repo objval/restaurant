@@ -21,9 +21,61 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
   const [isReservationOpen, setIsReservationOpen] = useState(false)
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isCurrentlyOpen, setIsCurrentlyOpen] = useState(false)
   const router = useRouter()
   const { toast } = useToast()
 
+
+  // Check if location is currently open
+  useEffect(() => {
+    const checkIfOpen = () => {
+      const now = new Date()
+      // Use Chilean timezone
+      const chileTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Santiago" }))
+      const currentDay = chileTime.getDay()
+      const currentHour = chileTime.getHours()
+      const currentMinute = chileTime.getMinutes()
+      const currentTime = currentHour * 60 + currentMinute
+
+      const dayMap: { [key: number]: keyof typeof locationData.hours } = {
+        0: 'sunday',
+        1: 'monday',
+        2: 'tuesday',
+        3: 'wednesday',
+        4: 'thursday',
+        5: 'friday',
+        6: 'saturday'
+      }
+
+      const todayKey = dayMap[currentDay]
+      const todayHours = locationData.hours[todayKey]
+
+      if (!todayHours || todayHours === 'CERRADO') {
+        setIsCurrentlyOpen(false)
+        return
+      }
+
+      // Parse hours like "11:00 - 03:00" (may cross midnight)
+      const [openTime, closeTime] = todayHours.split(' - ').map(time => {
+        const [hours, minutes] = time.split(':').map(Number)
+        return hours * 60 + minutes
+      })
+
+      // Handle cases where closing time is after midnight
+      if (closeTime < openTime) {
+        // Restaurant closes after midnight
+        setIsCurrentlyOpen(currentTime >= openTime || currentTime < closeTime)
+      } else {
+        // Normal hours
+        setIsCurrentlyOpen(currentTime >= openTime && currentTime < closeTime)
+      }
+    }
+
+    checkIfOpen()
+    // Check every minute
+    const interval = setInterval(checkIfOpen, 60000)
+    return () => clearInterval(interval)
+  }, [locationData.hours])
 
   // Auto-cycling gallery images
   useEffect(() => {
@@ -534,12 +586,26 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   </div>
                   <div className="flex-1">
                     <div className="font-semibold text-lg mb-1">Horarios de Atención</div>
-                    <div className="text-gray-600">{locationData.hours.weekdays}</div>
-                    <div className="text-gray-600">{locationData.hours.weekends}</div>
+                    <div className="text-gray-600 text-sm space-y-1">
+                      {locationData.hours.monday === "CERRADO" && <div>Lun: CERRADO</div>}
+                      {locationData.hours.tuesday && <div>Mar: {locationData.hours.tuesday}</div>}
+                      {locationData.hours.wednesday && <div>Mié: {locationData.hours.wednesday}</div>}
+                      {locationData.hours.thursday && <div>Jue: {locationData.hours.thursday}</div>}
+                      {locationData.hours.friday && <div>Vie: {locationData.hours.friday}</div>}
+                      {locationData.hours.saturday && <div>Sáb: {locationData.hours.saturday}</div>}
+                      {locationData.hours.sunday && <div>Dom: {locationData.hours.sunday}</div>}
+                    </div>
                   </div>
-                  <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50">
-                    Abierto ahora
-                  </Badge>
+                  {isCurrentlyOpen && (
+                    <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50">
+                      Abierto ahora
+                    </Badge>
+                  )}
+                  {!isCurrentlyOpen && (
+                    <Badge variant="outline" className="text-red-600 border-red-200 bg-red-50">
+                      Cerrado
+                    </Badge>
+                  )}
                 </div>
 
                 <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300 group">
