@@ -1,0 +1,1316 @@
+[
+  {
+    "categories": [
+      {
+        "products": [
+          {
+            "name": "Tomahawk de lomo vetado",
+            "price": 24500,
+            "description": "Tomahawk vetado de 700 grs, con suaves y jugosos tomates cherrys glaseados en toques de romero y ajo, vegetal asado de la estación, acompañado de papas a las finas hierbas, salsa de merkén y chimichurri que aporta mayor sabor ahumado a la carne. El Maridaje perfecto para este corte de carne es de la Viña la Quirigua, Vino Pajo premier cru, del Valle de Cachapoal zona de Curicó, Cabernet Sauvignon."
+          },
+          {
+            "name": "Pastel de Jaiba 500 grs",
+            "price": 12500,
+            "description": "Pastel de jaiba grande"
+          },
+          {
+            "name": "Ravioles relleno Salmón",
+            "price": 14900,
+            "description": "Ravioles rellenos de salmón en suave salsa de camarones y tomate cherry"
+          },
+          {
+            "name": "Crudo",
+            "price": 11900,
+            "description": "Suave corte de res, Cebolla morada, Pepinillo y Ají verde en bronoise, cilantro, gajos de Limón, tostadas y salsa de sour cream de la casa."
+          },
+          {
+            "name": "Ramazzotti violeta",
+            "price": 6500,
+            "description": ""
+          },
+          {
+            "name": "Caipiriña",
+            "price": 4500,
+            "description": ""
+          }
+        ],
+        "category_name": "RECOMENDADO PARA HOY"
+      },
+      {
+        "products": [
+          {
+            "name": "Tetera para compartir",
+            "price": 4500,
+            "description": "Tetera 750 ml, consultar variedades disponibles."
+          },
+          {
+            "name": "Tetera pequeña",
+            "price": 2500,
+            "description": "Tetera 500 ML, consultar variedades disponibles."
+          },
+          {
+            "name": "Te",
+            "price": 1800,
+            "description": ""
+          },
+          {
+            "name": "Café tradicional",
+            "price": 1800,
+            "description": ""
+          },
+          {
+            "name": "Expresso",
+            "price": 2400,
+            "description": ""
+          },
+          {
+            "name": "Expresso doble",
+            "price": 3500,
+            "description": ""
+          },
+          {
+            "name": "Americano",
+            "price": 2800,
+            "description": ""
+          },
+          {
+            "name": "Ristretto",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Mocaccino",
+            "price": 3200,
+            "description": ""
+          },
+          {
+            "name": "Café Irlandés",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Capuccino",
+            "price": 3200,
+            "description": ""
+          },
+          {
+            "name": "Cortado",
+            "price": 3200,
+            "description": ""
+          },
+          {
+            "name": "Chocolate caliente",
+            "price": 2800,
+            "description": ""
+          },
+          {
+            "name": "Chocolate nevado",
+            "price": 3500,
+            "description": ""
+          },
+          {
+            "name": "Café helado",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Milkshake",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Infusión menta jengibre",
+            "price": 1800,
+            "description": ""
+          },
+          {
+            "name": "Café Late",
+            "price": 3200,
+            "description": ""
+          },
+          {
+            "name": "Afogato",
+            "price": 3200,
+            "description": "Porción helado de vainilla, con una carga de café de grano."
+          },
+          {
+            "name": "Caja Té Infusiones Variedad",
+            "price": 8000,
+            "description": ""
+          },
+          {
+            "name": "Cafe Irlandes Fire",
+            "price": 4500,
+            "description": ""
+          }
+        ],
+        "category_name": "CAFETERÍA"
+      },
+      {
+        "products": [
+          {
+            "name": "Jugo Frambuesa",
+            "price": 3600,
+            "description": ""
+          },
+          {
+            "name": "Limonada",
+            "price": 3900,
+            "description": ""
+          },
+          {
+            "name": "Limonada menta jengibre",
+            "price": 4200,
+            "description": ""
+          },
+          {
+            "name": "Agua mineral c/gas",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Red Bull",
+            "price": 3500,
+            "description": ""
+          },
+          {
+            "name": "Crush",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Sprite",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Ginger Ale",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Jugo Mango",
+            "price": 3200,
+            "description": ""
+          },
+          {
+            "name": "Jugo Piña",
+            "price": 3200,
+            "description": ""
+          },
+          {
+            "name": "Coca Cola",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Coca Zero",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Agua tónica",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Agua mineral s/gas",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Coca-cola 220 cc",
+            "price": 1500,
+            "description": ""
+          },
+          {
+            "name": "Coca zero 220 cc",
+            "price": 1500,
+            "description": ""
+          },
+          {
+            "name": "Sprite 220 cc",
+            "price": 1500,
+            "description": ""
+          },
+          {
+            "name": "Pepsi 220 cc",
+            "price": 1500,
+            "description": ""
+          },
+          {
+            "name": "Limonada Frambuesa",
+            "price": 4200,
+            "description": ""
+          },
+          {
+            "name": "Jugo de frutilla",
+            "price": 3600,
+            "description": ""
+          },
+          {
+            "name": "Jugo de Berries",
+            "price": 3600,
+            "description": "Frutilla, Arándanos y Frambuesas"
+          },
+          {
+            "name": "Sprite Cero",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Manantial",
+            "price": 0,
+            "description": "Agua sin Hielo"
+          },
+          {
+            "name": "Cordillerano",
+            "price": 0,
+            "description": "Agua con hielo"
+          },
+          {
+            "name": "Ginger Ale 220cc",
+            "price": 1500,
+            "description": ""
+          },
+          {
+            "name": "Tonica 220cc",
+            "price": 1500,
+            "description": ""
+          },
+          {
+            "name": "Pepsi 350cc",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Kem Piña",
+            "price": 2200,
+            "description": ""
+          },
+          {
+            "name": "Limon Soda",
+            "price": 2200,
+            "description": ""
+          }
+        ],
+        "category_name": "BEBESTIBLES"
+      },
+      {
+        "products": [
+          {
+            "name": "Jardín el Árbol",
+            "price": 6200,
+            "description": "Volcán de chocolate 19% recubierto de azúcar glass, acompañado de mermelada de guinda, mini macarons, crocante de chocolate bitter, frutos rojos y sobre este, helado de vainilla."
+          },
+          {
+            "name": "Pastel",
+            "price": 4400,
+            "description": ""
+          },
+          {
+            "name": "Tiramisú",
+            "price": 4300,
+            "description": ""
+          },
+          {
+            "name": "Copa de Helado Infantil",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Crêpes suzette",
+            "price": 4100,
+            "description": "Crêpes marinados en salsa de naranja y flambeado con Whisky."
+          },
+          {
+            "name": "Panqueques Celestinos",
+            "price": 4900,
+            "description": ""
+          },
+          {
+            "name": "Copa de Helado 3 sabores",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Leche asada",
+            "price": 4200,
+            "description": ""
+          },
+          {
+            "name": "Kuchen Ganache de Frambuesas",
+            "price": 3900,
+            "description": ""
+          },
+          {
+            "name": "Volcán de chocolate",
+            "price": 4900,
+            "description": "Volcán de chocolate 19% recubierto de azúcar glass, acompañado de mermelada de guinda, crocante de chocolate bitter, frutos rojos y sobre este, helado de vainilla."
+          },
+          {
+            "name": "Macarons Unidad",
+            "price": 990,
+            "description": "Sabores disponibles: Vainilla, limón, frutos rojos, pistacho, brownie y caramelo."
+          },
+          {
+            "name": "Macarons Variedad",
+            "price": 5600,
+            "description": "Surtido de macarons (6 unidades) en base de almendra con sabor a vainilla, limón, frutos rojos, pistacho, brownie y caramelo."
+          },
+          {
+            "name": "Galletas de Brownie 100 grms",
+            "price": 2900,
+            "description": "GALLETAS CHICAS"
+          },
+          {
+            "name": "Galletas de Brownie 200 grms",
+            "price": 3900,
+            "description": "GALLETAS GRANDES"
+          },
+          {
+            "name": "Chessecake americano",
+            "price": 4200,
+            "description": "Chessencake americano cubierto de crema de Manjar con Nueces"
+          },
+          {
+            "name": "Brownie con Helado",
+            "price": 4500,
+            "description": "Brownie de chocolate bitter acompañado de helado a elección, decorado con crema chantilly y salsa de chocolate."
+          },
+          {
+            "name": "Cremosos",
+            "price": 2800,
+            "description": ""
+          },
+          {
+            "name": "OFERTA en horario de 16:00 a 19:00 hrs",
+            "price": 6400,
+            "description": "Capuccino o cortado+torta"
+          }
+        ],
+        "category_name": "REPOSTERÍA Y PASTELERÍA"
+      },
+      {
+        "products": [
+          {
+            "name": "Desayuno continental",
+            "price": 7900,
+            "description": "Café grano Hausbrandt, té o chocolate caliente, jugo naranja, tostadas, mantequilla, mermelada, palta, pastel de la casa."
+          },
+          {
+            "name": "Barros jarpa + té o café lavazza",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Tostadas con palta + te o cafe",
+            "price": 5500,
+            "description": ""
+          },
+          {
+            "name": "Huevos revueltos con queso",
+            "price": 5500,
+            "description": ""
+          },
+          {
+            "name": "Huevos revueltos con tocino",
+            "price": 6500,
+            "description": ""
+          },
+          {
+            "name": "Selladito doble queso",
+            "price": 3500,
+            "description": ""
+          },
+          {
+            "name": "Selladito barro jarpa",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Tostadas con palta",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Omelette tradicional",
+            "price": 5500,
+            "description": ""
+          }
+        ],
+        "category_name": "Desayunos hasta el mediodía"
+      },
+      {
+        "products": [
+          {
+            "name": "Crema o Sopa del día",
+            "price": 4400,
+            "description": ""
+          },
+          {
+            "name": "Camarones al Ajillo o al Pil Pil",
+            "price": 7900,
+            "description": ""
+          },
+          {
+            "name": "Pastel de Jaiba 250 grs",
+            "price": 7500,
+            "description": "Pastel de Jaiba pequeño"
+          },
+          {
+            "name": "6 empanaditas fritas Queso cóctel",
+            "price": 4900,
+            "description": "6 unid de empanaditas fritas"
+          },
+          {
+            "name": "6 empanaditas fritas Camarón-Queso cóctel",
+            "price": 5900,
+            "description": "6 unid empanaditas fritas"
+          },
+          {
+            "name": "Ceviche de Salmón",
+            "price": 6900,
+            "description": "Salmón, cebolla morada, manzanas verdes, paltas, pimentón, semilla de sésamo, cilantro, jengibre, sal, limón, merquén, leche de tigre. Lechuga, grisines y tostadas."
+          },
+          {
+            "name": "Ceviche para Compartir Salmón",
+            "price": 12500,
+            "description": "Doble porción de Salmón, cebolla morada, manzanas verdes, paltas, pimentón, semilla de sésamo, cilantro, jengibre, sal, limón, merquén, leche de tigre. Lechuga, grisines de ajo y tostadas"
+          },
+          {
+            "name": "Ceviche para Compartir Camarón Salmón",
+            "price": 13900,
+            "description": "Camarones, doble porción de Salmón, cebolla morada, manzanas verdes, paltas, pimentón, semilla de sésamo, cilantro, jengibre, sal, limón, merquén, leche de tigre. Lechuga, grisines de ajo y tostadas"
+          },
+          {
+            "name": "Ceviche Champiñon individual",
+            "price": 5600,
+            "description": ""
+          }
+        ],
+        "category_name": "ENTRADAS"
+      },
+      {
+        "products": [
+          {
+            "name": "Plateada braseada con pastelera de choclo",
+            "price": 16500,
+            "description": "Plateada de la zona, en cocción lenta con cerveza artesanal ambar"
+          },
+          {
+            "name": "Ravioles relleno Pollo",
+            "price": 12900,
+            "description": "Salsa de Champiñon"
+          },
+          {
+            "name": "Salmón gratinado",
+            "price": 15500,
+            "description": "Salmón con queso gratinado, cebolla caramelizada, y tomate confitado acompañado de guarnición a elección"
+          },
+          {
+            "name": "Risotto Di Mare",
+            "price": 12500,
+            "description": "Arroz arbóreo con camarones, champiñones y tomate cherry"
+          },
+          {
+            "name": "Osobuco Braseado",
+            "price": 14000,
+            "description": "Osobuco al carménère acompañado de risotto con champiñones."
+          },
+          {
+            "name": "Lasagna a la Boloñesa",
+            "price": 9900,
+            "description": ""
+          },
+          {
+            "name": "Fetuccinis",
+            "price": 9900,
+            "description": "Consultar al garzón salsas disponibles (pesto, champiñon, ave champiñon o pomodoro) camarón tiene valor adicional 3900 c/u"
+          }
+        ],
+        "category_name": "CARTA DE AUTOR"
+      },
+      {
+        "products": [
+          {
+            "name": "Lomo premium de Res",
+            "price": 13900,
+            "description": "Lomo de Res con Guarnición a elección"
+          },
+          {
+            "name": "Suprema de ave con salsa peruana",
+            "price": 9900,
+            "description": "Corte de Ave en salsa peruana con Guarnición a elección."
+          },
+          {
+            "name": "Salmón",
+            "price": 12500,
+            "description": "Salmón con salsa de alcaparra y toques ácidos, a la plancha o a la mantequilla con Guarnición a elección."
+          },
+          {
+            "name": "Chuleta Kassler ahumada",
+            "price": 11900,
+            "description": ""
+          },
+          {
+            "name": "Lomo premium de Res a lo pobre",
+            "price": 16900,
+            "description": ""
+          }
+        ],
+        "category_name": "CORTES CON GUARNICIÓN"
+      },
+      {
+        "products": [
+          {
+            "name": "No lo sé",
+            "price": 6800,
+            "description": "Nuggets con papas fritas."
+          },
+          {
+            "name": "Me da igual",
+            "price": 6800,
+            "description": "Salchichas con papas fritas."
+          },
+          {
+            "name": "Hamburguesa Infantil",
+            "price": 7200,
+            "description": "Hamburguesa, queso cheddar y lechuga."
+          }
+        ],
+        "category_name": "MENÚ DE NIÑOS (exclusivo niños)"
+      },
+      {
+        "products": [
+          {
+            "name": "Plato Río Toltén",
+            "price": 8500,
+            "description": "Mix de hojas verdes, finas láminas de salmón con toques ahumado, alcaparras, queso fresco, crocante de papas, acompañado de suave dressing de perejil."
+          },
+          {
+            "name": "Ensalada César",
+            "price": 7900,
+            "description": "Mix de hojas verdes, pollo grillé, tomates cherry, queso parmesano, crutones y aderezo césar."
+          },
+          {
+            "name": "Plato Vegetariano",
+            "price": 6900,
+            "description": "Mix hojas verdes, quesillo, tomate cherry, mix de frutos secos, cebolla morada, porotos negros, palta en rosa y semillas de sésamo."
+          },
+          {
+            "name": "Ensalada de la Casa",
+            "price": 4900,
+            "description": "Mix hojas verdes, vegetales de la estación, Palta."
+          },
+          {
+            "name": "Sorrentinos salsa pesto o champiñones",
+            "price": 9000,
+            "description": "Relleno con queso crema, berenjena, zapallo italiano, espinaca, champiñones, morrones y zanahoria."
+          },
+          {
+            "name": "Ceviche Champiñon compartir",
+            "price": 8900,
+            "description": ""
+          },
+          {
+            "name": "Ensalada Cesar Camarón",
+            "price": 8900,
+            "description": "Mix de hojas verdes, camarones al ajillo, tomates cherry, queso parmesano, crutones y aderezo césar."
+          }
+        ],
+        "category_name": "VEGETARIANOS Y ENSALADAS"
+      },
+      {
+        "products": [
+          {
+            "name": "Fajita vegetariana",
+            "price": 8900,
+            "description": "Tortilla mexicana grande, porotos negro, mix de hojas verdes, champiñones, maíz, tomate, palta hass acompañado de papas a las finas hierbas con dos salsas de la casa."
+          },
+          {
+            "name": "Fajita Pollo crispy",
+            "price": 9500,
+            "description": "Tortilla mexicana grande, pollo crispy, mix hojas verdes, maiz, palta hass, tomate, cebolla morada acompañado de papas a las finas hierbas con dos salsas de la casa."
+          },
+          {
+            "name": "Fajita Salmón Ahumado",
+            "price": 10200,
+            "description": "Tortilla mexicana grande, salmón ahumado, mix hojas verdes, tomate, alcaparra, palta hass, cebolla morada acompañado de papas a las finas hierbas con dos salsas de la casa."
+          }
+        ],
+        "category_name": "FAJITAS EL ÁRBOL"
+      },
+      {
+        "products": [
+          {
+            "name": "Hamburguesa Golosa",
+            "price": 8900,
+            "description": "Lechuga, tomate, pepinillo, hamburguesa, tocino, queso cheddar, cebolla caramelizada y huevo."
+          },
+          {
+            "name": "Hamburguesa El Árbol",
+            "price": 8900,
+            "description": "Lechuga, tomate, hamburguesa, queso cheddar, cebolla caramelizada, champiñones salteados y crocante de papas."
+          },
+          {
+            "name": "Barros Luco",
+            "price": 7200,
+            "description": "Churrasco y queso fundido."
+          },
+          {
+            "name": "Hamburguesa Italiana",
+            "price": 8500,
+            "description": "Hamburguesa, tomate, palta y mayonesa."
+          },
+          {
+            "name": "Sándwich Italiano tradicional",
+            "price": 7900,
+            "description": "Churrasco, tomate, palta y mayonesa."
+          }
+        ],
+        "category_name": "SÁNDWICH"
+      },
+      {
+        "products": [
+          {
+            "name": "Trio de carnes con quesos",
+            "price": 26500,
+            "description": "Salteado de res, pollo, cerdo con queso mantecoso, champiñones salteados y queso cheddar fundido en cama de papas fritas."
+          },
+          {
+            "name": "Tabla grande Pichanga",
+            "price": 24500,
+            "description": "Salteado de res, pollo y longaniza ahumada, con palta, tomate, cebolla perla, pepinillos, aceitunas, queso mantecoso con cama de papas fritas."
+          },
+          {
+            "name": "Tabla pequeña Pichanga",
+            "price": 16900,
+            "description": "Salteado de res, pollo y longaniza ahumada conpalta, tomate, cebolla perla, pepinillos, aceitunas, queso mantecoso con cama de papas fritas."
+          },
+          {
+            "name": "Papas Bravas c salsa picante",
+            "price": 9900,
+            "description": "Papas salteadas con base de salsa bechamel, pasta de aji ahumado, merquén, parmesano y tocino bacon."
+          },
+          {
+            "name": "Porción papas fritas",
+            "price": 7500,
+            "description": ""
+          },
+          {
+            "name": "Tabla mar y tierra",
+            "price": 26900,
+            "description": "Salteado de res, pollo, champiñon , tomates cherry y langostinos. Salsas de la casa de acompañamiento y porcion de papas fritas."
+          }
+        ],
+        "category_name": "TABLAS"
+      },
+      {
+        "products": [
+          {
+            "name": "Pizza de Camarón",
+            "price": 14900,
+            "description": "Masa a la piedra con salsa pomodoro casera, queso fundido, camarones salteados, champiñones, tomate cherrys y cebollín"
+          },
+          {
+            "name": "Pizza Todas las carnes",
+            "price": 15900,
+            "description": "Masa a la piedra con salsa pomodoro casera, res, pollo, cerdo, longaniza, tocino ahumado y queso fundido."
+          },
+          {
+            "name": "Pizza Salame",
+            "price": 12900,
+            "description": "Masa a la piedra con salsa pomodoro casera, queso fundido, salame y tocino ahumado."
+          },
+          {
+            "name": "Pizza de Vegetales",
+            "price": 13900,
+            "description": "Masa a la piedra con salsa pomodoro casera, queso fundido, champiñones, maíz, tomate cherrys, pimentón y hojas verdes de la estación."
+          },
+          {
+            "name": "Pizza de Pollo y Bacon",
+            "price": 14900,
+            "description": "Masa a la piedra con salsa pomodoro casera, queso fundido, pollo, tocino, champiñones, maíz y hojas verdes de la estación."
+          }
+        ],
+        "category_name": "PIZZAS"
+      },
+      {
+        "products": [
+          {
+            "name": "Gran Torobayo 500cc",
+            "price": 5900,
+            "description": ""
+          },
+          {
+            "name": "Kunstmann Torobayo individual",
+            "price": 4900,
+            "description": ""
+          },
+          {
+            "name": "kunstmann sin filtrar",
+            "price": 4900,
+            "description": "pale lager sin filtrar"
+          },
+          {
+            "name": "Guinness extra stout 473 ML",
+            "price": 4900,
+            "description": "Cerveza premuim Irlanda lata 473ML extra stout Guinness"
+          },
+          {
+            "name": "Austral Calafate individual",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Corona individual",
+            "price": 3000,
+            "description": ""
+          },
+          {
+            "name": "Sol individual",
+            "price": 3000,
+            "description": ""
+          },
+          {
+            "name": "Heineken individual",
+            "price": 3000,
+            "description": ""
+          },
+          {
+            "name": "Michelada",
+            "price": 1000,
+            "description": ""
+          },
+          {
+            "name": "Chelada",
+            "price": 1000,
+            "description": ""
+          },
+          {
+            "name": "Papas bravas + 2 shop ruta S-70",
+            "price": 12500,
+            "description": ""
+          },
+          {
+            "name": "Shop Heineken 500cc",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Cuello Negro Ambar 473cc",
+            "price": 4500,
+            "description": "Pale Ale Ambar"
+          },
+          {
+            "name": "Cerveza sin alcohol",
+            "price": 3000,
+            "description": ""
+          },
+          {
+            "name": "Royal sin alcohol",
+            "price": 3000,
+            "description": ""
+          },
+          {
+            "name": "Royal Individual.",
+            "price": 3000,
+            "description": ""
+          },
+          {
+            "name": "Cuello Negro IPA 473cc",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Cuello Negro Stout 473cc",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Heiniken sin alcohol",
+            "price": 3000,
+            "description": ""
+          }
+        ],
+        "category_name": "CERVEZAS Y SHOP"
+      },
+      {
+        "products": [
+          {
+            "name": "Pisco sour catedral",
+            "price": 6000,
+            "description": ""
+          },
+          {
+            "name": "Pisco Sour clásico",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Pisco Sour Frutal",
+            "price": 4200,
+            "description": ""
+          },
+          {
+            "name": "Amaretto sour",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Whisky sour",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Jerez sour",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Mojito clásico",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Mojito frutal",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Mojito cerveza",
+            "price": 6500,
+            "description": ""
+          },
+          {
+            "name": "Mojito jagger",
+            "price": 7000,
+            "description": ""
+          },
+          {
+            "name": "Moscow mule",
+            "price": 6000,
+            "description": ""
+          },
+          {
+            "name": "Tequila margarita",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Tequila margarita frutal",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Tequila blue",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Tequila sunrise",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Laguna azúl",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Daiquirí",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Caipiroska",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Cosmopolitan",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Piña colada",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Ruso blanco",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Ruso negro",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Ramazzotti",
+            "price": 5500,
+            "description": ""
+          },
+          {
+            "name": "Aperol",
+            "price": 5500,
+            "description": ""
+          },
+          {
+            "name": "Vaina",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Vaina baileys",
+            "price": 6500,
+            "description": ""
+          },
+          {
+            "name": "Martini dry",
+            "price": 5500,
+            "description": ""
+          },
+          {
+            "name": "Tom collins",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Manhattan",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Alexander",
+            "price": 5500,
+            "description": ""
+          },
+          {
+            "name": "Negroni",
+            "price": 6000,
+            "description": ""
+          },
+          {
+            "name": "Bitter batido",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "2x pisco sour",
+            "price": 6000,
+            "description": ""
+          },
+          {
+            "name": "2x Tequila margarita",
+            "price": 8000,
+            "description": "Promoción por horario"
+          },
+          {
+            "name": "2x Moscow mule",
+            "price": 9000,
+            "description": "Promoción por horario"
+          },
+          {
+            "name": "2x Mojito",
+            "price": 7400,
+            "description": "Promoción por horario"
+          },
+          {
+            "name": "2x Caipirinha o caipiroska",
+            "price": 7900,
+            "description": "Promoción por horario"
+          },
+          {
+            "name": "Sangría o Borgoña (según stock)",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Whisky sour premium",
+            "price": 6500,
+            "description": ""
+          },
+          {
+            "name": "Corto jagger",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Mojito ramazzoti",
+            "price": 5900,
+            "description": ""
+          },
+          {
+            "name": "Tropical Gin",
+            "price": 6000,
+            "description": ""
+          }
+        ],
+        "category_name": "COCTELES"
+      },
+      {
+        "products": [
+          {
+            "name": "Beefeater",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Baileys",
+            "price": 6500,
+            "description": ""
+          },
+          {
+            "name": "Jaggermeister",
+            "price": 6000,
+            "description": ""
+          },
+          {
+            "name": "Fernet branca",
+            "price": 5500,
+            "description": ""
+          },
+          {
+            "name": "Tanqueray",
+            "price": 6500,
+            "description": ""
+          },
+          {
+            "name": "Beefeater Pink",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Mistral 35",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Mistral 40",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Mistral Nobel",
+            "price": 6500,
+            "description": ""
+          },
+          {
+            "name": "Horcón Quemado 35",
+            "price": 7000,
+            "description": ""
+          },
+          {
+            "name": "Mistral Nobel Barrica Tostada",
+            "price": 6500,
+            "description": ""
+          },
+          {
+            "name": "Havana Club",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "Havana añejo reserva",
+            "price": 5500,
+            "description": ""
+          },
+          {
+            "name": "Ron havana reserva 7 años",
+            "price": 8000,
+            "description": "reserva 7 años"
+          },
+          {
+            "name": "Ron barcelo imperial",
+            "price": 8900,
+            "description": "Ron Barceló Imperial el resultado del maridaje de antiguas reservas de Imperial junto a los nobles cortes de roble blanco americano y barricas del Chateau DYquem. Es un ron delicioso, elegante y de carácter suave."
+          },
+          {
+            "name": "Stolichnaya",
+            "price": 6000,
+            "description": ""
+          },
+          {
+            "name": "Absolut Peppar",
+            "price": 7000,
+            "description": ""
+          },
+          {
+            "name": "Absolut Pear",
+            "price": 5500,
+            "description": ""
+          },
+          {
+            "name": "Jack Daniels",
+            "price": 7000,
+            "description": ""
+          },
+          {
+            "name": "Ballantines",
+            "price": 4500,
+            "description": ""
+          },
+          {
+            "name": "Johnnie Black",
+            "price": 7000,
+            "description": ""
+          },
+          {
+            "name": "Johnnie Red",
+            "price": 5000,
+            "description": ""
+          },
+          {
+            "name": "Chivas 12 años",
+            "price": 8500,
+            "description": ""
+          },
+          {
+            "name": "Chivas 18 años",
+            "price": 10000,
+            "description": ""
+          },
+          {
+            "name": "Jack Daniels Fire",
+            "price": 7500,
+            "description": ""
+          }
+        ],
+        "category_name": "DESTILADOS"
+      },
+      {
+        "products": [
+          {
+            "name": "Koyle Cabernet Souvinong 750cc",
+            "price": 25000,
+            "description": ""
+          },
+          {
+            "name": "Copa castillo molina cabernet sauvignon",
+            "price": 3900,
+            "description": ""
+          },
+          {
+            "name": "Castillo Molina Red Blend",
+            "price": 21000,
+            "description": ""
+          },
+          {
+            "name": "Castillo Molina Merlot",
+            "price": 21000,
+            "description": "750 ml"
+          },
+          {
+            "name": "Casillero Diablo reserva sauvignon blanc 750 cc",
+            "price": 15000,
+            "description": ""
+          },
+          {
+            "name": "Late harvest 750cc Casillero del Diablo",
+            "price": 15000,
+            "description": "375 ml"
+          },
+          {
+            "name": "Casillero del DIablo, Reserva Privada Cabernet Souvinong",
+            "price": 17900,
+            "description": ""
+          },
+          {
+            "name": "Late sauvignon blanc",
+            "price": 12500,
+            "description": "Late sauvignon blanc 92 pts ideal para quesos, postres vino para maridajes agridulces, vino con toques dulces"
+          },
+          {
+            "name": "Calcu Gran Reserva Syrah",
+            "price": 16990,
+            "description": ""
+          },
+          {
+            "name": "Calcu Carmenere",
+            "price": 16990,
+            "description": ""
+          },
+          {
+            "name": "Calcu Cabernet Franc",
+            "price": 16990,
+            "description": ""
+          },
+          {
+            "name": "Montes Ensamblaje Cabernet Sauvignon - Carmenere",
+            "price": 16990,
+            "description": ""
+          },
+          {
+            "name": "Montes Carmenere",
+            "price": 16990,
+            "description": ""
+          },
+          {
+            "name": "Viu Manent Malbec",
+            "price": 16990,
+            "description": ""
+          },
+          {
+            "name": "Viu Manent Cabernet Souvignon",
+            "price": 16990,
+            "description": ""
+          },
+          {
+            "name": "Viu Manent Carmenere",
+            "price": 16990,
+            "description": ""
+          }
+        ],
+        "category_name": "VINOS"
+      },
+      {
+        "products": [
+          {
+            "name": "AGREGADO I",
+            "price": 1000,
+            "description": "DETALLAR"
+          },
+          {
+            "name": "AGREGADO II",
+            "price": 2000,
+            "description": ""
+          },
+          {
+            "name": "AGREGADO III",
+            "price": 3000,
+            "description": ""
+          },
+          {
+            "name": "Torta I",
+            "price": 35000,
+            "description": ""
+          },
+          {
+            "name": "Torta II",
+            "price": 38000,
+            "description": ""
+          },
+          {
+            "name": "Torta III",
+            "price": 42000,
+            "description": ""
+          },
+          {
+            "name": "AGREGADO IV",
+            "price": 4000,
+            "description": ""
+          },
+          {
+            "name": "AGREGADO V",
+            "price": 5000,
+            "description": ""
+          }
+        ],
+        "category_name": "AGREGADOS"
+      }
+    ]
+  }
+]

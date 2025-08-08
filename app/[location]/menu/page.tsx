@@ -1,9 +1,10 @@
 import { locations } from "@/lib/locations"
-import { menuData, getCategoriesWithItems } from "@/lib/menu-data"
 import { MenuPageClient } from "@/components/menu-page-client"
 import { ArrowLeft, Utensils } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { getMenuByLocation, getCategories, convertDBMenuItemToLocal } from "@/lib/supabase-menu"
+import { menuCategories } from "@/lib/menu-data"
 
 interface MenuPageProps {
   params: Promise<{ location: string }>
@@ -12,11 +13,22 @@ interface MenuPageProps {
 export default async function MenuPage({ params }: MenuPageProps) {
   const { location } = await params
   const locationData = locations.find((loc) => loc.id === location)
-  const menuItems = menuData[location as keyof typeof menuData] || []
 
   if (!locationData) {
     notFound()
   }
+
+  // Fetch menu items from Supabase
+  const dbMenuItems = await getMenuByLocation(location as 'arbol' | '1898' | 'capriccio')
+  const dbCategories = await getCategories()
+  
+  // Convert database items to the format expected by components
+  const menuItems = dbMenuItems.map(item => convertDBMenuItemToLocal(item, dbCategories))
+  
+  // Get categories that have items
+  const availableCategories = menuCategories.filter(cat => 
+    menuItems.some(item => item.category === cat.id)
+  )
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: locationData.theme.background }}>
@@ -50,7 +62,7 @@ export default async function MenuPage({ params }: MenuPageProps) {
       </div>
 
       {/* Client Component for Interactive Menu */}
-      <MenuPageClient locationData={locationData} menuItems={menuItems} availableCategories={getCategoriesWithItems(location)} />
+      <MenuPageClient locationData={locationData} menuItems={menuItems} availableCategories={availableCategories} />
     </div>
   )
 }

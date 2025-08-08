@@ -54,6 +54,7 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
   const cardRef = useRef<HTMLDivElement>(null)
   const CategoryIcon = categoryIcons[item.category] || Utensils
   const categoryBgColor = categoryColors[item.category] || "#F3F4F6"
+  const isOutOfStock = item.stock_status === 'out_of_stock'
   
   // Calcular el nivel de picante
   const spiceIcons = item.spiceLevel ? Array.from({ length: item.spiceLevel }, (_, i) => (
@@ -63,10 +64,19 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
   return (
     <Card
       ref={cardRef}
-      className="group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 overflow-hidden bg-white border-2 hover:border-opacity-50"
+      className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 overflow-hidden bg-white border-2 hover:border-opacity-50 relative ${isOutOfStock ? 'opacity-75' : ''}`}
       style={{ borderColor: `${locationTheme.primary}20` }}
       onClick={onClick}
     >
+      {/* Out of Stock Badge */}
+      {isOutOfStock && (
+        <div className="absolute top-4 right-4 z-10">
+          <Badge className="bg-red-500 text-white font-semibold px-3 py-1.5 shadow-lg border-2 border-white">
+            <span className="text-xs uppercase tracking-wide">Agotado</span>
+          </Badge>
+        </div>
+      )}
+      
       {/* Barra superior de categoría */}
       <div 
         className="h-2 w-full"
@@ -123,8 +133,8 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
             {/* Precio destacado */}
             <div className="text-right">
               <div
-                className="font-bold text-xl md:text-2xl"
-                style={{ color: locationTheme.primary }}
+                className={`font-bold text-xl md:text-2xl ${isOutOfStock ? 'line-through opacity-50' : ''}`}
+                style={{ color: isOutOfStock ? '#9CA3AF' : locationTheme.primary }}
               >
                 ${(item.price / 1000).toFixed(0)}.{(item.price % 1000).toString().padStart(3, "0")}
               </div>

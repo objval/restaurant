@@ -139,93 +139,90 @@ export default function RootLayout({
         <meta name="geo.position" content="-38.985779;-72.639160" />
         <meta name="ICBM" content="-38.985779, -72.639160" />
 
-        {/* Error handler for JSON-LD parsing issues */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (typeof window !== 'undefined') {
-                window.addEventListener('error', function(e) {
-                  if (e.message && e.message.includes('@context') && e.message.includes('toLowerCase')) {
-                    e.preventDefault();
-                    console.warn('JSON-LD parsing error caught and prevented');
-                    return true;
-                  }
-                });
-              }
-            `,
-          }}
-        />
-        
-        {/* Business Schema */}
+        {/* Business Schema - El Árbol */}
         <script
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "Restaurant",
-                name: "El Árbol Café Restaurante",
-                description: "Restaurante familiar con ambiente cálido y acogedor en Pitrufquén",
-                url: "https://grupomdlf.vercel.app/arbol",
-                telephone: "+56942262266",
-                email: "contacto@elarbol.cl",
-                address: {
-                  "@type": "PostalAddress",
-                  streetAddress: "Manuel Rodríguez 792",
-                  addressCountry: "CL",
-                  addressRegion: "Araucanía",
-                  addressLocality: "Pitrufquén",
-                },
-                servesCuisine: ["Chilean", "Family", "Traditional"],
-                priceRange: "$$-$$$",
-                acceptsReservations: true,
-                openingHours: ["Tu-We 11:00-22:30", "Th-Fr 11:00-23:30", "Sa 11:30-23:30"],
-                image: "/logo.png",
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Restaurant",
+              name: "El Árbol Café Restaurante",
+              description: "Restaurante familiar con ambiente cálido y acogedor en Pitrufquén",
+              url: "https://grupomdlf.vercel.app/arbol",
+              telephone: "+56942262266",
+              email: "contacto@elarbol.cl",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Manuel Rodríguez 792",
+                addressCountry: "CL",
+                addressRegion: "Araucanía",
+                addressLocality: "Pitrufquén",
               },
-              {
-                "@context": "https://schema.org",
-                "@type": "BarOrPub",
-                name: "1898 Beer Bar",
-                description: "Beer bar con ambiente relajado, cervezas artesanales y música en vivo",
-                url: "https://grupomdlf.vercel.app/1898",
-                telephone: "+56997180227",
-                email: "contacto@1898.cl",
-                address: {
-                  "@type": "PostalAddress",
-                  streetAddress: "Francisco Bilbao 539",
-                  addressCountry: "CL",
-                  addressRegion: "Araucanía",
-                  addressLocality: "Pitrufquén",
-                },
-                servesCuisine: ["Bar Food", "Chilean", "Pub"],
-                priceRange: "$$-$$$",
-                acceptsReservations: true,
-                openingHours: ["Tu-We 11:00-00:30", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
-                image: "/logo.png",
+              servesCuisine: ["Chilean", "Family", "Traditional"],
+              priceRange: "$$-$$$",
+              acceptsReservations: true,
+              openingHours: ["Tu-We 11:00-22:30", "Th-Fr 11:00-23:30", "Sa 11:30-23:30"],
+              image: "/logo.png",
+            }),
+          }}
+        />
+        
+        {/* Business Schema - 1898 Beer Bar */}
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BarOrPub",
+              name: "1898 Beer Bar",
+              description: "Beer bar con ambiente relajado, cervezas artesanales y música en vivo",
+              url: "https://grupomdlf.vercel.app/1898",
+              telephone: "+56997180227",
+              email: "contacto@1898.cl",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Francisco Bilbao 539",
+                addressCountry: "CL",
+                addressRegion: "Araucanía",
+                addressLocality: "Pitrufquén",
               },
-              {
-                "@context": "https://schema.org",
-                "@type": "Restaurant",
-                name: "Capriccio Bistro Bar",
-                description: "Bistro elegante con cocina de autor y ambiente sofisticado",
-                url: "https://grupomdlf.vercel.app/capriccio",
-                telephone: "+56930527291",
-                email: "reservas@capricciobistro.cl",
-                address: {
-                  "@type": "PostalAddress",
-                  streetAddress: "Av. Balmaceda 377",
-                  addressCountry: "CL",
-                  addressRegion: "Araucanía",
-                  addressLocality: "Pitrufquén",
-                },
-                servesCuisine: ["Contemporary", "Bistro", "International"],
-                priceRange: "$$$-$$$$",
-                acceptsReservations: true,
-                openingHours: ["Tu-We 11:00-00:30", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
-                image: "/logo.png",
-              }
-            ]),
+              servesCuisine: ["Bar Food", "Chilean", "Pub"],
+              priceRange: "$$-$$$",
+              acceptsReservations: true,
+              openingHours: ["Tu-We 11:00-00:30", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
+              image: "/logo.png",
+            }),
+          }}
+        />
+        
+        {/* Business Schema - Capriccio */}
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Restaurant",
+              name: "Capriccio Bistro Bar",
+              description: "Bistro elegante con cocina de autor y ambiente sofisticado",
+              url: "https://grupomdlf.vercel.app/capriccio",
+              telephone: "+56930527291",
+              email: "reservas@capricciobistro.cl",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Av. Balmaceda 377",
+                addressCountry: "CL",
+                addressRegion: "Araucanía",
+                addressLocality: "Pitrufquén",
+              },
+              servesCuisine: ["Contemporary", "Bistro", "International"],
+              priceRange: "$$$-$$$$",
+              acceptsReservations: true,
+              openingHours: ["Tu-We 11:00-00:30", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
+              image: "/logo.png",
+            }),
           }}
         />
       </head>

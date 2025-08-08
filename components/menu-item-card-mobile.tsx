@@ -20,12 +20,22 @@ interface MenuItemCardMobileProps {
 const SHOW_PRODUCT_IMAGES = false
 
 export function MenuItemCardMobile({ item, onClick, locationTheme }: MenuItemCardMobileProps) {
+  const isOutOfStock = item.stock_status === 'out_of_stock'
 
   return (
     <Card 
-      className="overflow-hidden bg-white shadow-sm active:shadow-lg transition-shadow"
+      className={`overflow-hidden bg-white shadow-sm active:shadow-lg transition-shadow relative ${isOutOfStock ? 'opacity-75' : ''}`}
       onClick={onClick}
     >
+      {/* Out of Stock Badge - Positioned absolutely */}
+      {isOutOfStock && (
+        <div className="absolute top-2 right-2 z-10">
+          <Badge className="bg-red-500 text-white font-semibold px-2 py-1 shadow-md border border-white sm:px-3 sm:py-1.5">
+            <span className="text-[10px] sm:text-xs uppercase tracking-wide">Agotado</span>
+          </Badge>
+        </div>
+      )}
+      
       <div className="flex gap-3 p-3">
         {/* Image */}
         {SHOW_PRODUCT_IMAGES && (
@@ -106,8 +116,8 @@ export function MenuItemCardMobile({ item, onClick, locationTheme }: MenuItemCar
             
             {/* Price */}
             <div 
-              className="font-bold text-lg"
-              style={{ color: locationTheme.primary }}
+              className={`font-bold text-lg ${isOutOfStock ? 'line-through opacity-50' : ''}`}
+              style={{ color: isOutOfStock ? '#9CA3AF' : locationTheme.primary }}
             >
               ${(item.price / 1000).toFixed(0)}.{(item.price % 1000).toString().padStart(3, "0")}
             </div>

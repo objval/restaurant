@@ -14,6 +14,7 @@ export interface MenuItem {
   chef_special?: boolean
   popular?: boolean
   seasonal?: boolean
+  stock_status?: 'in_stock' | 'out_of_stock' // Stock availability for restaurant items
 }
 
 export interface MenuCategory {
@@ -44,6 +45,10 @@ export const menuCategories: MenuCategory[] = [
   { id: "desserts", name: "Repostería y Pastelería", description: "Dulces finales para tu comida", icon: "🍰" },
   { id: "breakfast", name: "Desayunos", description: "Para empezar el día con energía", icon: "🍳" },
   { id: "kids", name: "Menú de Niños", description: "Platos pensados para los más pequeños", icon: "🧒" },
+  // Additional categories for Capriccio location
+  { id: "cocktails_author", name: "Coctelería de Autor", description: "Cócteles exclusivos de la casa", icon: "🍹" },
+  { id: "digestifs", name: "Bajativos", description: "Licores digestivos", icon: "🥃" },
+  { id: "main_courses", name: "Platos Principales", description: "Nuestros platos principales", icon: "🍽️" },
 ]
 
 // Import menu data from individual location files

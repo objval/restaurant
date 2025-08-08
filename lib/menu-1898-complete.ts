@@ -1,82 +1,16 @@
 import { MenuItem } from "./menu-data"
 
-// Menu for Location 2: 1898
-export const menu1898: MenuItem[] = [
+// Menu completo para Location 2: 1898
+export const menu1898Complete: MenuItem[] = [
   {
     "id": "guinness-extra-stout-473-ml",
     "name": "Guinness extra stout 473 ML",
     "description": "Cerveza premuim Irlanda (lata 473 ML) extra stout",
     "price": 5000,
     "category": "beers",
-    "image": "https://images.unsplash.com/photo-1618183479302-1e0aa382c36b?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Malta",
-      "Lúpulo",
-      "Levadura",
-      "Agua"
-    ],
-    "allergens": [
-      "Gluten"
-    ],
-    "dietary": [
-      "vegan"
-    ],
-    "calories": 165,
-    "prepTime": "1-2 min"
-  },
-  {
-    "id": "corona",
-    "name": "Corona",
-    "description": "Cerveza refrescante",
-    "price": 3500,
-    "category": "beers",
-    "image": "https://images.unsplash.com/photo-1558642891-54be180ea339?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Malta",
-      "Lúpulo",
-      "Levadura",
-      "Agua"
-    ],
-    "allergens": [
-      "Gluten"
-    ],
-    "dietary": [
-      "vegan"
-    ],
-    "calories": 150,
-    "prepTime": "1-2 min"
-  },
-  {
-    "id": "royal",
-    "name": "Royal",
-    "description": "Cerveza refrescante",
-    "price": 3500,
-    "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
-      "Lúpulo",
-      "Levadura",
-      "Agua"
-    ],
-    "allergens": [
-      "Gluten"
-    ],
-    "dietary": [
-      "vegan"
-    ],
-    "calories": 178,
-    "prepTime": "1-2 min"
-  },
-  {
-    "id": "heineken",
-    "name": "Heineken",
-    "description": "Cerveza refrescante",
-    "price": 3500,
-    "category": "beers",
-    "image": "https://images.unsplash.com/photo-1569937756564-eb67861bf709?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -91,14 +25,14 @@ export const menu1898: MenuItem[] = [
     "prepTime": "1-2 min"
   },
   {
-    "id": "shop-heineken",
-    "name": "Shop Heineken",
-    "description": "Cerveza refrescante",
-    "price": 4000,
+    "id": "corona",
+    "name": "Corona",
+    "description": "Corona - Especialidad de la casa",
+    "price": 3500,
     "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -109,18 +43,84 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "vegan"
     ],
-    "calories": 152,
+    "calories": 166,
+    "prepTime": "1-2 min"
+  },
+  {
+    "id": "royal",
+    "name": "Royal",
+    "description": "Royal - Especialidad de la casa",
+    "price": 3500,
+    "category": "beers",
+    "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Malta de cebada",
+      "Lúpulo",
+      "Levadura",
+      "Agua"
+    ],
+    "allergens": [
+      "Gluten"
+    ],
+    "dietary": [
+      "vegan"
+    ],
+    "calories": 144,
+    "prepTime": "1-2 min"
+  },
+  {
+    "id": "heineken",
+    "name": "Heineken",
+    "description": "Heineken - Especialidad de la casa",
+    "price": 3500,
+    "category": "beers",
+    "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Malta de cebada",
+      "Lúpulo",
+      "Levadura",
+      "Agua"
+    ],
+    "allergens": [
+      "Gluten"
+    ],
+    "dietary": [
+      "vegan"
+    ],
+    "calories": 178,
+    "prepTime": "1-2 min"
+  },
+  {
+    "id": "shop-heineken",
+    "name": "Shop Heineken",
+    "description": "Shop Heineken - Especialidad de la casa",
+    "price": 4000,
+    "category": "beers",
+    "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Malta de cebada",
+      "Lúpulo",
+      "Levadura",
+      "Agua"
+    ],
+    "allergens": [
+      "Gluten"
+    ],
+    "dietary": [
+      "vegan"
+    ],
+    "calories": 149,
     "prepTime": "1-2 min"
   },
   {
     "id": "shop-kunstman-torobayo",
     "name": "Shop Kunstman Torobayo",
-    "description": "Cerveza refrescante",
+    "description": "Shop Kunstman Torobayo - Especialidad de la casa",
     "price": 6000,
     "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -131,7 +131,7 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "vegan"
     ],
-    "calories": 130,
+    "calories": 175,
     "prepTime": "1-2 min"
   },
   {
@@ -142,7 +142,7 @@ export const menu1898: MenuItem[] = [
     "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -153,7 +153,7 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "vegan"
     ],
-    "calories": 123,
+    "calories": 176,
     "prepTime": "1-2 min"
   },
   {
@@ -164,7 +164,7 @@ export const menu1898: MenuItem[] = [
     "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -175,18 +175,18 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "vegan"
     ],
-    "calories": 154,
+    "calories": 178,
     "prepTime": "1-2 min"
   },
   {
     "id": "shop-ruta-s70-ambar",
     "name": "Shop ruta S70 Ambar",
-    "description": "Cerveza refrescante",
+    "description": "Shop ruta S70 Ambar - Especialidad de la casa",
     "price": 5000,
     "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -197,18 +197,18 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "vegan"
     ],
-    "calories": 130,
+    "calories": 173,
     "prepTime": "1-2 min"
   },
   {
     "id": "cuello-negro-ambar",
     "name": "Cuello negro Ambar",
-    "description": "Cerveza refrescante",
+    "description": "Cuello negro Ambar - Especialidad de la casa",
     "price": 5000,
     "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -219,7 +219,7 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "vegan"
     ],
-    "calories": 138,
+    "calories": 142,
     "prepTime": "1-2 min"
   },
   {
@@ -230,7 +230,7 @@ export const menu1898: MenuItem[] = [
     "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -253,7 +253,7 @@ export const menu1898: MenuItem[] = [
     "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -264,7 +264,7 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "vegan"
     ],
-    "calories": 145,
+    "calories": 144,
     "prepTime": "1-2 min",
     "popular": true
   },
@@ -276,7 +276,7 @@ export const menu1898: MenuItem[] = [
     "category": "beers",
     "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
     "ingredients": [
-      "Malta",
+      "Malta de cebada",
       "Lúpulo",
       "Levadura",
       "Agua"
@@ -287,7 +287,7 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "vegan"
     ],
-    "calories": 156,
+    "calories": 145,
     "prepTime": "1-2 min"
   },
   {
@@ -298,11 +298,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo",
-      "Amargo de Angostura"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Huevos"
@@ -310,7 +306,7 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "gluten-free"
     ],
-    "calories": 256,
+    "calories": 203,
     "prepTime": "3-5 min"
   },
   {
@@ -321,12 +317,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo",
-      "Jugo de fruta (maracuyá, mango o frambuesa)",
-      "Amargo de Angostura"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Huevos"
@@ -334,7 +325,7 @@ export const menu1898: MenuItem[] = [
     "dietary": [
       "gluten-free"
     ],
-    "calories": 188,
+    "calories": 243,
     "prepTime": "3-5 min"
   },
   {
@@ -345,16 +336,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ginebra",
-      "Vermouth seco",
-      "Aceituna"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 203,
+    "calories": 248,
     "prepTime": "3-5 min"
   },
   {
@@ -365,18 +354,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Crema de coco",
-      "Coco rallado",
-      "Piña natural",
-      "Jarabe de goma"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 183,
+    "calories": 237,
     "prepTime": "3-5 min"
   },
   {
@@ -387,18 +372,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Jugo de limón",
-      "Menta fresca",
-      "Agua con gas",
-      "Jarabe de goma"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 227,
+    "calories": 245,
     "prepTime": "3-5 min"
   },
   {
@@ -409,16 +390,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Limón",
-      "Menta"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 245,
+    "calories": 235,
     "prepTime": "3-5 min"
   },
   {
@@ -429,16 +408,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Limón",
-      "Menta"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 214,
+    "calories": 211,
     "prepTime": "3-5 min"
   },
   {
@@ -449,16 +426,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Tequila",
-      "Limón",
-      "Triple sec"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 247,
+    "calories": 203,
     "prepTime": "3-5 min"
   },
   {
@@ -469,16 +444,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Tequila",
-      "Limón",
-      "Triple sec"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 238,
+    "calories": 201,
     "prepTime": "3-5 min"
   },
   {
@@ -489,11 +462,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Licor de café",
-      "Crema de leche",
-      "Salsa de chocolate",
-      "Marrasquino rojo"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Lácteos"
@@ -502,7 +471,7 @@ export const menu1898: MenuItem[] = [
       "vegetarian",
       "gluten-free"
     ],
-    "calories": 192,
+    "calories": 180,
     "prepTime": "3-5 min"
   },
   {
@@ -513,20 +482,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vino dulce",
-      "Licor de cacao",
-      "Cognac",
-      "Yema de huevo",
-      "Canela"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [
-      "Huevos"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 243,
+    "calories": 258,
     "prepTime": "3-5 min"
   },
   {
@@ -537,15 +500,12 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Cachaça",
-      "Jugo de limón",
-      "Azúcar",
-      "Hielo"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
     "calories": 239,
     "prepTime": "3-5 min"
@@ -558,18 +518,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Whisky",
-      "Azúcar",
-      "Amargo de Angostura",
-      "Naranja",
-      "Cereza"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 222,
+    "calories": 245,
     "prepTime": "3-5 min"
   },
   {
@@ -580,18 +536,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ramazzotti",
-      "Vino espumoso",
-      "Agua con gas",
-      "Frutos rojos",
-      "Naranja"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 241,
+    "calories": 183,
     "prepTime": "3-5 min"
   },
   {
@@ -602,17 +554,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Aperol",
-      "Vino espumoso",
-      "Agua con gas",
-      "Naranja"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 199,
+    "calories": 214,
     "prepTime": "3-5 min"
   },
   {
@@ -623,17 +572,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Jugo de arándano",
-      "Jugo de lima",
-      "Triple sec"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 191,
+    "calories": 222,
     "prepTime": "3-5 min"
   },
   {
@@ -644,15 +590,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Whisky escocés",
-      "Drambuie"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 213,
+    "calories": 247,
     "prepTime": "3-5 min"
   },
   {
@@ -663,16 +608,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Limón",
-      "Menta"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 247,
+    "calories": 251,
     "prepTime": "3-5 min"
   },
   {
@@ -683,16 +626,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Cerveza de jengibre",
-      "Jugo de lima"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 196,
+    "calories": 248,
     "prepTime": "3-5 min"
   },
   {
@@ -703,16 +644,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ginebra",
-      "Campari",
-      "Vermut dulce"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 188,
+    "calories": 192,
     "prepTime": "3-5 min"
   },
   {
@@ -723,14 +662,15 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Huevos"
+    ],
     "dietary": [
-      "vegan",
       "gluten-free"
     ],
-    "calories": 207,
+    "calories": 180,
     "prepTime": "3-5 min"
   },
   {
@@ -741,17 +681,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco",
-      "Jugo de naranja",
-      "Jugo de piña",
-      "Granadina"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 259,
+    "calories": 194,
     "prepTime": "3-5 min"
   },
   {
@@ -762,20 +699,15 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Amaretto",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
-      "Huevos",
-      "Nueces"
+      "Huevos"
     ],
     "dietary": [
-      "vegetarian",
       "gluten-free"
     ],
-    "calories": 242,
+    "calories": 210,
     "prepTime": "3-5 min"
   },
   {
@@ -786,16 +718,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Jugo de lima",
-      "Jarabe de goma"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 210,
+    "calories": 253,
     "prepTime": "3-5 min"
   },
   {
@@ -806,17 +736,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Whisky escocés",
-      "Amaretto"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [
-      "Nueces"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 253,
+    "calories": 219,
     "prepTime": "3-5 min"
   },
   {
@@ -827,17 +754,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Blue Curaçao",
-      "Limonada",
-      "Cereza"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 237,
+    "calories": 255,
     "prepTime": "3-5 min"
   },
   {
@@ -848,16 +772,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Limón",
-      "Menta"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 186,
+    "calories": 209,
     "prepTime": "3-5 min"
   },
   {
@@ -868,16 +790,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Limón",
-      "Menta"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 237,
+    "calories": 180,
     "prepTime": "3-5 min"
   },
   {
@@ -888,16 +808,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Limón",
-      "Menta"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 246,
+    "calories": 256,
     "prepTime": "3-5 min"
   },
   {
@@ -908,16 +826,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Limón",
-      "Menta"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 207,
+    "calories": 244,
     "prepTime": "3-5 min"
   },
   {
@@ -928,37 +844,33 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Chardonnay",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Huevos"
     ],
     "dietary": [
-      "vegetarian",
       "gluten-free"
     ],
-    "calories": 244,
+    "calories": 254,
     "prepTime": "3-5 min"
   },
   {
     "id": "jaggermeister",
     "name": "jaggermeister",
-    "description": "Cóctel artesanal",
+    "description": "jaggermeister - Especialidad de la casa",
     "price": 5000,
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Jägermeister"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 182,
+    "calories": 193,
     "prepTime": "3-5 min"
   },
   {
@@ -969,17 +881,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ginebra",
-      "Jugo de limón",
-      "Agua con gas",
-      "Jarabe de goma"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 191,
+    "calories": 221,
     "prepTime": "3-5 min"
   },
   {
@@ -990,19 +899,15 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Whisky",
-      "Jugo de limón",
-      "Jarabe de goma",
-      "Clara de huevo",
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Huevos"
     ],
     "dietary": [
-      "vegetarian",
       "gluten-free"
     ],
-    "calories": 210,
+    "calories": 226,
     "prepTime": "3-5 min"
   },
   {
@@ -1013,14 +918,15 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Huevos"
+    ],
     "dietary": [
-      "vegan",
       "gluten-free"
     ],
-    "calories": 250,
+    "calories": 239,
     "prepTime": "3-5 min"
   },
   {
@@ -1031,15 +937,16 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Licor de café"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Lácteos"
+    ],
     "dietary": [
-      "vegan",
+      "vegetarian",
       "gluten-free"
     ],
-    "calories": 232,
+    "calories": 233,
     "prepTime": "3-5 min"
   },
   {
@@ -1050,19 +957,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Licor de café",
-      "Amaretto",
-      "Crema irlandesa"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [
-      "Lácteos",
-      "Nueces"
-    ],
+    "allergens": [],
     "dietary": [
-      "vegetarian",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 254,
+    "calories": 199,
     "prepTime": "3-5 min"
   },
   {
@@ -1073,14 +975,15 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Huevos"
+    ],
     "dietary": [
-      "vegan",
       "gluten-free"
     ],
-    "calories": 249,
+    "calories": 250,
     "prepTime": "3-5 min",
     "popular": true
   },
@@ -1092,15 +995,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Cachaça",
-      "Limón"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 249,
+    "calories": 219,
     "prepTime": "3-5 min",
     "popular": true
   },
@@ -1112,18 +1014,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ramazzotti",
-      "Vino espumoso",
-      "Agua con gas",
-      "Frutos rojos",
-      "Naranja"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 209,
+    "calories": 226,
     "prepTime": "3-5 min",
     "popular": true
   },
@@ -1135,16 +1033,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ron",
-      "Limón",
-      "Menta"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 215,
+    "calories": 217,
     "prepTime": "3-5 min",
     "popular": true
   },
@@ -1156,11 +1052,7 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vodka",
-      "Licor de café",
-      "Crema de leche",
-      "Salsa de chocolate",
-      "Marrasquino rojo"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Lácteos"
@@ -1169,26 +1061,27 @@ export const menu1898: MenuItem[] = [
       "vegetarian",
       "gluten-free"
     ],
-    "calories": 207,
+    "calories": 257,
     "prepTime": "3-5 min",
     "popular": true
   },
   {
     "id": "pisco-sour-peruano",
     "name": "Pisco sour peruano",
-    "description": "Cóctel artesanal",
+    "description": "Pisco sour peruano - Especialidad de la casa",
     "price": 6500,
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pisco"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Huevos"
+    ],
     "dietary": [
-      "vegan",
       "gluten-free"
     ],
-    "calories": 235,
+    "calories": 200,
     "prepTime": "3-5 min"
   },
   {
@@ -1199,16 +1092,14 @@ export const menu1898: MenuItem[] = [
     "category": "cocktails",
     "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Tequila",
-      "Limón",
-      "Triple sec"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 192,
+    "calories": 196,
     "prepTime": "3-5 min",
     "popular": true
   },
@@ -1217,120 +1108,118 @@ export const menu1898: MenuItem[] = [
     "name": "Fernet Branca",
     "description": "con bebida",
     "price": 4500,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Fernet Branca",
-      "Cola"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 130,
-    "prepTime": "1 min"
+    "calories": 111,
+    "prepTime": "1-2 min"
   },
   {
     "id": "shot-manzanilla",
     "name": "Shot manzanilla",
-    "description": "Bebida premium",
+    "description": "Shot manzanilla - Especialidad de la casa",
     "price": 3450,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Licor de manzanilla"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 149,
-    "prepTime": "1 min"
+    "calories": 137,
+    "prepTime": "1-2 min"
   },
   {
     "id": "copa-de-vino-castillo-molina",
     "name": "copa de vino Castillo Molina",
-    "description": "Bebida premium",
+    "description": "copa de vino Castillo Molina - Especialidad de la casa",
     "price": 3500,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vino tinto"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 111,
-    "prepTime": "1 min"
+    "calories": 113,
+    "prepTime": "1-2 min"
   },
   {
     "id": "shot-tequila",
     "name": "Shot Tequila",
-    "description": "Bebida premium",
+    "description": "Shot Tequila - Especialidad de la casa",
     "price": 4000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Tequila"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 108,
-    "prepTime": "1 min"
+    "calories": 117,
+    "prepTime": "1-2 min"
   },
   {
     "id": "shot-jose-cuervo-especial",
     "name": "Shot Jose cuervo especial",
-    "description": "Bebida premium",
+    "description": "Shot Jose cuervo especial - Especialidad de la casa",
     "price": 5000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Tequila Jose Cuervo Especial"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 145,
-    "prepTime": "1 min",
-    "chef_special": true
+    "calories": 135,
+    "prepTime": "1-2 min"
   },
   {
     "id": "shot-jose-cuervo-reposado",
     "name": "Shot Jose Cuervo Reposado",
-    "description": "Bebida premium",
+    "description": "Shot Jose Cuervo Reposado - Especialidad de la casa",
     "price": 6300,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Tequila Jose Cuervo Reposado"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 109,
-    "prepTime": "1 min"
+    "calories": 136,
+    "prepTime": "1-2 min"
   },
   {
     "id": "crema-de-whisky",
     "name": "Crema de whisky",
-    "description": "Bebida premium",
+    "description": "Crema de whisky - Especialidad de la casa",
     "price": 5400,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Crema de whisky"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Lácteos"
@@ -1339,103 +1228,98 @@ export const menu1898: MenuItem[] = [
       "vegetarian",
       "gluten-free"
     ],
-    "calories": 114,
-    "prepTime": "1 min"
+    "calories": 133,
+    "prepTime": "1-2 min"
   },
   {
     "id": "tanqueray",
     "name": "Tanqueray",
-    "description": "Bebida premium",
+    "description": "Tanqueray - Especialidad de la casa",
     "price": 6900,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ginebra Tanqueray",
-      "Agua tónica"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 136,
-    "prepTime": "1 min"
+    "calories": 144,
+    "prepTime": "1-2 min"
   },
   {
     "id": "campari",
     "name": "Campari",
-    "description": "Bebida premium",
+    "description": "Campari - Especialidad de la casa",
     "price": 4500,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Campari",
-      "Agua con gas"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 103,
-    "prepTime": "1 min"
+    "calories": 138,
+    "prepTime": "1-2 min"
   },
   {
     "id": "botella-vino-alto",
     "name": "Botella vino alto",
-    "description": "Bebida premium",
+    "description": "Botella vino alto - Especialidad de la casa",
     "price": 13000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vino tinto"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 146,
-    "prepTime": "1 min"
+    "calories": 117,
+    "prepTime": "1-2 min"
   },
   {
     "id": "sangria",
     "name": "Sangría",
-    "description": "Bebida premium",
+    "description": "Sangría - Especialidad de la casa",
     "price": 5900,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vino tinto",
-      "Fruta picada",
-      "Azúcar",
-      "Brandy"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 114,
-    "prepTime": "1 min"
+    "calories": 110,
+    "prepTime": "1-2 min"
   },
   {
     "id": "promo-tequila",
     "name": "Promo tequila",
     "description": "Minuto feliz",
     "price": 1000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 120,
-    "prepTime": "1 min",
+    "calories": 141,
+    "prepTime": "1-2 min",
     "popular": true
   },
   {
@@ -1443,252 +1327,252 @@ export const menu1898: MenuItem[] = [
     "name": "Propeller",
     "description": "con bebida",
     "price": 5000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 111,
-    "prepTime": "1 min"
+    "calories": 136,
+    "prepTime": "1-2 min"
   },
   {
     "id": "boolton",
     "name": "Boolton",
-    "description": "Bebida premium",
+    "description": "Boolton - Especialidad de la casa",
     "price": 3500,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 147,
-    "prepTime": "1 min"
+    "calories": 144,
+    "prepTime": "1-2 min"
   },
   {
     "id": "beefeater",
     "name": "Beefeater",
     "description": "con bebida",
     "price": 6900,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 121,
-    "prepTime": "1 min"
+    "calories": 111,
+    "prepTime": "1-2 min"
   },
   {
     "id": "gin-hendricks",
     "name": "Gin Hendricks",
-    "description": "Bebida premium",
+    "description": "Gin Hendricks - Especialidad de la casa",
     "price": 6900,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 134,
-    "prepTime": "1 min"
+    "calories": 148,
+    "prepTime": "1-2 min"
   },
   {
     "id": "tanqueray-berries",
     "name": "Tanqueray berries",
-    "description": "Bebida premium",
+    "description": "Tanqueray berries - Especialidad de la casa",
     "price": 6900,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 132,
-    "prepTime": "1 min"
+    "calories": 137,
+    "prepTime": "1-2 min"
   },
   {
     "id": "mistral-35",
     "name": "mistral 35º",
     "description": "con bebida",
     "price": 4600,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 111,
-    "prepTime": "1 min"
+    "calories": 123,
+    "prepTime": "1-2 min"
   },
   {
     "id": "gobernador",
     "name": "Gobernador",
     "description": "con bebida",
     "price": 5750,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 116,
-    "prepTime": "1 min"
+    "calories": 121,
+    "prepTime": "1-2 min"
   },
   {
     "id": "mistral-nobel-barrica-40",
     "name": "Mistral nobel barrica 40º",
     "description": "con bebida",
     "price": 6300,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 118,
-    "prepTime": "1 min"
+    "calories": 133,
+    "prepTime": "1-2 min"
   },
   {
     "id": "alto-del-carmen",
     "name": "Alto del carmen",
     "description": "con bebida",
     "price": 4600,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 149,
-    "prepTime": "1 min"
+    "calories": 111,
+    "prepTime": "1-2 min"
   },
   {
     "id": "horcon-quemado",
     "name": "Horcón quemado",
     "description": "con bebida",
     "price": 5750,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 120,
-    "prepTime": "1 min"
+    "calories": 103,
+    "prepTime": "1-2 min"
   },
   {
     "id": "pisco-bauza",
     "name": "pisco bauza",
-    "description": "Bebida premium",
+    "description": "pisco bauza - Especialidad de la casa",
     "price": 4600,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 110,
-    "prepTime": "1 min"
+    "calories": 135,
+    "prepTime": "1-2 min"
   },
   {
     "id": "el-gobernador",
     "name": "El Gobernador",
     "description": "con bebida",
     "price": 5750,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 109,
-    "prepTime": "1 min"
+    "calories": 124,
+    "prepTime": "1-2 min"
   },
   {
     "id": "mistral-nobel",
     "name": "Mistral nobel",
-    "description": "Bebida premium",
+    "description": "Mistral nobel - Especialidad de la casa",
     "price": 6300,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 141,
-    "prepTime": "1 min"
+    "calories": 119,
+    "prepTime": "1-2 min"
   },
   {
     "id": "2x-pisco-mistral-35",
     "name": "2X pisco mistral 35",
     "description": "activo día del pisco",
     "price": 7300,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 148,
-    "prepTime": "1 min",
+    "calories": 146,
+    "prepTime": "1-2 min",
     "popular": true
   },
   {
@@ -1696,729 +1580,353 @@ export const menu1898: MenuItem[] = [
     "name": "2X Pisco alto del carmen",
     "description": "Activo día del pisco",
     "price": 7300,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 108,
-    "prepTime": "1 min",
+    "calories": 149,
+    "prepTime": "1-2 min",
     "popular": true
   },
   {
     "id": "ron-habana-reserva-7-anos",
     "name": "Ron habana reserva 7 años",
-    "description": "Bebida premium",
+    "description": "Ron habana reserva 7 años - Especialidad de la casa",
     "price": 8500,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 105,
-    "prepTime": "1 min"
+    "calories": 104,
+    "prepTime": "1-2 min"
   },
   {
     "id": "havana-reserva",
     "name": "Havana Reserva",
     "description": "con bebida",
     "price": 6500,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 101,
-    "prepTime": "1 min"
+    "calories": 120,
+    "prepTime": "1-2 min"
   },
   {
     "id": "havana-club",
     "name": "Havana Club",
     "description": "con bebida",
     "price": 4600,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 123,
-    "prepTime": "1 min"
+    "calories": 120,
+    "prepTime": "1-2 min"
   },
   {
     "id": "absolut",
     "name": "Absolut",
     "description": "con bebida",
     "price": 5000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 114,
-    "prepTime": "1 min"
+    "calories": 139,
+    "prepTime": "1-2 min"
   },
   {
     "id": "eristoff",
     "name": "Eristoff",
     "description": "con bebida",
     "price": 4000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 142,
-    "prepTime": "1 min"
+    "calories": 116,
+    "prepTime": "1-2 min"
   },
   {
     "id": "stolichnaya",
     "name": "Stolichnaya",
     "description": "con bebida",
     "price": 6900,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 120,
-    "prepTime": "1 min"
+    "calories": 117,
+    "prepTime": "1-2 min"
   },
   {
     "id": "ballantine-s",
     "name": "Ballantine's",
     "description": "con bebida",
     "price": 5000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 120,
-    "prepTime": "1 min"
+    "calories": 134,
+    "prepTime": "1-2 min"
   },
   {
     "id": "johnny-red-label",
     "name": "Johnny red label",
     "description": "con bebida",
     "price": 5000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 126,
-    "prepTime": "1 min"
+    "calories": 137,
+    "prepTime": "1-2 min"
   },
   {
     "id": "johnny-black-label",
     "name": "Johnny Black label",
     "description": "con bebida",
     "price": 8000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 133,
-    "prepTime": "1 min"
+    "calories": 147,
+    "prepTime": "1-2 min"
   },
   {
     "id": "jack-daniels-n-7",
     "name": "Jack Daniels Nº7",
     "description": "con bebida",
     "price": 8000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 131,
-    "prepTime": "1 min"
+    "calories": 141,
+    "prepTime": "1-2 min"
   },
   {
     "id": "chivas-regal-12-anos",
     "name": "Chivas Regal 12 años",
     "description": "con bebida",
     "price": 9000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 109,
-    "prepTime": "1 min"
+    "calories": 128,
+    "prepTime": "1-2 min"
   },
   {
     "id": "fireball",
     "name": "Fireball",
     "description": "con bebida",
     "price": 6500,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 119,
-    "prepTime": "1 min"
+    "calories": 117,
+    "prepTime": "1-2 min"
   },
   {
     "id": "johnnie-walker-game-of-thrones",
     "name": "Johnnie walker game of thrones",
     "description": "whisky con notas de vainilla y fruta fresca, para los fanáticos de game of thrones.",
     "price": 8000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 148,
-    "prepTime": "1 min"
+    "calories": 136,
+    "prepTime": "1-2 min"
   },
   {
     "id": "johnnie-blonde",
     "name": "Johnnie Blonde",
     "description": "Whisky con notas de vainilla, manzana acaramelada y caramelo, y un final suave.",
     "price": 5000,
-    "category": "wines",
+    "category": "spirits",
     "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 124,
-    "prepTime": "1 min"
+    "calories": 140,
+    "prepTime": "1-2 min"
+  },
+  {
+    "id": "johnnie-double-black",
+    "name": "Johnnie double black",
+    "description": "Johnnie double black - Especialidad de la casa",
+    "price": 13,
+    "category": "spirits",
+    "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "gluten-free",
+      "vegan"
+    ],
+    "calories": 121,
+    "prepTime": "1-2 min"
   },
   {
     "id": "coca-cola",
     "name": "coca cola",
-    "description": "Bebida refrescante",
+    "description": "coca cola - Especialidad de la casa",
     "price": 2500,
     "category": "beverages",
     "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "vegan",
       "gluten-free"
     ],
-    "calories": 139,
+    "calories": 130,
     "prepTime": "2-3 min"
   },
   {
     "id": "coca-cola-zero",
     "name": "coca cola zero",
-    "description": "Bebida refrescante",
+    "description": "coca cola zero - Especialidad de la casa",
     "price": 2500,
     "category": "beverages",
     "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "vegan",
       "gluten-free"
     ],
-    "calories": 122,
+    "calories": 7,
     "prepTime": "2-3 min"
   },
   {
     "id": "fanta",
     "name": "fanta",
-    "description": "Bebida refrescante",
+    "description": "fanta - Especialidad de la casa",
     "price": 2500,
     "category": "beverages",
     "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "vegan",
       "gluten-free"
     ],
-    "calories": 105,
+    "calories": 107,
     "prepTime": "2-3 min"
   },
   {
     "id": "sprite",
     "name": "sprite",
-    "description": "Bebida refrescante",
+    "description": "sprite - Especialidad de la casa",
     "price": 2500,
     "category": "beverages",
     "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 117,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "schweppes-ginger-ale",
-    "name": "schweppes ginger ale",
-    "description": "Bebida refrescante",
-    "price": 2500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 97,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "schweppes-tonica",
-    "name": "schweppes tonica",
-    "description": "Bebida refrescante",
-    "price": 2500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 116,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "limonada-tradicional",
-    "name": "Limonada tradicional",
-    "description": "Bebida refrescante",
-    "price": 3000,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 112,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "limonada-menta-jengibre",
-    "name": "Limonada menta jengibre",
-    "description": "Bebida refrescante",
-    "price": 3500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 142,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "jugo-natural-frambuesa",
-    "name": "jugo natural frambuesa",
-    "description": "Bebida refrescante",
-    "price": 4000,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 102,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "jugo-natural-de-pina",
-    "name": "jugo natural de piña",
-    "description": "Bebida refrescante",
-    "price": 4000,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 143,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "jugo-natural-mango",
-    "name": "jugo natural mango",
-    "description": "Bebida refrescante",
-    "price": 4000,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 117,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "jugo-natural-maracuya",
-    "name": "jugo natural maracuya",
-    "description": "Bebida refrescante",
-    "price": 4000,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 112,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "agua-mineral-con-gas",
-    "name": "agua mineral con gas",
-    "description": "Bebida refrescante",
-    "price": 2000,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 98,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "agua-mineral-sin-gas",
-    "name": "agua mineral sin gas",
-    "description": "Bebida refrescante",
-    "price": 2000,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 96,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "red-bull",
-    "name": "Red Bull",
-    "description": "Bebida refrescante",
-    "price": 3500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 118,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "milkshake",
-    "name": "Milkshake",
-    "description": "Bebida refrescante",
-    "price": 4000,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 116,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "mini-coca-220-cc",
-    "name": "mini coca 220 cc",
-    "description": "Bebida refrescante",
-    "price": 1500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 126,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "crush",
-    "name": "Crush",
-    "description": "Bebida refrescante",
-    "price": 2500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 137,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "pap",
-    "name": "Pap",
-    "description": "Bebida refrescante",
-    "price": 2500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 136,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "naranja-platano",
-    "name": "Naranja Platano",
-    "description": "Bebida refrescante",
-    "price": 4000,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 118,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "red-bull-yellow",
-    "name": "Red Bull Yellow",
-    "description": "Bebida refrescante",
-    "price": 3500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 110,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "mini-sprite",
-    "name": "mini sprite",
-    "description": "Bebida refrescante",
-    "price": 1500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 118,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "mini-ginger-ale",
-    "name": "mini ginger ale",
-    "description": "Bebida refrescante",
-    "price": 1500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 126,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "mini-tonica",
-    "name": "mini tonica",
-    "description": "Bebida refrescante",
-    "price": 1500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 99,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "mini-pepsi",
-    "name": "mini pepsi",
-    "description": "Bebida refrescante",
-    "price": 1500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 132,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "mini-coca-zero",
-    "name": "mini coca zero",
-    "description": "Bebida refrescante",
-    "price": 1500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
@@ -2429,32 +1937,14 @@ export const menu1898: MenuItem[] = [
     "prepTime": "2-3 min"
   },
   {
-    "id": "mini-sprite-zero",
-    "name": "mini sprite zero",
-    "description": "Bebida refrescante",
-    "price": 1500,
+    "id": "schweppes-ginger-ale",
+    "name": "schweppes ginger ale",
+    "description": "schweppes ginger ale - Especialidad de la casa",
+    "price": 2500,
     "category": "beverages",
     "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 106,
-    "prepTime": "2-3 min"
-  },
-  {
-    "id": "mini-tonica-zero",
-    "name": "mini tonica zero",
-    "description": "Bebida refrescante",
-    "price": 1500,
-    "category": "beverages",
-    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
@@ -2465,32 +1955,32 @@ export const menu1898: MenuItem[] = [
     "prepTime": "2-3 min"
   },
   {
-    "id": "pepsi",
-    "name": "Pepsi",
-    "description": "Bebida refrescante",
+    "id": "schweppes-tonica",
+    "name": "schweppes tonica",
+    "description": "schweppes tonica - Especialidad de la casa",
     "price": 2500,
     "category": "beverages",
     "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "vegan",
       "gluten-free"
     ],
-    "calories": 121,
+    "calories": 103,
     "prepTime": "2-3 min"
   },
   {
-    "id": "limonsoda",
-    "name": "Limonsoda",
-    "description": "Bebida refrescante",
-    "price": 2500,
+    "id": "limonada-tradicional",
+    "name": "Limonada tradicional",
+    "description": "Limonada tradicional - Especialidad de la casa",
+    "price": 3000,
     "category": "beverages",
     "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
@@ -2501,67 +1991,140 @@ export const menu1898: MenuItem[] = [
     "prepTime": "2-3 min"
   },
   {
-    "id": "cafe-americano",
-    "name": "Café americano",
-    "description": "Café de especialidad",
-    "price": 2600,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
+    "id": "limonada-menta-jengibre",
+    "name": "Limonada menta jengibre",
+    "description": "Limonada menta jengibre - Especialidad de la casa",
+    "price": 3500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Café espresso",
-      "Agua caliente"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "vegan",
       "gluten-free"
     ],
-    "calories": 99,
-    "prepTime": "3-4 min"
+    "calories": 129,
+    "prepTime": "2-3 min"
   },
   {
-    "id": "cafe-espresso",
-    "name": "Café espresso",
-    "description": "Café de especialidad",
-    "price": 2400,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Café espresso"
-    ],
-    "allergens": [],
-    "dietary": [
-      "gluten-free"
-    ],
-    "calories": 86,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "cafe-espresso-doble",
-    "name": "Café espresso doble",
-    "description": "Café de especialidad",
-    "price": 3500,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Café espresso"
-    ],
-    "allergens": [],
-    "dietary": [
-      "gluten-free"
-    ],
-    "calories": 82,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "cafe-helado",
-    "name": "Café helado",
-    "description": "Café de especialidad",
+    "id": "jugo-natural-frambuesa",
+    "name": "jugo natural frambuesa",
+    "description": "jugo natural frambuesa - Especialidad de la casa",
     "price": 4000,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Café"
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 122,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "jugo-natural-de-pina",
+    "name": "jugo natural de piña",
+    "description": "jugo natural de piña - Especialidad de la casa",
+    "price": 4000,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 154,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "jugo-natural-mango",
+    "name": "jugo natural mango",
+    "description": "jugo natural mango - Especialidad de la casa",
+    "price": 4000,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 134,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "jugo-natural-maracuya",
+    "name": "jugo natural maracuya",
+    "description": "jugo natural maracuya - Especialidad de la casa",
+    "price": 4000,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 158,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "agua-mineral-con-gas",
+    "name": "agua mineral con gas",
+    "description": "agua mineral con gas - Especialidad de la casa",
+    "price": 2000,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 132,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "agua-mineral-sin-gas",
+    "name": "agua mineral sin gas",
+    "description": "agua mineral sin gas - Especialidad de la casa",
+    "price": 2000,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 133,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "red-bull",
+    "name": "Red Bull",
+    "description": "Red Bull - Especialidad de la casa",
+    "price": 3500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
@@ -2569,203 +2132,73 @@ export const menu1898: MenuItem[] = [
       "gluten-free"
     ],
     "calories": 119,
-    "prepTime": "3-4 min"
+    "prepTime": "2-3 min"
   },
   {
-    "id": "cafe-irlandes",
-    "name": "Café irlandes",
-    "description": "Café de especialidad",
+    "id": "milkshake",
+    "name": "Milkshake",
+    "description": "Milkshake - Especialidad de la casa",
     "price": 4000,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Café"
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos"
+    ],
+    "dietary": [
+      "vegetarian",
+      "gluten-free"
+    ],
+    "calories": 133,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "mini-coca-220-cc",
+    "name": "mini coca 220 cc",
+    "description": "mini coca 220 cc - Especialidad de la casa",
+    "price": 1500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "vegan",
       "gluten-free"
     ],
-    "calories": 89,
-    "prepTime": "3-4 min"
+    "calories": 142,
+    "prepTime": "2-3 min"
   },
   {
-    "id": "cafe-nescafe",
-    "name": "Café nescafé",
-    "description": "Café de especialidad",
-    "price": 2000,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
+    "id": "crush",
+    "name": "Crush",
+    "description": "Crush - Especialidad de la casa",
+    "price": 2500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Café"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "vegan",
       "gluten-free"
     ],
-    "calories": 95,
-    "prepTime": "3-4 min"
+    "calories": 106,
+    "prepTime": "2-3 min"
   },
   {
-    "id": "capuccino",
-    "name": "Capuccino",
-    "description": "Café de especialidad",
-    "price": 2800,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
+    "id": "pap",
+    "name": "Pap",
+    "description": "Pap - Especialidad de la casa",
+    "price": 2500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
     "ingredients": [
-      "Café espresso",
-      "Leche espumada"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 117,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "capuccino-doble",
-    "name": "Capuccino doble",
-    "description": "Café de especialidad",
-    "price": 3400,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Café espresso",
-      "Leche espumada"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 116,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "chocolate-caliente",
-    "name": "Chocolate caliente",
-    "description": "Café de especialidad",
-    "price": 3000,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Chocolate",
-      "Leche"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 102,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "chocolate-nevado",
-    "name": "chocolate nevado",
-    "description": "Café de especialidad",
-    "price": 3500,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Chocolate",
-      "Leche"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 90,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "mokaccino",
-    "name": "mokaccino",
-    "description": "Café de especialidad",
-    "price": 3500,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Café"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 101,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "te-variedades",
-    "name": "Té variedades",
-    "description": "Café de especialidad",
-    "price": 2000,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Café"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 112,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "te",
-    "name": "Te",
-    "description": "Café de especialidad",
-    "price": 2000,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Café"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 87,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "capuccino-vainilla",
-    "name": "Capuccino vainilla",
-    "description": "Café de especialidad",
-    "price": 3200,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Café espresso",
-      "Leche espumada"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 89,
-    "prepTime": "3-4 min"
-  },
-  {
-    "id": "capuccino-vainilla-doble",
-    "name": "capuccino vainilla doble",
-    "description": "Café de especialidad",
-    "price": 3500,
-    "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Café espresso",
-      "Leche espumada"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
@@ -2773,78 +2206,559 @@ export const menu1898: MenuItem[] = [
       "gluten-free"
     ],
     "calories": 110,
-    "prepTime": "3-4 min"
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "naranja-platano",
+    "name": "Naranja Platano",
+    "description": "Naranja Platano - Especialidad de la casa",
+    "price": 4000,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 120,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "red-bull-yellow",
+    "name": "Red Bull Yellow",
+    "description": "Red Bull Yellow - Especialidad de la casa",
+    "price": 3500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 149,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "mini-sprite",
+    "name": "mini sprite",
+    "description": "mini sprite - Especialidad de la casa",
+    "price": 1500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 133,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "mini-ginger-ale",
+    "name": "mini ginger ale",
+    "description": "mini ginger ale - Especialidad de la casa",
+    "price": 1500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 128,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "mini-tonica",
+    "name": "mini tonica",
+    "description": "mini tonica - Especialidad de la casa",
+    "price": 1500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 124,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "mini-pepsi",
+    "name": "mini pepsi",
+    "description": "mini pepsi - Especialidad de la casa",
+    "price": 1500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 134,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "mini-coca-zero",
+    "name": "mini coca zero",
+    "description": "mini coca zero - Especialidad de la casa",
+    "price": 1500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 14,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "mini-sprite-zero",
+    "name": "mini sprite zero",
+    "description": "mini sprite zero - Especialidad de la casa",
+    "price": 1500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 14,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "mini-tonica-zero",
+    "name": "mini tonica zero",
+    "description": "mini tonica zero - Especialidad de la casa",
+    "price": 1500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 13,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "pepsi",
+    "name": "Pepsi",
+    "description": "Pepsi - Especialidad de la casa",
+    "price": 2500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 128,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "limonsoda",
+    "name": "Limonsoda",
+    "description": "Limonsoda - Especialidad de la casa",
+    "price": 2500,
+    "category": "beverages",
+    "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "vegan",
+      "gluten-free"
+    ],
+    "calories": 110,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "cafe-americano",
+    "name": "Café americano",
+    "description": "Café americano - Especialidad de la casa",
+    "price": 2600,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "gluten-free",
+      "vegan"
+    ],
+    "calories": 144,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "cafe-espresso",
+    "name": "Café espresso",
+    "description": "Café espresso - Especialidad de la casa",
+    "price": 2400,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "gluten-free",
+      "vegan"
+    ],
+    "calories": 165,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "cafe-espresso-doble",
+    "name": "Café espresso doble",
+    "description": "Café espresso doble - Especialidad de la casa",
+    "price": 3500,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "gluten-free",
+      "vegan"
+    ],
+    "calories": 57,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "cafe-helado",
+    "name": "Café helado",
+    "description": "Café helado - Especialidad de la casa",
+    "price": 4000,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "gluten-free",
+      "vegan"
+    ],
+    "calories": 64,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "cafe-irlandes",
+    "name": "Café irlandes",
+    "description": "Café irlandes - Especialidad de la casa",
+    "price": 4000,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "gluten-free",
+      "vegan"
+    ],
+    "calories": 56,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "cafe-nescafe",
+    "name": "Café nescafé",
+    "description": "Café nescafé - Especialidad de la casa",
+    "price": 2000,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "gluten-free",
+      "vegan"
+    ],
+    "calories": 59,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "capuccino",
+    "name": "Capuccino",
+    "description": "Capuccino - Especialidad de la casa",
+    "price": 2800,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos"
+    ],
+    "dietary": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "calories": 113,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "capuccino-doble",
+    "name": "Capuccino doble",
+    "description": "Capuccino doble - Especialidad de la casa",
+    "price": 3400,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos"
+    ],
+    "dietary": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "calories": 154,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "chocolate-caliente",
+    "name": "Chocolate caliente",
+    "description": "Chocolate caliente - Especialidad de la casa",
+    "price": 3000,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos"
+    ],
+    "dietary": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "calories": 192,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "chocolate-nevado",
+    "name": "chocolate nevado",
+    "description": "chocolate nevado - Especialidad de la casa",
+    "price": 3500,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos"
+    ],
+    "dietary": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "calories": 133,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "mokaccino",
+    "name": "mokaccino",
+    "description": "mokaccino - Especialidad de la casa",
+    "price": 3500,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos"
+    ],
+    "dietary": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "calories": 53,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "te-variedades",
+    "name": "Té variedades",
+    "description": "Té variedades - Especialidad de la casa",
+    "price": 2000,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "gluten-free",
+      "vegan"
+    ],
+    "calories": 75,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "te",
+    "name": "Te",
+    "description": "Te - Especialidad de la casa",
+    "price": 2000,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [],
+    "dietary": [
+      "gluten-free",
+      "vegan"
+    ],
+    "calories": 129,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "capuccino-vainilla",
+    "name": "Capuccino vainilla",
+    "description": "Capuccino vainilla - Especialidad de la casa",
+    "price": 3200,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos"
+    ],
+    "dietary": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "calories": 61,
+    "prepTime": "2-3 min"
+  },
+  {
+    "id": "capuccino-vainilla-doble",
+    "name": "capuccino vainilla doble",
+    "description": "capuccino vainilla doble - Especialidad de la casa",
+    "price": 3500,
+    "category": "coffee",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos"
+    ],
+    "dietary": [
+      "gluten-free",
+      "vegetarian"
+    ],
+    "calories": 166,
+    "prepTime": "2-3 min"
   },
   {
     "id": "cortado",
     "name": "Cortado",
-    "description": "Café de especialidad",
+    "description": "Cortado - Especialidad de la casa",
     "price": 2800,
     "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
     "ingredients": [
-      "Café"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 89,
-    "prepTime": "3-4 min"
+    "calories": 58,
+    "prepTime": "2-3 min"
   },
   {
     "id": "cafe-americano-doble",
     "name": "Café americano doble",
-    "description": "Café de especialidad",
+    "description": "Café americano doble - Especialidad de la casa",
     "price": 5000,
     "category": "coffee",
-    "image": "https://images.unsplash.com/photo-1565288710320-b5e6a46db769?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop",
     "ingredients": [
-      "Café espresso",
-      "Agua caliente"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 81,
-    "prepTime": "3-4 min"
+    "calories": 116,
+    "prepTime": "2-3 min"
   },
   {
     "id": "costillar-de-cerdo-a-la-chilena",
     "name": "Costillar de cerdo a la chilena",
-    "description": "Plato principal",
+    "description": "Costillar de cerdo a la chilena - Especialidad de la casa",
     "price": 12900,
     "category": "mains",
-    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "gluten-free"
     ],
-    "calories": 568,
-    "prepTime": "20-25 min"
+    "calories": 557,
+    "prepTime": "15-20 min"
   },
   {
     "id": "pollo-grillado-al-limon-salsa-citrica",
     "name": "Pollo grillado al limón (salsa cítrica)",
-    "description": "Plato principal",
+    "description": "Pollo grillado al limón (salsa cítrica) - Especialidad de la casa",
     "price": 9500,
     "category": "mains",
-    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "gluten-free"
     ],
-    "calories": 573,
-    "prepTime": "20-25 min"
+    "calories": 605,
+    "prepTime": "15-20 min"
   },
   {
     "id": "merluza-crocante",
@@ -2852,22 +2766,18 @@ export const menu1898: MenuItem[] = [
     "description": "Merluza crocante Austral+guarnición",
     "price": 11900,
     "category": "mains",
-    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
     "ingredients": [
-      "Merluza austral",
-      "Pan rallado",
-      "Huevo",
-      "Harina",
-      "Guarnición"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
-      "Pescado",
-      "Gluten",
-      "Huevos"
+      "Pescado"
     ],
-    "dietary": [],
-    "calories": 666,
-    "prepTime": "20-25 min"
+    "dietary": [
+      "gluten-free"
+    ],
+    "calories": 776,
+    "prepTime": "15-20 min"
   },
   {
     "id": "salmon-grillado-300-grs-c-guarnicion-a-eleccion",
@@ -2875,19 +2785,18 @@ export const menu1898: MenuItem[] = [
     "description": "Salmón a la plancha con guarnición a elección",
     "price": 13900,
     "category": "mains",
-    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Pescado"
     ],
     "dietary": [
-      "vegan",
       "gluten-free"
     ],
-    "calories": 522,
-    "prepTime": "20-25 min"
+    "calories": 787,
+    "prepTime": "15-20 min"
   },
   {
     "id": "lomo-3-pimientas",
@@ -2895,17 +2804,16 @@ export const menu1898: MenuItem[] = [
     "description": "lomo de res, en salsa demi glace y pimientas +guarnición.",
     "price": 13500,
     "category": "mains",
-    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
       "gluten-free"
     ],
-    "calories": 768,
-    "prepTime": "20-25 min"
+    "calories": 744,
+    "prepTime": "15-20 min"
   },
   {
     "id": "lomo-a-lo-pobre",
@@ -2913,17 +2821,16 @@ export const menu1898: MenuItem[] = [
     "description": "lomo de vacuno acompañado de cebolla caramelizada huevo frito y papas fritas.",
     "price": 14900,
     "category": "mains",
-    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
       "gluten-free"
     ],
-    "calories": 740,
-    "prepTime": "20-25 min"
+    "calories": 723,
+    "prepTime": "15-20 min"
   },
   {
     "id": "lomo-grillado",
@@ -2931,34 +2838,33 @@ export const menu1898: MenuItem[] = [
     "description": "Lomo con guarnición a elección",
     "price": 13900,
     "category": "mains",
-    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
       "gluten-free"
     ],
-    "calories": 596,
-    "prepTime": "20-25 min"
+    "calories": 777,
+    "prepTime": "15-20 min"
   },
   {
     "id": "carne-braseada-coccion-lenta",
     "name": "Carne braseada (cocción lenta)",
-    "description": "Plato principal",
+    "description": "Carne braseada (cocción lenta) - Especialidad de la casa",
     "price": 12900,
     "category": "mains",
-    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
       "gluten-free"
     ],
-    "calories": 712,
-    "prepTime": "20-25 min"
+    "calories": 721,
+    "prepTime": "15-20 min"
   },
   {
     "id": "sopa-del-dia",
@@ -2966,17 +2872,29 @@ export const menu1898: MenuItem[] = [
     "description": "Hasta las 16:00 hrs",
     "price": 3500,
     "category": "mains",
-    "image": "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "dietary": [],
+    "calories": 454,
+    "prepTime": "15-20 min"
+  },
+  {
+    "id": "lasagna",
+    "name": "Lasagna",
+    "description": "Lasagna - Especialidad de la casa",
+    "price": 5500,
+    "category": "mains",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
     ],
-    "calories": 699,
-    "prepTime": "20-25 min"
+    "allergens": [],
+    "dietary": [],
+    "calories": 768,
+    "prepTime": "15-20 min"
   },
   {
     "id": "pizza",
@@ -2984,18 +2902,19 @@ export const menu1898: MenuItem[] = [
     "description": "pizza casera con masa a la piedra base de pomodoro y 5 ingredientes a elección ( 2 proteínas) champiñon, aceituna, pollo, chorizo, cebollín, maíz, vacuno, tomate, cebolla caramelizada, mechada, salame, piña).",
     "price": 15900,
     "category": "pizzas",
-    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
-      "Gluten"
+      "Gluten",
+      "Lácteos"
     ],
     "dietary": [
-      "vegan"
+      "vegetarian"
     ],
-    "calories": 621,
-    "prepTime": "15-20 min"
+    "calories": 1173,
+    "prepTime": "12-18 min"
   },
   {
     "id": "pizza-individual-1898",
@@ -3003,19 +2922,19 @@ export const menu1898: MenuItem[] = [
     "description": "pizza individual1898 napolitana o salame",
     "price": 7900,
     "category": "pizzas",
-    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
-      "Gluten"
+      "Gluten",
+      "Lácteos"
     ],
     "dietary": [
-      "vegan"
+      "vegetarian"
     ],
-    "calories": 709,
-    "prepTime": "15-20 min",
-    "chef_special": true
+    "calories": 921,
+    "prepTime": "12-18 min"
   },
   {
     "id": "pizza-1898",
@@ -3023,74 +2942,79 @@ export const menu1898: MenuItem[] = [
     "description": "Vacuno, pollo, tocino, salame, chorizo y tomate",
     "price": 17900,
     "category": "pizzas",
-    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
-      "Gluten"
-    ],
-    "dietary": [
-      "vegan"
-    ],
-    "calories": 829,
-    "prepTime": "15-20 min",
-    "chef_special": true
-  },
-  {
-    "id": "extra-queso-pizza",
-    "name": "Extra queso pizza",
-    "description": "Pizza artesanal",
-    "price": 4900,
-    "category": "pizzas",
-    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [
-      "Lácteos",
-      "Gluten"
+      "Gluten",
+      "Lácteos"
     ],
     "dietary": [
       "vegetarian"
     ],
-    "calories": 606,
-    "prepTime": "15-20 min"
+    "calories": 1077,
+    "prepTime": "12-18 min"
+  },
+  {
+    "id": "extra-queso-pizza",
+    "name": "Extra queso pizza",
+    "description": "Extra queso pizza - Especialidad de la casa",
+    "price": 4900,
+    "category": "pizzas",
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Gluten",
+      "Lácteos"
+    ],
+    "dietary": [
+      "vegetarian"
+    ],
+    "calories": 816,
+    "prepTime": "12-18 min"
   },
   {
     "id": "agregado-bbq",
     "name": "Agregado BBQ",
-    "description": "Pizza artesanal",
+    "description": "Agregado BBQ - Especialidad de la casa",
     "price": 2000,
     "category": "pizzas",
-    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Gluten",
+      "Lácteos"
+    ],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "vegetarian"
     ],
-    "calories": 800,
-    "prepTime": "15-20 min"
+    "calories": 805,
+    "prepTime": "12-18 min"
   },
   {
     "id": "agregado-tocino-pizza",
     "name": "Agregado tocino pizza",
-    "description": "Pizza artesanal",
+    "description": "Agregado tocino pizza - Especialidad de la casa",
     "price": 2500,
     "category": "pizzas",
-    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
-      "Gluten"
+      "Gluten",
+      "Lácteos"
     ],
-    "dietary": [],
-    "calories": 754,
-    "prepTime": "15-20 min"
+    "dietary": [
+      "vegetarian"
+    ],
+    "calories": 932,
+    "prepTime": "12-18 min"
   },
   {
     "id": "churrasco-1898",
@@ -3098,23 +3022,16 @@ export const menu1898: MenuItem[] = [
     "description": "Carne de res, palta, tomate, lechuga, cebolla caramelizada y champiñones salteados",
     "price": 10900,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pan",
-      "Carne de res",
-      "Palta",
-      "Tomate",
-      "Lechuga",
-      "Cebolla caramelizada",
-      "Champiñones salteados"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Gluten"
     ],
     "dietary": [],
-    "calories": 598,
-    "prepTime": "10-12 min",
-    "chef_special": true
+    "calories": 497,
+    "prepTime": "8-10 min"
   },
   {
     "id": "burguer-chada",
@@ -3122,23 +3039,16 @@ export const menu1898: MenuItem[] = [
     "description": "jugosa hamburguesa, cubierta por tocino, cebolla morada, queso cheddar, tomate y lechuga",
     "price": 10900,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Pan de hamburguesa",
-      "Carne de res",
-      "Tocino",
-      "Cebolla morada",
-      "Queso cheddar",
-      "Tomate",
-      "Lechuga"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
-      "Gluten",
-      "Lácteos"
+      "Gluten"
     ],
     "dietary": [],
-    "calories": 561,
-    "prepTime": "10-12 min"
+    "calories": 619,
+    "prepTime": "8-10 min"
   },
   {
     "id": "el-puraquina",
@@ -3146,71 +3056,67 @@ export const menu1898: MenuItem[] = [
     "description": "sabroso filete de pollo cubierto por palta, lechuga, queso fundido, champiñon, y tocino.",
     "price": 9500,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 566,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 673,
+    "prepTime": "8-10 min"
   },
   {
     "id": "churrasco-italiano",
     "name": "Churrasco italiano",
-    "description": "Sándwich gourmet",
+    "description": "Churrasco italiano - Especialidad de la casa",
     "price": 9200,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 626,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 588,
+    "prepTime": "8-10 min"
   },
   {
     "id": "churrasco-chacarero",
     "name": "Churrasco chacarero",
-    "description": "Sándwich gourmet",
+    "description": "Churrasco chacarero - Especialidad de la casa",
     "price": 9000,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 469,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 629,
+    "prepTime": "8-10 min"
   },
   {
     "id": "barros-luco",
     "name": "Barros Luco",
-    "description": "Sándwich gourmet",
+    "description": "Barros Luco - Especialidad de la casa",
     "price": 8500,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 441,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 469,
+    "prepTime": "8-10 min"
   },
   {
     "id": "hamburguesa-americana",
@@ -3218,17 +3124,16 @@ export const menu1898: MenuItem[] = [
     "description": "lechuga, tomates, hamburguesa, BBQ, cheddar, tocino, aros de cebolla morada, mayonesa",
     "price": 9500,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 517,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 685,
+    "prepTime": "8-10 min"
   },
   {
     "id": "cheese-burger",
@@ -3236,17 +3141,17 @@ export const menu1898: MenuItem[] = [
     "description": "hamburguesa, cheedar, pepinillos, tocino, mayonesa",
     "price": 8500,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten",
+      "Lácteos"
     ],
-    "calories": 527,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 560,
+    "prepTime": "8-10 min"
   },
   {
     "id": "promo-sandwich-mas-shop-ruta-s70",
@@ -3254,310 +3159,272 @@ export const menu1898: MenuItem[] = [
     "description": "Promoción válida todos los jueves desde las 18:00 hrs. Sandwich mechada, lechuga, tomate, cebolla morada y mayonesa más shop rs70",
     "price": 9990,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 657,
-    "prepTime": "10-12 min",
+    "dietary": [],
+    "calories": 555,
+    "prepTime": "8-10 min",
     "popular": true
   },
   {
     "id": "champinones-agregado",
     "name": "Champiñones agregado",
-    "description": "Sándwich gourmet",
+    "description": "Champiñones agregado - Especialidad de la casa",
     "price": 1500,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 608,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 658,
+    "prepTime": "8-10 min"
   },
   {
     "id": "agregado-tomate-cebolla-lechuga",
     "name": "Agregado, Tomate, cebolla, lechuga.",
-    "description": "Sándwich gourmet",
+    "description": "Agregado, Tomate, cebolla, lechuga. - Especialidad de la casa",
     "price": 1000,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 502,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 543,
+    "prepTime": "8-10 min"
   },
   {
     "id": "agregado-palta",
     "name": "Agregado palta",
-    "description": "Sándwich gourmet",
+    "description": "Agregado palta - Especialidad de la casa",
     "price": 2000,
     "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1521390188846-e2a8a3569fb0?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 540,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 470,
+    "prepTime": "8-10 min"
   },
   {
     "id": "cheese-bacon",
     "name": "Cheese & Bacon",
     "description": "base de crujientes papas fritas cubierto por un manto de queso fundido y tocino frito.",
     "price": 9800,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Lácteos"
     ],
-    "calories": 884,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 353,
+    "prepTime": "10-15 min"
   },
   {
     "id": "porcion-de-papas-fritas",
     "name": "Porcion de papas fritas",
     "description": "crujientes papas fritas espectacular para acompañar con un shop ya sea ambar o stout.",
     "price": 5500,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 813,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 465,
+    "prepTime": "10-15 min"
   },
   {
     "id": "salchipapas",
     "name": "Salchipapas",
     "description": "crujientes papas fritas acompañadas con vianesas de la mejor calidad y tradicion del sur de chile.",
     "price": 6900,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 949,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 437,
+    "prepTime": "10-15 min"
   },
   {
     "id": "fish-chips",
     "name": "Fish & Chips",
     "description": "Tiras de merluza crocante, acompañados con papas rústicas, salsa provenzal y sabroso pilpil de camarones.",
     "price": 15800,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 867,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 564,
+    "prepTime": "10-15 min"
   },
   {
     "id": "tabla-beer-bar",
     "name": "TABLA BEER BAR",
     "description": "Cama papas fritas, verduras salteadas, Champiñones, carne braseada (cocción lenta), queso fundido y perejil!",
     "price": 23900,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 887,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 599,
+    "prepTime": "10-15 min"
   },
   {
     "id": "chorrillana-1898",
     "name": "Chorrillana 1898",
     "description": "crujientes papas fritas cubierto con cubos de carne de res, pollo y longaniza, queso de campo, huevos de gallina fritos cebolla caramelizada y salchichas.",
     "price": 23500,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 813,
-    "prepTime": "15-20 min",
-    "chef_special": true
+    "dietary": [],
+    "calories": 352,
+    "prepTime": "10-15 min"
   },
   {
     "id": "papas-bravas-para-2",
     "name": "Papas bravas para 2",
-    "description": "Para compartir",
+    "description": "Papas bravas para 2 - Especialidad de la casa",
     "price": 8900,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1623238912680-26fc5ffb57e4?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 917,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 583,
+    "prepTime": "10-15 min"
   },
   {
     "id": "papas-bravas-para-4",
     "name": "papas bravas para 4",
-    "description": "Para compartir",
+    "description": "papas bravas para 4 - Especialidad de la casa",
     "price": 12900,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1623238912680-26fc5ffb57e4?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 801,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 593,
+    "prepTime": "10-15 min"
   },
   {
     "id": "ceviche-1898-para-2",
     "name": "Ceviche 1898 para 2",
     "description": "Pesca del día, leche de tigre, cebolla morada, pimentón, cilantro, choclo peruano y tostadas al ajillo.",
     "price": 12500,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Pescado",
+      "Mariscos"
     ],
-    "calories": 771,
-    "prepTime": "15-20 min",
-    "chef_special": true
+    "dietary": [],
+    "calories": 577,
+    "prepTime": "10-15 min"
   },
   {
     "id": "tabla-tradicional",
     "name": "Tabla tradicional",
     "description": "Cama de papas fritas, lomo de res, pollo, aceitunas, pepinillos y queso.",
     "price": 23900,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 976,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 580,
+    "prepTime": "10-15 min"
   },
   {
     "id": "tabla-tradicional-o-chorrillana-para-2",
     "name": "Tabla tradicional o chorrillana para 2",
     "description": "Tablitas para 2 personas",
     "price": 12900,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 839,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 552,
+    "prepTime": "10-15 min"
   },
   {
     "id": "empanada",
     "name": "Empanada",
     "description": "ave, pimentón y champiñón",
     "price": 2500,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Gluten"
     ],
-    "dietary": [
-      "vegan"
-    ],
-    "calories": 695,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 421,
+    "prepTime": "10-15 min"
   },
   {
     "id": "empanada-de-mechada",
     "name": "Empanada de mechada",
     "description": "Empanada horneada de mechada y cebolla caramelizada",
     "price": 3500,
-    "category": "sharing",
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=400&fit=crop",
+    "category": "appetizers",
+    "image": "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Gluten"
     ],
-    "dietary": [
-      "vegan"
-    ],
-    "calories": 823,
-    "prepTime": "15-20 min"
+    "dietary": [],
+    "calories": 556,
+    "prepTime": "10-15 min"
   },
   {
     "id": "cesar-pollo",
@@ -3565,16 +3432,19 @@ export const menu1898: MenuItem[] = [
     "description": "Tierno mix de lechugas acompañado de cubos de pechuga de pollo, crutones, tocino, tomate cherry, aceituna y queso reggianito integrado con una cremosa salsa cesar.",
     "price": 8500,
     "category": "salads",
-    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Lácteos",
+      "Huevos"
+    ],
     "dietary": [
       "gluten-free"
     ],
-    "calories": 306,
-    "prepTime": "8-10 min"
+    "calories": 363,
+    "prepTime": "5-8 min"
   },
   {
     "id": "cesar-camaron",
@@ -3582,72 +3452,76 @@ export const menu1898: MenuItem[] = [
     "description": "suabe mix de lechugas acompañado de camarones, crutones, tocino, tomate cherry, aceituna y queso reggianito unificado con una cremosa salsa cesar.",
     "price": 9500,
     "category": "salads",
-    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
+      "Lácteos",
+      "Huevos",
       "Mariscos"
     ],
     "dietary": [
       "gluten-free"
     ],
-    "calories": 310,
-    "prepTime": "8-10 min"
+    "calories": 352,
+    "prepTime": "5-8 min"
   },
   {
     "id": "ensalada",
     "name": "Ensalada",
-    "description": "Ensalada fresca",
+    "description": "Ensalada - Especialidad de la casa",
     "price": 4500,
     "category": "salads",
-    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "gluten-free",
+      "vegan"
     ],
-    "calories": 318,
-    "prepTime": "8-10 min"
+    "calories": 333,
+    "prepTime": "5-8 min"
   },
   {
     "id": "helado-copa",
     "name": "helado copa",
-    "description": "Postre delicioso",
+    "description": "helado copa - Especialidad de la casa",
     "price": 4000,
     "category": "desserts",
-    "image": "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Lácteos"
+    ],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "vegetarian"
     ],
-    "calories": 455,
-    "prepTime": "5-8 min"
+    "calories": 358,
+    "prepTime": "3-5 min"
   },
   {
     "id": "helado-copa-triple",
     "name": "Helado copa Triple",
-    "description": "Postre delicioso",
+    "description": "Helado copa Triple - Especialidad de la casa",
     "price": 5000,
     "category": "desserts",
-    "image": "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Lácteos"
+    ],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "vegetarian"
     ],
-    "calories": 454,
-    "prepTime": "5-8 min"
+    "calories": 480,
+    "prepTime": "3-5 min"
   },
   {
     "id": "brownie-con-helado",
@@ -3655,359 +3529,112 @@ export const menu1898: MenuItem[] = [
     "description": "Tibio brownie de chocolate con helado de vainilla.",
     "price": 5900,
     "category": "desserts",
-    "image": "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=500&h=400&fit=crop",
+    "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
+    "allergens": [
+      "Lácteos",
+      "Gluten",
+      "Huevos"
+    ],
     "dietary": [
-      "vegan",
-      "gluten-free"
+      "vegetarian"
     ],
-    "calories": 383,
-    "prepTime": "5-8 min"
+    "calories": 458,
+    "prepTime": "3-5 min"
   },
   {
     "id": "completo-italiano",
     "name": "completo italiano",
     "description": "Salchicha, tomate, palta y mayonesa",
     "price": 5000,
-    "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "category": "hotdogs",
+    "image": "https://images.unsplash.com/photo-1612392062126-3a66afd40730?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
+      "Ingredientes frescos y de calidad"
     ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
+    "allergens": [
+      "Gluten"
     ],
-    "calories": 503,
-    "prepTime": "10-12 min"
+    "dietary": [],
+    "calories": 467,
+    "prepTime": "8-10 min"
   },
   {
     "id": "completo-americano",
     "name": "completo americano",
     "description": "Salchicha, tomate, palta, salsa americana, chucrut y mayonesa",
     "price": 5500,
-    "category": "sandwiches",
-    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=400&fit=crop",
+    "category": "hotdogs",
+    "image": "https://images.unsplash.com/photo-1612392062126-3a66afd40730?w=500&h=400&fit=crop",
     "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 460,
-    "prepTime": "10-12 min"
-  },
-  {
-    "id": "crepes-relleno-con-manjar-nueces",
-    "name": "Crepes relleno con manjar, nueces",
-    "description": "Postre delicioso",
-    "price": 5300,
-    "category": "desserts",
-    "image": "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [
-      "Frutos secos"
-    ],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 404,
-    "prepTime": "5-8 min"
-  },
-  {
-    "id": "postre",
-    "name": "Postre",
-    "description": "Postre delicioso",
-    "price": 6300,
-    "category": "desserts",
-    "image": "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 406,
-    "prepTime": "5-8 min"
-  },
-  {
-    "id": "promo-2x-shop-heineken",
-    "name": "2X Shop heineken",
-    "description": "Lunes a Jueves de 17:00 a 21:00 hrs",
-    "price": 6000,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Malta",
-      "Lúpulo",
-      "Levadura",
-      "Agua"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Gluten"
-    ],
-    "dietary": [
-      "vegan"
-    ],
-    "calories": 164,
-    "prepTime": "1-2 min",
-    "popular": true
-  },
-  {
-    "id": "promo-2x-shop-ruta-s70",
-    "name": "2X shop ruta s70",
-    "description": "Lunes a jueves de 17:00 a 21:00 hrs",
-    "price": 9000,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Malta",
-      "Lúpulo",
-      "Levadura",
-      "Agua"
-    ],
-    "allergens": [
-      "Gluten"
-    ],
-    "dietary": [
-      "vegan"
-    ],
-    "calories": 145,
-    "prepTime": "1-2 min",
-    "popular": true
-  },
-  {
-    "id": "promo-2x-pisco-sour",
-    "name": "2x pisco sour",
-    "description": "Lunes a jueves de 17:00 a 21:00 hrs",
-    "price": 8500,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Pisco"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 249,
-    "prepTime": "3-5 min",
-    "popular": true
-  },
-  {
-    "id": "promo-2x-caipirinha",
-    "name": "2x caipirinha",
-    "description": "Lunes a jueves de 17:00 a 21:00 hrs",
-    "price": 7400,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Cachaça",
-      "Limón"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 249,
-    "prepTime": "3-5 min",
-    "popular": true
-  },
-  {
-    "id": "promo-2x-ramazzotti",
-    "name": "2x Ramazzotti",
-    "description": "Lunes a jueves de 17:00 a 21:00 hrs",
-    "price": 8990,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Licor premium"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 209,
-    "prepTime": "3-5 min",
-    "popular": true
-  },
-  {
-    "id": "promo-2x-mojito-frutal",
-    "name": "2x Mojito frutal",
-    "description": "Lunes a jueves de 17:00 a 21:00 hrs",
-    "price": 10400,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ron",
-      "Limón",
-      "Menta"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 215,
-    "prepTime": "3-5 min",
-    "popular": true
-  },
-  {
-    "id": "promo-2x-ruso-blanco",
-    "name": "2X Ruso blanco",
-    "description": "Lunes a jueves de 17:00 a 21:00 hrs",
-    "price": 9990,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Licor premium"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 207,
-    "prepTime": "3-5 min",
-    "popular": true
-  },
-  {
-    "id": "promo-2x-tequila-margarita",
-    "name": "2X Tequila margarita",
-    "description": "Lunes a jueves de 17:00 a 21:00 hrs",
-    "price": 9200,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Tequila",
-      "Limón",
-      "Triple sec"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 192,
-    "prepTime": "3-5 min",
-    "popular": true
-  },
-  {
-    "id": "promo-2x-pisco-mistral-35",
-    "name": "2X pisco mistral 35",
-    "description": "activo día del pisco",
-    "price": 7300,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 148,
-    "prepTime": "1 min",
-    "popular": true
-  },
-  {
-    "id": "promo-2x-pisco-alto-del-carmen",
-    "name": "2X Pisco alto del carmen",
-    "description": "Activo día del pisco",
-    "price": 7300,
-    "category": "specials",
-    "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Ingredientes frescos"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 108,
-    "prepTime": "1 min",
-    "popular": true
-  },
-  {
-    "id": "johnnie-double-black",
-    "name": "Johnnie double black",
-    "description": "Whisky escocés premium con notas intensas y ahumadas",
-    "price": 13000,
-    "category": "wines",
-    "image": "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Whisky Johnnie Walker Double Black"
-    ],
-    "allergens": [],
-    "dietary": [
-      "vegan",
-      "gluten-free"
-    ],
-    "calories": 140,
-    "prepTime": "1 min"
-  },
-  {
-    "id": "lasagna",
-    "name": "Lasagna",
-    "description": "Lasaña casera con capas de pasta, salsa bolognesa y queso gratinado",
-    "price": 5500,
-    "category": "mains",
-    "image": "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=500&h=400&fit=crop",
-    "ingredients": [
-      "Pasta de lasaña",
-      "Carne molida",
-      "Salsa de tomate",
-      "Queso mozzarella",
-      "Queso parmesano",
-      "Bechamel",
-      "Hierbas italianas"
-    ],
-    "allergens": [
-      "Gluten",
-      "Lácteos",
-      "Huevos"
     ],
     "dietary": [],
-    "calories": 650,
-    "prepTime": "15-20 min"
+    "calories": 427,
+    "prepTime": "8-10 min"
   },
   {
     "id": "promo-completo-schop-heineken-o-jugo",
     "name": "Promo completo+schop heineken o jugo",
     "description": "Disponible de Lunes a Jueves hasta las 21:00 hrs",
     "price": 6900,
-    "category": "specials",
+    "category": "hotdogs",
     "image": "https://images.unsplash.com/photo-1612392062126-3a66afd40730?w=500&h=400&fit=crop",
     "ingredients": [
-      "Vienesa",
-      "Pan de completo",
-      "Tomate",
-      "Palta",
-      "Mayonesa",
-      "Cerveza Heineken o jugo"
+      "Ingredientes frescos y de calidad"
     ],
     "allergens": [
       "Gluten"
     ],
     "dietary": [],
-    "calories": 550,
+    "calories": 462,
     "prepTime": "8-10 min",
     "popular": true
+  },
+  {
+    "id": "crepes-relleno-con-manjar-nueces",
+    "name": "Crepes relleno con manjar, nueces",
+    "description": "Crepes relleno con manjar, nueces - Especialidad de la casa",
+    "price": 5300,
+    "category": "pastries",
+    "image": "https://images.unsplash.com/photo-1509365390695-33aee754301f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos",
+      "Gluten",
+      "Huevos",
+      "Frutos secos"
+    ],
+    "dietary": [
+      "vegetarian"
+    ],
+    "calories": 396,
+    "prepTime": "3-5 min"
+  },
+  {
+    "id": "postre",
+    "name": "Postre",
+    "description": "Postre - Especialidad de la casa",
+    "price": 6300,
+    "category": "pastries",
+    "image": "https://images.unsplash.com/photo-1509365390695-33aee754301f?w=500&h=400&fit=crop",
+    "ingredients": [
+      "Ingredientes frescos y de calidad"
+    ],
+    "allergens": [
+      "Lácteos"
+    ],
+    "dietary": [
+      "vegetarian"
+    ],
+    "calories": 306,
+    "prepTime": "3-5 min"
   }
 ]

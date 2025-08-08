@@ -1,0 +1,441 @@
+[
+  {
+    "categories": [
+      {
+        "menu_items": [
+          {
+            "name": "Capriccio",
+            "price": "$7.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Auguri",
+            "price": "$7.990",
+            "description": "Sin Stock"
+          }
+        ],
+        "category_name": "Coctelería de Autor"
+      },
+      {
+        "menu_items": [
+          {
+            "name": "Sour",
+            "price": "$5.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Whisky sour",
+            "price": "$6.490",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Pisco sour catedral",
+            "price": "$7.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Clavo oxidado",
+            "price": "$8.790",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Tom collins",
+            "price": "$6.490",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Daiquirí",
+            "price": "$5.590",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Piña colada",
+            "price": "$6.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Ruso blanco",
+            "price": "$7.490",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Ruso negro",
+            "price": "$6.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Tropical Gin",
+            "price": "$6.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Gin Tonic",
+            "price": "$5.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "2x Alto del Carmen",
+            "price": "$7.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Mojito Cubano",
+            "price": "$6.490",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Mojito Frutal",
+            "price": "$6.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Clavo Oxidado Chivas Regal 12",
+            "price": "$11.890",
+            "description": "Sin Stock"
+          }
+        ],
+        "category_name": "Cocteleria"
+      },
+      {
+        "menu_items": [
+          {
+            "name": "Gin Tanqueray London Dry",
+            "price": "$7.790",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Gin Tanqueray Sevilla",
+            "price": "$7.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Gin Tanqueray Royal",
+            "price": "$7.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Gin Beeafeater",
+            "price": "$6.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Gin Beefeater Pink",
+            "price": "$6.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Gin Hendrik´s",
+            "price": "$9.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Whiskey Johnnie Walker Red",
+            "price": "$6.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Whiskey Jhonnie Walker Blonde",
+            "price": "$8.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Whiskey Johnnie Walker Black",
+            "price": "$9.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Whiskey Johnnie Walker Double Black",
+            "price": "$12.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Whiskey Ballentines Bourbon 7 años",
+            "price": "$7.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Whisky Chivas Regal 12 Años Escoces",
+            "price": "$9.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Whiskey Jack Daniels N°7",
+            "price": "$8.790",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Whiskey Jack Daniels Apple",
+            "price": "$8.490",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Bulleit Bourbon",
+            "price": "$9.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Tequila Don Julio",
+            "price": "$8.490",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Ron Havana Añejo 7 Años",
+            "price": "$9.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Ron Havana Añejo Especial",
+            "price": "$5.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Pisco Alto del Carmen",
+            "price": "$6.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Pisco Mistral Nobel",
+            "price": "$6.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Pisco Horcón Quemado 1 año",
+            "price": "$6.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Pisco Mistral 35°",
+            "price": "$6.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Fernet Branca",
+            "price": "$5.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Jaggermeister",
+            "price": "$6.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Vodka Smirnoff",
+            "price": "$5.990",
+            "description": "Sin Stock"
+          }
+        ],
+        "category_name": "Destilados"
+      },
+      {
+        "menu_items": [
+          {
+            "name": "Chandon Rose 187 cc",
+            "price": "$8.590",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Chandon brut 750 cc",
+            "price": "$24.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Viu Manent Noble Semillon Chardoney",
+            "price": "$14.990",
+            "description": "Sin Stock"
+          }
+        ],
+        "category_name": "Vinos y Espumantes"
+      },
+      {
+        "menu_items": [
+          {
+            "name": "Austral Calafate individual",
+            "price": "$4.590",
+            "description": "Edición especial premium 500 cc"
+          },
+          {
+            "name": "Kunstmann Torobayo individual",
+            "price": "$4.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Heiniken S/Alcohol",
+            "price": "$4.290",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Kunstmann Lager Sin Alcohol",
+            "price": "$4.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Shop Heiniken",
+            "price": "$4.590",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Kuntsman Gran Torobayo 500 cc",
+            "price": "$7.590",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Michelada",
+            "price": "$1.000",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Chelada",
+            "price": "$1.000",
+            "description": "Sin Stock"
+          }
+        ],
+        "category_name": "Cervezas Y Shop"
+      },
+      {
+        "menu_items": [
+          {
+            "name": "Agua c/gas S. Pellegrino Pet",
+            "price": "$3.490",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Agua S/Gas Acqua Panna 500 cc",
+            "price": "$3.290",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Cordillerano",
+            "price": "$0",
+            "description": "Agua con hielo"
+          },
+          {
+            "name": "Limonada",
+            "price": "$3.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Jugo Frambuesa / Frutilla / Piña / Mango",
+            "price": "$3.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Coca Cola",
+            "price": "$2.590",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Ginger Ale",
+            "price": "$2.590",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Ginger Ale 220cc",
+            "price": "$1.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Coca Cero",
+            "price": "$2.590",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Agua Tonica Canada Dry 220cc",
+            "price": "$1.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Pink Tonic",
+            "price": "$2.890",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Coca cola 220",
+            "price": "$1.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Coca Cero 220",
+            "price": "$1.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Sprite 220",
+            "price": "$1.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Sprite",
+            "price": "$2.590",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Sprite Cero",
+            "price": "$2.590",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Red Bull Yellow 250cc",
+            "price": "$2.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Red Bull 250 cc",
+            "price": "$2.990",
+            "description": "Sin Stock"
+          }
+        ],
+        "category_name": "Bebestibles"
+      },
+      {
+        "menu_items": [
+          {
+            "name": "Amaretto Mitjans",
+            "price": "$2.490",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Drambuie",
+            "price": "$5.490",
+            "description": "Sin Stock"
+          }
+        ],
+        "category_name": "Bajativos"
+      },
+      {
+        "menu_items": [
+          {
+            "name": "Americano",
+            "price": "$2.990",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Cortado",
+            "price": "$3.490",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Expreso",
+            "price": "$2.690",
+            "description": "Sin Stock"
+          },
+          {
+            "name": "Te Twinings",
+            "price": "$2.890",
+            "description": "Sin Stock"
+          }
+        ],
+        "category_name": "Cafetería"
+      },
+      {
+        "menu_items": [
+          {
+            "name": "Pollo al Sol de Naranja",
+            "price": "$13.990",
+            "description": "Turo de pollo deshuesado al estilo arrostro. Apagado con triple sec y jugo de naranja. Acompañado de coles de bruselas salteadas."
+          }
+        ],
+        "category_name": "Platos Principales"
+      }
+    ]
+  }
+]
