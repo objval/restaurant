@@ -47,8 +47,14 @@ export const menuCategories: MenuCategory[] = [
   { id: "kids", name: "Menú de Niños", description: "Platos pensados para los más pequeños", icon: "🧒" },
   // Additional categories for Capriccio location
   { id: "cocktails_author", name: "Coctelería de Autor", description: "Cócteles exclusivos de la casa", icon: "🍹" },
+  { id: "cocktails_italian", name: "Cocteleria tradicional Italiana", description: "Cócteles italianos clásicos", icon: "🍹" },
+  { id: "spirits", name: "Destilados", description: "Destilados premium", icon: "🥃" },
   { id: "digestifs", name: "Bajativos", description: "Licores digestivos", icon: "🥃" },
   { id: "main_courses", name: "Platos Principales", description: "Nuestros platos principales", icon: "🍽️" },
+  { id: "tablas", name: "Tablas", description: "Tablas para compartir", icon: "🍱" },
+  { id: "tapas", name: "Tapas y Bruschettas", description: "Tapas y bruschettas artesanales", icon: "🍱" },
+  { id: "platos_frios", name: "Platos Frios", description: "Platos fríos y ceviches", icon: "🐟" },
+  { id: "papas_topping", name: "Papas Topping", description: "Papas con diferentes toppings", icon: "🥔" },
 ]
 
 // Import menu data from individual location files
