@@ -24,20 +24,24 @@ export async function toggleProductActive(
     .update({ active: newActiveStatus })
     .eq('id', productId)
     .select()
-    .single()
   
   if (error) {
     console.error(`[toggleProductActive] Error:`, error)
     throw new Error(`Failed to update active status: ${error.message}`)
   }
   
-  console.log(`[toggleProductActive] Success - New status: ${data.active}`)
+  if (!data || data.length === 0) {
+    console.error(`[toggleProductActive] No product found with ID: ${productId}`)
+    throw new Error(`Product not found`)
+  }
+  
+  console.log(`[toggleProductActive] Success - New status: ${data[0].active}`)
   
   // Revalidate the admin dashboard and menu pages
   revalidatePath('/admin/dashboard')
   revalidatePath(`/${location}/menu`)
   
-  return { success: true, data }
+  return { success: true, data: data[0] }
 }
 
 export async function toggleProductStock(
@@ -55,20 +59,24 @@ export async function toggleProductStock(
     .update({ stock_status: newStock })
     .eq('id', productId)
     .select()
-    .single()
   
   if (error) {
     console.error(`[toggleProductStock] Error:`, error)
     throw new Error(`Failed to update stock status: ${error.message}`)
   }
   
-  console.log(`[toggleProductStock] Success - New stock: ${data.stock_status}`)
+  if (!data || data.length === 0) {
+    console.error(`[toggleProductStock] No product found with ID: ${productId}`)
+    throw new Error(`Product not found`)
+  }
+  
+  console.log(`[toggleProductStock] Success - New stock: ${data[0].stock_status}`)
   
   // Revalidate the admin dashboard and menu pages
   revalidatePath('/admin/dashboard')
   revalidatePath(`/${location}/menu`)
   
-  return { success: true, data }
+  return { success: true, data: data[0] }
 }
 
 export async function getProducts(location: 'arbol' | '1898' | 'capriccio') {
