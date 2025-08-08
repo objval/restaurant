@@ -95,7 +95,7 @@ export function ProductCardWithActions({
           <div className="flex items-center gap-2">
             <DollarSign className="h-4 w-4 text-gray-400" />
             <span className="font-bold text-lg">
-              ${(Number(product.price) / 1000).toFixed(0)}.{(Number(product.price) % 1000).toString().padStart(3, '0')}
+              ${Math.floor(Number(product.price) / 1000)}.{(Number(product.price) % 1000).toString().padStart(3, '0')}
             </span>
           </div>
           

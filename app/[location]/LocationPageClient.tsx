@@ -394,7 +394,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
 
                     <div className="flex items-center justify-between mt-auto">
                       <div className="text-2xl font-bold" style={{ color: locationData.theme.primary }}>
-                        ${(Number.parseInt(item.price.replace(/[^0-9]/g, "")) / 1000).toFixed(0)}.
+                        ${Math.floor(Number.parseInt(item.price.replace(/[^0-9]/g, "")) / 1000)}.
                         {(Number.parseInt(item.price.replace(/[^0-9]/g, "")) % 1000).toString().padStart(3, "0")}
                       </div>
                       

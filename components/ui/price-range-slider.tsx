@@ -20,7 +20,7 @@ export function PriceRangeSlider({
   value,
   onValueChange,
   step = 100,
-  formatPrice = (price) => `$${(price / 1000).toFixed(0)}.${(price % 1000).toString().padStart(3, "0")}`,
+  formatPrice = (price) => `$${Math.floor(price / 1000)}.${(price % 1000).toString().padStart(3, "0")}`,
   className,
 }: PriceRangeSliderProps) {
   return (
