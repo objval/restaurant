@@ -165,15 +165,15 @@ export default function CategoriesPage() {
     <div className="min-h-screen bg-gray-50">
       <AdminHeader user={user} />
       
-      <div className="container mx-auto px-4 py-6 max-w-5xl">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 max-w-5xl">
         <Card>
           <CardHeader className="border-b">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex items-center gap-2">
                 <Layers className="h-5 w-5" />
-                <CardTitle>Gestión de Categorías</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">Gestión de Categorías</CardTitle>
               </div>
-              <Button onClick={handleCreate} size="sm">
+              <Button onClick={handleCreate} size="sm" className="w-full sm:w-auto">
                 <Plus className="h-4 w-4 mr-2" />
                 Nueva Categoría
               </Button>
@@ -184,15 +184,16 @@ export default function CategoriesPage() {
             <div className="divide-y">
               {categories.map((category) => (
                 <div key={category.id} className="p-4 hover:bg-gray-50 transition-colors">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <GripVertical className="h-5 w-5 text-gray-400 cursor-move" />
+                  <div className="flex flex-col gap-4">
+                    {/* Main content row */}
+                    <div className="flex items-start gap-3">
+                      <GripVertical className="h-5 w-5 text-gray-400 cursor-move mt-1 hidden sm:block" />
                       
-                      <div className="text-2xl">{category.icon}</div>
+                      <div className="text-2xl flex-shrink-0">{category.icon}</div>
                       
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <h4 className="font-semibold">{category.name}</h4>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h4 className="font-semibold truncate">{category.name}</h4>
                           <Badge variant="outline" className="text-xs">
                             {category.slug}
                           </Badge>
@@ -202,35 +203,39 @@ export default function CategoriesPage() {
                             </Badge>
                           )}
                         </div>
-                        <p className="text-sm text-gray-600 mt-1">
+                        <p className="text-sm text-gray-600 mt-1 line-clamp-2">
                           {category.description || 'Sin descripción'}
                         </p>
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-4">
+                    {/* Controls row */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 pl-9 sm:pl-12">
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-gray-500">Orden:</span>
                         <Input
                           type="number"
                           value={category.display_order || 0}
                           onChange={(e) => handleUpdateOrder(category.id, Number(e.target.value))}
-                          className="w-16 h-8 text-center"
+                          className="w-14 h-8 text-center text-sm"
                         />
                       </div>
                       
-                      <Switch
-                        checked={category.active ?? true}
-                        onCheckedChange={() => handleToggleActive(category)}
-                      />
-                      
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => handleEdit(category)}
-                      >
-                        <Edit className="h-4 w-4" />
-                      </Button>
+                      <div className="flex items-center gap-3">
+                        <Switch
+                          checked={category.active ?? true}
+                          onCheckedChange={() => handleToggleActive(category)}
+                        />
+                        
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => handleEdit(category)}
+                          className="h-8 w-8"
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -255,7 +260,7 @@ export default function CategoriesPage() {
           </DialogHeader>
 
           <div className="space-y-4 py-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Nombre</Label>
                 <Input
