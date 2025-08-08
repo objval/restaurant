@@ -51,32 +51,53 @@ export async function toggleProductStock(
 ) {
   console.log(`[toggleProductStock] Location: ${location}, ID: ${productId}, Current: ${currentStock}`)
   
-  const table = `menu_${location}` as const
+  // Validate inputs
+  if (!location || !productId) {
+    console.error(`[toggleProductStock] Invalid inputs - Location: ${location}, ID: ${productId}`)
+    throw new Error('Invalid inputs: location and productId are required')
+  }
+  
+  const table = `menu_${location}` as 'menu_arbol' | 'menu_1898' | 'menu_capriccio'
   const newStock = currentStock === 'in_stock' ? 'out_of_stock' : 'in_stock'
   
-  const { data, error } = await supabase
-    .from(table)
-    .update({ stock_status: newStock })
-    .eq('id', productId)
-    .select()
+  console.log(`[toggleProductStock] Updating table: ${table}, Setting stock to: ${newStock}`)
   
-  if (error) {
-    console.error(`[toggleProductStock] Error:`, error)
-    throw new Error(`Failed to update stock status: ${error.message}`)
+  try {
+    const { data, error, count } = await supabase
+      .from(table)
+      .update({ stock_status: newStock })
+      .eq('id', productId)
+      .select()
+    
+    console.log(`[toggleProductStock] Query result - Data:`, data, `Count:`, count, `Error:`, error)
+    
+    if (error) {
+      console.error(`[toggleProductStock] Supabase Error:`, error)
+      throw new Error(`Failed to update stock status: ${error.message}`)
+    }
+    
+    if (!data || data.length === 0) {
+      // Try to find if the product exists
+      const { data: checkData } = await supabase
+        .from(table)
+        .select('id, name')
+        .eq('id', productId)
+      
+      console.error(`[toggleProductStock] No rows updated. Product check:`, checkData)
+      throw new Error(`Product not found or update failed`)
+    }
+    
+    console.log(`[toggleProductStock] Success - Updated ${data.length} rows. New stock: ${data[0].stock_status}`)
+    
+    // Revalidate the admin dashboard and menu pages
+    revalidatePath('/admin/dashboard')
+    revalidatePath(`/${location}/menu`)
+    
+    return { success: true, data: data[0] }
+  } catch (err) {
+    console.error(`[toggleProductStock] Caught error:`, err)
+    throw err
   }
-  
-  if (!data || data.length === 0) {
-    console.error(`[toggleProductStock] No product found with ID: ${productId}`)
-    throw new Error(`Product not found`)
-  }
-  
-  console.log(`[toggleProductStock] Success - New stock: ${data[0].stock_status}`)
-  
-  // Revalidate the admin dashboard and menu pages
-  revalidatePath('/admin/dashboard')
-  revalidatePath(`/${location}/menu`)
-  
-  return { success: true, data: data[0] }
 }
 
 export async function getProducts(location: 'arbol' | '1898' | 'capriccio') {
