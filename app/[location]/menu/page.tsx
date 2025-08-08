@@ -19,7 +19,7 @@ export default async function MenuPage({ params }: MenuPageProps) {
   }
 
   // Try to fetch from Supabase, fall back to local data if not available
-  let menuItems = []
+  let menuItems: any[] = []
   let availableCategories = menuCategories
   
   try {
