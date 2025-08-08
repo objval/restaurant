@@ -153,7 +153,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
     const closeHour = parseInt(timeMatch[3])
     const closeMin = parseInt(timeMatch[4])
     
-    let openTime = openHour * 60 + openMin
+    const openTime = openHour * 60 + openMin
     let closeTime = closeHour * 60 + closeMin
     
     // Handle times after midnight (e.g., closes at 03:00)
