@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback, useMemo, memo } from "react"
 import { useRouter } from "next/navigation"
 import { supabase } from "@/lib/supabase-menu"
 import { toggleProductStock, toggleProductActive } from "../actions"
-import { AdminHeader } from "@/components/admin/admin-header"
 import { LocationSwitcher } from "@/components/admin/location-switcher"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -13,7 +12,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { 
   Plus, Package, DollarSign, Search, X, AlertCircle, 
-  ShoppingBag, Edit, MoreVertical, Trash, Filter,
+  ShoppingBag, Edit, MoreVertical, Trash,
   TrendingDown, TrendingUp, Loader2 
 } from "lucide-react"
 import { toast } from "sonner"
@@ -431,11 +430,9 @@ export default function AdminDashboard() {
   const handleDelete = useCallback(async (productId: string) => {
     if (!confirm('¿Estás seguro de eliminar este producto?')) return
     
-    const table = `menu_${currentLocation}` as 'menu_arbol' | 'menu_1898' | 'menu_capriccio'
-    
     try {
       const { error } = await supabase
-        .from(table)
+  .from(`menu_${currentLocation}`)
         .delete()
         .eq('id', productId)
       
@@ -462,8 +459,6 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <AdminHeader user={user} />
-      
       <div className="container mx-auto px-4 py-6 max-w-7xl">
         {/* Location Switcher */}
         <LocationSwitcher 
@@ -544,7 +539,14 @@ export default function AdminDashboard() {
               <h3 className="text-lg font-semibold text-gray-900">
                 Productos ({filteredAndSortedProducts.length})
               </h3>
-              <Button size="sm" className="gap-2">
+              <Button 
+                size="sm" 
+                className="gap-2"
+                onClick={() => {
+                  setEditingProduct(null)
+                  setEditDialogOpen(true)
+                }}
+              >
                 <Plus className="h-4 w-4" />
                 Nuevo
               </Button>

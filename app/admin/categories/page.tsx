@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import { supabase } from "@/lib/supabase-menu"
-import { AdminHeader } from "@/components/admin/admin-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -19,13 +18,11 @@ import {
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Edit, Plus, Layers, GripVertical, Save } from "lucide-react"
-import type { User } from "@supabase/supabase-js"
 import type { Tables } from "@/lib/database.types"
 
 type Category = Tables<'categories'>
 
 export default function CategoriesPage() {
-  const [user, setUser] = useState<User | null>(null)
   const [categories, setCategories] = useState<Category[]>([])
   const [loading, setLoading] = useState(true)
   const [editingCategory, setEditingCategory] = useState<Category | null>(null)
@@ -40,14 +37,8 @@ export default function CategoriesPage() {
   })
 
   useEffect(() => {
-    fetchUser()
     fetchCategories()
   }, [])
-
-  const fetchUser = async () => {
-    const { data: { user } } = await supabase.auth.getUser()
-    setUser(user)
-  }
 
   const fetchCategories = async () => {
     setLoading(true)
@@ -153,7 +144,6 @@ export default function CategoriesPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <AdminHeader user={user} />
         <div className="flex items-center justify-center py-20">
           <div className="h-12 w-12 animate-spin rounded-full border-4 border-gray-300 border-t-gray-900" />
         </div>
@@ -163,8 +153,6 @@ export default function CategoriesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <AdminHeader user={user} />
-      
       <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 max-w-5xl">
         <Card>
           <CardHeader className="border-b">
