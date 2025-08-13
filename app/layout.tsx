@@ -191,7 +191,7 @@ export default function RootLayout({
               servesCuisine: ["Bar Food", "Chilean", "Pub"],
               priceRange: "$$-$$$",
               acceptsReservations: true,
-              openingHours: ["Tu-We 11:00-00:30", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
+              openingHours: ["Tu-We 11:00-00:00", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
               image: "/logo.png",
             }),
           }}
@@ -220,7 +220,7 @@ export default function RootLayout({
               servesCuisine: ["Contemporary", "Bistro", "International"],
               priceRange: "$$$-$$$$",
               acceptsReservations: true,
-              openingHours: ["Tu-We 11:00-00:30", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
+              openingHours: ["Tu-We 11:00-00:00", "Th 11:00-02:00", "Fr 11:00-03:00", "Sa 11:00-02:00", "Su 11:00-22:00"],
               image: "/logo.png",
             }),
           }}
