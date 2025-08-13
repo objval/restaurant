@@ -178,9 +178,9 @@ export const locations: LocationData[] = [
         color: "#D4AF37",
       },
       {
-        title: "MENÚ TRES TIEMPOS",
+        title: "MENÚ EJECUTIVO",
         subtitle: "Entrada, plato principal y postre",
-        schedule: "Todos los días",
+        schedule: "Lunes a Viernes",
         color: "#F4E04D",
       },
     ],
