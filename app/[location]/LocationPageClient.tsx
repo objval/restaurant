@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Calendar, Menu, Clock, MapPin, Mail, MessageCircle, Heart, Award, Phone, Instagram, Facebook, Twitter, Navigation, Star } from "lucide-react"
+import { ArrowLeft, Calendar, Menu, Clock, MapPin, Mail, MessageCircle, Heart, Phone, Instagram, Facebook, Twitter, Navigation, Star } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -201,99 +201,109 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
           ))}
         </div>
 
-        {/* Enhanced overlay with breathing effect */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 animate-pulse" style={{ animationDuration: '3s' }} />
-        <div className="absolute inset-0 bg-black/40" />
+        {/* Professional gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/70" />
+        <div className="absolute inset-0 bg-black/30" />
 
-        {/* Enhanced Navigation Bar */}
-        <div className="absolute top-6 left-6 right-6 flex justify-between items-center z-20">
-          <button
-            onClick={handleBackToLocations}
-            className="bg-black/30 backdrop-blur-md text-white px-4 py-2 rounded-lg hover:bg-black/40 transition-all duration-300 flex items-center gap-2 border border-white/20 cursor-pointer hover:scale-105"
-            style={{ pointerEvents: 'auto' }}
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Volver a Ubicaciones
-          </button>
+        {/* Professional Navigation Header */}
+        <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent">
+          <div className="flex justify-between items-center p-6">
+            <button
+              onClick={handleBackToLocations}
+              className="text-white/80 hover:text-white transition-colors duration-300 flex items-center gap-2 text-sm font-medium"
+              style={{ pointerEvents: 'auto' }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="hidden sm:inline">Volver</span>
+            </button>
+            
+            {/* Right side actions */}
+            <div className="flex items-center gap-4">
+              {/* Open/Closed indicator in header */}
+              <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium ${
+                isCurrentlyOpen
+                  ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+                  : 'bg-red-500/20 text-red-400 border border-red-500/30'
+              }`}>
+                <div className={`w-2 h-2 rounded-full ${
+                  isCurrentlyOpen ? 'bg-green-400 animate-pulse' : 'bg-red-400'
+                }`} />
+                <span>{isCurrentlyOpen ? 'Abierto' : 'Cerrado'}</span>
+              </div>
+              
+              {/* Quick actions */}
+              <button
+                onClick={() => setIsContactOpen(true)}
+                className="text-white/80 hover:text-white transition-colors duration-300"
+                aria-label="Contacto"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Hero Content with enhanced animations */}
         <div className="absolute inset-0 flex items-center justify-center text-white text-center z-10">
-          <div className="max-w-4xl mx-auto px-4 space-y-6">
-            {/* Restaurant name with enhanced visibility */}
-            <div className="space-y-4">
-              <h1
-                className="text-6xl md:text-8xl font-bold leading-tight tracking-tight animate-fade-in"
-                style={{
-                  textShadow: "0 8px 32px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.6)",
-                  color: locationData.theme.accent,
-                  WebkitTextStroke: `2px ${locationData.theme.secondary}`,
-                  animationDelay: '0.2s',
-                  // Special styling for different locations
-                  ...(locationData.id === '1898' && {
-                    fontSize: '8rem',
-                    fontWeight: '900',
-                    letterSpacing: '0.05em',
-                    transform: 'scale(1.1)',
-                  }),
-                }}
-              >
-                {locationData.name}
-              </h1>
-              <p
-                className="text-2xl md:text-3xl text-white font-light tracking-wide animate-fade-in"
-                style={{
-                  textShadow: "0 4px 16px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.6)",
-                  animationDelay: '0.4s'
-                }}
-              >
-                {locationData.concept}
-              </p>
+          <div className="max-w-5xl mx-auto px-4 space-y-8">
+            {/* Restaurant logo - larger and more prominent */}
+            <div className="flex justify-center animate-fade-in transform hover:scale-105 transition-transform duration-500" style={{ animationDelay: '0.2s' }}>
+              {(locationData.id === 'arbol' || locationData.id === '1898' || locationData.id === 'capriccio') ? (
+                <div className="relative">
+                  <Image
+                    src={`/logo${locationData.id}.png`}
+                    alt={locationData.name}
+                    width={locationData.id === '1898' ? 500 : 400}
+                    height={locationData.id === '1898' ? 200 : 160}
+                    className="drop-shadow-2xl"
+                    style={{
+                      filter: locationData.id === '1898' 
+                        ? 'invert(1) drop-shadow(0 10px 40px rgba(255,255,255,0.3)) drop-shadow(0 6px 20px rgba(255,255,255,0.2)) drop-shadow(0 3px 10px rgba(255,255,255,0.1))'
+                        : 'drop-shadow(0 10px 40px rgba(0,0,0,0.95)) drop-shadow(0 6px 20px rgba(0,0,0,0.85)) drop-shadow(0 3px 10px rgba(0,0,0,0.7))',
+                    }}
+                    unoptimized
+                  />
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 -z-10 blur-3xl opacity-30"
+                    style={{
+                      background: `radial-gradient(circle, ${locationData.theme.accent} 0%, transparent 70%)`,
+                    }}
+                  />
+                </div>
+              ) : (
+                // Fallback to text for locations without logos
+                <h1
+                  className="text-7xl md:text-9xl font-bold leading-tight tracking-tight"
+                  style={{
+                    textShadow: "0 10px 40px rgba(0,0,0,0.95), 0 6px 20px rgba(0,0,0,0.85), 0 3px 10px rgba(0,0,0,0.7)",
+                    color: locationData.theme.accent,
+                    WebkitTextStroke: `2px ${locationData.theme.secondary}`,
+                  }}
+                >
+                  {locationData.name}
+                </h1>
+              )}
             </div>
 
-            {/* Live status indicator */}
-            <div className="flex justify-center items-center gap-6 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <Badge className={`px-4 py-2 text-lg font-semibold ${
-                isOpen(locationData.hours) ? 'bg-green-500' : 'bg-red-500'
-              } text-white`}>
-                {isOpen(locationData.hours) ? '🟢 Abierto Ahora' : '🔴 Cerrado'}
-              </Badge>
-            </div>
 
-            {/* Enhanced CTA Buttons with better animations */}
-            <div className="flex flex-col md:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
-              <Button
-                onClick={() => setIsReservationOpen(true)}
-                size="lg"
-                className="bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 px-8 py-4 text-lg font-semibold rounded-full shadow-2xl transition-all duration-300 group"
-              >
-                <Calendar className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-                Reservar Mesa
-              </Button>
+            {/* Streamlined CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <Link href={`/${locationData.id}/menu`}>
                 <Button
                   size="lg"
-                  className="px-8 py-4 text-lg font-semibold rounded-full shadow-2xl transition-all duration-300 hover:scale-105 group"
-                  style={{
-                    backgroundColor: locationData.theme.accent,
-                    color: locationData.theme.text,
-                    border: `2px solid ${locationData.theme.accent}`,
-                    textShadow: locationData.id === 'arbol' ? '0 2px 4px rgba(0,0,0,0.3)' : 'none',
-                    fontWeight: locationData.id === '1898' ? 'bold' : 'semibold',
-                    letterSpacing: locationData.id === '1898' ? '0.5px' : 'normal',
-                  }}
+                  className="bg-white/95 backdrop-blur-sm text-gray-900 hover:bg-white hover:scale-105 px-10 py-4 text-lg font-bold rounded-xl shadow-2xl transition-all duration-300 group min-w-[200px]"
                 >
                   <Menu className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
                   Ver Menú
                 </Button>
               </Link>
               <Button
-                onClick={() => setIsContactOpen(true)}
+                onClick={() => setIsReservationOpen(true)}
                 size="lg"
-                className="bg-black/30 backdrop-blur-sm text-white hover:bg-black/40 border-2 border-white/50 hover:border-white/70 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 group"
+                className="bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 hover:scale-105 px-10 py-4 text-lg font-bold rounded-xl shadow-2xl transition-all duration-300 group border border-white/20 min-w-[200px]"
               >
-                <Award className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-                Eventos Especiales
+                <Calendar className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                Reservar Mesa
               </Button>
             </div>
           </div>

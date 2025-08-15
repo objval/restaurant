@@ -79,7 +79,7 @@ export const locations: LocationData[] = [
   {
     id: "arbol",
     name: "El Árbol",
-    concept: "Comida Familiar",
+    concept: "Café Restaurante",
     path: "/arbol",
     coordinates: { lat: -38.985779, lng: -72.639160 },
     theme: {
@@ -335,7 +335,7 @@ export const locations: LocationData[] = [
       saturday: "17:00 - 03:30",
       sunday: "CERRADO",
     },
-    specialties: ["Cocina de Autor", "Cócteles Premium", "Vinos Seleccionados", "Ambiente Ejecutivo"],
+    specialties: ["Cocina de Autor", "Cócteles Premium", "Ambiente Ejecutivo"],
     atmosphere: ["Elegante", "Sofisticado", "Romántico", "Ejecutivo"],
     priceRange: "$$$-$$$$",
     contact: {

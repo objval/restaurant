@@ -89,16 +89,16 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
           className="p-4 pb-3"
           style={{ backgroundColor: categoryBgColor }}
         >
-          <div className="flex items-start justify-between">
-            <div className="flex items-start gap-3 flex-1">
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3 flex-1 min-w-0">
               <div 
-                className="p-2.5 rounded-lg bg-white shadow-sm"
+                className="p-2.5 rounded-lg bg-white shadow-sm flex-shrink-0"
                 style={{ color: locationTheme.primary }}
               >
                 <CategoryIcon className="w-6 h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-bold text-lg md:text-xl line-clamp-2 leading-tight text-gray-900 mb-1">
+                <h3 className="font-bold text-lg md:text-xl line-clamp-2 leading-tight text-gray-900 mb-1 pr-2">
                   {item.name}
                 </h3>
                 {/* Badges */}
@@ -131,9 +131,9 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
             </div>
             
             {/* Precio destacado */}
-            <div className="text-right">
+            <div className="text-right flex-shrink-0">
               <div
-                className={`font-bold text-xl md:text-2xl ${isOutOfStock ? 'line-through opacity-50' : ''}`}
+                className={`font-bold text-xl md:text-2xl whitespace-nowrap ${isOutOfStock ? 'line-through opacity-50' : ''}`}
                 style={{ color: isOutOfStock ? '#9CA3AF' : locationTheme.primary }}
               >
                 ${Math.floor(item.price / 1000)}.{(item.price % 1000).toString().padStart(3, "0")}
