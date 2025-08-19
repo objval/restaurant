@@ -35,10 +35,56 @@ export function ReservationModal({ isOpen, onClose, location }: ReservationModal
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    // Format the reservation data for WhatsApp
+    const formatDate = (dateString: string) => {
+      const date = new Date(dateString)
+      return date.toLocaleDateString('es-CL', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      })
+    }
 
-    alert("¡Reserva enviada exitosamente! Te contactaremos pronto para confirmar.")
+    const reservationMessage = `*NUEVA RESERVA - ${location.name.toUpperCase()}*
+
+*DATOS DEL CLIENTE:*
+• Nombre: ${formData.fullName}
+• RUT: ${formData.rut}
+• Email: ${formData.email}
+• Teléfono: ${formData.phone}
+
+*DETALLES DE LA RESERVA:*
+• Fecha: ${formatDate(formData.date)}
+• Hora: ${formData.time}
+• Número de personas: ${formData.guests}
+
+${formData.specialRequests ? `*SOLICITUDES ESPECIALES:*\n${formData.specialRequests}\n\n` : ''}*RESTAURANTE:*
+${location.name} - ${location.concept}
+Teléfono: ${location.contact.phone}
+Email: ${location.contact.email}
+
+*Fecha de solicitud:* ${new Date().toLocaleString('es-CL', {
+      timeZone: 'America/Santiago',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })}`
+
+    // Send to WhatsApp
+    const phone = location.contact.phone.replace(/[^0-9]/g, "")
+    const encodedMessage = encodeURIComponent(reservationMessage)
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`
+    
+    // Simulate processing time
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank')
+
+    alert("¡Reserva preparada! Se abrirá WhatsApp para enviar la reserva al restaurante.")
     setIsSubmitting(false)
     onClose()
     setFormData({

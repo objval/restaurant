@@ -311,20 +311,20 @@ export function ProfessionalLocationPicker({
 
           {/* Call to Action */}
           <div 
-            className="flex items-center justify-between pt-4 rounded-lg p-3 -mx-3 border-t-2 transition-all duration-300"
+            className="pt-4 rounded-lg p-3 -mx-3 border-t-2 transition-all duration-300 space-y-3"
             style={{
               background: `linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.5))`,
               borderTopColor: `${location.theme.accent}50`,
               boxShadow: `0 -2px 10px ${location.theme.accent}10`
             }}
           >
-            <div className="flex items-center gap-2 text-white/80">
+            <div className="flex items-center gap-2 text-white/80 justify-center">
               <Phone className="w-4 h-4" />
               <span className="text-sm">{location.contact.phone}</span>
             </div>
             <Button
               size="sm"
-              className={`transition-all duration-300 border-2 shadow-lg ${
+              className={`w-full transition-all duration-300 border-2 shadow-lg ${
                 isLoading ? 'opacity-75' : isHovered && isOpen ? 'scale-105 shadow-xl' : 'scale-100'
               } ${!isOpen ? 'opacity-60' : ''}`}
               style={{ 

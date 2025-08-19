@@ -32,10 +32,45 @@ export function ContactModal({ isOpen, onClose, location }: ContactModalProps) {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    // Format the contact message for WhatsApp
+    const contactMessage = `*NUEVO MENSAJE DE CONTACTO - ${location.name.toUpperCase()}*
 
-    alert("¡Mensaje enviado exitosamente! Te responderemos pronto.")
+*DATOS DEL CLIENTE:*
+• Nombre: ${formData.name}
+• Email: ${formData.email}
+${formData.phone ? `• Teléfono: ${formData.phone}` : ''}
+
+*ASUNTO:* ${formData.subject}
+
+*MENSAJE:*
+${formData.message}
+
+*RESTAURANTE:*
+${location.name} - ${location.concept}
+Teléfono: ${location.contact.phone}
+Email: ${location.contact.email}
+
+*Fecha de envío:* ${new Date().toLocaleString('es-CL', {
+      timeZone: 'America/Santiago',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })}`
+
+    // Send to WhatsApp
+    const phone = location.contact.phone.replace(/[^0-9]/g, "")
+    const encodedMessage = encodeURIComponent(contactMessage)
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`
+    
+    // Simulate processing time
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank')
+
+    alert("¡Mensaje preparado! Se abrirá WhatsApp para enviar tu consulta al restaurante.")
     setIsSubmitting(false)
     onClose()
     setFormData({

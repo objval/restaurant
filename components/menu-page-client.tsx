@@ -159,7 +159,7 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
                 <p className="text-gray-600 mt-1">
                   {searchQuery && `Buscando "${searchQuery}"`}
                   {selectedCategory !== "all" &&
-                    ` en ${menuCategories.find((cat) => cat.id === selectedCategory)?.name}`}
+                    ` en ${availableCategories.find((cat) => cat.id === selectedCategory)?.name}`}
                   {dietaryFilters.length > 0 && ` con opciones ${dietaryFilters.join(", ")}`}
                 </p>
               )}

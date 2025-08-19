@@ -122,9 +122,7 @@ export function ReturningCustomerFlow({
                     </span>
                   ))}
                 </div>
-                <div className="mt-4 flex items-center gap-2 text-sm text-gray-600">
-                  <span className="font-semibold">{savedLocation.socialProof.reviews.toLocaleString()} visitantes satisfechos</span>
-                </div>
+              
               </div>
             </div>
 

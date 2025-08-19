@@ -460,7 +460,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                     </div>
 
                     {/* Popular badge for first item */}
-                    {index === 0 && (
+                    {index === 2 && (
                       <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
                         🔥 MÁS POPULAR
                       </div>
@@ -583,8 +583,8 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
       {/* Enhanced About Us Section with parallax effect */}
       <section className="py-20 bg-white relative overflow-hidden">
         {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{ 
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="absolute inset-0 pointer-events-none" style={{ 
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${locationData.theme.primary.replace('#', '%23')}' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` 
           }} />
         </div>
@@ -613,7 +613,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-1 left-1 right-1 text-center">
-                  <span className="text-white text-xs font-bold drop-shadow-lg">Signature</span>
+                
                 </div>
               </div>
 
@@ -673,11 +673,27 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    onClick={() => {
-                      const address = encodeURIComponent(locationData.contact.address)
-                      window.open(`https://maps.google.com/?q=${address}`, '_blank')
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      let mapsUrl = ''
+                      switch(locationData.id) {
+                        case 'capriccio':
+                          mapsUrl = 'https://maps.app.goo.gl/Cjpd8gBy6kDrFHFU7'
+                          break
+                        case 'arbol':
+                          mapsUrl = 'https://maps.app.goo.gl/7vLJMPsTbQ1sFKzP8'
+                          break
+                        case '1898':
+                          mapsUrl = 'https://maps.app.goo.gl/Qc6ytj3fngZLx8yr9'
+                          break
+                        default:
+                          const address = encodeURIComponent(locationData.contact.address)
+                          mapsUrl = `https://maps.google.com/?q=${address}`
+                      }
+                      window.open(mapsUrl, '_blank')
                     }}
-                    className="hover:scale-105 transition-transform duration-200"
+                    className="hover:scale-105 transition-transform duration-200 relative z-10"
                   >
                     <Navigation className="w-4 h-4 mr-1" />
                     Cómo llegar
@@ -695,8 +711,12 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    onClick={() => window.open(`tel:${locationData.contact.phone}`, '_self')}
-                    className="hover:scale-105 transition-transform duration-200"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      window.open(`tel:${locationData.contact.phone}`, '_self')
+                    }}
+                    className="hover:scale-105 transition-transform duration-200 relative z-10"
                   >
                     <Phone className="w-4 h-4 mr-1" />
                     Llamar
