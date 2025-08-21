@@ -101,30 +101,25 @@ export default function LocationsAdmin() {
 
   const initializeStorageBucket = async () => {
     try {
-      const { data: buckets, error: listError } = await supabase.storage.listBuckets()
+      // Try to list files in the bucket to check if it exists
+      // This is a safer approach than trying to create it
+      const { error } = await supabase.storage
+        .from('product-images')
+        .list('', { limit: 1 })
       
-      if (listError) {
-        console.error('Error listing buckets:', listError)
-        return
-      }
-      
-      const bucketExists = buckets?.some(bucket => bucket.name === 'product-images')
-      
-      if (!bucketExists) {
-        const { error: createError } = await supabase.storage.createBucket('product-images', {
-          public: true,
-          fileSizeLimit: 5242880, // 5MB
-          allowedMimeTypes: ['image/png', 'image/jpeg', 'image/jpg', 'image/webp']
-        })
+      if (error && error.message.includes('not found')) {
+        console.log('Storage bucket "product-images" not found. Please create it in Supabase dashboard:')
+        console.log('1. Go to Storage in your Supabase dashboard')
+        console.log('2. Create a new bucket named "product-images"')
+        console.log('3. Set it as public')
+        console.log('4. Set file size limit to 5MB')
+        console.log('5. Allow image/png, image/jpeg, image/jpg, image/webp mime types')
         
-        if (createError) {
-          console.error('Error creating bucket:', createError)
-        } else {
-          console.log('Storage bucket created successfully')
-        }
+        // Show a toast to the user
+        toast.info('El bucket de imágenes necesita ser creado en Supabase')
       }
     } catch (error) {
-      console.error('Error initializing storage:', error)
+      console.error('Error checking storage bucket:', error)
     }
   }
 
