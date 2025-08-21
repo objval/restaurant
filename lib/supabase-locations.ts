@@ -118,13 +118,15 @@ export async function getLocationsWithHours() {
     
     if (promError) throw promError
 
-    // Fetch menu highlights
+    // Fetch menu highlights (featured products)
     const { data: menuHighlights, error: mhError } = await supabase
       .from('menu_highlights')
       .select('*')
       .in('location_id', locationIds)
       .eq('active', true)
+      .eq('featured', true)  // Only fetch featured items for destacados
       .order('display_order')
+      .limit(3)  // Limit to 3 featured items per location
     
     if (mhError) throw mhError
 

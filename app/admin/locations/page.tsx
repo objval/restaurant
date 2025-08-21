@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { supabase } from "@/lib/supabase-locations"
 import { supabase as supabaseAuth } from "@/lib/supabase-menu"
+import { uploadProductImage, deleteProductImage, getStorageUrl } from "@/lib/supabase-storage"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -11,7 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
-import { Clock, MapPin, Save, Loader2, Calendar, FileText } from "lucide-react"
+import { Clock, MapPin, Save, Loader2, Calendar, FileText, Star, Upload, X, Image as ImageIcon } from "lucide-react"
 import type { User } from "@supabase/supabase-js"
 
 interface BusinessHour {
@@ -37,6 +38,22 @@ interface Location {
   active: boolean
 }
 
+interface FeaturedItem {
+  id?: string
+  location_id?: string
+  slug: string
+  name: string
+  description: string
+  price: string
+  image_url?: string
+  storage_image_path?: string
+  category?: string
+  ingredients?: string[]
+  featured: boolean
+  display_order: number
+  active: boolean
+}
+
 const DAYS_OF_WEEK = [
   { id: 1, name: 'Lunes', abbr: 'Lun' },
   { id: 2, name: 'Martes', abbr: 'Mar' },
@@ -58,6 +75,9 @@ export default function LocationsAdmin() {
   const [saving, setSaving] = useState(false)
   const [savingLocation, setSavingLocation] = useState(false)
   const [savingBiography, setSavingBiography] = useState(false)
+  const [featuredItems, setFeaturedItems] = useState<FeaturedItem[]>([])
+  const [savingFeatured, setSavingFeatured] = useState(false)
+  const [uploadingImage, setUploadingImage] = useState<string | null>(null)
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -68,6 +88,8 @@ export default function LocationsAdmin() {
         } else {
           setUser(user)
           fetchLocations()
+          // Initialize storage bucket on first load
+          initializeStorageBucket()
         }
       } catch (error) {
         console.error('Auth error:', error)
@@ -76,6 +98,35 @@ export default function LocationsAdmin() {
     }
     checkAuth()
   }, [router])
+
+  const initializeStorageBucket = async () => {
+    try {
+      const { data: buckets, error: listError } = await supabase.storage.listBuckets()
+      
+      if (listError) {
+        console.error('Error listing buckets:', listError)
+        return
+      }
+      
+      const bucketExists = buckets?.some(bucket => bucket.name === 'product-images')
+      
+      if (!bucketExists) {
+        const { error: createError } = await supabase.storage.createBucket('product-images', {
+          public: true,
+          fileSizeLimit: 5242880, // 5MB
+          allowedMimeTypes: ['image/png', 'image/jpeg', 'image/jpg', 'image/webp']
+        })
+        
+        if (createError) {
+          console.error('Error creating bucket:', createError)
+        } else {
+          console.log('Storage bucket created successfully')
+        }
+      }
+    } catch (error) {
+      console.error('Error initializing storage:', error)
+    }
+  }
 
   const fetchLocations = async () => {
     try {
@@ -91,6 +142,7 @@ export default function LocationsAdmin() {
         setSelectedLocation(data[0])
         setOriginalLocation({ ...data[0] })
         fetchBusinessHours(data[0].id)
+        fetchFeaturedItems(data[0].id)
       }
     } catch (error) {
       console.error('Error fetching locations:', error)
@@ -137,6 +189,156 @@ export default function LocationsAdmin() {
     setSelectedLocation(location)
     setOriginalLocation({ ...location }) // Store original state for comparison
     fetchBusinessHours(location.id)
+    fetchFeaturedItems(location.id)
+  }
+
+  const fetchFeaturedItems = async (locationId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('menu_highlights')
+        .select('*')
+        .eq('location_id', locationId)
+        .eq('featured', true)
+        .order('display_order')
+        .limit(3)
+
+      if (error) throw error
+      
+      // Ensure we always have 3 items (empty placeholders if needed)
+      const items: FeaturedItem[] = []
+      for (let i = 0; i < 3; i++) {
+        if (data && data[i]) {
+          items.push(data[i])
+        } else {
+          items.push({
+            slug: '',
+            name: '',
+            description: '',
+            price: '',
+            featured: true,
+            display_order: i + 1,
+            active: true
+          })
+        }
+      }
+      
+      setFeaturedItems(items)
+    } catch (error) {
+      console.error('Error fetching featured items:', error)
+      toast.error('Error al cargar productos destacados')
+    }
+  }
+
+  const handleFeaturedItemChange = (index: number, field: keyof FeaturedItem, value: any) => {
+    setFeaturedItems(prev => prev.map((item, i) => {
+      if (i === index) {
+        return { ...item, [field]: value }
+      }
+      return item
+    }))
+  }
+
+  const handleImageUpload = async (index: number, file: File) => {
+    if (!selectedLocation) return
+    
+    const item = featuredItems[index]
+    setUploadingImage(`${index}`)
+    
+    try {
+      // Generate a slug from the name if not present
+      const slug = item.slug || item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+      
+      const { path, url, error } = await uploadProductImage(
+        file,
+        selectedLocation.id,
+        slug
+      )
+      
+      if (error) {
+        toast.error(`Error al subir imagen: ${error}`)
+        return
+      }
+      
+      // Update the item with the new image path
+      handleFeaturedItemChange(index, 'storage_image_path', path)
+      handleFeaturedItemChange(index, 'image_url', url)
+      
+      toast.success('Imagen subida exitosamente')
+    } catch (error) {
+      console.error('Error uploading image:', error)
+      toast.error('Error al subir la imagen')
+    } finally {
+      setUploadingImage(null)
+    }
+  }
+
+  const handleRemoveImage = async (index: number) => {
+    const item = featuredItems[index]
+    if (!item.storage_image_path) return
+    
+    try {
+      const success = await deleteProductImage(item.storage_image_path)
+      if (success) {
+        handleFeaturedItemChange(index, 'storage_image_path', null)
+        handleFeaturedItemChange(index, 'image_url', '')
+        toast.success('Imagen eliminada')
+      } else {
+        toast.error('Error al eliminar la imagen')
+      }
+    } catch (error) {
+      console.error('Error removing image:', error)
+      toast.error('Error al eliminar la imagen')
+    }
+  }
+
+  const saveFeaturedItems = async () => {
+    if (!selectedLocation) return
+    
+    setSavingFeatured(true)
+    try {
+      // Filter out empty items and prepare for save
+      const itemsToSave = featuredItems
+        .filter(item => item.name && item.price)
+        .map((item, index) => ({
+          location_id: selectedLocation.id,
+          slug: item.slug || item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+          name: item.name,
+          description: item.description || '',
+          price: item.price,
+          image_url: item.image_url || '',
+          storage_image_path: item.storage_image_path || null,
+          featured: true,
+          display_order: index + 1,
+          active: true
+        }))
+      
+      // First, remove existing featured items for this location
+      const { error: deleteError } = await supabase
+        .from('menu_highlights')
+        .delete()
+        .eq('location_id', selectedLocation.id)
+        .eq('featured', true)
+      
+      if (deleteError) throw deleteError
+      
+      // Then insert the new ones
+      if (itemsToSave.length > 0) {
+        const { error: insertError } = await supabase
+          .from('menu_highlights')
+          .insert(itemsToSave)
+        
+        if (insertError) throw insertError
+      }
+      
+      toast.success('Productos destacados actualizados')
+      // Refresh the data
+      fetchFeaturedItems(selectedLocation.id)
+    } catch (error) {
+      console.error('Error saving featured items:', error)
+      toast.error('Error al guardar productos destacados')
+    } finally {
+      setSavingFeatured(false)
+    }
   }
 
   const handleHourChange = (dayOfWeek: number, field: 'open_time' | 'close_time' | 'is_closed', value: any) => {
@@ -580,6 +782,158 @@ export default function LocationsAdmin() {
                       <>
                         <Save className="mr-2 h-4 w-4" />
                         Guardar Historia
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Featured Products Section */}
+            <Card className="lg:col-span-2">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Star className="h-5 w-5" />
+                  Productos Destacados
+                </CardTitle>
+                <p className="text-sm text-gray-600 mt-1">
+                  Administra los 3 productos destacados que aparecen en la página del restaurante
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {featuredItems.map((item, index) => (
+                  <div key={index} className="p-4 border rounded-lg space-y-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold">Producto #{index + 1}</h3>
+                      {item.image_url && (
+                        <div className="relative">
+                          <img 
+                            src={item.image_url} 
+                            alt={item.name}
+                            className="w-16 h-16 object-cover rounded"
+                          />
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor={`featured-name-${index}`}>Nombre del Producto</Label>
+                        <Input
+                          id={`featured-name-${index}`}
+                          value={item.name || ''}
+                          onChange={(e) => handleFeaturedItemChange(index, 'name', e.target.value)}
+                          placeholder="Ej: Pizza Margherita"
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor={`featured-price-${index}`}>Precio</Label>
+                        <Input
+                          id={`featured-price-${index}`}
+                          value={item.price || ''}
+                          onChange={(e) => handleFeaturedItemChange(index, 'price', e.target.value)}
+                          placeholder="Ej: $25.00"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor={`featured-desc-${index}`}>Descripción</Label>
+                      <Textarea
+                        id={`featured-desc-${index}`}
+                        value={item.description || ''}
+                        onChange={(e) => handleFeaturedItemChange(index, 'description', e.target.value)}
+                        placeholder="Descripción breve del producto..."
+                        className="min-h-[60px]"
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label>Imagen del Producto</Label>
+                      <div className="flex items-center gap-4 mt-2">
+                        {item.image_url ? (
+                          <div className="flex items-center gap-4">
+                            <img 
+                              src={item.image_url} 
+                              alt={item.name}
+                              className="w-32 h-32 object-cover rounded border"
+                            />
+                            <Button
+                              variant="destructive"
+                              size="sm"
+                              onClick={() => handleRemoveImage(index)}
+                            >
+                              <X className="h-4 w-4 mr-1" />
+                              Eliminar
+                            </Button>
+                          </div>
+                        ) : (
+                          <div className="relative">
+                            <input
+                              type="file"
+                              accept="image/png,image/jpeg,image/jpg,image/webp"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0]
+                                if (file) handleImageUpload(index, file)
+                              }}
+                              className="hidden"
+                              id={`upload-${index}`}
+                              disabled={uploadingImage === `${index}`}
+                            />
+                            <label
+                              htmlFor={`upload-${index}`}
+                              className="cursor-pointer"
+                            >
+                              <Button
+                                type="button"
+                                variant="outline"
+                                size="sm"
+                                disabled={uploadingImage === `${index}`}
+                                asChild
+                              >
+                                <span>
+                                  {uploadingImage === `${index}` ? (
+                                    <>
+                                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                                      Subiendo...
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Upload className="h-4 w-4 mr-2" />
+                                      Subir Imagen
+                                    </>
+                                  )}
+                                </span>
+                              </Button>
+                            </label>
+                          </div>
+                        )}
+                      </div>
+                      {!item.image_url && (
+                        <p className="text-xs text-gray-500 mt-1">
+                          Formatos: PNG, JPG, WebP. Tamaño máximo: 5MB. Recomendado: 800x800px
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                
+                <div className="pt-4 border-t">
+                  <Button 
+                    onClick={saveFeaturedItems}
+                    disabled={savingFeatured}
+                    className="w-full"
+                  >
+                    {savingFeatured ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Guardando...
+                      </>
+                    ) : (
+                      <>
+                        <Save className="mr-2 h-4 w-4" />
+                        Guardar Productos Destacados
                       </>
                     )}
                   </Button>
