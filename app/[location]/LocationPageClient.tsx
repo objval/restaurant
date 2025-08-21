@@ -184,7 +184,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
   return (
     <div className="min-h-screen" style={{ backgroundColor: locationData.theme.background }}>
       {/* Hero Section - Enhanced with interactive elements */}
-      <section className="relative h-[85vh] overflow-hidden" style={{ pointerEvents: 'auto' }}>
+      <section className="relative min-h-[600px] h-[85vh] max-h-[900px] overflow-hidden flex flex-col" style={{ pointerEvents: 'auto' }}>
         {/* Dynamic Background Gallery */}
         <div className="absolute inset-0">
           {locationData.images.gallery.map((image, index) => (
@@ -244,8 +244,8 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
         </div>
 
         {/* Hero Content with enhanced animations */}
-        <div className="absolute inset-0 flex items-center justify-center text-white text-center z-10">
-          <div className="max-w-5xl mx-auto px-4 space-y-8">
+        <div className="relative flex-1 flex items-center justify-center text-white text-center z-10 py-20 px-4">
+          <div className="max-w-5xl mx-auto w-full space-y-6 sm:space-y-8">
             {/* Restaurant logo - larger and more prominent */}
             <div className="flex justify-center animate-fade-in transform hover:scale-105 transition-transform duration-500" style={{ animationDelay: '0.2s' }}>
               {locationData.logoUrl ? (
@@ -255,7 +255,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                     alt={locationData.name}
                     width={locationData.id === '1898' ? 500 : 400}
                     height={locationData.id === '1898' ? 200 : 160}
-                    className="drop-shadow-2xl"
+                    className="drop-shadow-2xl w-auto h-auto max-w-[300px] sm:max-w-[400px] lg:max-w-[500px]"
                     style={{
                       filter: locationData.id === '1898' 
                         ? 'invert(1) drop-shadow(0 10px 40px rgba(255,255,255,0.3)) drop-shadow(0 6px 20px rgba(255,255,255,0.2)) drop-shadow(0 3px 10px rgba(255,255,255,0.1))'
@@ -273,7 +273,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
               ) : (
                 // Fallback to text for locations without logos
                 <h1
-                  className="text-7xl md:text-9xl font-bold leading-tight tracking-tight"
+                  className="text-5xl sm:text-7xl md:text-9xl font-bold leading-tight tracking-tight px-4"
                   style={{
                     textShadow: "0 10px 40px rgba(0,0,0,0.95), 0 6px 20px rgba(0,0,0,0.85), 0 3px 10px rgba(0,0,0,0.7)",
                     color: locationData.theme.accent,
@@ -287,22 +287,22 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
 
 
             {/* Streamlined CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <Link href={`/${locationData.id}/menu`}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in px-4" style={{ animationDelay: '0.4s' }}>
+              <Link href={`/${locationData.id}/menu`} className="w-full sm:w-[200px]">
                 <Button
                   size="lg"
-                  className="bg-white/95 backdrop-blur-sm text-gray-900 hover:bg-white hover:scale-105 px-10 py-4 text-lg font-bold rounded-xl shadow-2xl transition-all duration-300 group min-w-[200px]"
+                  className="bg-white/95 backdrop-blur-sm text-gray-900 hover:bg-white hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl shadow-2xl transition-all duration-300 group w-full"
                 >
-                  <Menu className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                  <Menu className="w-4 sm:w-5 h-4 sm:h-5 mr-2 group-hover:rotate-12 transition-transform" />
                   Ver Menú
                 </Button>
               </Link>
               <Button
                 onClick={() => setIsReservationOpen(true)}
                 size="lg"
-                className="bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 hover:scale-105 px-10 py-4 text-lg font-bold rounded-xl shadow-2xl transition-all duration-300 group border border-white/20 min-w-[200px]"
+                className="bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl shadow-2xl transition-all duration-300 group border border-white/20 w-full sm:w-[200px]"
               >
-                <Calendar className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                <Calendar className="w-4 sm:w-5 h-4 sm:h-5 mr-2 group-hover:animate-bounce" />
                 Reservar Mesa
               </Button>
             </div>
@@ -310,7 +310,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
         </div>
 
         {/* Gallery indicators */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+        <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
           {locationData.images.gallery.map((_, index) => (
             <button
               key={index}
