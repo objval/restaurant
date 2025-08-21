@@ -1,4 +1,4 @@
-import { locations } from "@/lib/locations"
+import { getLocationsWithHours } from "@/lib/supabase-locations"
 import { MenuPageClient } from "@/components/menu-page-client"
 import { ArrowLeft, Utensils } from "lucide-react"
 import Link from "next/link"
@@ -16,6 +16,7 @@ interface MenuPageProps {
 
 export default async function MenuPage({ params }: MenuPageProps) {
   const { location } = await params
+  const locations = await getLocationsWithHours()
   const locationData = locations.find((loc) => loc.id === location)
 
   if (!locationData) {

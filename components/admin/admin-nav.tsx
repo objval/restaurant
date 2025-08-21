@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils"
 import { 
   LayoutDashboard, 
   Package, 
-  Layers, 
+  Layers,
+  MapPin,
   LogOut,
   Menu,
   X
@@ -31,6 +32,11 @@ const navItems = [
     href: "/admin/categories",
     label: "Categorías",
     icon: Layers
+  },
+  {
+    href: "/admin/locations",
+    label: "Ubicaciones",
+    icon: MapPin
   }
 ]
 

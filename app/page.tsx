@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { MapPin, CheckCircle, XCircle, AlertCircle, Navigation } from "lucide-react"
-import { type LocationData, locations, findNearestLocation } from "@/lib/locations"
+import { type LocationData, findNearestLocation } from "@/lib/locations"
+import { getLocationsWithHours } from "@/lib/supabase-locations"
 import { getLocationPreference, shouldShowConfirmation, saveLocationPreference } from "@/lib/storage"
 import { ReturningCustomerFlow } from "@/components/returning-customer-flow"
 import { ProfessionalLocationPicker } from "@/components/professional-location-picker"
@@ -17,17 +18,36 @@ export default function LocationSelector() {
   const [isDetecting, setIsDetecting] = useState(false)
   const [nearestLocation, setNearestLocation] = useState<LocationData | null>(null)
   const [loadingLocationId, setLoadingLocationId] = useState<string | null>(null)
+  const [locations, setLocations] = useState<LocationData[]>([])
   const router = useRouter()
   const { toast } = useToast()
 
   useEffect(() => {
-    const saved = getLocationPreference()
-    if (saved && shouldShowConfirmation()) {
-      setSavedLocationId(saved)
-      setShowConfirmation(true)
+    const loadData = async () => {
+      try {
+        // Fetch locations from Supabase
+        const locationData = await getLocationsWithHours()
+        setLocations(locationData)
+        
+        const saved = getLocationPreference()
+        if (saved && shouldShowConfirmation()) {
+          setSavedLocationId(saved)
+          setShowConfirmation(true)
+        }
+      } catch (error) {
+        console.error('Error loading locations:', error)
+        toast({
+          title: "Error",
+          description: "No se pudieron cargar las ubicaciones",
+          variant: "destructive"
+        })
+      } finally {
+        setIsLoading(false)
+      }
     }
-    setIsLoading(false)
-  }, [])
+    
+    loadData()
+  }, [toast])
 
   const showToast = (title: string, description: string, variant: "default" | "destructive" = "default", icon?: React.ReactNode) => {
     toast({

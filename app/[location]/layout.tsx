@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { locations } from "@/lib/locations"
+import { getLocationsWithHours } from "@/lib/supabase-locations"
 import LocationClient from "./LocationClient"
 
 // Force dynamic rendering for location pages to ensure fresh menu data
@@ -19,6 +19,7 @@ export default async function LocationLayout({ children, params }: LocationLayou
 // Generate metadata for each location
 export async function generateMetadata({ params }: { params: Promise<{ location: string }> }): Promise<Metadata> {
   const { location } = await params
+  const locations = await getLocationsWithHours()
   const locationData = locations.find((loc) => loc.id === location)
 
   if (!locationData) {
