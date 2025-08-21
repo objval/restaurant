@@ -1,9 +1,6 @@
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Use singleton pattern to avoid multiple client instances
+import { supabase } from './supabase-singleton'
+export { supabase }
 
 export interface DatabaseLocation {
   id: string
@@ -13,6 +10,7 @@ export interface DatabaseLocation {
   address: string
   phone: string
   email: string
+  logo_url?: string
   coordinates: { lat: number; lng: number }
   theme: {
     primary: string
@@ -126,7 +124,7 @@ export async function getLocationsWithHours() {
       .eq('active', true)
       .eq('featured', true)  // Only fetch featured items for destacados
       .order('display_order')
-      .limit(3)  // Limit to 3 featured items per location
+      // Note: Removed limit here as it was limiting total results, not per location
     
     if (mhError) throw mhError
 
@@ -134,7 +132,8 @@ export async function getLocationsWithHours() {
     return locations.map(location => {
       const locationHours = businessHours?.filter(h => h.location_id === location.id) || []
       const locationPromotions = promotions?.filter(p => p.location_id === location.id) || []
-      const locationHighlights = menuHighlights?.filter(h => h.location_id === location.id) || []
+      // Get menu highlights for this location and limit to first 3
+      const locationHighlights = menuHighlights?.filter(h => h.location_id === location.id).slice(0, 3) || []
 
       // Format hours object
       const hoursObj = formatBusinessHours(locationHours)
@@ -144,6 +143,7 @@ export async function getLocationsWithHours() {
         name: location.name,
         concept: location.concept,
         path: `/${location.slug}`,
+        logoUrl: location.logo_url,
         coordinates: location.coordinates,
         theme: location.theme,
         images: location.images,

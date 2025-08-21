@@ -26,9 +26,9 @@ interface MenuFiltersProps {
 }
 
 const dietaryOptions = [
-  { value: "vegetarian", label: "Vegetariano" },
-  { value: "vegan", label: "Vegano" },
-  { value: "gluten-free", label: "Sin Gluten" }
+  { value: "vegetariano", label: "Vegetariano" },
+  { value: "vegano", label: "Vegano" },
+  { value: "sin gluten", label: "Sin Gluten" }
 ]
 
 export function MenuFilters({
@@ -122,7 +122,8 @@ export function MenuFilters({
               <div className="text-xs opacity-75 truncate">Ver menú completo</div>
             </div>
           </Button>
-          {availableCategories.map((category) => (
+          {availableCategories
+            .map((category) => (
             <Button
               key={category.id}
               variant={selectedCategory === category.id ? "default" : "outline"}

@@ -12,8 +12,14 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
-import { Clock, MapPin, Save, Loader2, Calendar, FileText, Star, Upload, X, Image as ImageIcon } from "lucide-react"
+import { 
+  Clock, MapPin, Save, Loader2, Calendar, FileText, Star, Upload, X, 
+  Image as ImageIcon, Phone, Mail, Globe, Navigation, Building2,
+  MessageSquare, Instagram, Facebook, Users, ChefHat, TrendingUp,
+  Award, Sparkles, Palette, Hash, Eye, EyeOff, Settings
+} from "lucide-react"
 import type { User } from "@supabase/supabase-js"
+import { FeaturedProductsManager } from "@/components/admin/featured-products-manager"
 
 interface BusinessHour {
   id: string
@@ -35,24 +41,10 @@ interface Location {
   email: string
   description: string
   long_description: string
+  logo_url?: string
   active: boolean
 }
 
-interface FeaturedItem {
-  id?: string
-  location_id?: string
-  slug: string
-  name: string
-  description: string
-  price: string
-  image_url?: string
-  storage_image_path?: string
-  category?: string
-  ingredients?: string[]
-  featured: boolean
-  display_order: number
-  active: boolean
-}
 
 const DAYS_OF_WEEK = [
   { id: 1, name: 'Lunes', abbr: 'Lun' },
@@ -75,9 +67,7 @@ export default function LocationsAdmin() {
   const [saving, setSaving] = useState(false)
   const [savingLocation, setSavingLocation] = useState(false)
   const [savingBiography, setSavingBiography] = useState(false)
-  const [featuredItems, setFeaturedItems] = useState<FeaturedItem[]>([])
-  const [savingFeatured, setSavingFeatured] = useState(false)
-  const [uploadingImage, setUploadingImage] = useState<string | null>(null)
+  const [uploadingLogo, setUploadingLogo] = useState(false)
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -137,7 +127,6 @@ export default function LocationsAdmin() {
         setSelectedLocation(data[0])
         setOriginalLocation({ ...data[0] })
         fetchBusinessHours(data[0].id)
-        fetchFeaturedItems(data[0].id)
       }
     } catch (error) {
       console.error('Error fetching locations:', error)
@@ -184,156 +173,6 @@ export default function LocationsAdmin() {
     setSelectedLocation(location)
     setOriginalLocation({ ...location }) // Store original state for comparison
     fetchBusinessHours(location.id)
-    fetchFeaturedItems(location.id)
-  }
-
-  const fetchFeaturedItems = async (locationId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from('menu_highlights')
-        .select('*')
-        .eq('location_id', locationId)
-        .eq('featured', true)
-        .order('display_order')
-        .limit(3)
-
-      if (error) throw error
-      
-      // Ensure we always have 3 items (empty placeholders if needed)
-      const items: FeaturedItem[] = []
-      for (let i = 0; i < 3; i++) {
-        if (data && data[i]) {
-          items.push(data[i])
-        } else {
-          items.push({
-            slug: '',
-            name: '',
-            description: '',
-            price: '',
-            featured: true,
-            display_order: i + 1,
-            active: true
-          })
-        }
-      }
-      
-      setFeaturedItems(items)
-    } catch (error) {
-      console.error('Error fetching featured items:', error)
-      toast.error('Error al cargar productos destacados')
-    }
-  }
-
-  const handleFeaturedItemChange = (index: number, field: keyof FeaturedItem, value: any) => {
-    setFeaturedItems(prev => prev.map((item, i) => {
-      if (i === index) {
-        return { ...item, [field]: value }
-      }
-      return item
-    }))
-  }
-
-  const handleImageUpload = async (index: number, file: File) => {
-    if (!selectedLocation) return
-    
-    const item = featuredItems[index]
-    setUploadingImage(`${index}`)
-    
-    try {
-      // Generate a slug from the name if not present
-      const slug = item.slug || item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
-      
-      const { path, url, error } = await uploadProductImage(
-        file,
-        selectedLocation.id,
-        slug
-      )
-      
-      if (error) {
-        toast.error(`Error al subir imagen: ${error}`)
-        return
-      }
-      
-      // Update the item with the new image path
-      handleFeaturedItemChange(index, 'storage_image_path', path)
-      handleFeaturedItemChange(index, 'image_url', url)
-      
-      toast.success('Imagen subida exitosamente')
-    } catch (error) {
-      console.error('Error uploading image:', error)
-      toast.error('Error al subir la imagen')
-    } finally {
-      setUploadingImage(null)
-    }
-  }
-
-  const handleRemoveImage = async (index: number) => {
-    const item = featuredItems[index]
-    if (!item.storage_image_path) return
-    
-    try {
-      const success = await deleteProductImage(item.storage_image_path)
-      if (success) {
-        handleFeaturedItemChange(index, 'storage_image_path', null)
-        handleFeaturedItemChange(index, 'image_url', '')
-        toast.success('Imagen eliminada')
-      } else {
-        toast.error('Error al eliminar la imagen')
-      }
-    } catch (error) {
-      console.error('Error removing image:', error)
-      toast.error('Error al eliminar la imagen')
-    }
-  }
-
-  const saveFeaturedItems = async () => {
-    if (!selectedLocation) return
-    
-    setSavingFeatured(true)
-    try {
-      // Filter out empty items and prepare for save
-      const itemsToSave = featuredItems
-        .filter(item => item.name && item.price)
-        .map((item, index) => ({
-          location_id: selectedLocation.id,
-          slug: item.slug || item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
-          name: item.name,
-          description: item.description || '',
-          price: item.price,
-          image_url: item.image_url || '',
-          storage_image_path: item.storage_image_path || null,
-          featured: true,
-          display_order: index + 1,
-          active: true
-        }))
-      
-      // First, remove existing featured items for this location
-      const { error: deleteError } = await supabase
-        .from('menu_highlights')
-        .delete()
-        .eq('location_id', selectedLocation.id)
-        .eq('featured', true)
-      
-      if (deleteError) throw deleteError
-      
-      // Then insert the new ones
-      if (itemsToSave.length > 0) {
-        const { error: insertError } = await supabase
-          .from('menu_highlights')
-          .insert(itemsToSave)
-        
-        if (insertError) throw insertError
-      }
-      
-      toast.success('Productos destacados actualizados')
-      // Refresh the data
-      fetchFeaturedItems(selectedLocation.id)
-    } catch (error) {
-      console.error('Error saving featured items:', error)
-      toast.error('Error al guardar productos destacados')
-    } finally {
-      setSavingFeatured(false)
-    }
   }
 
   const handleHourChange = (dayOfWeek: number, field: 'open_time' | 'close_time' | 'is_closed', value: any) => {
@@ -486,6 +325,53 @@ export default function LocationsAdmin() {
     }
   }
 
+  const handleLogoUpload = async (file: File) => {
+    if (!selectedLocation) return
+    
+    setUploadingLogo(true)
+    try {
+      // Validate file
+      if (!file.type.startsWith('image/')) {
+        toast.error('Por favor selecciona una imagen válida')
+        return
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('La imagen debe ser menor a 5MB')
+        return
+      }
+
+      // Generate unique filename
+      const timestamp = Date.now()
+      const fileName = `logos/${selectedLocation.slug}/${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
+
+      // Upload to Supabase Storage
+      const { data, error } = await supabase.storage
+        .from('product-images')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: false
+        })
+
+      if (error) throw error
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('product-images')
+        .getPublicUrl(fileName)
+
+      // Update the location with the new logo URL
+      setSelectedLocation(prev => prev ? { ...prev, logo_url: publicUrl } : null)
+      
+      toast.success('Logo subido exitosamente')
+    } catch (error) {
+      console.error('Error uploading logo:', error)
+      toast.error('Error al subir el logo')
+    } finally {
+      setUploadingLogo(false)
+    }
+  }
+
   const saveBiography = async () => {
     if (!selectedLocation || !originalLocation) return
 
@@ -494,7 +380,8 @@ export default function LocationsAdmin() {
       // Check if biography fields have changed
       const hasChanges = 
         selectedLocation.description !== originalLocation.description ||
-        selectedLocation.long_description !== originalLocation.long_description
+        selectedLocation.long_description !== originalLocation.long_description ||
+        selectedLocation.logo_url !== originalLocation.logo_url
       
       if (!hasChanges) {
         toast.info('No hay cambios para guardar')
@@ -507,6 +394,7 @@ export default function LocationsAdmin() {
         .update({ 
           description: selectedLocation.description,
           long_description: selectedLocation.long_description,
+          logo_url: selectedLocation.logo_url || null,
           updated_at: new Date().toISOString()
         })
         .eq('id', selectedLocation.id)
@@ -519,10 +407,10 @@ export default function LocationsAdmin() {
         loc.id === selectedLocation.id ? selectedLocation : loc
       ))
       
-      toast.success('Historia y descripción actualizadas')
+      toast.success('Historia, descripción y logo actualizados')
     } catch (error) {
       console.error('Error updating biography:', error)
-      toast.error('Error al actualizar historia')
+      toast.error('Error al actualizar información')
     } finally {
       setSavingBiography(false)
     }
@@ -540,49 +428,124 @@ export default function LocationsAdmin() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <div className="container mx-auto px-4 py-6 max-w-7xl">
-        <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900">Gestión de Ubicaciones</h1>
-          <p className="text-gray-600 mt-2">Administra los horarios y información de cada sucursal</p>
+        {/* Professional Header */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                Gestión de Ubicaciones
+              </h1>
+              <p className="text-muted-foreground mt-2 text-lg">
+                Administra los horarios, información y características de cada restaurante
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                <div className="flex items-center gap-2">
+                  <Building2 className="h-5 w-5 text-primary" />
+                  <span className="font-semibold text-primary">{locations.length} Ubicaciones</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Location Selector */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          {locations.map(location => (
-            <Card 
-              key={location.id}
-              className={`cursor-pointer transition-all hover:shadow-md ${
-                selectedLocation?.id === location.id ? 'ring-2 ring-blue-500' : ''
-              }`}
-              onClick={() => handleLocationSelect(location)}
-            >
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">{location.name}</CardTitle>
-                  <div className={`w-3 h-3 rounded-full ${location.active ? 'bg-green-500' : 'bg-gray-400'}`} />
-                </div>
-                <p className="text-sm text-gray-600">{location.concept}</p>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-1 text-sm">
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <MapPin className="h-4 w-4" />
-                    <span className="truncate">{location.address}</span>
+        {/* Enhanced Location Selector with Icons */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {locations.map(location => {
+            const locationConfig = {
+              arbol: { 
+                gradient: "from-green-600 to-emerald-600", 
+                icon: "🌳", 
+                bgColor: "bg-green-50 dark:bg-green-950/20",
+                borderColor: "border-green-200 dark:border-green-800"
+              },
+              '1898': { 
+                gradient: "from-amber-700 to-orange-600", 
+                icon: "🍺", 
+                bgColor: "bg-amber-50 dark:bg-amber-950/20",
+                borderColor: "border-amber-200 dark:border-amber-800"
+              },
+              capriccio: { 
+                gradient: "from-purple-600 to-pink-600", 
+                icon: "🍷", 
+                bgColor: "bg-purple-50 dark:bg-purple-950/20",
+                borderColor: "border-purple-200 dark:border-purple-800"
+              }
+            }
+            const config = locationConfig[location.id as keyof typeof locationConfig]
+            
+            return (
+              <Card 
+                key={location.id}
+                className={`cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 ${
+                  selectedLocation?.id === location.id 
+                    ? `ring-2 ring-primary shadow-lg ${config?.borderColor}` 
+                    : 'hover:border-primary/50'
+                }`}
+                onClick={() => handleLocationSelect(location)}
+              >
+                <CardHeader className={`pb-3 ${config?.bgColor}`}>
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className={`text-3xl p-2 rounded-lg bg-gradient-to-br ${config?.gradient} bg-opacity-10`}>
+                        {config?.icon}
+                      </div>
+                      <div>
+                        <CardTitle className="text-lg font-bold">{location.name}</CardTitle>
+                        <p className="text-sm text-muted-foreground">{location.concept}</p>
+                      </div>
+                    </div>
+                    <Switch
+                      checked={location.active}
+                      onClick={(e) => e.stopPropagation()}
+                      onCheckedChange={() => {
+                        // Handle toggle
+                      }}
+                    />
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardHeader>
+                <CardContent className="pt-3">
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <Navigation className="h-4 w-4" />
+                      <span className="truncate">{location.address}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <Phone className="h-4 w-4" />
+                      <span>{location.phone}</span>
+                    </div>
+                    {businessHours.length > 0 && (
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-4 w-4" />
+                        <span className={`font-medium ${
+                          businessHours.find(h => h.day_of_week === new Date().getDay())?.is_closed
+                            ? 'text-red-500' 
+                            : 'text-green-500'
+                        }`}>
+                          {businessHours.find(h => h.day_of_week === new Date().getDay())?.is_closed
+                            ? 'Cerrado hoy'
+                            : 'Abierto hoy'
+                          }
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          })}
         </div>
 
         {selectedLocation && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Business Hours */}
-            <Card>
-              <CardHeader>
+            {/* Business Hours - Enhanced Design */}
+            <Card className="overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/5 border-b">
                 <CardTitle className="flex items-center gap-2">
-                  <Clock className="h-5 w-5" />
+                  <Clock className="h-5 w-5 text-primary" />
                   Horarios de Atención
                 </CardTitle>
               </CardHeader>
@@ -591,16 +554,34 @@ export default function LocationsAdmin() {
                   const hour = businessHours.find(h => h.day_of_week === day.id)
                   if (!hour) return null
 
+                  const isToday = new Date().getDay() === day.id
+                  
                   return (
-                    <div key={day.id} className="flex items-center gap-4">
-                      <div className="w-24 font-medium text-sm">{day.name}</div>
+                    <div 
+                      key={day.id} 
+                      className={`flex items-center gap-4 p-3 rounded-lg transition-colors ${
+                        isToday ? 'bg-primary/5 ring-1 ring-primary/20' : 'hover:bg-muted/50'
+                      }`}
+                    >
+                      <div className={`flex items-center gap-2 w-28`}>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                          isToday ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
+                        }`}>
+                          {day.abbr}
+                        </div>
+                        <span className={`font-medium text-sm ${isToday ? 'text-primary' : ''}`}>
+                          {day.name}
+                        </span>
+                      </div>
                       
                       <div className="flex items-center gap-2">
                         <Switch
-                          checked={hour.is_closed}
-                          onCheckedChange={(checked) => handleHourChange(day.id, 'is_closed', checked)}
+                          checked={!hour.is_closed}
+                          onCheckedChange={(checked) => handleHourChange(day.id, 'is_closed', !checked)}
                         />
-                        <span className="text-sm text-gray-600 w-16">
+                        <span className={`text-sm w-16 font-medium ${
+                          hour.is_closed ? 'text-red-500' : 'text-green-600'
+                        }`}>
                           {hour.is_closed ? 'Cerrado' : 'Abierto'}
                         </span>
                       </div>
@@ -611,14 +592,14 @@ export default function LocationsAdmin() {
                             type="time"
                             value={hour.open_time || ''}
                             onChange={(e) => handleHourChange(day.id, 'open_time', e.target.value)}
-                            className="w-32"
+                            className="w-32 border-muted-foreground/20"
                           />
-                          <span className="text-gray-500">-</span>
+                          <span className="text-muted-foreground">—</span>
                           <Input
                             type="time"
                             value={hour.close_time || ''}
                             onChange={(e) => handleHourChange(day.id, 'close_time', e.target.value)}
-                            className="w-32"
+                            className="w-32 border-muted-foreground/20"
                           />
                         </div>
                       )}
@@ -630,7 +611,7 @@ export default function LocationsAdmin() {
                   <Button 
                     onClick={saveBusinessHours}
                     disabled={saving}
-                    className="w-full"
+                    className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
                   >
                     {saving ? (
                       <>
@@ -648,11 +629,11 @@ export default function LocationsAdmin() {
               </CardContent>
             </Card>
 
-            {/* Location Information */}
-            <Card>
-              <CardHeader>
+            {/* Location Information - Enhanced */}
+            <Card className="overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/5 border-b">
                 <CardTitle className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5" />
+                  <MapPin className="h-5 w-5 text-primary" />
                   Información del Local
                 </CardTitle>
               </CardHeader>
@@ -706,7 +687,7 @@ export default function LocationsAdmin() {
                   <Button 
                     onClick={saveLocationInfo}
                     disabled={savingLocation}
-                    className="w-full"
+                    className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
                   >
                     {savingLocation ? (
                       <>
@@ -724,11 +705,11 @@ export default function LocationsAdmin() {
               </CardContent>
             </Card>
 
-            {/* Biography/Story Section */}
-            <Card className="lg:col-span-2">
-              <CardHeader>
+            {/* Biography/Story Section - Enhanced */}
+            <Card className="lg:col-span-2 overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/5 border-b">
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="h-5 w-5" />
+                  <FileText className="h-5 w-5 text-primary" />
                   Historia y Descripción
                 </CardTitle>
               </CardHeader>
@@ -762,11 +743,92 @@ export default function LocationsAdmin() {
                   </p>
                 </div>
 
+                {/* Logo Upload Section */}
+                <div className="space-y-2">
+                  <Label>Logo del Restaurante</Label>
+                  <div className="flex items-center gap-4">
+                    {selectedLocation.logo_url ? (
+                      <div className="relative">
+                        <img 
+                          src={selectedLocation.logo_url} 
+                          alt={selectedLocation.name}
+                          className="h-24 w-auto object-contain bg-gray-100 rounded p-2"
+                        />
+                        <Button
+                          variant="destructive"
+                          size="icon"
+                          className="absolute -top-2 -right-2"
+                          onClick={() => setSelectedLocation(prev => 
+                            prev ? { ...prev, logo_url: undefined } : null
+                          )}
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="h-24 w-24 bg-gray-100 rounded flex items-center justify-center">
+                        <ImageIcon className="h-8 w-8 text-gray-400" />
+                      </div>
+                    )}
+                    
+                    <div className="flex-1">
+                      <div className="flex gap-2">
+                        <label>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0]
+                              if (file) handleLogoUpload(file)
+                            }}
+                            disabled={uploadingLogo}
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={uploadingLogo}
+                            asChild
+                          >
+                            <span>
+                              {uploadingLogo ? (
+                                <>
+                                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                  Subiendo...
+                                </>
+                              ) : (
+                                <>
+                                  <Upload className="mr-2 h-4 w-4" />
+                                  Subir Logo
+                                </>
+                              )}
+                            </span>
+                          </Button>
+                        </label>
+                        
+                        {selectedLocation.logo_url && (
+                          <Input
+                            value={selectedLocation.logo_url}
+                            onChange={(e) => setSelectedLocation(prev => 
+                              prev ? { ...prev, logo_url: e.target.value } : null
+                            )}
+                            placeholder="URL del logo"
+                            className="flex-1"
+                          />
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">
+                        PNG o SVG con fondo transparente recomendado. Máximo 5MB.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="pt-4 border-t">
                   <Button 
                     onClick={saveBiography}
                     disabled={savingBiography}
-                    className="w-full"
+                    className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
                   >
                     {savingBiography ? (
                       <>
@@ -784,170 +846,94 @@ export default function LocationsAdmin() {
               </CardContent>
             </Card>
 
-            {/* Featured Products Section */}
-            <Card className="lg:col-span-2">
-              <CardHeader>
+            {/* Featured Products Section - New Component */}
+            <div className="lg:col-span-2">
+              <FeaturedProductsManager
+                locationId={selectedLocation.id}
+                locationSlug={selectedLocation.slug}
+                locationName={selectedLocation.name}
+              />
+            </div>
+
+            {/* Stats and Quick Actions */}
+            <Card className="lg:col-span-2 overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-b">
                 <CardTitle className="flex items-center gap-2">
-                  <Star className="h-5 w-5" />
-                  Productos Destacados
+                  <TrendingUp className="h-5 w-5 text-blue-500" />
+                  Estadísticas y Acciones Rápidas
                 </CardTitle>
-                <p className="text-sm text-gray-600 mt-1">
-                  Administra los 3 productos destacados que aparecen en la página del restaurante
-                </p>
               </CardHeader>
-              <CardContent className="space-y-6">
-                {featuredItems.map((item, index) => (
-                  <div key={index} className="p-4 border rounded-lg space-y-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-semibold">Producto #{index + 1}</h3>
-                      {item.image_url && (
-                        <div className="relative">
-                          <img 
-                            src={item.image_url} 
-                            alt={item.name}
-                            className="w-16 h-16 object-cover rounded"
-                          />
-                        </div>
-                      )}
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {/* Quick Stats */}
+                  <div className="p-4 rounded-lg bg-gradient-to-br from-green-50 to-green-100/50 dark:from-green-950/20 dark:to-green-900/10 border border-green-200 dark:border-green-800">
+                    <div className="flex items-center justify-between">
                       <div>
-                        <Label htmlFor={`featured-name-${index}`}>Nombre del Producto</Label>
-                        <Input
-                          id={`featured-name-${index}`}
-                          value={item.name || ''}
-                          onChange={(e) => handleFeaturedItemChange(index, 'name', e.target.value)}
-                          placeholder="Ej: Pizza Margherita"
-                        />
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor={`featured-price-${index}`}>Precio</Label>
-                        <Input
-                          id={`featured-price-${index}`}
-                          value={item.price || ''}
-                          onChange={(e) => handleFeaturedItemChange(index, 'price', e.target.value)}
-                          placeholder="Ej: $25.00"
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor={`featured-desc-${index}`}>Descripción</Label>
-                      <Textarea
-                        id={`featured-desc-${index}`}
-                        value={item.description || ''}
-                        onChange={(e) => handleFeaturedItemChange(index, 'description', e.target.value)}
-                        placeholder="Descripción breve del producto..."
-                        className="min-h-[60px]"
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label>Imagen del Producto</Label>
-                      <div className="flex items-center gap-4 mt-2">
-                        {item.image_url ? (
-                          <div className="flex items-center gap-4">
-                            <img 
-                              src={item.image_url} 
-                              alt={item.name}
-                              className="w-32 h-32 object-cover rounded border"
-                            />
-                            <Button
-                              variant="destructive"
-                              size="sm"
-                              onClick={() => handleRemoveImage(index)}
-                            >
-                              <X className="h-4 w-4 mr-1" />
-                              Eliminar
-                            </Button>
-                          </div>
-                        ) : (
-                          <div className="relative">
-                            <input
-                              type="file"
-                              accept="image/png,image/jpeg,image/jpg,image/webp"
-                              onChange={(e) => {
-                                const file = e.target.files?.[0]
-                                if (file) handleImageUpload(index, file)
-                              }}
-                              className="hidden"
-                              id={`upload-${index}`}
-                              disabled={uploadingImage === `${index}`}
-                            />
-                            <label
-                              htmlFor={`upload-${index}`}
-                              className="cursor-pointer"
-                            >
-                              <Button
-                                type="button"
-                                variant="outline"
-                                size="sm"
-                                disabled={uploadingImage === `${index}`}
-                                asChild
-                              >
-                                <span>
-                                  {uploadingImage === `${index}` ? (
-                                    <>
-                                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                                      Subiendo...
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Upload className="h-4 w-4 mr-2" />
-                                      Subir Imagen
-                                    </>
-                                  )}
-                                </span>
-                              </Button>
-                            </label>
-                          </div>
-                        )}
-                      </div>
-                      {!item.image_url && (
-                        <p className="text-xs text-gray-500 mt-1">
-                          Formatos: PNG, JPG, WebP. Tamaño máximo: 5MB. Recomendado: 800x800px
+                        <p className="text-sm text-muted-foreground">Estado</p>
+                        <p className="text-2xl font-bold text-green-600">
+                          {selectedLocation?.active ? 'Activo' : 'Inactivo'}
                         </p>
-                      )}
+                      </div>
+                      <div className="p-3 rounded-full bg-green-500/10">
+                        {selectedLocation?.active ? 
+                          <Eye className="h-6 w-6 text-green-600" /> : 
+                          <EyeOff className="h-6 w-6 text-gray-600" />
+                        }
+                      </div>
                     </div>
                   </div>
-                ))}
-                
-                <div className="pt-4 border-t">
-                  <Button 
-                    onClick={saveFeaturedItems}
-                    disabled={savingFeatured}
-                    className="w-full"
-                  >
-                    {savingFeatured ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Guardando...
-                      </>
-                    ) : (
-                      <>
-                        <Save className="mr-2 h-4 w-4" />
-                        Guardar Productos Destacados
-                      </>
-                    )}
-                  </Button>
+                  
+                  <div className="p-4 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/20 dark:to-blue-900/10 border border-blue-200 dark:border-blue-800">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm text-muted-foreground">Horarios</p>
+                        <p className="text-2xl font-bold text-blue-600">
+                          {businessHours.filter(h => !h.is_closed).length}/7
+                        </p>
+                      </div>
+                      <div className="p-3 rounded-full bg-blue-500/10">
+                        <Clock className="h-6 w-6 text-blue-600" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="p-4 rounded-lg bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-950/20 dark:to-purple-900/10 border border-purple-200 dark:border-purple-800">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm text-muted-foreground">Productos</p>
+                        <p className="text-2xl font-bold text-purple-600">
+                          Destacados
+                        </p>
+                      </div>
+                      <div className="p-3 rounded-full bg-purple-500/10">
+                        <Star className="h-6 w-6 text-purple-600" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
-
-            {/* Special Hours Section (placeholder for future) */}
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5" />
-                  Horarios Especiales
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  Próximamente podrás configurar horarios especiales para días festivos y eventos.
-                </p>
+                
+                {/* Quick Actions */}
+                <div className="mt-6 pt-6 border-t">
+                  <h4 className="text-sm font-semibold text-muted-foreground mb-3">Acciones Rápidas</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Globe className="h-4 w-4" />
+                      Ver Página Pública
+                    </Button>
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <MessageSquare className="h-4 w-4" />
+                      Gestionar Reseñas
+                    </Button>
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Calendar className="h-4 w-4" />
+                      Horarios Especiales
+                    </Button>
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Settings className="h-4 w-4" />
+                      Configuración Avanzada
+                    </Button>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>

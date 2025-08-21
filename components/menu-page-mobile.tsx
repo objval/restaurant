@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useRef, useEffect } from "react"
 import type { LocationData } from "@/lib/locations"
-import { type MenuItem, type MenuCategory, menuCategories } from "@/lib/menu-data"
+import { type MenuItem, type MenuCategory } from "@/lib/menu-data"
 import { MenuItemCardMobile } from "@/components/menu-item-card-mobile"
 import { MenuItemModal } from "@/components/menu-item-modal"
 import { BackToTop } from "@/components/ui/back-to-top"
@@ -60,6 +60,8 @@ export function MenuPageMobile({ locationData, menuItems, availableCategories }:
       }
       groups[item.category].push(item)
     })
+    
+    // Items are already in the correct order from the data source
     
     return groups
   }, [filteredItems])
@@ -186,7 +188,8 @@ export function MenuPageMobile({ locationData, menuItems, availableCategories }:
                             </div>
                             <ChevronRight className="h-5 w-5 text-gray-400" />
                           </button>
-                          {availableCategories.map((category) => (
+                          {availableCategories
+                            .map((category) => (
                             <button
                               key={category.id}
                               onClick={() => handleCategoryChange(category.id)}
@@ -245,8 +248,15 @@ export function MenuPageMobile({ locationData, menuItems, availableCategories }:
           <div className="px-4 py-4 space-y-6">
             {selectedCategory === "all" ? (
               // Show by categories
-              Object.entries(groupedItems).map(([categoryId, items]) => {
-                const category = menuCategories.find((cat) => cat.id === categoryId)
+              Object.entries(groupedItems)
+                .sort(([catIdA], [catIdB]) => {
+                  // Sort by category position in availableCategories array
+                  const indexA = availableCategories.findIndex(c => c.id === catIdA)
+                  const indexB = availableCategories.findIndex(c => c.id === catIdB)
+                  return indexA - indexB
+                })
+                .map(([categoryId, items]) => {
+                const category = availableCategories.find((cat) => cat.id === categoryId)
                 if (items.length === 0) return null
 
                 return (

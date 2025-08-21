@@ -31,7 +31,7 @@ export default async function MenuPage({ params }: MenuPageProps) {
     // Fetch menu items from Supabase
     console.log(`[${location}/menu] Attempting to fetch from Supabase...`)
     const dbMenuItems = await getMenuByLocation(location as 'arbol' | '1898' | 'capriccio')
-    const dbCategories = await getCategories()
+    const dbCategories = await getCategories(location)
     
     // Convert database items to the format expected by components
     menuItems = dbMenuItems.map(item => convertDBMenuItemToLocal(item, dbCategories))
@@ -39,19 +39,15 @@ export default async function MenuPage({ params }: MenuPageProps) {
     // Convert database categories to menu category format and filter to only those with items
     const usedCategoryIds = new Set(dbMenuItems.map(item => item.category_id).filter(Boolean))
     availableCategories = dbCategories
-      .filter(cat => usedCategoryIds.has(cat.id))
+      .filter(cat => cat.active && usedCategoryIds.has(cat.id))
+      .sort((a, b) => (a.display_order || 0) - (b.display_order || 0)) // Sort by display_order first
       .map(cat => ({
-        id: cat.slug,
+        id: cat.slug.replace(/_arbol$|_1898$|_capriccio$/, ''), // Remove location suffix for consistency
         name: cat.name,
         description: cat.description || '',
-        icon: cat.icon || '🍽️'
+        icon: cat.icon || '🍽️',
+        display_order: cat.display_order || 0
       }))
-      .sort((a, b) => {
-        // Sort by display order if available
-        const catA = dbCategories.find(c => c.slug === a.id)
-        const catB = dbCategories.find(c => c.slug === b.id)
-        return (catA?.display_order || 999) - (catB?.display_order || 999)
-      })
     
     console.log(`[${location}/menu] Successfully loaded ${menuItems.length} items from Supabase with ${availableCategories.length} categories`)
   } catch (error) {

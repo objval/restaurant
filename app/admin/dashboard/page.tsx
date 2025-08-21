@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
-  Package, DollarSign, AlertCircle, ShoppingBag, 
-  TrendingUp, TrendingDown, Loader2, Clock, Users,
-  MapPin, Calendar, ArrowRight, Activity, Star,
-  BarChart3, PieChart, Eye, ExternalLink
+  Package, DollarSign, AlertCircle,
+  Loader2,
+  MapPin, ArrowRight,
+  ExternalLink
 } from "lucide-react"
 import { toast } from "sonner"
 import type { User } from "@supabase/supabase-js"
@@ -23,25 +23,27 @@ function QuickActionCard({
   description, 
   icon: Icon, 
   href, 
-  color 
+  color,
+  gradient
 }: { 
   title: string
   description: string
   icon: any
   href: string
-  color: string 
+  color: string
+  gradient?: string
 }) {
   return (
     <Link href={href}>
-      <Card className="hover:shadow-lg transition-all cursor-pointer group">
-        <CardContent className="p-6">
+      <Card className={`border-0 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group overflow-hidden relative ${gradient}`}>
+        <CardContent className="p-5">
           <div className="flex items-center justify-between">
             <div className="flex-1">
-              <h3 className="font-semibold text-base mb-1">{title}</h3>
-              <p className="text-sm text-gray-600">{description}</p>
+              <h3 className="font-semibold text-base mb-1 text-foreground">{title}</h3>
+              <p className="text-sm text-muted-foreground">{description}</p>
             </div>
-            <div className={`p-3 rounded-lg ${color} group-hover:scale-110 transition-transform`}>
-              <Icon className="h-6 w-6 text-white" />
+            <div className={`p-3 rounded-xl ${color} group-hover:scale-110 transition-transform`}>
+              <Icon className="h-5 w-5" />
             </div>
           </div>
         </CardContent>
@@ -60,13 +62,7 @@ export default function AdminDashboard() {
     outOfStock: 0,
     inactive: 0,
     avgPrice: 0,
-    lowStockCount: 0,
-    categoriesCount: 0,
-    todayViews: 0,
-    weeklyViews: 0,
-    popularProducts: [] as any[],
-    recentActivity: [] as any[],
-    categoryBreakdown: [] as any[]
+    outOfStockProducts: [] as any[]
   })
 
   useEffect(() => {
@@ -94,21 +90,16 @@ export default function AdminDashboard() {
       // Fetch products stats
       const { data: products, error: productsError } = await supabase
         .from(`menu_${currentLocation}`)
-        .select(`
-          *,
-          categories!inner(
-            id,
-            name
-          )
-        `)
+        .select('*')
       
       if (productsError) throw productsError
       
-      // Fetch categories
+      // Fetch categories (shared across all locations)
       const { data: categories, error: categoriesError } = await supabase
         .from('categories')
         .select('*')
-        .eq('location', currentLocation)
+        .eq('active', true)
+        .order('display_order')
       
       if (categoriesError) throw categoriesError
       
@@ -118,46 +109,25 @@ export default function AdminDashboard() {
       const inactive = products?.filter(p => !p.active).length || 0
       const avgPrice = products?.reduce((sum, p) => sum + Number(p.price), 0) / (totalProducts || 1) || 0
       
-      // Get category breakdown
-      const categoryBreakdown = categories?.map(cat => ({
-        name: cat.name,
-        count: products?.filter(p => p.categories?.id === cat.id).length || 0,
-        percentage: ((products?.filter(p => p.categories?.id === cat.id).length || 0) / (totalProducts || 1) * 100).toFixed(1)
-      })).sort((a, b) => b.count - a.count) || []
-      
-      // Get popular products (mock data - you could track actual views)
-      const popularProducts = products
-        ?.filter(p => p.active && p.stock_status !== 'out_of_stock')
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 5)
-        .map(p => ({
-          name: p.name,
-          category: p.categories?.name,
-          price: p.price,
-          views: Math.floor(Math.random() * 100) + 20
-        })) || []
-      
-      // Recent activity (mock data - you could track actual changes)
-      const activities = [
-        { action: 'Producto actualizado', item: 'Pizza Margherita', time: '5 min', icon: Package },
-        { action: 'Stock agotado', item: 'Lasagna Bolognese', time: '15 min', icon: AlertCircle },
-        { action: 'Nuevo pedido', item: 'Mesa #12', time: '30 min', icon: ShoppingBag },
-        { action: 'Categoría agregada', item: 'Bebidas Especiales', time: '1 hora', icon: Layers },
-        { action: 'Horario actualizado', item: 'Viernes', time: '2 horas', icon: Clock }
-      ]
+      // Get out of stock products for recent activity
+      const outOfStockProducts = products
+        ?.filter(p => p.stock_status === 'out_of_stock')
+        .map(p => {
+          const category = categories?.find(c => c.id === p.category_id)
+          return {
+            name: p.name,
+            category: category?.name || 'Sin categoría',
+            price: p.price
+          }
+        })
+        .slice(0, 10) || [] // Show up to 10 out of stock items
       
       setStats({
         totalProducts,
         outOfStock,
         inactive,
         avgPrice,
-        lowStockCount: outOfStock,
-        categoriesCount: categories?.length || 0,
-        todayViews: Math.floor(Math.random() * 500) + 100,
-        weeklyViews: Math.floor(Math.random() * 3500) + 1000,
-        popularProducts,
-        recentActivity: activities,
-        categoryBreakdown
+        outOfStockProducts
       })
     } catch (error) {
       console.error('Error fetching dashboard data:', error)
@@ -175,23 +145,26 @@ export default function AdminDashboard() {
 
   if (!user || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-accent/5">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-12 w-12 animate-spin text-gray-600" />
-          <p className="text-gray-600">Cargando dashboard...</p>
+          <div className="p-4 rounded-full bg-primary/10">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+          </div>
+          <p className="text-muted-foreground font-medium">Cargando dashboard...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-6 max-w-7xl">
-        {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-          <p className="text-gray-600">Resumen general del restaurante</p>
-        </div>
+    <div className="container mx-auto px-4 py-6 max-w-7xl">
+      {/* Page Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-chart-3 bg-clip-text text-transparent mb-2">
+          Dashboard
+        </h1>
+        <p className="text-muted-foreground">Resumen general del restaurante</p>
+      </div>
         
         {/* Location Switcher */}
         <LocationSwitcher 
@@ -200,79 +173,59 @@ export default function AdminDashboard() {
         />
         
         {/* Key Metrics */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 mb-6">
-          <Card>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card/95 to-primary/5 backdrop-blur-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Productos Activos</p>
-                  <p className="text-3xl font-bold mt-1">
+                  <p className="text-sm font-medium text-muted-foreground">Productos Activos</p>
+                  <p className="text-3xl font-bold mt-2 text-foreground">
                     {stats.totalProducts - stats.inactive}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     de {stats.totalProducts} totales
                   </p>
                 </div>
-                <div className="p-3 rounded-lg bg-blue-100">
-                  <Package className="h-6 w-6 text-blue-600" />
+                <div className="p-3 rounded-xl bg-primary/10 backdrop-blur-sm">
+                  <Package className="h-6 w-6 text-primary" />
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card/95 to-destructive/5 backdrop-blur-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Sin Stock</p>
-                  <p className="text-3xl font-bold mt-1 text-red-600">
+                  <p className="text-sm font-medium text-muted-foreground">Sin Stock</p>
+                  <p className="text-3xl font-bold mt-2 text-destructive">
                     {stats.outOfStock}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     requieren atención
                   </p>
                 </div>
-                <div className="p-3 rounded-lg bg-red-100">
-                  <AlertCircle className="h-6 w-6 text-red-600" />
+                <div className="p-3 rounded-xl bg-destructive/10 backdrop-blur-sm">
+                  <AlertCircle className="h-6 w-6 text-destructive" />
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card/95 to-chart-2/5 backdrop-blur-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Precio Promedio</p>
-                  <p className="text-3xl font-bold mt-1">
+                  <p className="text-sm font-medium text-muted-foreground">Precio Promedio</p>
+                  <p className="text-3xl font-bold mt-2 text-foreground">
                     ${(stats.avgPrice / 1000).toFixed(0)}k
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     por producto
                   </p>
                 </div>
-                <div className="p-3 rounded-lg bg-green-100">
-                  <DollarSign className="h-6 w-6 text-green-600" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Vistas Hoy</p>
-                  <p className="text-3xl font-bold mt-1">
-                    {stats.todayViews}
-                  </p>
-                  <p className="text-xs text-green-600 mt-1 flex items-center">
-                    <TrendingUp className="h-3 w-3 mr-1" />
-                    +12% vs ayer
-                  </p>
-                </div>
-                <div className="p-3 rounded-lg bg-purple-100">
-                  <Eye className="h-6 w-6 text-purple-600" />
+                <div className="p-3 rounded-xl bg-chart-2/10 backdrop-blur-sm">
+                  <DollarSign className="h-6 w-6 text-chart-2" />
                 </div>
               </div>
             </CardContent>
@@ -280,135 +233,108 @@ export default function AdminDashboard() {
         </div>
         
         {/* Quick Actions */}
-        <div className="mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Acciones Rápidas</h2>
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold text-foreground mb-5 flex items-center gap-2">
+            <span className="h-1 w-8 bg-gradient-to-r from-primary to-chart-3 rounded-full"></span>
+            Acciones Rápidas
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <QuickActionCard
               title="Gestionar Productos"
               description="Agregar, editar o eliminar"
               icon={Package}
               href="/admin/products"
-              color="bg-blue-500"
+              color="bg-primary/10 text-primary"
+              gradient="bg-gradient-to-br from-card to-primary/5"
             />
             <QuickActionCard
               title="Gestionar Categorías"
               description="Organizar el menú"
               icon={Layers}
               href="/admin/categories"
-              color="bg-purple-500"
+              color="bg-chart-4/10 text-chart-4"
+              gradient="bg-gradient-to-br from-card to-chart-4/5"
             />
             <QuickActionCard
               title="Horarios y Ubicaciones"
               description="Actualizar información"
               icon={MapPin}
               href="/admin/locations"
-              color="bg-green-500"
+              color="bg-chart-2/10 text-chart-2"
+              gradient="bg-gradient-to-br from-card to-chart-2/5"
             />
             <QuickActionCard
               title="Ver Sitio Web"
               description="Vista previa pública"
               icon={ExternalLink}
               href="/"
-              color="bg-orange-500"
+              color="bg-accent/10 text-accent-foreground"
+              gradient="bg-gradient-to-br from-card to-accent/5"
             />
           </div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Popular Products */}
-          <Card className="lg:col-span-2">
+        {/* Out of Stock Products */}
+        <div>
+          <h2 className="text-xl font-semibold text-foreground mb-5 flex items-center gap-2">
+            <span className="h-1 w-8 bg-gradient-to-r from-destructive to-chart-3 rounded-full"></span>
+            Productos Sin Stock
+          </h2>
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-card to-destructive/3">
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
-                <span className="flex items-center gap-2">
-                  <Star className="h-5 w-5" />
-                  Productos Populares
+                <span className="flex items-center gap-3">
+                  <div className="p-2 rounded-xl bg-destructive/10">
+                    <AlertCircle className="h-5 w-5 text-destructive" />
+                  </div>
+                  <span className="text-lg">Requieren Atención Inmediata</span>
                 </span>
-                <Link href="/admin/products">
-                  <Button variant="ghost" size="sm">
-                    Ver todos
-                    <ArrowRight className="h-4 w-4 ml-1" />
-                  </Button>
-                </Link>
+                {stats.outOfStockProducts.length > 0 && (
+                  <Badge variant="destructive" className="px-3 py-1">
+                    {stats.outOfStockProducts.length} {stats.outOfStockProducts.length === 1 ? 'producto' : 'productos'}
+                  </Badge>
+                )}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                {stats.popularProducts.map((product, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex-1">
-                      <p className="font-medium">{product.name}</p>
-                      <p className="text-sm text-gray-600">{product.category}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-semibold">
-                        ${Math.floor(Number(product.price) / 1000)}.{(Number(product.price) % 1000).toString().padStart(3, '0')}
-                      </p>
-                      <p className="text-xs text-gray-500">{product.views} vistas</p>
-                    </div>
+              {stats.outOfStockProducts.length === 0 ? (
+                <div className="text-center py-12">
+                  <div className="inline-flex p-4 rounded-full bg-chart-2/10 mb-4">
+                    <Package className="h-12 w-12 text-chart-2" />
                   </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-          
-          {/* Category Breakdown */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <PieChart className="h-5 w-5" />
-                Distribución por Categoría
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {stats.categoryBreakdown.slice(0, 5).map((cat, index) => (
-                  <div key={index}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium">{cat.name}</span>
-                      <span className="text-sm text-gray-600">{cat.count} ({cat.percentage}%)</span>
+                  <p className="text-sm font-medium text-muted-foreground">¡Excelente! Todos los productos están en stock</p>
+                  <p className="text-xs text-muted-foreground mt-1">El inventario está al día</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {stats.outOfStockProducts.map((product, index) => (
+                    <div key={index} className="flex items-center justify-between p-4 bg-card rounded-xl border border-destructive/20 hover:border-destructive/40 transition-colors">
+                      <div className="flex-1">
+                        <p className="font-semibold text-sm text-foreground">{product.name}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{product.category}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-bold text-foreground">
+                          ${Math.floor(Number(product.price) / 1000)}.{(Number(product.price) % 1000).toString().padStart(3, '0')}
+                        </p>
+                        <Link href="/admin/products">
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="mt-2 h-8 text-xs hover:bg-destructive/10 hover:text-destructive"
+                          >
+                            Gestionar
+                            <ArrowRight className="h-3 w-3 ml-1" />
+                          </Button>
+                        </Link>
+                      </div>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div 
-                        className="bg-blue-500 h-2 rounded-full transition-all"
-                        style={{ width: `${cat.percentage}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
-        
-        {/* Recent Activity */}
-        <Card className="mt-6">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="h-5 w-5" />
-              Actividad Reciente
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {stats.recentActivity.map((activity, index) => {
-                const Icon = activity.icon
-                return (
-                  <div key={index} className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                    <div className="p-2 rounded-lg bg-gray-100">
-                      <Icon className="h-4 w-4 text-gray-600" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">{activity.action}</p>
-                      <p className="text-xs text-gray-600">{activity.item}</p>
-                    </div>
-                    <span className="text-xs text-gray-500">{activity.time}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
     </div>
   )
 }

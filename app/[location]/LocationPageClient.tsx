@@ -248,10 +248,10 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
           <div className="max-w-5xl mx-auto px-4 space-y-8">
             {/* Restaurant logo - larger and more prominent */}
             <div className="flex justify-center animate-fade-in transform hover:scale-105 transition-transform duration-500" style={{ animationDelay: '0.2s' }}>
-              {(locationData.id === 'arbol' || locationData.id === '1898' || locationData.id === 'capriccio') ? (
+              {locationData.logoUrl ? (
                 <div className="relative">
                   <Image
-                    src={`/logo${locationData.id}.png`}
+                    src={locationData.logoUrl}
                     alt={locationData.name}
                     width={locationData.id === '1898' ? 500 : 400}
                     height={locationData.id === '1898' ? 200 : 160}

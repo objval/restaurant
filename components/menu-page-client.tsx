@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react"
 import type { LocationData } from "@/lib/locations"
-import { type MenuItem, type MenuCategory, menuCategories } from "@/lib/menu-data"
+import { type MenuItem, type MenuCategory } from "@/lib/menu-data"
 import { useDebounce } from "@/lib/hooks/use-debounce"
 import { useFuzzySearch } from "@/lib/hooks/use-fuzzy-search"
 import { MenuItemCard } from "@/components/menu-item-card"
@@ -81,7 +81,9 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
 
       // Dietary filters
       if (dietaryFilters.length > 0) {
-        const hasMatchingDietary = dietaryFilters.some((filter) => item.dietary.includes(filter))
+        // Ensure dietary is an array before checking
+        const itemDietary = item.dietary || []
+        const hasMatchingDietary = Array.isArray(itemDietary) && dietaryFilters.some((filter) => itemDietary.includes(filter))
         if (!hasMatchingDietary) {
           return false
         }
@@ -106,6 +108,7 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
         }
         grouped[item.category].push(item)
       })
+      // Items are already in the correct order from the data source
       return grouped
     } else {
       // Return single group when filtering by category
@@ -198,8 +201,15 @@ export function MenuPageClient({ locationData, menuItems, availableCategories }:
             </div>
           ) : (
             <div className="space-y-8 md:space-y-12">
-              {Object.entries(groupedItems).map(([categoryId, items]) => {
-                const category = menuCategories.find((cat) => cat.id === categoryId)
+              {Object.entries(groupedItems)
+                .sort(([catIdA], [catIdB]) => {
+                  // Sort by category position in availableCategories array
+                  const indexA = availableCategories.findIndex(c => c.id === catIdA)
+                  const indexB = availableCategories.findIndex(c => c.id === catIdB)
+                  return indexA - indexB
+                })
+                .map(([categoryId, items]) => {
+                const category = availableCategories.find((cat) => cat.id === categoryId)
                 if (items.length === 0) return null
 
                 return (

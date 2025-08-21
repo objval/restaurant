@@ -25,16 +25,23 @@ export type MenuCapriccioWithCategory = Tables<'menu_capriccio_with_categories'>
 export type MenuItemDB = MenuArbol | Menu1898 | MenuCapriccio
 
 /**
- * Fetch all categories
+ * Fetch all categories (optionally filtered by location)
  */
-export async function getCategories() {
+export async function getCategories(location?: string) {
   if (!supabase) throw new Error('Supabase client not initialized')
   
-  const { data, error } = await supabase
+  let query = supabase
     .from('categories')
     .select('*')
     .eq('active', true)
     .order('display_order')
+
+  // Add location filter if provided
+  if (location) {
+    query = query.eq('location', location)
+  }
+
+  const { data, error } = await query
 
   if (error) {
     console.error('Error fetching categories:', error)
@@ -133,7 +140,10 @@ export function convertDBMenuItemToLocal(
   let categorySlug = ''
   if (item.category_id && categories) {
     const category = categories.find(c => c.id === item.category_id)
-    categorySlug = category?.slug || ''
+    if (category?.slug) {
+      // Remove the location suffix from the slug for consistency
+      categorySlug = category.slug.replace(/_arbol$|_1898$|_capriccio$/, '')
+    }
   }
 
   return {
@@ -153,6 +163,8 @@ export function convertDBMenuItemToLocal(
     popular: item.popular || false,
     seasonal: item.seasonal || false,
     stock_status: (item.stock_status as 'in_stock' | 'out_of_stock') || 'in_stock',
+    display_order: item.display_order || 0,
+    category_display_order: item.category_display_order || 0,
   }
 }
 

@@ -3,6 +3,7 @@ export interface LocationData {
   name: string
   concept: string
   path: string
+  logoUrl?: string
   coordinates: {
     lat: number
     lng: number
