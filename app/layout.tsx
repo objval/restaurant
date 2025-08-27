@@ -39,14 +39,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://grupomdlf.vercel.app"),
+  metadataBase: new URL("https://grupogastronomicomd.cl"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "es_CL",
-    url: "https://grupomdlf.vercel.app",
+    url: "https://grupogastronomicomd.cl",
     siteName: "Restaurantes Pitrufquén",
     title: "El Árbol • 1898 • Capriccio | Restaurantes en Pitrufquén",
     description:
@@ -149,7 +149,7 @@ export default function RootLayout({
               "@type": "Restaurant",
               name: "El Árbol Café Restaurante",
               description: "Restaurante familiar con ambiente cálido y acogedor en Pitrufquén",
-              url: "https://grupomdlf.vercel.app/arbol",
+              url: "https://grupogastronomicomd.cl/arbol",
               telephone: "+56942262266",
               email: "contacto@elarbol.cl",
               address: {
@@ -178,7 +178,7 @@ export default function RootLayout({
               "@type": "BarOrPub",
               name: "1898 Beer Bar",
               description: "Beer bar con ambiente relajado, cervezas artesanales y música en vivo",
-              url: "https://grupomdlf.vercel.app/1898",
+              url: "https://grupogastronomicomd.cl/1898",
               telephone: "+56997180227",
               email: "contacto@1898.cl",
               address: {
@@ -207,7 +207,7 @@ export default function RootLayout({
               "@type": "Restaurant",
               name: "Capriccio Bistro Bar",
               description: "Bistro elegante con cocina de autor y ambiente sofisticado",
-              url: "https://grupomdlf.vercel.app/capriccio",
+              url: "https://grupogastronomicomd.cl/capriccio",
               telephone: "+56930527291",
               email: "reservas@capricciobistro.cl",
               address: {

@@ -73,6 +73,6 @@ Verify if these are accurate:
 - [ ] Other tracking codes
 
 ## 12. Domain & Hosting
-- [ ] Set up custom domain instead of grupomdlf.vercel.app
+- [ ] Set up custom domain instead of grupogastronomicomd.cl
 - [ ] SSL certificate (automatic with Vercel)
 - [ ] Email configuration for contact forms

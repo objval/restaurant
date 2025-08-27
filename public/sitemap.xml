@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://grupomdlf.vercel.app/</loc>
+    <loc>https://grupogastronomicomd.cl/</loc>
     <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -10,14 +10,14 @@
   
   <!-- El Árbol Restaurant -->
   <url>
-    <loc>https://grupomdlf.vercel.app/arbol</loc>
+    <loc>https://grupogastronomicomd.cl/arbol</loc>
     <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://grupomdlf.vercel.app/arbol/menu</loc>
+    <loc>https://grupogastronomicomd.cl/arbol/menu</loc>
     <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -25,14 +25,14 @@
   
   <!-- 1898 Beer Bar -->
   <url>
-    <loc>https://grupomdlf.vercel.app/1898</loc>
+    <loc>https://grupogastronomicomd.cl/1898</loc>
     <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://grupomdlf.vercel.app/1898/menu</loc>
+    <loc>https://grupogastronomicomd.cl/1898/menu</loc>
     <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -40,14 +40,14 @@
   
   <!-- Capriccio Bistro -->
   <url>
-    <loc>https://grupomdlf.vercel.app/capriccio</loc>
+    <loc>https://grupogastronomicomd.cl/capriccio</loc>
     <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://grupomdlf.vercel.app/capriccio/menu</loc>
+    <loc>https://grupogastronomicomd.cl/capriccio/menu</loc>
     <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
