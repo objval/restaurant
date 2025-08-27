@@ -42,6 +42,13 @@ interface Location {
   description: string
   long_description: string
   logo_url?: string
+  images?: {
+    hero?: string
+    signature?: string
+    interior?: string
+    ambiance?: string
+    gallery?: string[]
+  }
   active: boolean
 }
 
@@ -68,6 +75,8 @@ export default function LocationsAdmin() {
   const [savingLocation, setSavingLocation] = useState(false)
   const [savingBiography, setSavingBiography] = useState(false)
   const [uploadingLogo, setUploadingLogo] = useState(false)
+  const [uploadingHero, setUploadingHero] = useState(false)
+  const [uploadingSignature, setUploadingSignature] = useState(false)
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -121,12 +130,16 @@ export default function LocationsAdmin() {
         .order('display_order')
 
       if (error) throw error
-      setLocations(data || [])
+      const locationsWithImages = (data || []).map(loc => ({
+        ...loc,
+        images: loc.images || { hero: '', signature: '', interior: '', ambiance: '', gallery: [] }
+      }))
+      setLocations(locationsWithImages)
       
-      if (data && data.length > 0) {
-        setSelectedLocation(data[0])
-        setOriginalLocation({ ...data[0] })
-        fetchBusinessHours(data[0].id)
+      if (locationsWithImages.length > 0) {
+        setSelectedLocation(locationsWithImages[0])
+        setOriginalLocation({ ...locationsWithImages[0] })
+        fetchBusinessHours(locationsWithImages[0].id)
       }
     } catch (error) {
       console.error('Error fetching locations:', error)
@@ -372,6 +385,64 @@ export default function LocationsAdmin() {
     }
   }
 
+  const handleImageUpload = async (file: File, imageType: 'hero' | 'signature') => {
+    if (!selectedLocation) return
+    
+    const setUploading = imageType === 'hero' ? setUploadingHero : setUploadingSignature
+    setUploading(true)
+    
+    try {
+      // Validate file
+      if (!file.type.startsWith('image/')) {
+        toast.error('Por favor selecciona una imagen válida')
+        return
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('La imagen debe ser menor a 5MB')
+        return
+      }
+
+      // Generate unique filename
+      const timestamp = Date.now()
+      const fileName = `locations/${selectedLocation.slug}/${imageType}/${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
+
+      // Upload to Supabase Storage
+      const { data, error } = await supabase.storage
+        .from('product-images')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: false
+        })
+
+      if (error) throw error
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('product-images')
+        .getPublicUrl(fileName)
+
+      // Update the location with the new image URL
+      setSelectedLocation(prev => {
+        if (!prev) return null
+        return {
+          ...prev,
+          images: {
+            ...prev.images,
+            [imageType]: publicUrl
+          }
+        }
+      })
+      
+      toast.success(`Imagen ${imageType === 'hero' ? 'principal' : 'destacada'} subida exitosamente`)
+    } catch (error) {
+      console.error(`Error uploading ${imageType} image:`, error)
+      toast.error(`Error al subir la imagen ${imageType === 'hero' ? 'principal' : 'destacada'}`)
+    } finally {
+      setUploading(false)
+    }
+  }
+
   const saveBiography = async () => {
     if (!selectedLocation || !originalLocation) return
 
@@ -381,7 +452,8 @@ export default function LocationsAdmin() {
       const hasChanges = 
         selectedLocation.description !== originalLocation.description ||
         selectedLocation.long_description !== originalLocation.long_description ||
-        selectedLocation.logo_url !== originalLocation.logo_url
+        selectedLocation.logo_url !== originalLocation.logo_url ||
+        JSON.stringify(selectedLocation.images) !== JSON.stringify(originalLocation.images)
       
       if (!hasChanges) {
         toast.info('No hay cambios para guardar')
@@ -395,6 +467,7 @@ export default function LocationsAdmin() {
           description: selectedLocation.description,
           long_description: selectedLocation.long_description,
           logo_url: selectedLocation.logo_url || null,
+          images: selectedLocation.images || {},
           updated_at: new Date().toISOString()
         })
         .eq('id', selectedLocation.id)
@@ -407,7 +480,7 @@ export default function LocationsAdmin() {
         loc.id === selectedLocation.id ? selectedLocation : loc
       ))
       
-      toast.success('Historia, descripción y logo actualizados')
+      toast.success('Historia, descripción, logo e imágenes actualizados')
     } catch (error) {
       console.error('Error updating biography:', error)
       toast.error('Error al actualizar información')
@@ -874,6 +947,168 @@ export default function LocationsAdmin() {
                   </div>
                 </div>
 
+                {/* Hero Image Upload Section */}
+                <div className="space-y-2 border-t pt-4">
+                  <Label>Imagen Principal (Hero)</Label>
+                  <div className="flex flex-col sm:flex-row items-start gap-4">
+                    {selectedLocation.images?.hero ? (
+                      <div className="relative">
+                        <img 
+                          src={selectedLocation.images.hero} 
+                          alt={`${selectedLocation.name} Hero`}
+                          className="h-32 w-48 object-cover rounded border"
+                        />
+                        <Button
+                          variant="destructive"
+                          size="icon"
+                          className="absolute -top-2 -right-2"
+                          onClick={() => setSelectedLocation(prev => 
+                            prev ? { ...prev, images: { ...prev.images, hero: '' } } : null
+                          )}
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="h-32 w-48 bg-gray-100 rounded border flex items-center justify-center">
+                        <ImageIcon className="h-8 w-8 text-gray-400" />
+                      </div>
+                    )}
+                    
+                    <div className="flex-1">
+                      <div className="flex flex-wrap gap-2">
+                        <label>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0]
+                              if (file) handleImageUpload(file, 'hero')
+                            }}
+                            disabled={uploadingHero}
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={uploadingHero}
+                            asChild
+                          >
+                            <span>
+                              {uploadingHero ? (
+                                <>
+                                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                  Subiendo...
+                                </>
+                              ) : (
+                                <>
+                                  <Upload className="mr-2 h-4 w-4" />
+                                  Subir Imagen Hero
+                                </>
+                              )}
+                            </span>
+                          </Button>
+                        </label>
+                        
+                        {selectedLocation.images?.hero && (
+                          <Input
+                            value={selectedLocation.images.hero}
+                            onChange={(e) => setSelectedLocation(prev => 
+                              prev ? { ...prev, images: { ...prev.images, hero: e.target.value } } : null
+                            )}
+                            placeholder="URL de imagen hero"
+                            className="flex-1"
+                          />
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">
+                        Imagen principal que aparece en la página del restaurante. Recomendado: 1920x1080px
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Signature Dish Image Upload Section */}
+                <div className="space-y-2 border-t pt-4">
+                  <Label>Plato Destacado (Signature)</Label>
+                  <div className="flex flex-col sm:flex-row items-start gap-4">
+                    {selectedLocation.images?.signature ? (
+                      <div className="relative">
+                        <img 
+                          src={selectedLocation.images.signature} 
+                          alt={`${selectedLocation.name} Signature`}
+                          className="h-32 w-32 object-cover rounded border"
+                        />
+                        <Button
+                          variant="destructive"
+                          size="icon"
+                          className="absolute -top-2 -right-2"
+                          onClick={() => setSelectedLocation(prev => 
+                            prev ? { ...prev, images: { ...prev.images, signature: '' } } : null
+                          )}
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="h-32 w-32 bg-gray-100 rounded border flex items-center justify-center">
+                        <ImageIcon className="h-8 w-8 text-gray-400" />
+                      </div>
+                    )}
+                    
+                    <div className="flex-1">
+                      <div className="flex flex-wrap gap-2">
+                        <label>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0]
+                              if (file) handleImageUpload(file, 'signature')
+                            }}
+                            disabled={uploadingSignature}
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            disabled={uploadingSignature}
+                            asChild
+                          >
+                            <span>
+                              {uploadingSignature ? (
+                                <>
+                                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                  Subiendo...
+                                </>
+                              ) : (
+                                <>
+                                  <Upload className="mr-2 h-4 w-4" />
+                                  Subir Plato Destacado
+                                </>
+                              )}
+                            </span>
+                          </Button>
+                        </label>
+                        
+                        {selectedLocation.images?.signature && (
+                          <Input
+                            value={selectedLocation.images.signature}
+                            onChange={(e) => setSelectedLocation(prev => 
+                              prev ? { ...prev, images: { ...prev.images, signature: e.target.value } } : null
+                            )}
+                            placeholder="URL del plato destacado"
+                            className="flex-1"
+                          />
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">
+                        Imagen del plato destacado en la sección "Un poco de nosotros". Cuadrada recomendada.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="pt-4 border-t">
                   <Button 
                     onClick={saveBiography}
@@ -888,7 +1123,7 @@ export default function LocationsAdmin() {
                     ) : (
                       <>
                         <Save className="mr-2 h-4 w-4" />
-                        Guardar Historia
+                        Guardar Historia e Imágenes
                       </>
                     )}
                   </Button>
