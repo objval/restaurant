@@ -94,7 +94,7 @@ export const locations: LocationData[] = [
     images: {
       hero: "/arbol/1.jpg",
       interior: "/arbol/2.jpg",
-      signature: "/arbol/torta.jpeg",
+      signature: "/arbol/torta2.png", // Change this to your new image path
       ambiance: "/arbol/4.jpg",
       gallery: [
         "/arbol/1.jpg",

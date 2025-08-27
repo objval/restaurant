@@ -544,12 +544,12 @@ export default function LocationsAdmin() {
             {/* Business Hours - Enhanced Design */}
             <Card className="overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/5 border-b">
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
                   <Clock className="h-5 w-5 text-primary" />
                   Horarios de Atención
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="p-3 sm:p-6 space-y-3 sm:space-y-4">
                 {DAYS_OF_WEEK.map(day => {
                   const hour = businessHours.find(h => h.day_of_week === day.id)
                   if (!hour) return null
@@ -559,50 +559,100 @@ export default function LocationsAdmin() {
                   return (
                     <div 
                       key={day.id} 
-                      className={`flex items-center gap-4 p-3 rounded-lg transition-colors ${
+                      className={`p-3 rounded-lg transition-colors ${
                         isToday ? 'bg-primary/5 ring-1 ring-primary/20' : 'hover:bg-muted/50'
                       }`}
                     >
-                      <div className={`flex items-center gap-2 w-28`}>
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
-                          isToday ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
-                        }`}>
-                          {day.abbr}
+                      {/* Mobile Layout - Stacked */}
+                      <div className="flex flex-col gap-3 sm:hidden">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
+                              isToday ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
+                            }`}>
+                              {day.abbr}
+                            </div>
+                            <span className={`font-medium text-sm ${isToday ? 'text-primary' : ''}`}>
+                              {day.name}
+                            </span>
+                          </div>
+                          
+                          <div className="flex items-center gap-2">
+                            <Switch
+                              checked={!hour.is_closed}
+                              onCheckedChange={(checked) => handleHourChange(day.id, 'is_closed', !checked)}
+                              className="scale-90"
+                            />
+                            <span className={`text-xs font-medium ${
+                              hour.is_closed ? 'text-red-500' : 'text-green-600'
+                            }`}>
+                              {hour.is_closed ? 'Cerrado' : 'Abierto'}
+                            </span>
+                          </div>
                         </div>
-                        <span className={`font-medium text-sm ${isToday ? 'text-primary' : ''}`}>
-                          {day.name}
-                        </span>
+                        
+                        {!hour.is_closed && (
+                          <div className="flex items-center gap-2 pl-9">
+                            <Input
+                              type="time"
+                              value={hour.open_time || ''}
+                              onChange={(e) => handleHourChange(day.id, 'open_time', e.target.value)}
+                              className="flex-1 min-w-0 text-sm h-9"
+                            />
+                            <span className="text-muted-foreground text-xs">—</span>
+                            <Input
+                              type="time"
+                              value={hour.close_time || ''}
+                              onChange={(e) => handleHourChange(day.id, 'close_time', e.target.value)}
+                              className="flex-1 min-w-0 text-sm h-9"
+                            />
+                          </div>
+                        )}
                       </div>
                       
-                      <div className="flex items-center gap-2">
-                        <Switch
-                          checked={!hour.is_closed}
-                          onCheckedChange={(checked) => handleHourChange(day.id, 'is_closed', !checked)}
-                        />
-                        <span className={`text-sm w-16 font-medium ${
-                          hour.is_closed ? 'text-red-500' : 'text-green-600'
-                        }`}>
-                          {hour.is_closed ? 'Cerrado' : 'Abierto'}
-                        </span>
-                      </div>
-
-                      {!hour.is_closed && (
-                        <div className="flex items-center gap-2 flex-1">
-                          <Input
-                            type="time"
-                            value={hour.open_time || ''}
-                            onChange={(e) => handleHourChange(day.id, 'open_time', e.target.value)}
-                            className="w-32 border-muted-foreground/20"
-                          />
-                          <span className="text-muted-foreground">—</span>
-                          <Input
-                            type="time"
-                            value={hour.close_time || ''}
-                            onChange={(e) => handleHourChange(day.id, 'close_time', e.target.value)}
-                            className="w-32 border-muted-foreground/20"
-                          />
+                      {/* Desktop Layout - Horizontal */}
+                      <div className="hidden sm:flex sm:items-center sm:gap-4">
+                        <div className="flex items-center gap-2 w-32">
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                            isToday ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
+                          }`}>
+                            {day.abbr}
+                          </div>
+                          <span className={`font-medium text-sm ${isToday ? 'text-primary' : ''}`}>
+                            {day.name}
+                          </span>
                         </div>
-                      )}
+                        
+                        <div className="flex items-center gap-2">
+                          <Switch
+                            checked={!hour.is_closed}
+                            onCheckedChange={(checked) => handleHourChange(day.id, 'is_closed', !checked)}
+                          />
+                          <span className={`text-sm w-16 font-medium ${
+                            hour.is_closed ? 'text-red-500' : 'text-green-600'
+                          }`}>
+                            {hour.is_closed ? 'Cerrado' : 'Abierto'}
+                          </span>
+                        </div>
+
+                        {!hour.is_closed && (
+                          <div className="flex items-center gap-2 flex-1">
+                            <Input
+                              type="time"
+                              value={hour.open_time || ''}
+                              onChange={(e) => handleHourChange(day.id, 'open_time', e.target.value)}
+                              className="w-32 border-muted-foreground/20"
+                            />
+                            <span className="text-muted-foreground">—</span>
+                            <Input
+                              type="time"
+                              value={hour.close_time || ''}
+                              onChange={(e) => handleHourChange(day.id, 'close_time', e.target.value)}
+                              className="w-32 border-muted-foreground/20"
+                            />
+                          </div>
+                        )}
+                      </div>
                     </div>
                   )
                 })}
