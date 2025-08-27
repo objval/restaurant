@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { supabase } from "@/lib/supabase-locations"
 import { supabase as supabaseAuth } from "@/lib/supabase-menu"
-import { uploadProductImage, deleteProductImage, getStorageUrl } from "@/lib/supabase-storage"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -14,9 +13,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
 import { 
   Clock, MapPin, Save, Loader2, Calendar, FileText, Star, Upload, X, 
-  Image as ImageIcon, Phone, Mail, Globe, Navigation, Building2,
-  MessageSquare, Instagram, Facebook, Users, ChefHat, TrendingUp,
-  Award, Sparkles, Palette, Hash, Eye, EyeOff, Settings
+  Image as ImageIcon, Phone, Globe, Navigation, Building2,
+  MessageSquare, TrendingUp, Eye, EyeOff, Settings
 } from "lucide-react"
 import type { User } from "@supabase/supabase-js"
 import { FeaturedProductsManager } from "@/components/admin/featured-products-manager"
@@ -359,7 +357,7 @@ export default function LocationsAdmin() {
       const fileName = `logos/${selectedLocation.slug}/${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
 
       // Upload to Supabase Storage
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('product-images')
         .upload(fileName, file, {
           cacheControl: '3600',
@@ -408,7 +406,7 @@ export default function LocationsAdmin() {
       const fileName = `locations/${selectedLocation.slug}/${imageType}/${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
 
       // Upload to Supabase Storage
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('product-images')
         .upload(fileName, file, {
           cacheControl: '3600',
@@ -1103,7 +1101,7 @@ export default function LocationsAdmin() {
                         )}
                       </div>
                       <p className="text-xs text-gray-500 mt-1">
-                        Imagen del plato destacado en la sección "Un poco de nosotros". Cuadrada recomendada.
+                        Imagen del plato destacado en la sección &quot;Un poco de nosotros&quot;. Cuadrada recomendada.
                       </p>
                     </div>
                   </div>
