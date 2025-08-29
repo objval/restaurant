@@ -74,6 +74,13 @@ export interface LocationData {
     schedule: string
     color: string
   }[]
+  chefQuote?: string
+  chefName?: string
+  values?: Array<{
+    icon: string
+    title: string
+    description: string
+  }>
 }
 
 export const locations: LocationData[] = [

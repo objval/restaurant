@@ -214,7 +214,7 @@ export function PromotionsSleek({ locationData, onContactAction }: PromotionsSle
                       index === activePromo && "ring-2 shadow-xl"
                     )}
                     style={{
-                      ringColor: index === activePromo ? promo.color || locationData.theme.primary : 'transparent'
+                      boxShadow: index === activePromo ? `0 0 0 2px ${promo.color || locationData.theme.primary}` : 'none'
                     }}
                     onClick={() => {
                       setActivePromo(index)
