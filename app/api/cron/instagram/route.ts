@@ -1,9 +1,18 @@
 import { NextResponse } from 'next/server'
-import { scrapeInstagramProfile, cacheInstagramPosts } from '@/lib/instagram-scraper'
-import { supabase } from '@/lib/supabase-singleton'
+// import { scrapeInstagramProfile, cacheInstagramPosts } from '@/lib/instagram-scraper'
+// import { supabase } from '@/lib/supabase-singleton'
 
-// This endpoint can be called by Vercel Cron or any external cron service
+// This endpoint can be called manually or by external cron service
+// Cron jobs are disabled on free Vercel plan - uncomment when upgraded
 export async function GET(request: Request) {
+  // Return a simple message for now
+  return NextResponse.json({
+    success: true,
+    message: 'Instagram sync disabled - cron jobs require Vercel Pro plan',
+    timestamp: new Date().toISOString()
+  })
+  
+  /* UNCOMMENT WHEN VERCEL PLAN IS UPGRADED:
   // Verify cron secret to prevent unauthorized calls
   const authHeader = request.headers.get('authorization')
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
@@ -74,6 +83,7 @@ export async function GET(request: Request) {
       { status: 500 }
     )
   }
+  */
 }
 
 // Also support POST for manual triggers
