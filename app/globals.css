@@ -7,6 +7,151 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Shimmer animation for skeleton loaders */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Progressive blur animation */
+  @keyframes blur-in {
+    from {
+      filter: blur(20px);
+      opacity: 0;
+    }
+    to {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-blur-in {
+    animation: blur-in 0.5s ease-out;
+  }
+  
+  /* Skeleton pulse with gradient */
+  .skeleton-pulse {
+    @apply animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200;
+    background-size: 200% 100%;
+    animation: pulse 1.5s ease-in-out infinite, gradient 2s ease-in-out infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+  
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out 0.3s both;
+  }
+  
+  .animate-fade-in-delayed {
+    animation: fade-in 0.8s ease-out 0.6s both;
+  }
+  
+  /* Stable card hover effects */
+  .location-card-glow {
+    transform-origin: center;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    isolation: isolate;
+  }
+  
+  /* Prevent grid layout shifts */
+  .location-card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Image container with skeleton background */
+  .image-skeleton {
+    @apply relative overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300;
+  }
+  
+  .image-skeleton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Dark theme skeleton */
+  .image-skeleton-dark {
+    @apply relative overflow-hidden bg-gradient-to-br from-gray-700 to-gray-900;
+  }
+  
+  .image-skeleton-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+    animation: shimmer 2s infinite;
+  }
 }
 
 @layer base {

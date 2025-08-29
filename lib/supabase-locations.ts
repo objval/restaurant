@@ -29,6 +29,13 @@ export interface DatabaseLocation {
   }
   description: string
   long_description: string
+  chef_quote?: string
+  chef_name?: string
+  values?: Array<{
+    icon: string
+    title: string
+    description: string
+  }>
   price_range: string
   features: string[]
   specialties: string[]
@@ -149,6 +156,9 @@ export async function getLocationsWithHours() {
         images: location.images,
         description: location.description,
         longDescription: location.long_description,
+        chefQuote: location.chef_quote,
+        chefName: location.chef_name,
+        values: location.values,
         hours: hoursObj,
         specialties: location.specialties,
         atmosphere: location.atmosphere,

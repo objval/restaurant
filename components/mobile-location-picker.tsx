@@ -6,6 +6,7 @@ import type { LocationData } from "@/lib/locations"
 import { MapPin, Wifi, Car, Trees, Music2, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { getLocationBlurPlaceholder, IMAGE_SIZES } from "@/lib/image-utils"
 
 interface MobileLocationPickerProps {
   locations: LocationData[]
@@ -22,6 +23,7 @@ const featureIcons: Record<string, React.ComponentType<{ className?: string }>> 
 
 export function MobileLocationPicker({ locations, onSelectLocationAction, onUseGeolocationAction }: MobileLocationPickerProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
 
   const getFeatureIcon = (feature: string) => {
     const Icon = featureIcons[feature]
@@ -139,13 +141,25 @@ export function MobileLocationPicker({ locations, onSelectLocationAction, onUseG
               >
                 {/* Background Image */}
                 <div className="absolute inset-0">
+                  {/* Skeleton background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 animate-pulse transition-opacity duration-500 ${
+                    loadedImages.has(location.id) ? 'opacity-0' : 'opacity-100'
+                  }`} />
                   <Image 
                     src={location.images.hero} 
                     alt={location.name}
                     fill
-                    className="object-cover"
-                    unoptimized
+                    className={`object-cover transition-opacity duration-700 ${
+                      loadedImages.has(location.id) ? 'opacity-100' : 'opacity-0'
+                    }`}
                     priority
+                    quality={85}
+                    sizes={IMAGE_SIZES.mobile}
+                    placeholder="blur"
+                    blurDataURL={getLocationBlurPlaceholder(location.id)}
+                    onLoad={() => {
+                      setLoadedImages(prev => new Set([...prev, location.id]))
+                    }}
                   />
                 </div>
 

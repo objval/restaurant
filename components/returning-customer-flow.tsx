@@ -1,11 +1,12 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import { type LocationData } from "@/lib/locations"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { MapPin, Clock, ArrowRight, Heart, Sparkles, ChefHat } from "lucide-react"
-// import { useEffect, useState } from "react" // Not needed for current implementation
+import { getLocationBlurPlaceholder, IMAGE_SIZES } from "@/lib/image-utils"
 
 interface ReturningCustomerFlowProps {
   savedLocationId: string
@@ -22,6 +23,7 @@ export function ReturningCustomerFlow({
   onGeolocationAction,
   onShowAllAction,
 }: ReturningCustomerFlowProps) {
+  const [imageLoaded, setImageLoaded] = useState(false)
   const savedLocation = locations.find((loc) => loc.id === savedLocationId)
   
   // Time-based greeting
@@ -64,11 +66,23 @@ export function ReturningCustomerFlow({
               background: `linear-gradient(135deg, ${savedLocation.theme.primary}, ${savedLocation.theme.accent})`,
             }}
           >
+            {/* Skeleton loader */}
+            <div className={`absolute inset-0 bg-gradient-to-br from-orange-300 to-red-400 animate-pulse transition-opacity duration-500 ${
+              imageLoaded ? 'opacity-0' : 'opacity-100'
+            }`} />
             <Image
               src={savedLocation.images.hero || "/placeholder.svg"}
               alt={savedLocation.name}
               fill
-              className="object-cover mix-blend-overlay hover:scale-105 transition-transform duration-500"
+              className={`object-cover mix-blend-overlay hover:scale-105 transition-all duration-700 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              priority
+              quality={85}
+              sizes={IMAGE_SIZES.hero}
+              placeholder="blur"
+              blurDataURL={getLocationBlurPlaceholder(savedLocation.id)}
+              onLoad={() => setImageLoaded(true)}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
             <div className="absolute bottom-6 left-6 text-white">

@@ -1,12 +1,14 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, Navigation, Phone, Clock, Users, Utensils, Wine, ChevronRight, Loader2 } from "lucide-react"
 import { type LocationData } from "@/lib/locations"
 import { MobileLocationPicker } from "@/components/mobile-location-picker"
+import { getLocationBlurPlaceholder, IMAGE_SIZES, BLUR_PLACEHOLDERS } from "@/lib/image-utils"
 
 interface ProfessionalLocationPickerProps {
   locations: LocationData[]
@@ -75,6 +77,7 @@ export function ProfessionalLocationPicker({
     const Icon = getLocationIcon(location.concept)
     const isHovered = hoveredLocation === location.id
     const isLoading = loadingLocationId === location.id
+    const [imageLoaded, setImageLoaded] = useState(false)
 
     // Get current Chilean time and check if open
     const getChileanTimeAndStatus = () => {
@@ -178,23 +181,22 @@ export function ProfessionalLocationPicker({
     }
 
     return (
-      <Card 
-        className={`location-card-glow ${getThemeClass(location.id)} group relative overflow-hidden transition-all duration-300 cursor-pointer ${
-          isHovered ? 'transform scale-[1.02] shadow-2xl' : 'shadow-xl hover:shadow-2xl'
-        } ${isLoading ? 'opacity-75' : ''}`}
-        style={{ 
-          background: `rgba(0,0,0,0.3)`,
-          borderWidth: '2px',
-          borderStyle: 'solid',
-          borderColor: isHovered ? `${location.theme.accent}` : `${location.theme.primary}40`,
-          boxShadow: isHovered 
-            ? `0 20px 40px ${location.theme.accent}20, 0 0 0 1px ${location.theme.accent}30`
-            : `0 10px 30px ${location.theme.primary}15, 0 0 0 1px ${location.theme.primary}20`
-        }}
-        onMouseEnter={() => setHoveredLocation(location.id)}
-        onMouseLeave={() => setHoveredLocation(null)}
-        onClick={() => onLocationSelectAction(location)}
-      >
+      <div className="relative" style={{ isolation: 'isolate' }}>
+        <Card 
+          className={`location-card-glow ${getThemeClass(location.id)} group relative overflow-hidden cursor-pointer ${
+            isLoading ? 'opacity-75' : ''
+          }`}
+          style={{ 
+            background: `rgba(0,0,0,0.3)`,
+            border: `2px solid ${location.theme.primary}40`,
+            boxShadow: `0 10px 30px ${location.theme.primary}15`,
+            transform: isHovered ? 'scale(1.02)' : 'scale(1)',
+            transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+          }}
+          onMouseEnter={() => setHoveredLocation(location.id)}
+          onMouseLeave={() => setHoveredLocation(null)}
+          onClick={() => onLocationSelectAction(location)}
+        >
         {/* Glass morphism background with stronger theme tint */}
         <div 
           className="absolute inset-0 border-0 pointer-events-none"
@@ -205,20 +207,25 @@ export function ProfessionalLocationPicker({
         
         {/* Background Image with smooth overlay */}
         <div className="absolute inset-0 overflow-hidden rounded-lg">
-          <img
+          {/* Skeleton background while loading */}
+          <div className={`absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 animate-pulse transition-opacity duration-500 ${
+            imageLoaded ? 'opacity-0' : 'opacity-100'
+          }`} />
+          <Image
             src={location.images.hero}
             alt={location.name}
-            className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-out ${
+            fill
+            className={`object-cover transition-all duration-700 ease-out ${
               isHovered ? 'scale-105' : 'scale-100'
+            } ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            style={{
-              imageRendering: '-webkit-optimize-contrast',
-              WebkitBackfaceVisibility: 'hidden',
-              transform: 'translateZ(0)'
-            }}
+            priority
+            quality={85}
+            sizes={IMAGE_SIZES.card}
+            placeholder="blur"
+            blurDataURL={getLocationBlurPlaceholder(location.id)}
+            onLoad={() => setImageLoaded(true)}
           />
           <div 
             className={`absolute inset-0 transition-opacity duration-300 ease-out ${
@@ -353,15 +360,26 @@ export function ProfessionalLocationPicker({
 
         {/* Combined Hover Effect Overlay */}
         <div 
-          className={`absolute inset-0 pointer-events-none transition-all duration-300 ease-out rounded-lg ${
+          className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ease-out rounded-lg ${
             isHovered ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
-            background: `linear-gradient(135deg, ${location.theme.accent}08, transparent, ${location.theme.primary}05)`,
-            boxShadow: isHovered ? `inset 0 0 0 2px ${location.theme.accent}60, 0 0 30px ${location.theme.accent}20` : 'none'
+            background: `linear-gradient(135deg, ${location.theme.accent}08, transparent, ${location.theme.primary}05)`
           }}
         />
+        
+        {/* Hover border overlay */}
+        {isHovered && (
+          <div 
+            className="absolute inset-0 pointer-events-none rounded-lg transition-all duration-300"
+            style={{
+              border: `2px solid ${location.theme.accent}`,
+              boxShadow: `0 0 30px ${location.theme.accent}20`
+            }}
+          />
+        )}
       </Card>
+      </div>
     )
   }
 
@@ -380,6 +398,8 @@ export function ProfessionalLocationPicker({
     <div className="relative min-h-screen overflow-hidden">
       {/* Hero Background with Mica Effect */}
       <div className="absolute inset-0">
+        {/* Background skeleton */}
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-900 to-orange-900 animate-pulse" />
         {heroImages.map((image, index) => (
           <div
             key={index}
@@ -387,18 +407,16 @@ export function ProfessionalLocationPicker({
               index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
             }`}
           >
-            <img
+            <Image
               src={image}
               alt={`Hero ${index + 1}`}
-              className="absolute inset-0 w-full h-full object-cover"
-              loading={index === 0 ? "eager" : "lazy"}
-              fetchPriority={index === 0 ? "high" : "auto"}
-              decoding="async"
-              style={{
-                imageRendering: '-webkit-optimize-contrast',
-                WebkitBackfaceVisibility: 'hidden',
-                transform: 'translateZ(0)'
-              }}
+              fill
+              className="object-cover"
+              priority={index === 0}
+              quality={90}
+              sizes={IMAGE_SIZES.hero}
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDERS.warm}
             />
           </div>
         ))}

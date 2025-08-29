@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
-import { supabase } from "@/lib/supabase-menu"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Toaster } from "sonner"
 import { Package, BarChart3, FolderTree, MapPin, LogOut, Home, Loader2 } from "lucide-react"
 import Link from "next/link"
@@ -16,6 +16,7 @@ export default function AdminLayout({
   const router = useRouter()
   const pathname = usePathname()
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
+  const supabase = createClientComponentClient()
   
   useEffect(() => {
     // Check authentication status
