@@ -312,16 +312,18 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
             </div>
           </div>
 
-          {/* Revolutionary Product Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
+          {/* Revolutionary Product Grid - Optimized for all screens */}
+          <div className={`grid gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 ${
+            locationData.menuHighlights.length === 2 
+              ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto' 
+              : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-3'
+          }`}>
             {locationData.menuHighlights.map((item, index) => (
-              <Link key={item.id} href={`/${locationData.id}/menu`}>
-                <div className={`group cursor-pointer animate-fade-in ${
-                  index === 1 ? 'md:col-span-2 lg:col-span-1 lg:scale-105 lg:-mt-4 lg:mb-4' : ''
-                }`} 
+              <Link key={item.id} href={`/${locationData.id}/menu`} className="h-full">
+                <div className={`group cursor-pointer animate-fade-in h-full`} 
                 style={{ animationDelay: `${index * 0.2}s` }}>
-                  {/* Main product card with enhanced design */}
-                  <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white to-gray-50 shadow-xl hover:shadow-2xl transition-all duration-700 group-hover:-rotate-1 hover:scale-[1.02] sm:group-hover:scale-105">
+                  {/* Main product card with enhanced design - Fixed height */}
+                  <div className="relative h-full overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white to-gray-50 shadow-xl hover:shadow-2xl transition-all duration-700 group-hover:-rotate-1 hover:scale-[1.02] sm:group-hover:scale-105 flex flex-col">
                     
                     {/* Floating badges */}
                     <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20 flex flex-col gap-2">
@@ -377,19 +379,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                       
                       {/* Hover overlay with glassmorphism */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
-                      
-                      {/* Price tag with epic design */}
-                      <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6">
-                        <div className="relative">
-                          <div className="bg-white/95 backdrop-blur-sm px-3 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl font-black text-lg sm:text-2xl shadow-2xl group-hover:scale-110 sm:group-hover:scale-125 sm:group-hover:-rotate-3 transition-all duration-500 border-2 border-white/50"
-                               style={{ color: locationData.theme.primary }}>
-                            {item.price}
-                          </div>
-                          {/* Glow effect */}
-                          <div className="absolute inset-0 rounded-xl sm:rounded-2xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"
-                               style={{ backgroundColor: locationData.theme.primary }}></div>
-                        </div>
-                      </div>
 
                       {/* Floating action button */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 sm:translate-y-8 group-hover:translate-y-0">
@@ -400,39 +389,41 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                       </div>
                     </div>
 
-                    {/* Enhanced content section */}
-                    <div className="p-4 sm:p-6 lg:p-8 relative">
+                    {/* Enhanced content section - Flex grow to fill remaining space */}
+                    <div className="p-4 sm:p-6 lg:p-8 relative flex-grow flex flex-col">
                       {/* Decorative corner */}
                       <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-8 sm:w-12 lg:w-16 h-1 rounded-full"
                            style={{ backgroundColor: locationData.theme.accent }}></div>
                       
-                      <div className="space-y-3 sm:space-y-4">
+                      <div className="space-y-3 sm:space-y-4 flex flex-col h-full">
                         <h3 className="font-black text-lg sm:text-xl lg:text-2xl leading-tight group-hover:text-opacity-80 transition-colors line-clamp-2"
                             style={{ color: locationData.theme.primary }}>
                           {item.name}
                         </h3>
                         
-                        <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3">
+                        <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3 flex-grow">
                           {item.description || 'Delicioso plato preparado con ingredientes frescos de primera calidad por nuestros chefs expertos'}
                         </p>
 
-                        {/* Epic price display */}
-                        <div className="flex items-center justify-between pt-2 sm:pt-4">
-                          <div className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight" style={{ color: locationData.theme.primary }}>
-                            <span className="text-lg sm:text-xl lg:text-2xl">$</span>
-                            {Math.floor(Number.parseInt(item.price.replace(/[^0-9]/g, "")) / 1000)}.
-                            <span className="text-lg sm:text-xl lg:text-2xl">
-                              {(Number.parseInt(item.price.replace(/[^0-9]/g, "")) % 1000).toString().padStart(3, "0")}
-                            </span>
-                          </div>
-                          
-                          {/* Rating stars */}
-                          <div className="flex gap-0.5 sm:gap-1">
-                            {[1,2,3,4,5].map((star) => (
-                              <div key={star} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-yellow-400 text-xs sm:text-sm lg:text-base">
-                                ⭐
-                              </div>
-                            ))}
+                        {/* Epic price display - Pushed to bottom */}
+                        <div className="pt-2 sm:pt-4 mt-auto">
+                          <div className="flex flex-col md:flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
+                            <div className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight" style={{ color: locationData.theme.primary }}>
+                              <span className="text-lg sm:text-xl lg:text-2xl">$</span>
+                              {Math.floor(Number.parseInt(item.price.replace(/[^0-9]/g, "")) / 1000)}.
+                              <span className="text-lg sm:text-xl lg:text-2xl">
+                                {(Number.parseInt(item.price.replace(/[^0-9]/g, "")) % 1000).toString().padStart(3, "0")}
+                              </span>
+                            </div>
+                            
+                            {/* Rating stars - Below price on medium screens, beside on large */}
+                            <div className="flex gap-0.5 sm:gap-1">
+                              {[1,2,3,4,5].map((star) => (
+                                <div key={star} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-yellow-400 text-xs sm:text-sm lg:text-base">
+                                  ⭐
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
 
