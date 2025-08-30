@@ -2,16 +2,13 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Menu, Clock, MapPin, MessageCircle, Heart, Calendar } from "lucide-react"
+import { ArrowLeft, Menu, MessageCircle, Heart, Calendar } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { ReservationModal } from "@/components/reservation-modal"
 import { ContactModal } from "@/components/contact-modal"
 import { AboutUsProfessional } from "@/components/about-us-professional"
-import { InstagramFeed } from "@/components/instagram-feed"
 import { FloatingActions } from "@/components/floating-actions"
 import { PromotionsSleek } from "@/components/promotions-sleek"
 import { LocationFooterCompact } from "@/components/location-footer-compact"
@@ -104,7 +101,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
     // Check every minute
     const interval = setInterval(checkIfOpen, 60000)
     return () => clearInterval(interval)
-  }, [locationData.hours, locationData.name])
+  }, [locationData])
 
   // Auto-cycling gallery images
   useEffect(() => {
@@ -115,11 +112,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
   }, [locationData.images.gallery.length])
 
 
-  const handleWhatsApp = () => {
-    const message = encodeURIComponent(`Hola! Me gustaría hacer una consulta sobre ${locationData.name}`)
-    const phone = locationData.contact.phone.replace(/[^0-9]/g, "")
-    window.open(`https://wa.me/${phone}?text=${message}`, "_blank")
-  }
 
 
 
@@ -127,53 +119,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
     router.push("/")
   }
 
-  const isOpen = (hours: LocationData['hours']) => {
-    // Get Chilean time
-    const now = new Date()
-    const chileTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Santiago" }))
-    const day = chileTime.getDay()
-    const currentHours = chileTime.getHours()
-    const currentMinutes = chileTime.getMinutes()
-    const currentTimeInMinutes = currentHours * 60 + currentMinutes
-    
-    const dayMap: { [key: number]: keyof LocationData['hours'] } = {
-      0: 'sunday',
-      1: 'monday',
-      2: 'tuesday',
-      3: 'wednesday',
-      4: 'thursday',
-      5: 'friday',
-      6: 'saturday'
-    }
-    
-    const todaySchedule = hours[dayMap[day] as keyof LocationData['hours']]
-    if (!todaySchedule || todaySchedule === 'CERRADO') return false
-    
-    // Parse time ranges like "11:00 - 22:30" or "11:00 - 03:00"
-    const timeMatch = todaySchedule.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/)
-    if (!timeMatch) return false
-    
-    const openHour = parseInt(timeMatch[1])
-    const openMin = parseInt(timeMatch[2])
-    const closeHour = parseInt(timeMatch[3])
-    const closeMin = parseInt(timeMatch[4])
-    
-    const openTime = openHour * 60 + openMin
-    let closeTime = closeHour * 60 + closeMin
-    
-    // Handle times after midnight (e.g., closes at 03:00)
-    if (closeTime < openTime) {
-      closeTime += 24 * 60
-    }
-    
-    // Adjust current time if we're in the early morning hours
-    let adjustedCurrentTime = currentTimeInMinutes
-    if (currentHours < 4) { // After midnight
-      adjustedCurrentTime += 24 * 60
-    }
-    
-    return adjustedCurrentTime >= openTime && adjustedCurrentTime <= closeTime
-  }
 
 
 
@@ -325,160 +270,273 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
         onContactAction={() => setIsContactOpen(true)}
       />
 
-      {/* Enhanced Featured Products Section */}
-      <section className="py-20 relative" style={{ backgroundColor: locationData.theme.background }}>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 text-lg px-4 py-2 font-semibold" style={{ backgroundColor: locationData.theme.accent, color: locationData.theme.text }}>
-              Lo más popular
-            </Badge>
-            <h2 className="text-5xl font-bold mb-6 tracking-wide" style={{ color: locationData.theme.primary }}>
-              PRODUCTOS DESTACADOS
+      {/* Ultra Modern Featured Products Section */}
+      <section className="py-16 sm:py-20 lg:py-24 relative" style={{ backgroundColor: '#f8fafc' }}>
+
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Epic Section Header */}
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-4 py-2 sm:px-6 sm:py-3 rounded-full border-2 border-dashed animate-pulse" 
+                 style={{ borderColor: locationData.theme.accent, backgroundColor: `${locationData.theme.accent}15` }}>
+              <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full animate-ping" style={{ backgroundColor: locationData.theme.accent }}></div>
+              <span className="text-sm sm:text-base lg:text-lg font-bold tracking-wider" style={{ color: locationData.theme.accent }}>
+                LO MÁS POPULAR ✨
+              </span>
+              <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full animate-ping delay-300" style={{ backgroundColor: locationData.theme.accent }}></div>
+            </div>
+            
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-black mb-6 sm:mb-8 tracking-tight leading-none relative px-2">
+              <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
+                PRODUCTOS
+              </span>
+              <br />
+              <span className="bg-gradient-to-r bg-clip-text text-transparent" 
+                    style={{ 
+                      backgroundImage: `linear-gradient(135deg, ${locationData.theme.primary} 0%, ${locationData.theme.accent} 50%, ${locationData.theme.secondary} 100%)` 
+                    }}>
+                DESTACADOS
+              </span>
+              {/* Decorative elements - responsive */}
+              <div className="absolute -top-2 -right-1 sm:-top-4 sm:-right-4 w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 rounded-full animate-bounce" 
+                   style={{ backgroundColor: locationData.theme.accent }}></div>
+              <div className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6 rounded-full animate-bounce delay-500" 
+                   style={{ backgroundColor: locationData.theme.primary }}></div>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Los platos más queridos por nuestros clientes, preparados con ingredientes frescos y mucho amor
-            </p>
+            
+            <div className="max-w-3xl mx-auto px-4">
+              <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 font-light leading-relaxed mb-4 sm:mb-6">
+                🔥 Los platos más queridos por nuestros clientes
+              </p>
+              <div className="w-16 sm:w-20 lg:w-24 h-1 mx-auto rounded-full animate-pulse" 
+                   style={{ backgroundColor: locationData.theme.accent }}></div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Revolutionary Product Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
             {locationData.menuHighlights.map((item, index) => (
               <Link key={item.id} href={`/${locationData.id}/menu`}>
-                <Card className="overflow-hidden hover:shadow-2xl transition-all duration-700 group hover:-translate-y-2 cursor-pointer animate-fade-in h-full flex flex-col" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="relative h-64 overflow-hidden flex-shrink-0">
-                    <Image
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-
-
-                    {/* Enhanced price badge */}
-                    <div className="absolute bottom-4 right-4">
-                      <div
-                        className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-300"
-                        style={{ color: locationData.theme.primary }}
-                      >
-                        {item.price}
-                      </div>
-                    </div>
-
-                    {/* Popular badge for first item */}
-                    {index === 2 && (
-                      <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
-                        🔥 MÁS POPULAR
-                      </div>
-                    )}
-
-                    {/* Hover overlay with improved animation */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-
-                    {/* Enhanced hover content */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                      <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full font-semibold text-gray-800 shadow-xl flex items-center gap-2 group-hover:scale-105 transition-transform duration-300">
-                        <Menu className="w-5 h-5" />
-                        Ver en Menú Completo
-                      </div>
-                    </div>
-
-                    {/* Heart like button */}
-                    <button className="absolute top-4 left-4 p-2 rounded-full bg-black/30 backdrop-blur-sm text-white hover:bg-red-500 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110">
-                      <Heart className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  <CardContent className="p-6 flex-1 flex flex-col">
-                    <div className="flex items-start justify-between gap-2 mb-3">
-                      <h3 className="font-bold text-xl group-hover:text-opacity-80 transition-colors line-clamp-2 min-h-[3.5rem] flex-1">
-                        {item.name}
-                      </h3>
-                      {/* Chef's choice badge */}
+                <div className={`group cursor-pointer animate-fade-in ${
+                  index === 1 ? 'md:col-span-2 lg:col-span-1 lg:scale-105 lg:-mt-4 lg:mb-4' : ''
+                }`} 
+                style={{ animationDelay: `${index * 0.2}s` }}>
+                  {/* Main product card with enhanced design */}
+                  <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white to-gray-50 shadow-xl hover:shadow-2xl transition-all duration-700 group-hover:-rotate-1 hover:scale-[1.02] sm:group-hover:scale-105">
+                    
+                    {/* Floating badges */}
+                    <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20 flex flex-col gap-2">
+                      {index === 0 && (
+                        <div className="flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full text-xs font-bold shadow-lg animate-pulse">
+                          <span className="animate-bounce text-xs sm:text-sm">🔥</span>
+                          <span className="hidden sm:inline">MÁS POPULAR</span>
+                          <span className="sm:hidden">POPULAR</span>
+                        </div>
+                      )}
                       {index === 1 && (
-                        <Badge variant="outline" className="text-xs font-semibold flex-shrink-0 whitespace-nowrap" style={{ borderColor: locationData.theme.accent, color: locationData.theme.accent, backgroundColor: `${locationData.theme.accent}10` }}>
-                          Chef&apos;s Choice
-                        </Badge>
+                        <div className="flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full text-xs font-bold shadow-lg">
+                          <span className="animate-spin text-xs sm:text-sm">⭐</span>
+                          <span className="hidden sm:inline">CHEF&apos;S CHOICE</span>
+                          <span className="sm:hidden">CHEF</span>
+                        </div>
+                      )}
+                      {index === 2 && (
+                        <div className="flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-full text-xs font-bold shadow-lg">
+                          <span className="animate-bounce text-xs sm:text-sm">💚</span>
+                          <span className="hidden sm:inline">FAVORITO</span>
+                          <span className="sm:hidden">FAV</span>
+                        </div>
                       )}
                     </div>
-                    
-                    <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3 min-h-[4.5rem] flex-grow">{item.description || 'Delicioso plato preparado con ingredientes frescos de primera calidad'}</p>
 
-                    <div className="flex items-center justify-between mt-auto">
-                      <div className="text-2xl font-bold" style={{ color: locationData.theme.primary }}>
-                        ${Math.floor(Number.parseInt(item.price.replace(/[^0-9]/g, "")) / 1000)}.
-                        {(Number.parseInt(item.price.replace(/[^0-9]/g, "")) % 1000).toString().padStart(3, "0")}
-                      </div>
+                    {/* Heart button with enhanced animation */}
+                    <button 
+                      onClick={(e) => {
+                        e.preventDefault()
+                        toast({
+                          title: "❤️ ¡Añadido a favoritos!",
+                          description: `${item.name} se ha guardado en tus platos favoritos`,
+                        })
+                      }}
+                      className="absolute top-3 right-3 sm:top-6 sm:right-6 z-20 p-2 sm:p-3 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-red-500 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 sm:hover:scale-125 shadow-lg touch-manipulation"
+                    >
+                      <Heart className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" />
+                    </button>
+
+                    {/* Epic image container */}
+                    <div className="relative h-48 sm:h-64 lg:h-80 overflow-hidden rounded-t-2xl sm:rounded-t-3xl">
+                      <Image
+                        src={item.image || "/placeholder.svg"}
+                        alt={item.name}
+                        fill
+                        className="object-cover group-hover:scale-110 sm:group-hover:scale-125 sm:group-hover:rotate-2 transition-all duration-1000"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
                       
-                      {/* Quick add to favorites */}
-                      <button 
-                        onClick={(e) => {
-                          e.preventDefault()
-                          toast({
-                            title: "❤️ ¡Añadido a favoritos!",
-                            description: `${item.name} se ha guardado en tus platos favoritos`,
-                          })
-                        }}
-                        className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200 group/btn"
-                      >
-                        <Heart className="w-5 h-5 text-gray-400 group-hover/btn:text-red-500 transition-colors duration-200" />
-                      </button>
-                    </div>
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      
+                      {/* Hover overlay with glassmorphism */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                      
+                      {/* Price tag with epic design */}
+                      <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6">
+                        <div className="relative">
+                          <div className="bg-white/95 backdrop-blur-sm px-3 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl font-black text-lg sm:text-2xl shadow-2xl group-hover:scale-110 sm:group-hover:scale-125 sm:group-hover:-rotate-3 transition-all duration-500 border-2 border-white/50"
+                               style={{ color: locationData.theme.primary }}>
+                            {item.price}
+                          </div>
+                          {/* Glow effect */}
+                          <div className="absolute inset-0 rounded-xl sm:rounded-2xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+                               style={{ backgroundColor: locationData.theme.primary }}></div>
+                        </div>
+                      </div>
 
-                    {/* Ingredients preview */}
-                    <div className="mt-auto pt-4 border-t border-gray-100">
-                      <div className="flex flex-wrap gap-1">
-                        {['Fresco', 'Orgánico', 'Local'].map((tag, tagIndex) => (
-                          <span 
-                            key={tagIndex}
-                            className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors duration-200"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                      {/* Floating action button */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 sm:translate-y-8 group-hover:translate-y-0">
+                        <div className="bg-white/95 backdrop-blur-lg px-4 py-2 sm:px-8 sm:py-4 rounded-full font-bold text-gray-800 shadow-2xl flex items-center gap-2 sm:gap-3 group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                          <Menu className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-180 transition-transform duration-500" />
+                          <span className="text-sm sm:text-lg">Ver en Menú</span>
+                        </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+
+                    {/* Enhanced content section */}
+                    <div className="p-4 sm:p-6 lg:p-8 relative">
+                      {/* Decorative corner */}
+                      <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-8 sm:w-12 lg:w-16 h-1 rounded-full"
+                           style={{ backgroundColor: locationData.theme.accent }}></div>
+                      
+                      <div className="space-y-3 sm:space-y-4">
+                        <h3 className="font-black text-lg sm:text-xl lg:text-2xl leading-tight group-hover:text-opacity-80 transition-colors line-clamp-2"
+                            style={{ color: locationData.theme.primary }}>
+                          {item.name}
+                        </h3>
+                        
+                        <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg line-clamp-3">
+                          {item.description || 'Delicioso plato preparado con ingredientes frescos de primera calidad por nuestros chefs expertos'}
+                        </p>
+
+                        {/* Epic price display */}
+                        <div className="flex items-center justify-between pt-2 sm:pt-4">
+                          <div className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight" style={{ color: locationData.theme.primary }}>
+                            <span className="text-lg sm:text-xl lg:text-2xl">$</span>
+                            {Math.floor(Number.parseInt(item.price.replace(/[^0-9]/g, "")) / 1000)}.
+                            <span className="text-lg sm:text-xl lg:text-2xl">
+                              {(Number.parseInt(item.price.replace(/[^0-9]/g, "")) % 1000).toString().padStart(3, "0")}
+                            </span>
+                          </div>
+                          
+                          {/* Rating stars */}
+                          <div className="flex gap-0.5 sm:gap-1">
+                            {[1,2,3,4,5].map((star) => (
+                              <div key={star} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-yellow-400 text-xs sm:text-sm lg:text-base">
+                                ⭐
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Enhanced tags */}
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2 sm:pt-4">
+                          {['🌱 Fresco', '🏆 Premium', '👨‍🍳 Artesanal'].map((tag, tagIndex) => (
+                            <span 
+                              key={tagIndex}
+                              className="px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105 border-2 touch-manipulation"
+                              style={{ 
+                                backgroundColor: `${locationData.theme.accent}15`,
+                                borderColor: `${locationData.theme.accent}30`,
+                                color: locationData.theme.accent
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
 
-          {/* Enhanced call to action */}
-          <div className="text-center mt-16">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold mb-4" style={{ color: locationData.theme.primary }}>
-                ¿Te gustó lo que viste?
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Descubre nuestro menú completo con platos únicos preparados por nuestros chefs expertos
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`/${locationData.id}/menu`}>
-                  <Button 
-                    size="lg"
-                    className="px-8 py-4 text-lg font-semibold rounded-full shadow-xl transition-all duration-300 hover:scale-105 group"
-                    style={{
-                      backgroundColor: locationData.theme.primary,
-                      color: 'white',
-                    }}
-                  >
-                    <Menu className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                    Ver Menú Completo
-                  </Button>
-                </Link>
-                <Button 
-                  onClick={() => setIsReservationOpen(true)}
-                  variant="outline"
-                  size="lg"
-                  className="px-8 py-4 text-lg font-semibold rounded-full shadow-xl transition-all duration-300 hover:scale-105 group"
-                  style={{
-                    borderColor: locationData.theme.primary,
-                    color: locationData.theme.primary,
-                  }}
-                >
-                  <Calendar className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-                  Reservar Mesa
-                </Button>
+          {/* Epic Call to Action */}
+          <div className="text-center px-2">
+            <div className="relative max-w-4xl mx-auto">
+              {/* Background card with gradient */}
+              <div className="bg-gradient-to-r from-white via-gray-50 to-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl border border-gray-200 relative overflow-hidden">
+                
+                {/* Floating elements - responsive */}
+                <div className="absolute top-2 right-2 sm:top-4 sm:right-4 w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 rounded-full animate-bounce delay-300" 
+                     style={{ backgroundColor: locationData.theme.accent }}></div>
+                <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-6 rounded-full animate-bounce delay-700" 
+                     style={{ backgroundColor: locationData.theme.primary }}></div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-black bg-gradient-to-r bg-clip-text text-transparent" 
+                        style={{ 
+                          backgroundImage: `linear-gradient(135deg, ${locationData.theme.primary} 0%, ${locationData.theme.accent} 100%)` 
+                        }}>
+                      ¿Te gustó lo que viste?
+                    </h3>
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-lg sm:text-xl animate-bounce"
+                         style={{ backgroundColor: `${locationData.theme.accent}20`, color: locationData.theme.accent }}>
+                      😋
+                    </div>
+                  </div>
+                  
+                  <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto font-medium px-4">
+                    Descubre nuestro menú completo con más de <strong>100+ platos únicos</strong> preparados por nuestros chefs expertos
+                  </p>
+                  
+                  <div className="flex flex-col gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto">
+                    <Link href={`/${locationData.id}/menu`} className="w-full">
+                      <Button 
+                        size="lg"
+                        className="w-full px-6 py-4 sm:px-8 sm:py-4 text-base sm:text-lg font-bold rounded-xl shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 group relative overflow-hidden touch-manipulation min-h-[48px] sm:min-h-[52px]"
+                        style={{
+                          backgroundColor: locationData.theme.primary,
+                          color: 'white',
+                        }}
+                      >
+                        {/* Shine effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 group-hover:animate-pulse"></div>
+                        <Menu className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
+                        <span className="relative z-10">Ver Menú Completo</span>
+                      </Button>
+                    </Link>
+                    
+                    <Button 
+                      onClick={() => setIsReservationOpen(true)}
+                      variant="outline"
+                      size="lg"
+                      className="w-full px-6 py-4 sm:px-8 sm:py-4 text-base sm:text-lg font-bold rounded-xl shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 group border-2 relative overflow-hidden touch-manipulation min-h-[48px] sm:min-h-[52px]"
+                      style={{
+                        borderColor: locationData.theme.primary,
+                        color: locationData.theme.primary,
+                        backgroundColor: 'white'
+                      }}
+                    >
+                      {/* Hover fill effect */}
+                      <div className="absolute inset-0 transition-transform duration-300 scale-0 group-hover:scale-100 rounded-xl"
+                           style={{ backgroundColor: locationData.theme.primary }}></div>
+                      <Calendar className="w-5 h-5 mr-2 group-hover:animate-bounce relative z-10 transition-colors group-hover:text-white" />
+                      <span className="relative z-10 transition-colors group-hover:text-white">Reservar Mesa</span>
+                    </Button>
+                  </div>
+                  
+                  {/* Testimonial quote */}
+                  <div className="mt-6 sm:mt-8 lg:mt-10 p-4 sm:p-6 bg-gray-100 rounded-xl sm:rounded-2xl max-w-2xl mx-auto border-l-4" 
+                       style={{ borderColor: locationData.theme.accent }}>
+                    <p className="text-sm sm:text-base lg:text-lg italic text-gray-700 mb-2 leading-relaxed">
+                      &ldquo;La mejor experiencia gastronómica de la ciudad. ¡Cada plato es una obra de arte!&rdquo;
+                    </p>
+                    <p className="text-xs sm:text-sm font-semibold" style={{ color: locationData.theme.primary }}>
+                      ⭐⭐⭐⭐⭐ - María González, cliente frecuente
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -492,8 +550,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
         onContactAction={() => setIsContactOpen(true)}
       />
 
-      {/* Instagram Feed */}
-      <InstagramFeed locationData={locationData} />
 
       {/* Floating Action Buttons */}
       <FloatingActions 
@@ -509,7 +565,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
         locationData={locationData}
         isCurrentlyOpen={isCurrentlyOpen}
         onReservationAction={() => setIsReservationOpen(true)}
-        onContactAction={() => setIsContactOpen(true)}
       />
 
       {/* Modals */}
