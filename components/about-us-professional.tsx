@@ -83,7 +83,6 @@ export function AboutUsProfessional({
             <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
               CONÓCE
             </span>
-            <br />
             <span className="bg-gradient-to-r bg-clip-text text-transparent" 
                   style={{ 
                     backgroundImage: `linear-gradient(135deg, ${locationData.theme.primary} 0%, ${locationData.theme.accent} 50%, ${locationData.theme.secondary} 100%)` 
@@ -199,7 +198,7 @@ export function AboutUsProfessional({
                      style={{ backgroundColor: locationData.theme.accent }}></div>
                 
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black mb-4 leading-tight" style={{ color: locationData.theme.primary }}>
-                  {locationData.stats.yearsOpen} Años de Tradición y Sabor
+                   Tradición y Sabor
                 </h3>
                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6">
                   {locationData.longDescription}
