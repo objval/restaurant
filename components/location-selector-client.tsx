@@ -15,6 +15,7 @@ interface LocationSelectorClientProps {
 }
 
 export default function LocationSelectorClient({ initialLocations }: LocationSelectorClientProps) {
+  const [isLoading, setIsLoading] = useState(true)
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [savedLocationId, setSavedLocationId] = useState<string | null>(null)
   const [isDetecting, setIsDetecting] = useState(false)
@@ -23,24 +24,24 @@ export default function LocationSelectorClient({ initialLocations }: LocationSel
   const [isPending, startTransition] = useTransition()
   const router = useRouter()
   const { toast } = useToast()
-  
+
   // Use initialLocations from server
   const locations = initialLocations
 
-  // Check for saved location on client side only
+  // Check for saved location immediately on mount to prevent flash
   useEffect(() => {
-    // Run this check after hydration to avoid SSR mismatch
     const checkSavedLocation = () => {
       const saved = getLocationPreference()
       if (saved && shouldShowConfirmation()) {
         setSavedLocationId(saved)
         setShowConfirmation(true)
       }
+      // Set loading to false after checking
+      setIsLoading(false)
     }
-    
-    // Small delay to ensure smooth transition
-    const timer = setTimeout(checkSavedLocation, 100)
-    return () => clearTimeout(timer)
+
+    // Check immediately without delay to prevent flash
+    checkSavedLocation()
   }, [])
 
   const showToast = (title: string, description: string, variant: "default" | "destructive" = "default", icon?: React.ReactNode) => {
@@ -265,6 +266,36 @@ export default function LocationSelectorClient({ initialLocations }: LocationSel
         <XCircle className="w-4 h-4 text-red-500" />
       )
     }
+  }
+
+  // Show loading state while determining which component to render
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-gray-900 to-black">
+        <div className="text-center">
+          {/* Cool animated loader */}
+          <div className="relative mb-8">
+            <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-2xl animate-pulse">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full animate-bounce"></div>
+              </div>
+            </div>
+            {/* Orbiting dots */}
+            <div className="absolute inset-0 animate-spin">
+              <div className="absolute top-0 left-1/2 w-3 h-3 bg-white rounded-full -translate-x-1/2 animate-pulse"></div>
+              <div className="absolute bottom-0 left-1/2 w-3 h-3 bg-amber-400 rounded-full -translate-x-1/2 animate-pulse delay-300"></div>
+              <div className="absolute left-0 top-1/2 w-3 h-3 bg-orange-500 rounded-full -translate-y-1/2 animate-pulse delay-700"></div>
+              <div className="absolute right-0 top-1/2 w-3 h-3 bg-white rounded-full -translate-y-1/2 animate-pulse delay-1000"></div>
+            </div>
+          </div>
+
+          <h1 className="text-2xl font-black text-white mb-2 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+            Experiencias Gastronómicas
+          </h1>
+          <p className="text-gray-400 text-sm animate-pulse">Preparando tu experiencia...</p>
+        </div>
+      </div>
+    )
   }
 
   // Show returning customer flow if applicable
