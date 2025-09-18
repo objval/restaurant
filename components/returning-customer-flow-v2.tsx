@@ -210,27 +210,6 @@ export function ReturningCustomerFlowV2({
             </div>
           </div>
 
-          {/* Quick info */}
-          <div className="mt-12 flex flex-wrap justify-center gap-4 animate-fade-in-delayed">
-            {savedLocation.specialties.slice(0, 3).map((specialty, index) => (
-              <span
-                key={index}
-                className="px-4 py-2 rounded-full text-sm bg-white/10 backdrop-blur-sm text-white/90 border border-white/20"
-              >
-                {specialty}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Skip animation indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/50 text-sm animate-bounce">
-        <div className="flex flex-col items-center gap-2">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center backdrop-blur-sm">
-            <div className="w-1 h-3 bg-white/50 rounded-full mt-2" />
-          </div>
-          <span className="text-xs">Desplázate para más opciones</span>
         </div>
       </div>
     </div>

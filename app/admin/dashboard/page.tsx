@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { supabase } from "@/lib/supabase-menu"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { LocationSwitcher } from "@/components/admin/location-switcher"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -54,6 +54,7 @@ function QuickActionCard({
 
 export default function AdminDashboard() {
   const router = useRouter()
+  const supabase = createClientComponentClient()
   const [user, setUser] = useState<User | null>(null)
   const [currentLocation, setCurrentLocation] = useState<'arbol' | '1898' | 'capriccio'>('arbol')
   const [loading, setLoading] = useState(true)
@@ -66,22 +67,21 @@ export default function AdminDashboard() {
   })
 
   useEffect(() => {
-    const checkAuth = async () => {
+    // Get session and start fetching data immediately
+    const initDashboard = async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user) {
-          router.push('/admin/login')
-        } else {
-          setUser(user)
+        const { data: { session } } = await supabase.auth.getSession()
+        if (session?.user) {
+          setUser(session.user)
           fetchDashboardData()
         }
       } catch (error) {
-        console.error('Auth error:', error)
-        router.push('/admin/login')
+        console.error('[Dashboard] Init error:', error)
       }
     }
-    checkAuth()
-  }, [router])
+
+    initDashboard()
+  }, [])
 
   const fetchDashboardData = async () => {
     try {

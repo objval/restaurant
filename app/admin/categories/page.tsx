@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { supabase } from "@/lib/supabase-menu"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { LocationSwitcher } from "@/components/admin/location-switcher"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -41,6 +41,7 @@ interface Category {
 }
 
 export default function CategoriesPage() {
+  const supabase = createClientComponentClient()
   const [categories, setCategories] = useState<Category[]>([])
   const [currentLocation, setCurrentLocation] = useState<'arbol' | '1898' | 'capriccio'>('arbol')
   const [loading, setLoading] = useState(true)

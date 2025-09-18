@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { supabase } from "@/lib/supabase-locations"
-import { supabase as supabaseAuth } from "@/lib/supabase-menu"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -62,6 +61,7 @@ const DAYS_OF_WEEK = [
 ]
 
 export default function LocationsAdmin() {
+  const supabase = createClientComponentClient()
   const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
   const [locations, setLocations] = useState<Location[]>([])

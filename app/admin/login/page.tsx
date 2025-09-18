@@ -26,6 +26,7 @@ export default function AdminLoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+    console.log('[Login] Starting login process')
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -33,7 +34,10 @@ export default function AdminLoginPage() {
         password,
       })
 
+      console.log('[Login] Auth response:', !!data.session, 'Error:', error)
+
       if (error || !data.session) {
+        console.log('[Login] Authentication failed')
         toast({
           title: "Error de autenticación",
           description: "Credenciales incorrectas. Por favor, verifica tu email y contraseña.",
@@ -43,14 +47,18 @@ export default function AdminLoginPage() {
         return
       }
 
+      console.log('[Login] Auth successful, checking admin role')
       // Check if user has admin role
-      const { data: profile } = await supabase
+      const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('role')
         .eq('user_id', data.session.user.id)
         .single()
 
+      console.log('[Login] Profile check:', profile, 'Error:', profileError)
+
       if (profile?.role !== 'admin') {
+        console.log('[Login] User is not admin, denying access')
         await supabase.auth.signOut()
         toast({
           title: "Acceso denegado",
@@ -61,15 +69,16 @@ export default function AdminLoginPage() {
         return
       }
 
+      console.log('[Login] Admin role confirmed, redirecting to dashboard')
       toast({
         title: "¡Bienvenido!",
         description: "Accediendo al panel de administración...",
       })
-      
+
+      // Don't set loading to false here - let the redirect happen
       router.push('/admin/dashboard')
-      router.refresh()
     } catch (error) {
-      console.error('Login error:', error)
+      console.error('[Login] Login error:', error)
       toast({
         title: "Error",
         description: "Ocurrió un error al iniciar sesión. Por favor, intenta nuevamente.",

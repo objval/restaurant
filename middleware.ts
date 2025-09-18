@@ -1,24 +1,17 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
-
-// Initialize Supabase client for middleware
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  {
-    auth: {
-      persistSession: false
-    }
-  }
-)
+import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
-  
+  const response = NextResponse.next()
+
+  // Create Supabase client for middleware
+  const supabase = createMiddlewareClient({ req: request, res: response })
+
   // Skip maintenance check for maintenance panel and its sub-routes
   if (pathname.startsWith('/maintenance')) {
-    return NextResponse.next()
+    return response
   }
 
   // Skip for API routes and static files
@@ -27,7 +20,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith('/_next/') ||
     pathname.includes('.')
   ) {
-    return NextResponse.next()
+    return response
   }
 
   try {
@@ -47,29 +40,26 @@ export async function middleware(request: NextRequest) {
     console.error('Middleware maintenance check error:', error)
     // If there's an error checking maintenance mode, allow normal access
   }
-  
+
   // Handle admin routes
   if (pathname.startsWith('/admin')) {
     // Skip auth check for login page
     if (pathname === '/admin/login') {
-      return NextResponse.next()
+      return response
     }
-    
+
     // If accessing /admin exactly, redirect to login
     if (pathname === '/admin' || pathname === '/admin/') {
       return NextResponse.redirect(new URL('/admin/login', request.url))
     }
-    
-    // For other admin routes, check authentication
-    const { data: { session } } = await supabase.auth.getSession()
-    
-    if (!session && pathname !== '/admin/login') {
-      return NextResponse.redirect(new URL('/admin/login', request.url))
-    }
+
+    // For other admin routes, let the client-side handle authentication
+    // Remove server-side auth check that was causing the redirect loop
+    console.log('[Middleware] Allowing admin route:', pathname)
   }
-  
+
   // For all other routes, just continue
-  return NextResponse.next()
+  return response
 }
 
 // Configure which routes the middleware should run on

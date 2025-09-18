@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo, memo } from "react"
 import { useRouter } from "next/navigation"
-import { supabase } from "@/lib/supabase-menu"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { toggleProductStock, toggleProductActive } from "../actions"
 import { LocationSwitcher } from "@/components/admin/location-switcher"
 import { Button } from "@/components/ui/button"
@@ -157,6 +157,7 @@ ProductCard.displayName = 'ProductCard'
 
 export default function ProductsPage() {
   const router = useRouter()
+  const supabase = createClientComponentClient()
   const [user, setUser] = useState<User | null>(null)
   const [currentLocation, setCurrentLocation] = useState<'arbol' | '1898' | 'capriccio'>('arbol')
   const [searchQuery, setSearchQuery] = useState('')

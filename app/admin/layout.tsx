@@ -21,36 +21,90 @@ export default function AdminLayout({
   useEffect(() => {
     // Check authentication status
     const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession()
-      
-      if (!session && pathname !== "/admin/login") {
-        router.push("/admin/login")
+      console.log('[Admin Layout] Checking auth, pathname:', pathname)
+      try {
+        const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+        console.log('[Admin Layout] Session:', !!session, 'Error:', sessionError)
+
+        if (!session && pathname !== "/admin/login") {
+          console.log('[Admin Layout] No session, redirecting to login')
+          router.push("/admin/login")
+          setIsAuthenticated(false)
+        } else if (session && pathname === "/admin/login") {
+          console.log('[Admin Layout] Has session on login page, checking admin role')
+          // Verify admin role before redirecting
+          const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('role')
+            .eq('user_id', session.user.id)
+            .single()
+
+          console.log('[Admin Layout] Profile:', profile, 'Error:', profileError)
+
+          if (profile?.role === 'admin') {
+            console.log('[Admin Layout] Admin role confirmed, redirecting to dashboard')
+            router.push("/admin/dashboard")
+            setIsAuthenticated(true)
+          } else {
+            console.log('[Admin Layout] Not admin role, signing out')
+            await supabase.auth.signOut()
+            setIsAuthenticated(false)
+          }
+        } else {
+          console.log('[Admin Layout] Setting auth state:', !!session)
+          setIsAuthenticated(!!session)
+        }
+      } catch (error) {
+        console.error('[Admin Layout] Auth check error:', error)
         setIsAuthenticated(false)
-      } else if (session && pathname === "/admin/login") {
-        router.push("/admin/dashboard")
-        setIsAuthenticated(true)
-      } else {
-        setIsAuthenticated(!!session)
+        if (pathname !== "/admin/login") {
+          router.push("/admin/login")
+        }
       }
     }
-    
+
     checkAuth()
-    
+
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!session && pathname !== "/admin/login") {
-        router.push("/admin/login")
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log('[Admin Layout] Auth state change:', event, !!session, 'pathname:', pathname)
+      try {
+        if (!session && pathname !== "/admin/login") {
+          console.log('[Admin Layout] Auth change: No session, redirecting to login')
+          router.push("/admin/login")
+          setIsAuthenticated(false)
+        } else if (session && pathname === "/admin/login") {
+          console.log('[Admin Layout] Auth change: Has session on login page, checking admin role')
+          // Verify admin role before redirecting
+          const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('role')
+            .eq('user_id', session.user.id)
+            .single()
+
+          console.log('[Admin Layout] Auth change: Profile:', profile, 'Error:', profileError)
+
+          if (profile?.role === 'admin') {
+            console.log('[Admin Layout] Auth change: Admin role confirmed, redirecting to dashboard')
+            router.push("/admin/dashboard")
+            setIsAuthenticated(true)
+          } else {
+            console.log('[Admin Layout] Auth change: Not admin role, signing out')
+            await supabase.auth.signOut()
+            setIsAuthenticated(false)
+          }
+        } else {
+          console.log('[Admin Layout] Auth change: Setting auth state:', !!session)
+          setIsAuthenticated(!!session)
+        }
+      } catch (error) {
+        console.error('[Admin Layout] Auth state change error:', error)
         setIsAuthenticated(false)
-      } else if (session && pathname === "/admin/login") {
-        router.push("/admin/dashboard")
-        setIsAuthenticated(true)
-      } else {
-        setIsAuthenticated(!!session)
       }
     })
-    
+
     return () => subscription.unsubscribe()
-  }, [pathname, router])
+  }, [pathname, router, supabase.auth])
   
   const handleLogout = async () => {
     await supabase.auth.signOut()

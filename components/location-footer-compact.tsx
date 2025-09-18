@@ -88,7 +88,6 @@ export function LocationFooterCompact({
             <div className="flex items-center gap-1">
               <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
               <span className="font-bold text-white">{locationData.socialProof.googleRating}</span>
-              <span className="text-gray-400 text-sm">({locationData.socialProof.reviews}+ reseñas)</span>
             </div>
           </div>
 
