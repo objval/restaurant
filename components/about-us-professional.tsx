@@ -24,21 +24,14 @@ export function AboutUsProfessional({
 }: AboutUsProfessionalProps) {
   const [activeImageIndex, setActiveImageIndex] = useState(0)
 
-  // Gallery images - handle different amounts per location and avoid duplicates
-  const galleryImages = (() => {
-    const allImages = [
-      locationData.images.interior,
-      locationData.images.signature,
-      locationData.images.ambiance,
-      ...(locationData.images.gallery || [])
-    ].filter(Boolean)
+  // Gallery images - use only the gallery array as defined
+  const galleryImages = (locationData.images.gallery || []).filter(Boolean)
 
-    // Remove duplicates by creating a Set and converting back to array
-    const uniqueImages = Array.from(new Set(allImages))
-
-    // Return appropriate number based on available images
-    return uniqueImages.length > 6 ? uniqueImages.slice(0, 8) : uniqueImages
-  })()
+  // Debug logging
+  console.log('[AboutUs] Location:', locationData.name)
+  console.log('[AboutUs] Raw gallery array:', locationData.images.gallery)
+  console.log('[AboutUs] Filtered gallery images:', galleryImages)
+  console.log('[AboutUs] Gallery length:', galleryImages.length)
 
   // Values/Features - Use location-specific values or defaults
   const values = locationData.values && locationData.values.length > 0 
@@ -160,8 +153,8 @@ export function AboutUsProfessional({
               </div>
             </div>
 
-            {/* Modern Thumbnail Grid */}
-            <div className="grid grid-cols-4 gap-2 sm:gap-3 mt-4">
+            {/* Modern Thumbnail Grid - Responsive for all images */}
+            <div className="grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-3 mt-4">
               {galleryImages.map((img, index) => (
                 <button
                   key={index}
