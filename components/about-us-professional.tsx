@@ -24,13 +24,21 @@ export function AboutUsProfessional({
 }: AboutUsProfessionalProps) {
   const [activeImageIndex, setActiveImageIndex] = useState(0)
 
-  // Gallery images
-  const galleryImages = [
-    locationData.images.interior,
-    locationData.images.signature,
-    locationData.images.ambiance,
-    ...(locationData.images.gallery || [])
-  ].filter(Boolean).slice(0, 8)
+  // Gallery images - handle different amounts per location and avoid duplicates
+  const galleryImages = (() => {
+    const allImages = [
+      locationData.images.interior,
+      locationData.images.signature,
+      locationData.images.ambiance,
+      ...(locationData.images.gallery || [])
+    ].filter(Boolean)
+
+    // Remove duplicates by creating a Set and converting back to array
+    const uniqueImages = Array.from(new Set(allImages))
+
+    // Return appropriate number based on available images
+    return uniqueImages.length > 6 ? uniqueImages.slice(0, 8) : uniqueImages
+  })()
 
   // Values/Features - Use location-specific values or defaults
   const values = locationData.values && locationData.values.length > 0 
