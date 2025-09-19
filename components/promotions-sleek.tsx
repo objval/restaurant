@@ -363,38 +363,6 @@ export function PromotionsSleek({ locationData, onContactAction }: PromotionsSle
           </div>
         ) : null}
 
-        {/* Compact CTA Section */}
-        <div className="text-center mt-8 sm:mt-10">
-          <div className="flex flex-col gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto">
-            <Button
-              onClick={handleWhatsApp}
-              size="lg"
-              className="w-full px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-bold rounded-xl shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 touch-manipulation min-h-[44px]"
-              style={{
-                backgroundColor: locationData.theme.accent,
-                color: 'white'
-              }}
-            >
-              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              Consultar Promociones
-            </Button>
-            
-            <Button
-              onClick={onContactAction}
-              size="lg"
-              variant="outline"
-              className="w-full px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 border-2 touch-manipulation min-h-[44px]"
-              style={{
-                borderColor: locationData.theme.primary,
-                color: locationData.theme.primary,
-                backgroundColor: 'white'
-              }}
-            >
-              Más Información
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-            </Button>
-          </div>
-        </div>
       </div>
     </section>
   )

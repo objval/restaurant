@@ -79,7 +79,7 @@ export default function LocationsAdmin() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const { data: { user } } = await supabaseAuth.auth.getUser()
+        const { data: { user } } = await supabase.auth.getUser()
         if (!user) {
           router.push('/admin/login')
         } else {

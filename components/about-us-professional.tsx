@@ -30,7 +30,7 @@ export function AboutUsProfessional({
     locationData.images.signature,
     locationData.images.ambiance,
     ...(locationData.images.gallery || [])
-  ].filter(Boolean).slice(0, 4)
+  ].filter(Boolean).slice(0, 8)
 
   // Values/Features - Use location-specific values or defaults
   const values = locationData.values && locationData.values.length > 0 
