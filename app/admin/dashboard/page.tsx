@@ -55,7 +55,6 @@ function QuickActionCard({
 export default function AdminDashboard() {
   const router = useRouter()
   const supabase = createClientComponentClient()
-  const [user, setUser] = useState<User | null>(null)
   const [currentLocation, setCurrentLocation] = useState<'arbol' | '1898' | 'capriccio'>('arbol')
   const [loading, setLoading] = useState(true)
   const [stats, setStats] = useState({
@@ -66,30 +65,13 @@ export default function AdminDashboard() {
     outOfStockProducts: [] as any[]
   })
 
-  useEffect(() => {
-    // Get session and start fetching data immediately
-    const initDashboard = async () => {
-      try {
-        const { data: { session } } = await supabase.auth.getSession()
-        if (session?.user) {
-          setUser(session.user)
-          fetchDashboardData()
-        }
-      } catch (error) {
-        console.error('[Dashboard] Init error:', error)
-      }
-    }
-
-    initDashboard()
-  }, [])
-
-  const fetchDashboardData = async () => {
+  const fetchDashboardData = async (location: string) => {
     try {
       setLoading(true)
       
       // Fetch products stats
       const { data: products, error: productsError } = await supabase
-        .from(`menu_${currentLocation}`)
+        .from(`menu_${location}`)
         .select('*')
       
       if (productsError) throw productsError
@@ -138,12 +120,10 @@ export default function AdminDashboard() {
   }
 
   useEffect(() => {
-    if (user) {
-      fetchDashboardData()
-    }
+    fetchDashboardData(currentLocation)
   }, [currentLocation])
 
-  if (!user || loading) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-accent/5">
         <div className="flex flex-col items-center gap-4">

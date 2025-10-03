@@ -17,6 +17,7 @@ import {
 } from "lucide-react"
 import type { User } from "@supabase/supabase-js"
 import { FeaturedProductsManager } from "@/components/admin/featured-products-manager"
+import { PromotionsManager } from '@/components/admin/promotions-manager'
 
 interface BusinessHour {
   id: string
@@ -63,7 +64,6 @@ const DAYS_OF_WEEK = [
 export default function LocationsAdmin() {
   const supabase = createClientComponentClient()
   const router = useRouter()
-  const [user, setUser] = useState<User | null>(null)
   const [locations, setLocations] = useState<Location[]>([])
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null)
   const [originalLocation, setOriginalLocation] = useState<Location | null>(null)
@@ -77,24 +77,9 @@ export default function LocationsAdmin() {
   const [uploadingSignature, setUploadingSignature] = useState(false)
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user) {
-          router.push('/admin/login')
-        } else {
-          setUser(user)
-          fetchLocations()
-          // Initialize storage bucket on first load
-          initializeStorageBucket()
-        }
-      } catch (error) {
-        console.error('Auth error:', error)
-        router.push('/admin/login')
-      }
-    }
-    checkAuth()
-  }, [router])
+    fetchLocations()
+    initializeStorageBucket()
+  }, [])
 
   const initializeStorageBucket = async () => {
     try {
@@ -487,7 +472,7 @@ export default function LocationsAdmin() {
     }
   }
 
-  if (!user || loading) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="flex flex-col items-center gap-4">
@@ -1134,6 +1119,14 @@ export default function LocationsAdmin() {
               <FeaturedProductsManager
                 locationId={selectedLocation.id}
                 locationSlug={selectedLocation.slug}
+                locationName={selectedLocation.name}
+              />
+            </div>
+
+            {/* Promotions Section */}
+            <div className="lg:col-span-2">
+              <PromotionsManager 
+                locationId={selectedLocation.id}
                 locationName={selectedLocation.name}
               />
             </div>

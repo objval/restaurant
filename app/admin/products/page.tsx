@@ -158,13 +158,11 @@ ProductCard.displayName = 'ProductCard'
 export default function ProductsPage() {
   const router = useRouter()
   const supabase = createClientComponentClient()
-  const [user, setUser] = useState<User | null>(null)
   const [currentLocation, setCurrentLocation] = useState<'arbol' | '1898' | 'capriccio'>('arbol')
   const [searchQuery, setSearchQuery] = useState('')
   const [products, setProducts] = useState<any[]>([])
   const [categories, setCategories] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [isInitialized, setIsInitialized] = useState(false)
   const [editingProduct, setEditingProduct] = useState<any>(null)
   const [editDialogOpen, setEditDialogOpen] = useState(false)
   const [filterStatus, setFilterStatus] = useState<'all' | 'in_stock' | 'out_of_stock'>('all')
@@ -191,26 +189,7 @@ export default function ProductsPage() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Check auth only once
-  useEffect(() => {
-    if (!isInitialized) {
-      const checkAuth = async () => {
-        try {
-          const { data: { user } } = await supabase.auth.getUser()
-          if (!user) {
-            router.push('/admin/login')
-          } else {
-            setUser(user)
-            setIsInitialized(true)
-          }
-        } catch (error) {
-          console.error('Auth error:', error)
-          router.push('/admin/login')
-        }
-      }
-      checkAuth()
-    }
-  }, [isInitialized, router])
+  
 
   // Fetch products and categories
   const fetchProducts = useCallback(async () => {
@@ -255,14 +234,12 @@ export default function ProductsPage() {
     } finally {
       setLoading(false)
     }
-  }, [currentLocation, isInitialized])
+  }, [currentLocation])
 
   // Fetch products when location changes
   useEffect(() => {
-    if (isInitialized) {
-      fetchProducts()
-    }
-  }, [fetchProducts, isInitialized])
+    fetchProducts()
+  }, [fetchProducts])
 
   // Reset page when filters change
   useEffect(() => {
@@ -439,7 +416,7 @@ export default function ProductsPage() {
     toast.success('Productos exportados')
   }, [filteredAndSortedProducts, currentLocation])
 
-  if (!user || !isInitialized) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-muted/20 via-background to-accent/10">
         <div className="flex flex-col items-center gap-4">
