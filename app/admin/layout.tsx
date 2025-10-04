@@ -3,10 +3,9 @@
 import { usePathname, useRouter } from "next/navigation"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Toaster } from "sonner"
-import { Package, BarChart3, FolderTree, MapPin, LogOut, Home } from "lucide-react"
+import { Package, BarChart3, FolderTree, MapPin, LogOut, Home, Settings } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { AuthGuard } from "./AuthGuard"
 
 export default function AdminLayout({
   children,
@@ -22,11 +21,10 @@ export default function AdminLayout({
     router.push("/admin/login")
   }
 
-  // The AuthGuard will handle the loading and redirection logic.
-  // We only render the full layout for authenticated users on non-login pages.
+  // Auth logic is now handled by middleware.
 
   return (
-    <AuthGuard>
+    <>
       {pathname === "/admin/login" ? (
         // For the login page, just render children without the main layout
         <>
@@ -74,7 +72,7 @@ export default function AdminLayout({
                         >
                           <Home className="h-4 w-4 md:mr-2" />
                           <span className="hidden md:inline">Dashboard</span>
-                        </Button>.
+                        </Button>
                       </Link>
                       
                       <Link href="/admin/products">
@@ -113,6 +111,19 @@ export default function AdminLayout({
                         >
                           <MapPin className="h-4 w-4 md:mr-2" />
                           <span className="hidden md:inline">Ubicaciones</span>
+                        </Button>
+                      </Link>
+
+                      <Link href="/admin/maintenance">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className={`rounded-full hover:bg-primary/10 hover:text-primary ${
+                            pathname === '/admin/maintenance' ? 'bg-primary/10 text-primary' : ''
+                          }`}
+                        >
+                          <Settings className="h-4 w-4 md:mr-2" />
+                          <span className="hidden md:inline">Mantenimiento</span>
                         </Button>
                       </Link>
                     </nav>
@@ -158,6 +169,6 @@ export default function AdminLayout({
           />
         </div>
       )}
-    </AuthGuard>
+    </>
   )
 }
