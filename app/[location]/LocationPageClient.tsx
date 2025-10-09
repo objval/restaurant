@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Menu, MessageCircle, Heart, Calendar } from "lucide-react"
-import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { ReservationModal } from "@/components/reservation-modal"
@@ -229,7 +228,12 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
 
             {/* Streamlined CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in px-4" style={{ animationDelay: '0.4s' }}>
-              <Link href={`/${locationData.id}/menu`} className="w-full sm:w-[200px]">
+              <a 
+                href={locationData.menuLink || `/${locationData.id}/menu`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-[200px]"
+              >
                 <Button
                   size="lg"
                   className="bg-white/95 backdrop-blur-sm text-gray-900 hover:bg-white hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl shadow-2xl transition-all duration-300 group w-full"
@@ -237,7 +241,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   <Menu className="w-4 sm:w-5 h-4 sm:h-5 mr-2 group-hover:rotate-12 transition-transform" />
                   Ver Menú
                 </Button>
-              </Link>
+              </a>
               <Button
                 onClick={() => setIsReservationOpen(true)}
                 size="lg"
@@ -319,7 +323,13 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
               : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-3'
           }`}>
             {locationData.menuHighlights.map((item, index) => (
-              <Link key={item.id} href={`/${locationData.id}/menu`} className="h-full">
+              <a 
+                key={item.id} 
+                href={locationData.menuLink || `/${locationData.id}/menu`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-full"
+              >
                 <div className={`group cursor-pointer animate-fade-in h-full`} 
                 style={{ animationDelay: `${index * 0.2}s` }}>
                   {/* Main product card with enhanced design - Fixed height */}
@@ -447,7 +457,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                     </div>
                   </div>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -482,7 +492,12 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                   </p>
                   
                   <div className="flex flex-col gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto">
-                    <Link href={`/${locationData.id}/menu`} className="w-full">
+                    <a 
+                      href={locationData.menuLink || `/${locationData.id}/menu`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full"
+                    >
                       <Button 
                         size="lg"
                         className="w-full px-6 py-4 sm:px-8 sm:py-4 text-base sm:text-lg font-bold rounded-xl shadow-xl transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 group relative overflow-hidden touch-manipulation min-h-[48px] sm:min-h-[52px]"
@@ -496,7 +511,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
                         <Menu className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
                         <span className="relative z-10">Ver Menú Completo</span>
                       </Button>
-                    </Link>
+                    </a>
                     
                     <Button 
                       onClick={() => setIsReservationOpen(true)}

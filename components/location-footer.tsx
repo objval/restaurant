@@ -238,10 +238,15 @@ export function LocationFooter({
 
             {/* Quick Links */}
             <div className="flex flex-wrap items-center gap-6 text-white/80">
-              <Link href={`/${locationData.id}/menu`} className="hover:text-white transition-colors flex items-center gap-1">
+              <a 
+                href={locationData.menuLink || `/${locationData.id}/menu`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors flex items-center gap-1"
+              >
                 <Wine className="w-4 h-4" />
                 Menú
-              </Link>
+              </a>
               <button onClick={onReservationAction} className="hover:text-white transition-colors flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
                 Reservar

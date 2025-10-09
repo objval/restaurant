@@ -4,6 +4,7 @@ export interface LocationData {
   concept: string
   path: string
   logoUrl?: string
+  menuLink?: string // External menu link (e.g., fu.do)
   coordinates: {
     lat: number
     lng: number
@@ -313,6 +314,7 @@ export const locations: LocationData[] = [
     name: "Capriccio",
     concept: "Bistro Bar",
     path: "/capriccio",
+    menuLink: "https://menu.fu.do/capricciobistro/qr-menu",
     coordinates: { lat: -39.0098, lng: -72.6398 },
     theme: {
       primary: "#B8860B", // Dark golden rod

@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import { Heart, Menu, ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { LocationData } from "@/lib/locations"
@@ -248,14 +247,18 @@ export function FeaturedProductsFan({ locationData }: FeaturedProductsFanProps) 
                       
                       {/* Hover overlay */}
                       {isActive && (
-                        <Link href={`/${locationData.id}/menu`}>
+                        <a 
+                          href={locationData.menuLink || `/${locationData.id}/menu`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 hover:opacity-100 transition-all duration-300">
                             <div className="bg-white/95 backdrop-blur-lg px-6 py-3 rounded-full font-bold text-gray-800 shadow-2xl flex items-center gap-2">
                               <Menu className="w-5 h-5" />
                               <span>Ver en Menú</span>
                             </div>
                           </div>
-                        </Link>
+                        </a>
                       )}
                     </div>
 
@@ -339,7 +342,11 @@ export function FeaturedProductsFan({ locationData }: FeaturedProductsFanProps) 
 
         {/* CTA Button */}
         <div className="text-center mt-8 sm:mt-12">
-          <Link href={`/${locationData.id}/menu`}>
+          <a 
+            href={locationData.menuLink || `/${locationData.id}/menu`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button 
               className="px-8 py-4 text-white font-bold rounded-xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               style={{
@@ -350,7 +357,7 @@ export function FeaturedProductsFan({ locationData }: FeaturedProductsFanProps) 
               <Menu className="inline-block w-5 h-5 mr-2" />
               Ver Menú Completo
             </button>
-          </Link>
+          </a>
         </div>
       </div>
     </section>
