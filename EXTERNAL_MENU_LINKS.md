@@ -66,16 +66,29 @@ menuLink: location.slug === 'capriccio' ? 'https://menu.fu.do/capricciobistro/qr
 
 ## Navigation Pattern
 
-### Capriccio Bistro (External Menu via fu.do)
-The following user actions open the external fu.do menu for Capriccio:
-- ✅ Clicking "Ver Menú" in hero section
-- ✅ Clicking "Ver Menú Completo" CTA
-- ✅ Clicking menu highlight product cards
-- ✅ Clicking "Menú" in location footer
-- ✅ Confirming location selection in first-time flow
+### Location Selection (All Locations → Internal Landing Pages)
+When users click on a location card in the picker:
+- ✅ Árbol → Navigates to `/arbol`
+- ✅ 1898 → Navigates to `/1898`
+- ✅ Capriccio → Navigates to `/capriccio`
 
-### Árbol & 1898 (Internal Menu Pages)
-These locations continue to use internal Next.js routes:
+This applies to:
+- Location picker cards (desktop and mobile)
+- Geolocation "Use this location" button
+- Manual location selection
+
+### Menu Links
+
+**Capriccio Bistro (External Menu via fu.do)**
+The following menu-specific actions open the external fu.do menu for Capriccio:
+- ✅ Clicking "Ver el menú" in returning customer flow
+- ✅ Clicking "Ver Menú" in hero section (on location page)
+- ✅ Clicking "Ver Menú Completo" CTA (on location page)
+- ✅ Clicking menu highlight product cards (on location page)
+- ✅ Clicking "Menú" in location footer (on location page)
+
+**Árbol & 1898 (Internal Menu Pages)**
+These locations navigate to internal menu pages:
 - Navigate to `/arbol/menu` or `/1898/menu`
 - Full menu functionality with filters, categories, etc.
 
@@ -116,15 +129,17 @@ This ensures:
 
 ## Files Modified
 
-1. `lib/locations.ts` - Added `menuLink` property and URLs
-2. `components/featured-products-fan.tsx` - External link implementation
-3. `components/location-footer.tsx` - External link implementation
-4. `components/location-selector-client.tsx` - External link on selection
-5. `app/[location]/LocationPageClient.tsx` - 4 menu link updates
+1. `lib/locations.ts` - Removed `menuLink` from Árbol and 1898, kept only for Capriccio
+2. `lib/supabase-locations.ts` - Added conditional `menuLink` (only for Capriccio)
+3. `components/featured-products-fan.tsx` - External link implementation with fallback
+4. `components/location-footer.tsx` - External link implementation with fallback
+5. `components/location-selector-client.tsx` - External link on selection with fallback
+6. `app/[location]/LocationPageClient.tsx` - 4 menu link updates with fallback
 
 ## Notes
 
-- All external links use `target="_blank"` and `rel="noopener noreferrer"` for security
-- No breaking changes to existing functionality
-- Internal menu routes (`/[location]/menu`) still exist but are not actively linked
-- Can be deprecated in future if no longer needed
+- **Capriccio only**: All menu links use `target="_blank"` and `rel="noopener noreferrer"` for security
+- **Hybrid approach**: Capriccio uses fu.do, Árbol and 1898 use internal menus
+- **No breaking changes**: Fallback ensures all locations work correctly
+- **Conditional logic**: `menuLink` only set for `location.slug === 'capriccio'`
+- Internal menu routes for Árbol and 1898 remain fully functional
