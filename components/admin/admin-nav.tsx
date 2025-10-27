@@ -15,7 +15,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
-import { supabase } from "@/lib/supabase-menu"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { toast } from "sonner"
 
 const navItems = [
@@ -47,6 +47,7 @@ const navItems = [
 ]
 
 export function AdminNav() {
+  const supabase = createClientComponentClient()
   const pathname = usePathname()
   const router = useRouter()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)

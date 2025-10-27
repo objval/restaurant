@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { supabase } from "@/lib/supabase-menu"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { ProductCard } from "./product-card"
 import { ProductEditor } from "./product-editor"
 import { Button } from "@/components/ui/button"
@@ -18,6 +18,7 @@ interface ProductGridProps {
 }
 
 export function ProductGrid({ location, category, searchQuery }: ProductGridProps) {
+  const supabase = createClientComponentClient()
   const [products, setProducts] = useState<MenuItem[]>([])
   const [filteredProducts, setFilteredProducts] = useState<MenuItem[]>([])
   const [loading, setLoading] = useState(true)

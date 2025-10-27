@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { supabase } from "@/lib/supabase-menu"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import {
   Dialog,
   DialogContent,
@@ -45,6 +45,7 @@ export function ProductEditDialog({
   onSuccess,
   location 
 }: ProductEditDialogProps) {
+  const supabase = createClientComponentClient()
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState<any[]>([])
   const [formData, setFormData] = useState({

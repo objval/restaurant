@@ -68,7 +68,7 @@ export default function LocationSelectorClient({ initialLocations }: LocationSel
       <CheckCircle className="w-4 h-4 text-green-500" />
     )
 
-    // Use transition for smooth navigation
+    // Always navigate to location page when selecting from picker
     startTransition(() => {
       router.push(location.path)
     })
@@ -78,7 +78,13 @@ export default function LocationSelectorClient({ initialLocations }: LocationSel
     if (savedLocationId) {
       const location = locations.find((loc) => loc.id === savedLocationId)
       if (location) {
-        handleLocationSelect(location)
+        // When confirming saved location with "Ver el menú" button:
+        // If menuLink exists, open it in new tab, otherwise navigate to location page
+        if (location.menuLink) {
+          window.open(location.menuLink, '_blank', 'noopener,noreferrer')
+        } else {
+          router.push(location.path)
+        }
       }
     }
   }

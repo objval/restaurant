@@ -150,6 +150,8 @@ export async function getLocationsWithHours() {
         name: location.name,
         concept: location.concept,
         path: `/${location.slug}`,
+        // Only Capriccio uses external fu.do menu, others use internal menu
+        menuLink: location.slug === 'capriccio' ? 'https://menu.fu.do/capricciobistro/qr-menu' : undefined,
         logoUrl: location.logo_url,
         coordinates: location.coordinates,
         theme: location.theme,
