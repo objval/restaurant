@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Toaster } from "sonner"
-import { Package, BarChart3, FolderTree, MapPin, LogOut, Home, Settings } from "lucide-react"
+import { Package, BarChart3, FolderTree, MapPin, LogOut, Home, Settings, ImageIcon } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -100,7 +100,18 @@ export default function AdminLayout({
                           <span className="hidden md:inline">Categorías</span>
                         </Button>
                       </Link>
-                      
+                      <Link href="/admin/gallery">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className={`rounded-full hover:bg-primary/10 hover:text-primary ${
+                            pathname === '/admin/gallery' ? 'bg-primary/10 text-primary' : ''
+                          }`}
+                        >
+                          <ImageIcon className="h-4 w-4 md:mr-2" />
+                          <span className="hidden md:inline">Galería</span>
+                        </Button>
+                      </Link> 
                       <Link href="/admin/locations">
                         <Button 
                           variant="ghost" 

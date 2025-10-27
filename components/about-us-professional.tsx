@@ -1,15 +1,17 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { 
   Clock, MapPin, Phone, Users, Navigation,
   Sparkles, Heart, Instagram, Facebook, Twitter,
-  ArrowRight
+  ArrowRight, Image as ImageIcon, Play, Pause
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { LocationData } from "@/lib/locations"
+import { GalleryShowcase } from "@/components/gallery-showcase"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 
 interface AboutUsProfessionalProps {
   locationData: LocationData
@@ -22,10 +24,23 @@ export function AboutUsProfessional({
   isCurrentlyOpen,
   onContactAction 
 }: AboutUsProfessionalProps) {
-  const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [showGalleryModal, setShowGalleryModal] = useState(false)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
   // Gallery images - use only the gallery array as defined
   const galleryImages = (locationData.images.gallery || []).filter(Boolean)
+
+  // Auto-change image every 4 seconds
+  useEffect(() => {
+    if (!isAutoPlaying || galleryImages.length <= 1) return
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [isAutoPlaying, galleryImages.length])
 
   // Debug logging
   console.log('[AboutUs] Location:', locationData.name)
@@ -108,86 +123,124 @@ export function AboutUsProfessional({
 
         {/* Modern Content Grid */}
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-16 sm:mb-20">
-          {/* Left: Enhanced Image Gallery */}
+          {/* Left: Single Auto-Changing Image */}
           <div className="relative group">
-            {/* Main Image with modern styling */}
-            <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700 hover:scale-[1.02]">
-              <Image
-                src={galleryImages[activeImageIndex] || "/placeholder.svg"}
-                alt="Restaurant"
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                priority
-              />
-              
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-              
-              {/* Enhanced image overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700">
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <div className="flex items-center justify-between">
-                    <p className="text-sm font-bold mb-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                      {activeImageIndex + 1} de {galleryImages.length}
-                    </p>
-                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center animate-bounce"
-                         style={{ color: locationData.theme.accent }}>
-                      📸
-                    </div>
-                  </div>
-                  <div className="flex gap-2 mt-3">
-                    {galleryImages.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setActiveImageIndex(index)}
-                        className={cn(
-                          "h-2 rounded-full transition-all duration-300 touch-manipulation",
-                          index === activeImageIndex 
-                            ? "w-8 bg-white" 
-                            : "w-2 bg-white/50 hover:bg-white/75"
-                        )}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Modern Thumbnail Grid - Responsive for all images */}
-            <div className="grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-3 mt-4">
-              {galleryImages.map((img, index) => (
-                <button
+            {/* Main Image Container with Auto-Change */}
+            <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700">
+              {/* Images with crossfade */}
+              {galleryImages.map((image, index) => (
+                <div
                   key={index}
-                  onClick={() => setActiveImageIndex(index)}
                   className={cn(
-                    "relative h-16 sm:h-20 lg:h-24 rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 touch-manipulation",
-                    index === activeImageIndex 
-                      ? "scale-95 ring-2 shadow-lg" 
-                      : "hover:scale-105 opacity-70 hover:opacity-100"
+                    "absolute inset-0 transition-opacity duration-1000",
+                    index === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"
                   )}
-                  style={{ 
-                    ...(index === activeImageIndex && {
-                      boxShadow: `0 0 0 2px ${locationData.theme.accent}`
-                    })
-                  }}
                 >
                   <Image
-                    src={img || "/placeholder.svg"}
-                    alt={`Gallery ${index + 1}`}
+                    src={image || "/placeholder.svg"}
+                    alt={`${locationData.name} - ${index + 1}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                     className="object-cover"
+                    priority={index === 0}
                   />
-                  {/* Active indicator */}
-                  {index === activeImageIndex && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent">
-                      <div className="absolute bottom-1 right-1 w-3 h-3 rounded-full animate-pulse" 
-                           style={{ backgroundColor: locationData.theme.accent }}></div>
-                    </div>
+                </div>
+              ))}
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20" />
+
+              {/* Gallery Button - Top Right */}
+              <button
+                onClick={() => setShowGalleryModal(true)}
+                className="absolute top-4 right-4 z-30 bg-black/40 backdrop-blur-md text-white p-3 rounded-full hover:bg-black/60 hover:scale-110 transition-all duration-300 group/btn border border-white/20 shadow-lg"
+                aria-label="Abrir galería completa"
+              >
+                <ImageIcon className="w-5 h-5 group-hover/btn:rotate-12 transition-transform duration-300" />
+                {galleryImages.length > 1 && (
+                  <span className="absolute -top-1 -right-1 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+                    {galleryImages.length}
+                  </span>
+                )}
+              </button>
+
+              {/* Play/Pause Button - Top Left */}
+              {galleryImages.length > 1 && (
+                <button
+                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                  className="absolute top-4 left-4 z-30 bg-black/40 backdrop-blur-md text-white p-3 rounded-full hover:bg-black/60 hover:scale-110 transition-all duration-300 border border-white/20 shadow-lg"
+                  aria-label={isAutoPlaying ? "Pausar" : "Reproducir"}
+                >
+                  {isAutoPlaying ? (
+                    <Pause className="w-5 h-5" />
+                  ) : (
+                    <Play className="w-5 h-5 ml-0.5" />
                   )}
                 </button>
-              ))}
+              )}
+
+              {/* Image Counter & Progress - Bottom */}
+              {galleryImages.length > 1 && (
+                <div className="absolute bottom-6 left-6 right-6 z-30">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                      <span className="text-white text-sm font-bold">
+                        {currentImageIndex + 1} / {galleryImages.length}
+                      </span>
+                    </div>
+                    <div className="flex gap-2">
+                      {galleryImages.slice(0, 5).map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => {
+                            setCurrentImageIndex(index)
+                            setIsAutoPlaying(false)
+                          }}
+                          className={cn(
+                            "w-2 h-2 rounded-full transition-all duration-300",
+                            index === currentImageIndex
+                              ? "w-8 bg-white"
+                              : "bg-white/50 hover:bg-white/75"
+                          )}
+                          aria-label={`Ir a imagen ${index + 1}`}
+                        />
+                      ))}
+                      {galleryImages.length > 5 && (
+                        <div className="w-2 h-2 rounded-full bg-white/30">
+                          <span className="sr-only">+{galleryImages.length - 5} más</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Progress Bar */}
+                  {isAutoPlaying && (
+                    <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-white to-white/80 rounded-full animate-progress"
+                        style={{
+                          animation: "progress 4s linear infinite"
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
+
+          {/* Gallery Modal */}
+          <Dialog open={showGalleryModal} onOpenChange={setShowGalleryModal}>
+            <DialogContent className="max-w-7xl max-h-[95vh] p-0 bg-transparent border-none overflow-hidden">
+              <DialogTitle className="sr-only">Galería de Fotos</DialogTitle>
+              <div className="relative w-full h-full bg-black/95 rounded-2xl overflow-hidden">
+                <GalleryShowcase 
+                  locationData={locationData}
+                  images={galleryImages}
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
 
           {/* Right: Modern Story Content */}
           <div className="space-y-6 sm:space-y-8">

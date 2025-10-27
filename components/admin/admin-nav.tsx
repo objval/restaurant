@@ -10,7 +10,8 @@ import {
   MapPin,
   LogOut,
   Menu,
-  X
+  X,
+  Image as ImageIcon
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
@@ -37,6 +38,11 @@ const navItems = [
     href: "/admin/locations",
     label: "Ubicaciones",
     icon: MapPin
+  },
+  {
+    href: "/admin/gallery",
+    label: "Galería",
+    icon: ImageIcon
   }
 ]
 

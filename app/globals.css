@@ -89,6 +89,20 @@
     animation: fade-in 0.8s ease-out 0.6s both;
   }
   
+  /* Progress bar animation for gallery */
+  @keyframes progress {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-progress {
+    animation: progress 4s linear infinite;
+  }
+  
   /* Stable card hover effects */
   .location-card-glow {
     transform-origin: center;
