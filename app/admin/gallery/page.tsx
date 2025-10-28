@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
-import type { User } from "@supabase/supabase-js"
-import { AdminHeader } from "@/components/admin/admin-header"
 import { LocationSwitcher } from "@/components/admin/location-switcher"
 import { GalleryManager } from "@/components/admin/gallery-manager"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -22,7 +20,6 @@ export default function GalleryManagementPage() {
   const router = useRouter()
   const supabase = createClientComponentClient()
   const [currentLocation, setCurrentLocation] = useState<'arbol' | '1898' | 'capriccio'>('arbol')
-  const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -32,7 +29,6 @@ export default function GalleryManagementPage() {
         router.push('/admin/login')
         return
       }
-      setUser(session.user)
       setLoading(false)
       
       // Initialize storage buckets
@@ -142,7 +138,7 @@ export default function GalleryManagementPage() {
             <div>
               <h4 className="font-semibold mb-1">📸 Galería</h4>
               <p className="text-blue-700">
-                Sube múltiples fotos que se mostrarán en la sección "Conócenos" de cada ubicación.
+                Sube múltiples fotos que se mostrarán en la sección &quot;Conócenos&quot; de cada ubicación.
                 La primera imagen será la destacada.
               </p>
             </div>
@@ -153,7 +149,7 @@ export default function GalleryManagementPage() {
               </p>
               <ul className="list-disc list-inside mt-2 space-y-1 text-blue-600 ml-4">
                 <li><strong>Hero:</strong> Banner principal de la página</li>
-                <li><strong>Interior:</strong> Sección "Sobre Nosotros"</li>
+                <li><strong>Interior:</strong> Sección &quot;Sobre Nosotros&quot;</li>
                 <li><strong>Signature:</strong> Plato destacado</li>
                 <li><strong>Ambiance:</strong> Ambiente y decoración</li>
               </ul>
@@ -176,13 +172,11 @@ export default function GalleryManagementPage() {
 
 // Component for featured image upload
 function FeaturedImageUpload({ 
-  locationId, 
-  type, 
   title, 
   description 
 }: { 
-  locationId: string
-  type: string
+  locationId?: string
+  type?: string
   title: string
   description: string
 }) {

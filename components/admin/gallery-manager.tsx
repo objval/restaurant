@@ -8,12 +8,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { 
-  Upload, X, Loader2, Image as ImageIcon, 
-  Trash2, Plus, GripVertical, Check, AlertCircle,
-  Download, ExternalLink
+  Upload, Loader2, Image as ImageIcon, 
+  Trash2, Plus, GripVertical, AlertCircle, ExternalLink
 } from "lucide-react"
 import { toast } from "sonner"
-import { uploadLocationImage, deleteLocationImage, getPublicUrl } from "@/lib/supabase-storage"
+import { uploadLocationImage, deleteLocationImage } from "@/lib/supabase-storage"
 import { cn } from "@/lib/utils"
 
 interface GalleryManagerProps {
