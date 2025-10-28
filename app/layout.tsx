@@ -152,7 +152,7 @@ export default function RootLayout({
               description: "Restaurante familiar con ambiente cálido y acogedor en Pitrufquén",
               url: "https://grupogastronomicomd.cl/arbol",
               telephone: "+56942262266",
-              email: "contacto@elarbol.cl",
+              email: "grupogastronomicomd@gmail.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Manuel Rodríguez 792",
@@ -181,7 +181,7 @@ export default function RootLayout({
               description: "Beer bar con ambiente relajado, cervezas artesanales y música en vivo",
               url: "https://grupogastronomicomd.cl/1898",
               telephone: "+56997180227",
-              email: "contacto@1898.cl",
+              email: "grupogastronomicomd@gmail.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Francisco Bilbao 539",
@@ -210,7 +210,7 @@ export default function RootLayout({
               description: "Bistro elegante con cocina de autor y ambiente sofisticado",
               url: "https://grupogastronomicomd.cl/capriccio",
               telephone: "+56930527291",
-              email: "reservas@capricciobistro.cl",
+              email: "grupogastronomicomd@gmail.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Av. Balmaceda 377",

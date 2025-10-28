@@ -59,8 +59,8 @@ export function MaintenanceOverlay({ settings }: MaintenanceOverlayProps) {
 
   // Restaurant contact info (you can make this dynamic from locations)
   const contactInfo = {
-    phone: "+1 234 567 8900",
-    email: "info@restaurant.com",
+    phone: "+56942262266",
+    email: "grupogastronomicomd@gmail.com",
     instagram: "https://instagram.com/restaurant",
     facebook: "https://facebook.com/restaurant",
     twitter: "https://twitter.com/restaurant"

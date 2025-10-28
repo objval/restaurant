@@ -135,7 +135,7 @@ export const locations: LocationData[] = [
     contact: {
       phone: "+56942262266",
       address: "Manuel Rodríguez 792, Pitrufquén, Araucanía",
-      email: "contacto@elarbol.cl",
+      email: "grupogastronomicomd@gmail.com",
     },
     features: ["Sillas para Niños", "Área de Juegos", "Menú Familiar", "Eventos Privados"],
     menuHighlights: [
@@ -247,7 +247,7 @@ export const locations: LocationData[] = [
     contact: {
       phone: "+56997180227",
       address: "Francisco Bilbao 539, Pitrufquén, Araucanía",
-      email: "contacto@1898.cl",
+      email: "grupogastronomicomd@gmail.com",
     },
     features: ["Barra de Cervezas", "Música en Vivo", "Terraza", "Karaoke"],
     menuHighlights: [
@@ -355,7 +355,7 @@ export const locations: LocationData[] = [
     contact: {
       phone: "+56930527291",
       address: "Av. Balmaceda 377, Pitrufquén, Araucanía",
-      email: "reservas@capricciobistro.cl",
+      email: "grupogastronomicomd@gmail.com",
     },
     features: ["Carta de Vinos Premium", "Música Ambient", "Terraza VIP", "Servicio Valet"],
     menuHighlights: [
