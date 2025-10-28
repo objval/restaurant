@@ -50,7 +50,7 @@ export const LocationCardProfessional = memo(function LocationCardProfessional({
       
       const todayHours = location.hours[todayName] || ''
       
-      if (todayName === 'monday' || todayHours === 'CERRADO') {
+      if (todayHours === 'CERRADO') {
         return { isOpen: false, displayText: 'CERRADO HOY', todayHours: 'CERRADO' }
       }
       

@@ -53,7 +53,7 @@ export function MobileLocationPicker({ locations, onSelectLocationAction, onUseG
       // Get hours from the location data
       todayHours = location.hours[todayName] || ''
       
-      if (todayName === 'monday' || todayHours === 'CERRADO') {
+      if (todayHours === 'CERRADO') {
         return { isOpen: false, displayText: 'CERRADO', todayHours: 'CERRADO' }
       }
       
