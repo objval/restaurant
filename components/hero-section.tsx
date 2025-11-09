@@ -29,27 +29,20 @@ export function HeroSection({ onGeolocation, isDetecting, nearestLocation }: Her
 
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Images */}
-      {heroImages.map((image, index) => (
-        <div
-          key={image}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentImageIndex ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Image
-            src={image || "/placeholder.svg"}
-            alt="Ambiente del restaurante"
-            fill
-            className="object-cover"
-            priority={index === 0}
-          />
-          {/* Enhanced dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85" />
-          {/* Additional overlay for extra contrast on mobile */}
-          <div className="absolute inset-0 bg-black/40 md:bg-black/30" />
-        </div>
-      ))}
+      {/* Background Image - render only the current image to avoid bulk optimization */}
+      <div className="absolute inset-0 transition-opacity duration-1000">
+        <Image
+          src={heroImages[currentImageIndex] || "/placeholder.svg"}
+          alt="Ambiente del restaurante"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Enhanced dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85" />
+        {/* Additional overlay for extra contrast on mobile */}
+        <div className="absolute inset-0 bg-black/40 md:bg-black/30" />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">

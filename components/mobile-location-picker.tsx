@@ -124,7 +124,7 @@ export function MobileLocationPicker({ locations, onSelectLocationAction, onUseG
         {/* Cards Container - flex-1 to fill remaining space */}
         <div className="flex-1 px-4 flex flex-col justify-center">
           <div className="flex flex-col gap-3">
-            {locations.map((location) => (
+            {locations.map((location, index) => (
               <button
                 key={location.id}
                 onClick={() => {
@@ -152,7 +152,7 @@ export function MobileLocationPicker({ locations, onSelectLocationAction, onUseG
                     className={`object-cover transition-opacity duration-700 ${
                       loadedImages.has(location.id) ? 'opacity-100' : 'opacity-0'
                     }`}
-                    priority
+                    priority={index === 0}
                     quality={85}
                     sizes={IMAGE_SIZES.mobile}
                     placeholder="blur"

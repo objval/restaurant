@@ -127,25 +127,18 @@ export function AboutUsProfessional({
           <div className="relative group">
             {/* Main Image Container with Auto-Change */}
             <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700">
-              {/* Images with crossfade */}
-              {galleryImages.map((image, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    "absolute inset-0 transition-opacity duration-1000",
-                    index === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-                  )}
-                >
-                  <Image
-                    src={image || "/placeholder.svg"}
-                    alt={`${locationData.name} - ${index + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                    className="object-cover"
-                    priority={index === 0}
-                  />
-                </div>
-              ))}
+              {/* Single Image - only render the current image to avoid bulk optimization */}
+              <div className="absolute inset-0">
+                <Image
+                  key={currentImageIndex}
+                  src={galleryImages[currentImageIndex] || "/placeholder.svg"}
+                  alt={`${locationData.name} - ${currentImageIndex + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                  className="object-cover"
+                  priority={currentImageIndex === 0}
+                />
+              </div>
 
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20" />
