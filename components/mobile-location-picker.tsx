@@ -62,21 +62,20 @@ export function MobileLocationPicker({ locations, onSelectLocationAction, onUseG
       if (hoursParts.length === 2) {
         const [openHour, openMin] = hoursParts[0].split(':').map(Number)
         const [closeHour, closeMin] = hoursParts[1].split(':').map(Number)
-        openTime = openHour * 60 + openMin
-        closeTime = closeHour * 60 + closeMin
         
-        // Handle times after midnight
-        if (closeTime < openTime) {
-          closeTime += 24 * 60
+        const openMinutes = openHour * 60 + openMin
+        const closeMinutes = closeHour * 60 + closeMin
+        
+        // Lógica para horarios que cruzan la medianoche (ej: cierra 00:30)
+        if (closeMinutes < openMinutes) {
+          // Está abierto si:
+          // 1. Es tarde (mayor que apertura) O
+          // 2. Es muy temprano (menor que cierre del día siguiente)
+          isOpen = currentTimeInMinutes >= openMinutes || currentTimeInMinutes < closeMinutes
+        } else {
+          // Horario normal (ej: 11:00 a 23:00)
+          isOpen = currentTimeInMinutes >= openMinutes && currentTimeInMinutes < closeMinutes
         }
-        
-        // Check if currently open
-        let adjustedCurrentTime = currentTimeInMinutes
-        if (hours < 4) { // After midnight
-          adjustedCurrentTime += 24 * 60
-        }
-        
-        isOpen = adjustedCurrentTime >= openTime && adjustedCurrentTime <= closeTime
       }
       
       if (isOpen) {

@@ -58,19 +58,18 @@ export const LocationCardProfessional = memo(function LocationCardProfessional({
       if (hoursParts.length === 2) {
         const [openHour, openMin] = hoursParts[0].split(':').map(Number)
         const [closeHour, closeMin] = hoursParts[1].split(':').map(Number)
-        const openTime = openHour * 60 + openMin
-        let closeTime = closeHour * 60 + closeMin
+        const openMinutes = openHour * 60 + openMin
+        const closeMinutes = closeHour * 60 + closeMin
         
-        if (closeTime < openTime) {
-          closeTime += 24 * 60
+        let isOpen = false
+        
+        if (closeMinutes < openMinutes) {
+          // Lógica para horarios que cruzan la medianoche
+          isOpen = currentTimeInMinutes >= openMinutes || currentTimeInMinutes < closeMinutes
+        } else {
+          // Horario normal
+          isOpen = currentTimeInMinutes >= openMinutes && currentTimeInMinutes < closeMinutes
         }
-        
-        let adjustedCurrentTime = currentTimeInMinutes
-        if (hours < 4) {
-          adjustedCurrentTime += 24 * 60
-        }
-        
-        const isOpen = adjustedCurrentTime >= openTime && adjustedCurrentTime <= closeTime
         
         if (isOpen) {
           const closeTimeString = hoursParts[1]
