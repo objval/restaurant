@@ -62,6 +62,7 @@ export function ProductEditor({ isOpen, onClose, product, location, onSave, isCr
   })
   const [newIngredient, setNewIngredient] = useState('')
   const [newDietary, setNewDietary] = useState('')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [newAllergen, setNewAllergen] = useState('')
 
   useEffect(() => {

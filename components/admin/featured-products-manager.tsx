@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Badge } from "@/components/ui/badge"
 import { toast } from "sonner"
 import { supabase } from "@/lib/supabase-locations"
+import { MAX_IMAGE_SIZE_BYTES } from "@/lib/constants"
 import { Star, Search, X, Save, Loader2, Upload, Trash2, ImageIcon } from "lucide-react"
 
 interface FeaturedProduct {
@@ -177,7 +178,7 @@ export function FeaturedProductsManager({ locationId, locationSlug, locationName
         return
       }
 
-      if (file.size > 5 * 1024 * 1024) {
+      if (file.size > MAX_IMAGE_SIZE_BYTES) {
         toast.error('La imagen debe ser menor a 5MB')
         return
       }
@@ -187,7 +188,7 @@ export function FeaturedProductsManager({ locationId, locationSlug, locationName
       const fileName = `featured/${locationSlug}/${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
 
       // Upload to Supabase Storage
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('product-images')
         .upload(fileName, file, {
           cacheControl: '3600',

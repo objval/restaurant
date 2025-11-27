@@ -17,7 +17,8 @@ interface ProductFiltersProps {
   location: 'arbol' | '1898' | 'capriccio'
 }
 
-export function ProductFilters({ location }: ProductFiltersProps) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function ProductFilters(_props: ProductFiltersProps) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()

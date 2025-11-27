@@ -86,7 +86,7 @@ export const LocationCardProfessional = memo(function LocationCardProfessional({
         displayText: 'CERRADO AHORA',
         todayHours
       }
-    } catch (error) {
+    } catch {
       return {
         isOpen: false,
         displayText: 'HORARIO NO DISPONIBLE',

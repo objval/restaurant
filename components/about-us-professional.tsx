@@ -9,6 +9,7 @@ import {
   ArrowRight, Image as ImageIcon, Play, Pause
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { GALLERY_AUTOPLAY_INTERVAL } from "@/lib/constants"
 import type { LocationData } from "@/lib/locations"
 import { GalleryShowcase } from "@/components/gallery-showcase"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
@@ -31,22 +32,16 @@ export function AboutUsProfessional({
   // Gallery images - use only the gallery array as defined
   const galleryImages = (locationData.images.gallery || []).filter(Boolean)
 
-  // Auto-change image every 4 seconds
+  // Auto-change image every few seconds
   useEffect(() => {
     if (!isAutoPlaying || galleryImages.length <= 1) return
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)
-    }, 4000)
+    }, GALLERY_AUTOPLAY_INTERVAL)
 
     return () => clearInterval(interval)
   }, [isAutoPlaying, galleryImages.length])
-
-  // Debug logging
-  console.log('[AboutUs] Location:', locationData.name)
-  console.log('[AboutUs] Raw gallery array:', locationData.images.gallery)
-  console.log('[AboutUs] Filtered gallery images:', galleryImages)
-  console.log('[AboutUs] Gallery length:', galleryImages.length)
 
   // Values/Features - Use location-specific values or defaults
   const values = locationData.values && locationData.values.length > 0 

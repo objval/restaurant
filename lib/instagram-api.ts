@@ -37,17 +37,3 @@ export async function refreshAccessToken(accessToken: string): Promise<string> {
   const data = await response.json()
   return data.access_token
 }
-
-// Store tokens in Supabase for each location
-export async function storeInstagramToken(locationId: string, accessToken: string, expiresIn: number) {
-  // Store in a secure table in Supabase
-  // You'll need to create an instagram_tokens table
-  const expiresAt = new Date(Date.now() + expiresIn * 1000)
-  
-  // This would be a Supabase call
-  // await supabase.from('instagram_tokens').upsert({
-  //   location_id: locationId,
-  //   access_token: accessToken,
-  //   expires_at: expiresAt
-  // })
-}

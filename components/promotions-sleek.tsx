@@ -5,15 +5,15 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Clock, Calendar, MessageCircle, Gift, Star } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { PROMO_AUTOPLAY_INTERVAL } from "@/lib/constants"
 import type { LocationData } from "@/lib/locations"
 import { motion, AnimatePresence } from "framer-motion"
 
 interface PromotionsSleekProps {
   locationData: LocationData
-  onContactAction: () => void
 }
 
-export function PromotionsSleek({ locationData, onContactAction }: PromotionsSleekProps) {
+export function PromotionsSleek({ locationData }: PromotionsSleekProps) {
   const [activePromo, setActivePromo] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
@@ -26,7 +26,7 @@ export function PromotionsSleek({ locationData, onContactAction }: PromotionsSle
     
     const interval = setInterval(() => {
       setActivePromo((prev) => (prev + 1) % promotions.length)
-    }, 5000)
+    }, PROMO_AUTOPLAY_INTERVAL)
 
     return () => clearInterval(interval)
   }, [isAutoPlaying, promotions.length])

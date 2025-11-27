@@ -271,7 +271,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
       {/* Sleek Promotions Section */}
       <PromotionsSleek 
         locationData={locationData} 
-        onContactAction={() => setIsContactOpen(true)}
       />
 
       {/* Ultra Modern Featured Products Section */}
