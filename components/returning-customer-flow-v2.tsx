@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Navigation, Sparkles, Clock, ArrowRight, RefreshCw } from "lucide-react"
 import { getLocationBlurPlaceholder, IMAGE_SIZES } from "@/lib/image-utils"
 import { cn } from "@/lib/utils"
+import { TIMEZONE_CHILE } from "@/lib/constants"
 
 interface ReturningCustomerFlowProps {
   savedLocationId: string
@@ -40,7 +41,7 @@ export function ReturningCustomerFlowV2({
     
     try {
       const now = new Date()
-      const chileanTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Santiago" }))
+      const chileanTime = new Date(now.toLocaleString("en-US", { timeZone: TIMEZONE_CHILE }))
       const hours = chileanTime.getHours()
       const minutes = chileanTime.getMinutes()
       const currentTimeInMinutes = hours * 60 + minutes

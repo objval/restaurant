@@ -9,6 +9,7 @@ import { MapPin, Navigation, Phone, Clock, Users, Utensils, Wine, ChevronRight, 
 import { type LocationData } from "@/lib/locations"
 import { MobileLocationPicker } from "@/components/mobile-location-picker"
 import { getLocationBlurPlaceholder, IMAGE_SIZES, BLUR_PLACEHOLDERS } from "@/lib/image-utils"
+import { calculateOpenStatus } from "@/hooks/use-open-status"
 
 interface ProfessionalLocationPickerProps {
   locations: LocationData[]
@@ -80,95 +81,7 @@ export function ProfessionalLocationPicker({
     const [imageLoaded, setImageLoaded] = useState(false)
 
     // Get current Chilean time and check if open
-    const getChileanTimeAndStatus = () => {
-      try {
-        // Get Chilean time (UTC-3 in summer, UTC-4 in winter)
-        const now = new Date()
-        const chileanTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Santiago"}))
-        const hours = chileanTime.getHours()
-        const minutes = chileanTime.getMinutes()
-        const currentTimeInMinutes = hours * 60 + minutes
-        const dayOfWeek = chileanTime.getDay()
-      
-      // Only log once per location on initial render
-      if (typeof window !== 'undefined') {
-        const w = window as Window & { loggedLocations?: Set<string> }
-        if (!w.loggedLocations) {
-          w.loggedLocations = new Set()
-        }
-        if (!w.loggedLocations.has(location.id)) {
-          w.loggedLocations.add(location.id)
-          console.log(`Chilean time for ${location.name}:`, chileanTime.toLocaleString('es-CL', {
-            timeZone: 'America/Santiago',
-            hour12: false
-          }))
-        }
-      }
-      
-      const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-      const todayName = days[dayOfWeek] as keyof typeof location.hours
-      
-      // Get hours for the specific location
-      let openTime = 0
-      let closeTime = 0
-      let isOpen = false
-      let todayHours = ''
-      
-      // Get hours from the location data
-      todayHours = location.hours[todayName] || ''
-      
-      if (todayName === 'monday' || todayHours === 'CERRADO') {
-        return { isOpen: false, displayText: 'CERRADO HOY', todayHours: 'CERRADO' }
-      }
-      
-      // Parse opening hours for all restaurants
-      const hoursParts = todayHours.split(' - ')
-      if (hoursParts.length === 2) {
-        const [openHour, openMin] = hoursParts[0].split(':').map(Number)
-        const [closeHour, closeMin] = hoursParts[1].split(':').map(Number)
-        openTime = openHour * 60 + openMin
-        closeTime = closeHour * 60 + closeMin
-        
-        // Handle times after midnight
-        if (closeTime < openTime) {
-          closeTime += 24 * 60
-        }
-        
-        // Check if currently open
-        let adjustedCurrentTime = currentTimeInMinutes
-        if (hours < 4) { // After midnight
-          adjustedCurrentTime += 24 * 60
-        }
-        
-        isOpen = adjustedCurrentTime >= openTime && adjustedCurrentTime <= closeTime
-      }
-      
-      if (isOpen) {
-        // Extract the closing time directly from todayHours string
-        const closeTimeString = todayHours.split(' - ')[1]
-        return {
-          isOpen: true,
-          displayText: `Abierto hasta ${closeTimeString}`,
-          todayHours
-        }
-      } else {
-        return {
-          isOpen: false,
-          displayText: 'CERRADO AHORA',
-          todayHours
-        }
-      }
-      } catch (error) {
-        console.error(`Error getting time status for ${location.name}:`, error)
-        return {
-          isOpen: false,
-          displayText: 'HORARIO NO DISPONIBLE',
-          todayHours: ''
-        }
-      }
-    }
-    
-    const { isOpen, displayText, todayHours } = getChileanTimeAndStatus()
+    const { isOpen, displayText, todayHours } = calculateOpenStatus(location)
 
     // Get theme class based on location
     const getThemeClass = (locationId: string) => {

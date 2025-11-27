@@ -16,7 +16,7 @@ import {
   Download
 } from "lucide-react"
 import { toast } from "sonner"
-import { useDebounce } from "@/lib/hooks/use-debounce"
+import { useDebounce } from "@/hooks/use-debounce"
 import { ProductEditDialog } from "@/components/admin/product-edit-dialog"
 import {
   DropdownMenu,

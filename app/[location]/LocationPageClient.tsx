@@ -13,6 +13,7 @@ import { PromotionsSleek } from "@/components/promotions-sleek"
 import { LocationFooterCompact } from "@/components/location-footer-compact"
 import { useToast } from "@/hooks/use-toast"
 import type { LocationData } from "@/lib/locations"
+import { TIMEZONE_CHILE } from "@/lib/constants"
 
 interface LocationPageClientProps {
   locationData: LocationData
@@ -32,16 +33,11 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
     const checkIfOpen = () => {
       const now = new Date()
       // Use Chilean timezone
-      const chileTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Santiago" }))
+      const chileTime = new Date(now.toLocaleString("en-US", { timeZone: TIMEZONE_CHILE }))
       const currentDay = chileTime.getDay()
       const currentHour = chileTime.getHours()
       const currentMinute = chileTime.getMinutes()
       const currentTime = currentHour * 60 + currentMinute
-
-      console.log(`[${locationData.name}] Checking if open:`)
-      console.log(`  - Chile time: ${chileTime.toLocaleString('es-CL')}`)
-      console.log(`  - Current day index: ${currentDay}`)
-      console.log(`  - Current time (minutes): ${currentTime} (${Math.floor(currentTime/60)}:${String(currentTime%60).padStart(2,'0')})`)
 
       const dayMap: { [key: number]: keyof typeof locationData.hours } = {
         0: 'sunday',
@@ -56,10 +52,7 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
       const todayKey = dayMap[currentDay]
       const todayHours = locationData.hours[todayKey]
 
-      console.log(`  - Today (${todayKey}): ${todayHours || 'CERRADO'}`)
-
       if (!todayHours || todayHours === 'CERRADO') {
-        console.log(`  - Result: CLOSED (no hours or CERRADO)`)
         setIsCurrentlyOpen(false)
         return
       }
@@ -70,9 +63,6 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
         return hours * 60 + minutes
       })
 
-      console.log(`  - Open time: ${Math.floor(openTime/60)}:${String(openTime%60).padStart(2,'0')} (${openTime} min)`)
-      console.log(`  - Close time: ${Math.floor(closeTime/60)}:${String(closeTime%60).padStart(2,'0')} (${closeTime} min)`)
-
       let isOpen = false
       let adjustedCloseTime = closeTime
       let adjustedCurrentTime = currentTime
@@ -80,19 +70,14 @@ export default function LocationPageClient({ locationData }: LocationPageClientP
       // Handle times after midnight (e.g., closes at 03:00)
       if (closeTime < openTime) {
         adjustedCloseTime = closeTime + 24 * 60
-        console.log(`  - Crosses midnight: adjusted close time to ${adjustedCloseTime} min`)
       }
       
       // Adjust current time if we're in the early morning hours
       if (currentHour < 4) { // After midnight
         adjustedCurrentTime = currentTime + 24 * 60
-        console.log(`  - After midnight: adjusted current time to ${adjustedCurrentTime} min`)
       }
       
       isOpen = adjustedCurrentTime >= openTime && adjustedCurrentTime <= adjustedCloseTime
-      console.log(`  - Checking if ${adjustedCurrentTime} >= ${openTime} AND ${adjustedCurrentTime} <= ${adjustedCloseTime}`)
-
-      console.log(`  - Result: ${isOpen ? 'OPEN' : 'CLOSED'}`)
       setIsCurrentlyOpen(isOpen)
     }
 

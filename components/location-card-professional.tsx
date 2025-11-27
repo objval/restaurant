@@ -9,6 +9,7 @@ import { MapPin, Phone, Clock, Users, Utensils, Wine, ChevronRight, Loader2 } fr
 import { type LocationData } from "@/lib/locations"
 import { getLocationBlurPlaceholder, IMAGE_SIZES } from "@/lib/image-utils"
 import { cn } from "@/lib/utils"
+import { useOpenStatus } from "@/hooks/use-open-status"
 
 interface LocationCardProfessionalProps {
   location: LocationData
@@ -35,67 +36,8 @@ export const LocationCardProfessional = memo(function LocationCardProfessional({
 
   const Icon = getLocationIcon(location.concept)
 
-  // Get current Chilean time and check if open
-  const getOpenStatus = () => {
-    try {
-      const now = new Date()
-      const chileanTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Santiago" }))
-      const hours = chileanTime.getHours()
-      const minutes = chileanTime.getMinutes()
-      const currentTimeInMinutes = hours * 60 + minutes
-      const dayOfWeek = chileanTime.getDay()
-      
-      const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-      const todayName = days[dayOfWeek] as keyof typeof location.hours
-      
-      const todayHours = location.hours[todayName] || ''
-      
-      if (todayHours === 'CERRADO') {
-        return { isOpen: false, displayText: 'CERRADO HOY', todayHours: 'CERRADO' }
-      }
-      
-      const hoursParts = todayHours.split(' - ')
-      if (hoursParts.length === 2) {
-        const [openHour, openMin] = hoursParts[0].split(':').map(Number)
-        const [closeHour, closeMin] = hoursParts[1].split(':').map(Number)
-        const openMinutes = openHour * 60 + openMin
-        const closeMinutes = closeHour * 60 + closeMin
-        
-        let isOpen = false
-        
-        if (closeMinutes < openMinutes) {
-          // Lógica para horarios que cruzan la medianoche
-          isOpen = currentTimeInMinutes >= openMinutes || currentTimeInMinutes < closeMinutes
-        } else {
-          // Horario normal
-          isOpen = currentTimeInMinutes >= openMinutes && currentTimeInMinutes < closeMinutes
-        }
-        
-        if (isOpen) {
-          const closeTimeString = hoursParts[1]
-          return {
-            isOpen: true,
-            displayText: `Abierto hasta ${closeTimeString}`,
-            todayHours
-          }
-        }
-      }
-      
-      return {
-        isOpen: false,
-        displayText: 'CERRADO AHORA',
-        todayHours
-      }
-    } catch {
-      return {
-        isOpen: false,
-        displayText: 'HORARIO NO DISPONIBLE',
-        todayHours: ''
-      }
-    }
-  }
-
-  const { isOpen, displayText, todayHours } = getOpenStatus()
+  // Get open status from centralized hook
+  const { isOpen, displayText, todayHours } = useOpenStatus(location)
 
   return (
     <div 

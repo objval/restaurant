@@ -7,6 +7,7 @@ import { MapPin, Wifi, Car, Trees, Music2, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { getLocationBlurPlaceholder, IMAGE_SIZES } from "@/lib/image-utils"
+import { calculateOpenStatus } from "@/hooks/use-open-status"
 
 interface MobileLocationPickerProps {
   locations: LocationData[]
@@ -30,73 +31,9 @@ export function MobileLocationPicker({ locations, onSelectLocationAction, onUseG
     return Icon ? <Icon className="w-3 h-3" /> : null
   }
 
-  // Get current Chilean time and check if open
+  // Get open status using centralized function
   const getChileanTimeAndStatus = (location: LocationData) => {
-    try {
-      // Get Chilean time (UTC-3 in summer, UTC-4 in winter)
-      const now = new Date()
-      const chileanTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Santiago"}))
-      const hours = chileanTime.getHours()
-      const minutes = chileanTime.getMinutes()
-      const currentTimeInMinutes = hours * 60 + minutes
-      const dayOfWeek = chileanTime.getDay()
-      
-      const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-      const todayName = days[dayOfWeek] as keyof typeof location.hours
-      
-      // Get hours for the specific location
-      let isOpen = false
-      let todayHours = ''
-      
-      // Get hours from the location data
-      todayHours = location.hours[todayName] || ''
-      
-      if (todayHours === 'CERRADO') {
-        return { isOpen: false, displayText: 'CERRADO', todayHours: 'CERRADO' }
-      }
-      
-      // Parse opening hours for all restaurants
-      const hoursParts = todayHours.split(' - ')
-      if (hoursParts.length === 2) {
-        const [openHour, openMin] = hoursParts[0].split(':').map(Number)
-        const [closeHour, closeMin] = hoursParts[1].split(':').map(Number)
-        
-        const openMinutes = openHour * 60 + openMin
-        const closeMinutes = closeHour * 60 + closeMin
-        
-        // Lógica para horarios que cruzan la medianoche (ej: cierra 00:30)
-        if (closeMinutes < openMinutes) {
-          // Está abierto si:
-          // 1. Es tarde (mayor que apertura) O
-          // 2. Es muy temprano (menor que cierre del día siguiente)
-          isOpen = currentTimeInMinutes >= openMinutes || currentTimeInMinutes < closeMinutes
-        } else {
-          // Horario normal (ej: 11:00 a 23:00)
-          isOpen = currentTimeInMinutes >= openMinutes && currentTimeInMinutes < closeMinutes
-        }
-      }
-      
-      if (isOpen) {
-        return {
-          isOpen: true,
-          displayText: 'Abierto',
-          todayHours
-        }
-      } else {
-        return {
-          isOpen: false,
-          displayText: 'Cerrado',
-          todayHours
-        }
-      }
-    } catch (error) {
-      console.error(`Error getting time status for ${location.name}:`, error)
-      return {
-        isOpen: false,
-        displayText: 'Cerrado',
-        todayHours: ''
-      }
-    }
+    return calculateOpenStatus(location)
   }
 
   return (

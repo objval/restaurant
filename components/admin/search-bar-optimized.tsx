@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useTransition } from "react"
 import { Search, X, Loader2 } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { useDebounce } from "@/lib/hooks/use-debounce"
+import { useDebounce } from "@/hooks/use-debounce"
 
 interface SearchBarOptimizedProps {
   onSearch: (query: string) => void

@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Calendar, Clock, Phone, User, X } from "lucide-react"
 import type { LocationData } from "@/lib/locations"
+import { TIMEZONE_CHILE } from "@/lib/constants"
 
 interface ReservationModalProps {
   isOpen: boolean
@@ -65,7 +66,7 @@ Teléfono: ${location.contact.phone}
 Email: ${location.contact.email}
 
 *Fecha de solicitud:* ${new Date().toLocaleString('es-CL', {
-      timeZone: 'America/Santiago',
+      timeZone: TIMEZONE_CHILE,
       year: 'numeric',
       month: 'long',
       day: 'numeric',
