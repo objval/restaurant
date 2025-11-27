@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import { 
   Clock, Phone, Mail, Instagram, Facebook, Twitter,
   AlertTriangle, Coffee, ChefHat, Utensils

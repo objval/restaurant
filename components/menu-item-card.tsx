@@ -61,12 +61,24 @@ export function MenuItemCard({ item, onClick, locationTheme }: MenuItemCardProps
     <Flame key={i} className="w-3 h-3 text-red-500 fill-current" />
   )) : null
 
+  // Handle keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      onClick()
+    }
+  }
+
   return (
     <Card
       ref={cardRef}
       className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 overflow-hidden bg-white border-2 hover:border-opacity-50 relative ${isOutOfStock ? 'opacity-75' : ''}`}
       style={{ borderColor: `${locationTheme.primary}20` }}
       onClick={onClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={`Ver detalles de ${item.name}, precio ${Math.floor(item.price / 1000)}.${(item.price % 1000).toString().padStart(3, "0")} pesos${isOutOfStock ? ', agotado' : ''}`}
     >
       {/* Out of Stock Badge */}
       {isOutOfStock && (

@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useCallback, useMemo, memo } from "react"
-import { useRouter } from "next/navigation"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { toggleProductStock, toggleProductActive } from "../actions"
 import { LocationSwitcher } from "@/components/admin/location-switcher"
@@ -33,7 +32,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import type { User } from "@supabase/supabase-js"
 
 // Memoized Product Card Component
 const ProductCard = memo(({ 
@@ -156,7 +154,6 @@ const ProductCard = memo(({
 ProductCard.displayName = 'ProductCard'
 
 export default function ProductsPage() {
-  const router = useRouter()
   const supabase = createClientComponentClient()
   const [currentLocation, setCurrentLocation] = useState<'arbol' | '1898' | 'capriccio'>('arbol')
   const [searchQuery, setSearchQuery] = useState('')

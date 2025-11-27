@@ -31,8 +31,10 @@ export default function LocationSelectorClient({ initialLocations }: LocationSel
   // Check for saved location immediately on mount to prevent flash
   useEffect(() => {
     const checkSavedLocation = () => {
+      // Call shouldShowConfirmation first - it may set test data in dev mode
+      const shouldShow = shouldShowConfirmation()
       const saved = getLocationPreference()
-      if (saved && shouldShowConfirmation()) {
+      if (saved && shouldShow) {
         setSavedLocationId(saved)
         setShowConfirmation(true)
       }

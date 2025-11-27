@@ -6,8 +6,8 @@ import Link from "next/link"
 import { 
   MapPin, Clock, Phone, Mail, MessageCircle,
   Instagram, Facebook, Twitter, Calendar,
-  ArrowRight, ChevronRight, Star, Utensils,
-  Wine, Coffee, Award, Navigation
+  ArrowRight, Star, Utensils,
+  Wine, Navigation
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"

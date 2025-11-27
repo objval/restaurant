@@ -1,5 +1,3 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 // This function is designed for server-side usage.

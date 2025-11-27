@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { LocationSwitcher } from "@/components/admin/location-switcher"
@@ -15,7 +14,6 @@ import {
   ExternalLink
 } from "lucide-react"
 import { toast } from "sonner"
-import type { User } from "@supabase/supabase-js"
 
 // Quick action card component
 function QuickActionCard({ 
@@ -53,7 +51,6 @@ function QuickActionCard({
 }
 
 export default function AdminDashboard() {
-  const router = useRouter()
   const supabase = createClientComponentClient()
   const [currentLocation, setCurrentLocation] = useState<'arbol' | '1898' | 'capriccio'>('arbol')
   const [loading, setLoading] = useState(true)

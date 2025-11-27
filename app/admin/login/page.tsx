@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
 import { 
-  Lock, Mail, Eye, EyeOff, Shield, AlertCircle, 
+  Lock, Mail, Eye, EyeOff, Shield, 
   LayoutDashboard, Store, Package, Users, Settings
 } from "lucide-react"
 

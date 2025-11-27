@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Clock, Calendar, MessageCircle, ArrowRight, Gift, Star } from "lucide-react"
+import { Clock, Calendar, MessageCircle, Gift, Star } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { LocationData } from "@/lib/locations"
 import { motion, AnimatePresence } from "framer-motion"

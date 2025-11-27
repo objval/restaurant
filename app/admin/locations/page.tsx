@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -15,7 +14,6 @@ import {
   Image as ImageIcon, Phone, Globe, Navigation, Building2,
   MessageSquare, TrendingUp, Eye, EyeOff, Settings
 } from "lucide-react"
-import type { User } from "@supabase/supabase-js"
 import { FeaturedProductsManager } from "@/components/admin/featured-products-manager"
 import { PromotionsManager } from '@/components/admin/promotions-manager'
 
@@ -63,7 +61,6 @@ const DAYS_OF_WEEK = [
 
 export default function LocationsAdmin() {
   const supabase = createClientComponentClient()
-  const router = useRouter()
   const [locations, setLocations] = useState<Location[]>([])
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null)
   const [originalLocation, setOriginalLocation] = useState<Location | null>(null)

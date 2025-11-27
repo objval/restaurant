@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { type LocationData } from "@/lib/locations"
 import { Button } from "@/components/ui/button"
@@ -81,8 +81,14 @@ export function ReturningCustomerFlowV2({
     }
   }
 
+  // Handle missing savedLocation in useEffect to avoid setState during render
+  useEffect(() => {
+    if (!savedLocation) {
+      onShowAllAction()
+    }
+  }, [savedLocation, onShowAllAction])
+
   if (!savedLocation) {
-    onShowAllAction()
     return null
   }
 

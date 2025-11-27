@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 
 // This endpoint can be called manually or by external cron service
 // Cron jobs are disabled on free Vercel plan - uncomment when upgraded
-export async function GET(request: Request) {
+export async function GET() {
   // Return a simple message for now
   return NextResponse.json({
     success: true,
@@ -87,6 +87,6 @@ export async function GET(request: Request) {
 }
 
 // Also support POST for manual triggers
-export async function POST(request: Request) {
-  return GET(request)
+export async function POST() {
+  return GET()
 }
