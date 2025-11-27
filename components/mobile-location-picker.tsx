@@ -45,8 +45,6 @@ export function MobileLocationPicker({ locations, onSelectLocationAction, onUseG
       const todayName = days[dayOfWeek] as keyof typeof location.hours
       
       // Get hours for the specific location
-      let openTime = 0
-      let closeTime = 0
       let isOpen = false
       let todayHours = ''
       
